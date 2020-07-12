@@ -79,15 +79,15 @@
 
 
 
-<meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+<meta name="description" content="安装需要安装git和Nodejs Nodejs会自带安装npm，并默认将其加入环境变量 使用命令npm install -g hexo-cli安装hexo，可以加--prefix 路径设置安装路径，否则是默认路径 遇到warn警告可以不管 之后把hexo.cmd所在的路径加入环境变量，应该是直接在安装路径中而不是在bin中 创建仓库命令为hexo init 本地博客目录 进入本地博客目录，之后两行">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hello World">
-<meta property="og:url" content="http://yoursite.com/2020/07/03/hello-world/index.html">
+<meta property="og:title" content="hexo">
+<meta property="og:url" content="http://yoursite.com/2020/07/12/hexo/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+<meta property="og:description" content="安装需要安装git和Nodejs Nodejs会自带安装npm，并默认将其加入环境变量 使用命令npm install -g hexo-cli安装hexo，可以加--prefix 路径设置安装路径，否则是默认路径 遇到warn警告可以不管 之后把hexo.cmd所在的路径加入环境变量，应该是直接在安装路径中而不是在bin中 创建仓库命令为hexo init 本地博客目录 进入本地博客目录，之后两行">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2020-07-03T07:54:38.461Z">
-<meta property="article:modified_time" content="2020-07-03T07:54:38.461Z">
+<meta property="article:published_time" content="2020-07-12T13:11:11.000Z">
+<meta property="article:modified_time" content="2020-07-12T13:16:27.172Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
 
@@ -119,13 +119,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2020/07/03/hello-world/"/>
+  <link rel="canonical" href="http://yoursite.com/2020/07/12/hexo/"/>
 
 
 
 
 
-  <title>Hello World | Hexo</title>
+  <title>hexo | Hexo</title>
   
 
 
@@ -232,7 +232,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/07/03/hello-world/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/07/12/hexo/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="John Doe">
@@ -249,7 +249,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Hello World</h1>
+          <h1 class="post-title" itemprop="name headline">hexo</h1>
         
 
         <div class="post-meta">
@@ -261,8 +261,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-07-03T15:54:38+08:00">
-                2020-07-03
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-07-12T21:11:11+08:00">
+                2020-07-12
               </time>
             
 
@@ -299,19 +299,33 @@
       
 
       
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
+        <h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>需要安装git和Nodejs</p>
+<p>Nodejs会自带安装npm，并默认将其加入环境变量</p>
+<p>使用命令<code>npm install -g hexo-cli</code>安装hexo，可以加<code>--prefix 路径</code>设置安装路径，否则是默认路径</p>
+<p>遇到warn警告可以不管</p>
+<p>之后把hexo.cmd所在的路径加入环境变量，应该是直接在安装路径中而不是在bin中</p>
+<h2 id="创建仓库"><a href="#创建仓库" class="headerlink" title="创建仓库"></a>创建仓库</h2><p>命令为<code>hexo init 本地博客目录</code></p>
+<p>进入本地博客目录，之后两行命令</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm install		#安装依赖文件</span><br><span class="line">hexo generate		#部署形成文件</span><br></pre></td></tr></table></figure>
 
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
 
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
 
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+<h2 id="运行hexo本地服务器"><a href="#运行hexo本地服务器" class="headerlink" title="运行hexo本地服务器"></a>运行hexo本地服务器</h2><p>命令为<code>hexo server</code></p>
+<p>之后可以在<code>localhost:4000</code>访问</p>
+<h2 id="新建md文件"><a href="#新建md文件" class="headerlink" title="新建md文件"></a>新建md文件</h2><p>在本地博客目录使用命令<code>hexo new “test”</code></p>
+<p>会在sources/_post/下生成test.md</p>
+<h2 id="托管到github"><a href="#托管到github" class="headerlink" title="托管到github"></a>托管到github</h2><p>修改仓库里的_config.yml</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">deploy:</span><br><span class="line">  type: git</span><br><span class="line">  repository: https:&#x2F;&#x2F;github.com&#x2F;chenyz2000&#x2F;chenyz2000.github.io</span><br><span class="line">  branch: master</span><br></pre></td></tr></table></figure>
 
-<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+<p>安装部署工具<code>hexo-deployer-git --save</code></p>
+<p>之后==<strong>每次修改</strong>==，都需要在<strong>本地博客目录下</strong>使用如下命令重新提交</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hexo clean</span><br><span class="line">hexo generate   #简写 hexo g</span><br><span class="line">hexo deploy      #简写 hexo d</span><br></pre></td></tr></table></figure>
+
+<p>generate是生成静态文件，将md解析成html，生成的html存储在public下</p>
+<p>deploy是将文件部署到github上</p>
+<h2 id="设置主题"><a href="#设置主题" class="headerlink" title="设置主题"></a>设置主题</h2><p>将模板主题clone到themes文件夹里</p>
+<p><code>git clone 模板主题url 目标路径</code></p>
+<p>并且修改_config.yml的theme为主题名称</p>
 
       
     </div>
@@ -336,15 +350,15 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2020/07/03/hello-world/" rel="next" title="Hello World">
+                <i class="fa fa-chevron-left"></i> Hello World
+              </a>
+            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2020/07/12/hexo/" rel="prev" title="hexo">
-                hexo <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -458,7 +472,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Quick-Start"><span class="nav-number">1.</span> <span class="nav-text">Quick Start</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Create-a-new-post"><span class="nav-number">1.1.</span> <span class="nav-text">Create a new post</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Run-server"><span class="nav-number">1.2.</span> <span class="nav-text">Run server</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Generate-static-files"><span class="nav-number">1.3.</span> <span class="nav-text">Generate static files</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Deploy-to-remote-sites"><span class="nav-number">1.4.</span> <span class="nav-text">Deploy to remote sites</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#安装"><span class="nav-number">1.</span> <span class="nav-text">安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#创建仓库"><span class="nav-number">2.</span> <span class="nav-text">创建仓库</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#运行hexo本地服务器"><span class="nav-number">3.</span> <span class="nav-text">运行hexo本地服务器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#新建md文件"><span class="nav-number">4.</span> <span class="nav-text">新建md文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#托管到github"><span class="nav-number">5.</span> <span class="nav-text">托管到github</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#设置主题"><span class="nav-number">6.</span> <span class="nav-text">设置主题</span></a></li></ol></div>
             
 
           </div>
