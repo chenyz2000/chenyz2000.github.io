@@ -79,15 +79,15 @@
 
 
 
-<meta name="description" content="安装需要安装git和Nodejs Nodejs会自带安装npm，并默认将其加入环境变量 使用命令npm install -g hexo-cli安装hexo，可以加--prefix 路径设置安装路径，否则是默认路径 遇到warn警告可以不管 之后把hexo.cmd所在的路径加入环境变量，应该是直接在安装路径中而不是在bin中 创建仓库命令为hexo init 本地博客目录 进入本地博客目录，之后两行">
+<meta name="description" content="https:&#x2F;&#x2F;support-it.huawei.com&#x2F;docs&#x2F;zh-cn&#x2F;hcs-6.5.0&#x2F;two-level-cloud-guide&#x2F;mocrsecs_ug_000035.html 使用密码方式登录Linux弹性云服务器（SSH方式）的功能默认是被禁用的，如果您需要开启此功能，可以在登录弹性云服务器后自行设置。 开启SSH密码方式登录权限。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="hexo">
-<meta property="og:url" content="https://chenyz2000.github.io/2020/07/12/hexo/index.html">
+<meta property="og:title" content="ecs的ssh">
+<meta property="og:url" content="https://chenyz2000.github.io/Linux/ecs%E7%9A%84ssh/index.html">
 <meta property="og:site_name" content="CYZ&#39;s Blog">
-<meta property="og:description" content="安装需要安装git和Nodejs Nodejs会自带安装npm，并默认将其加入环境变量 使用命令npm install -g hexo-cli安装hexo，可以加--prefix 路径设置安装路径，否则是默认路径 遇到warn警告可以不管 之后把hexo.cmd所在的路径加入环境变量，应该是直接在安装路径中而不是在bin中 创建仓库命令为hexo init 本地博客目录 进入本地博客目录，之后两行">
+<meta property="og:description" content="https:&#x2F;&#x2F;support-it.huawei.com&#x2F;docs&#x2F;zh-cn&#x2F;hcs-6.5.0&#x2F;two-level-cloud-guide&#x2F;mocrsecs_ug_000035.html 使用密码方式登录Linux弹性云服务器（SSH方式）的功能默认是被禁用的，如果您需要开启此功能，可以在登录弹性云服务器后自行设置。 开启SSH密码方式登录权限。">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2020-07-12T13:11:11.000Z">
-<meta property="article:modified_time" content="2020-07-12T14:05:38.552Z">
+<meta property="article:published_time" content="2020-07-13T01:54:42.928Z">
+<meta property="article:modified_time" content="2020-07-13T02:42:20.763Z">
 <meta property="article:author" content="Chen Yanzhi">
 <meta name="twitter:card" content="summary">
 
@@ -99,7 +99,7 @@
     root: '/',
     scheme: 'Gemini',
     version: '5.1.4',
-    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    sidebar: {"position":"left","display":"always","offset":12,"b2t":true,"scrollpercent":true,"onmobile":false},
     fancybox: true,
     tabs: true,
     motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
@@ -119,13 +119,13 @@
 
 
 
-  <link rel="canonical" href="https://chenyz2000.github.io/2020/07/12/hexo/"/>
+  <link rel="canonical" href="https://chenyz2000.github.io/Linux/ecs的ssh/"/>
 
 
 
 
 
-  <title>hexo | CYZ's Blog</title>
+  <title>ecs的ssh | CYZ's Blog</title>
   
 
 
@@ -262,7 +262,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://chenyz2000.github.io/2020/07/12/hexo/">
+    <link itemprop="mainEntityOfPage" href="https://chenyz2000.github.io/Linux/ecs%E7%9A%84ssh/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Chen Yanzhi">
@@ -279,7 +279,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">hexo</h1>
+          <h1 class="post-title" itemprop="name headline">ecs的ssh</h1>
         
 
         <div class="post-meta">
@@ -291,16 +291,50 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-07-12T21:11:11+08:00">
-                2020-07-12
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-07-13T09:54:42+08:00">
+                2020-07-13
               </time>
             
 
             
+              <span class="post-meta-divider">|</span>
+            
 
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Post modified&#58;</span>
+              
+              <time title="Post modified" itemprop="dateModified" datetime="2020-07-13T10:42:20+08:00">
+                2020-07-13
+              </time>
             
           </span>
 
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux/" itemprop="url" rel="index">
+                    <span itemprop="name">Linux</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -329,33 +363,21 @@
       
 
       
-        <h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>需要安装git和Nodejs</p>
-<p>Nodejs会自带安装npm，并默认将其加入环境变量</p>
-<p>使用命令<code>npm install -g hexo-cli</code>安装hexo，可以加<code>--prefix 路径</code>设置安装路径，否则是默认路径</p>
-<p>遇到warn警告可以不管</p>
-<p>之后把hexo.cmd所在的路径加入环境变量，应该是直接在安装路径中而不是在bin中</p>
-<h2 id="创建仓库"><a href="#创建仓库" class="headerlink" title="创建仓库"></a>创建仓库</h2><p>命令为<code>hexo init 本地博客目录</code></p>
-<p>进入本地博客目录，之后两行命令</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm install		#安装依赖文件</span><br><span class="line">hexo generate		#部署形成文件</span><br></pre></td></tr></table></figure>
+        <p><a href="https://support-it.huawei.com/docs/zh-cn/hcs-6.5.0/two-level-cloud-guide/mocrsecs_ug_000035.html" target="_blank" rel="noopener">https://support-it.huawei.com/docs/zh-cn/hcs-6.5.0/two-level-cloud-guide/mocrsecs_ug_000035.html</a></p>
+<p>使用密码方式登录Linux弹性云服务器（SSH方式）的功能默认是被禁用的，如果您需要开启此功能，可以在登录弹性云服务器后自行设置。</p>
+<p>开启SSH密码方式登录权限。</p>
+<a id="more"></a>
 
-
-
-<h2 id="运行hexo本地服务器"><a href="#运行hexo本地服务器" class="headerlink" title="运行hexo本地服务器"></a>运行hexo本地服务器</h2><p>命令为<code>hexo server</code></p>
-<p>之后可以在<code>localhost:4000</code>访问</p>
-<h2 id="新建md文件"><a href="#新建md文件" class="headerlink" title="新建md文件"></a>新建md文件</h2><p>在本地博客目录使用命令<code>hexo new “test”</code></p>
-<p>会在sources/_post/下生成test.md</p>
-<h2 id="托管到github"><a href="#托管到github" class="headerlink" title="托管到github"></a>托管到github</h2><p>修改仓库里的_config.yml</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">deploy:</span><br><span class="line">  type: git</span><br><span class="line">  repository: https:&#x2F;&#x2F;github.com&#x2F;chenyz2000&#x2F;chenyz2000.github.io</span><br><span class="line">  branch: master</span><br></pre></td></tr></table></figure>
-
-<p>安装部署工具<code>hexo-deployer-git --save</code></p>
-<p>之后==<strong>每次修改</strong>==，都需要在<strong>本地博客目录下</strong>使用如下命令重新提交</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hexo clean</span><br><span class="line">hexo generate   #简写 hexo g</span><br><span class="line">hexo deploy      #简写 hexo d</span><br></pre></td></tr></table></figure>
-
-<p>generate是生成静态文件，将md解析成html，生成的html存储在public下</p>
-<p>deploy是将文件部署到github上</p>
-<h2 id="设置主题"><a href="#设置主题" class="headerlink" title="设置主题"></a>设置主题</h2><p>将模板主题clone到themes文件夹里</p>
-<p><code>git clone 模板主题url 目标路径</code></p>
-<p>并且修改_config.yml的theme为主题名称</p>
+<p>执行以下命令，打开“sshd_config”文件。</p>
+<p>sudo vi /etc/ssh/sshd_config</p>
+<p>将文件中“PasswordAuthentication”的值修改为“yes”。</p>
+<p> 说明：</p>
+<p>对于使用SUSE和openSUSE两个系列操作系统的弹性云服务器，需确认“/etc/ssh/sshd_config”中的“PasswordAuthentication”、“ChallengeResponseAuthentication”和“UsePAM”值均为“yes”。</p>
+<p>执行以下命令，打开“cloud.cfg”文件。</p>
+<p>sudo vi /etc/cloud/cloud.cfg</p>
+<p>将文件中“ssh_pwauth”的值修改为“1”或“true”。</p>
+<p>执行以下命令，重新加载sshd服务。</p>
+<p>sudo service sshd reload</p>
 
       
     </div>
@@ -367,6 +389,24 @@
 
     
 
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>Post author:</strong>
+    Chen Yanzhi
+  </li>
+  <li class="post-copyright-link">
+    <strong>Post link:</strong>
+    <a href="https://chenyz2000.github.io/Linux/ecs%E7%9A%84ssh/" title="ecs的ssh">https://chenyz2000.github.io/Linux/ecs%E7%9A%84ssh/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>Copyright Notice: </strong>
+    All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> unless stating additionally.
+  </li>
+</ul>
+
+      </div>
     
 
     <footer class="post-footer">
@@ -380,8 +420,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2020/07/03/hello-world/" rel="next" title="Hello World">
-                <i class="fa fa-chevron-left"></i> Hello World
+              <a href="/JavaWeb/WebService/" rel="next" title="WebService">
+                <i class="fa fa-chevron-left"></i> WebService
               </a>
             
           </div>
@@ -389,6 +429,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/Linux/%E7%BD%91%E7%BB%9C%E9%85%8D%E7%BD%AE/" rel="prev" title="网络配置">
+                网络配置 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -440,17 +484,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            Table of Contents
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            Overview
-          </li>
-        </ul>
-      
 
-      <section class="site-overview-wrap sidebar-panel">
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -469,12 +504,21 @@
               
                 <a href="/archives/%7C%7C%20archive">
               
-                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-count">16</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
             
 
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">categories</span>
+                </a>
+              </div>
             
 
             
@@ -483,6 +527,22 @@
 
           
 
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/chenyz2000" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:chenyanzhi_2000@163.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
           
 
           
@@ -497,23 +557,14 @@
       </section>
 
       
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
 
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#安装"><span class="nav-number">1.</span> <span class="nav-text">安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#创建仓库"><span class="nav-number">2.</span> <span class="nav-text">创建仓库</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#运行hexo本地服务器"><span class="nav-number">3.</span> <span class="nav-text">运行hexo本地服务器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#新建md文件"><span class="nav-number">4.</span> <span class="nav-text">新建md文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#托管到github"><span class="nav-number">5.</span> <span class="nav-text">托管到github</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#设置主题"><span class="nav-number">6.</span> <span class="nav-text">设置主题</span></a></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
       
-
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
       
 
     </div>
@@ -561,11 +612,6 @@
       </div>
     </footer>
 
-    
-      <div class="back-to-top">
-        <i class="fa fa-arrow-up"></i>
-        
-      </div>
     
 
     
