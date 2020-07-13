@@ -79,12 +79,12 @@
 
 
 
-<meta name="description" content="编码方案 ASCII编码——0~127  扩展编码（加字节，ASCII的超集）  西欧语言：ISO 8859(1-15)——0~255  中文：  GB2312——0xA1A1~0xFEFE，双字节表示  GBK  GB18030 (GB2312+Big5⊆GBK⊆GB18030)    繁体中文：Big5  日文：Shift_JIS    Unicode编码  UTF-8:兼容ASCII，1-4">
+<meta name="description" content="编码方案 ASCII编码——0~127  扩展编码（加字节，ASCII的超集）  西欧语言：ISO 8859(1-15)——0~255  中文：  GB2312——0xA1A1~0xFEFE，双字节表示 GBK GB18030  (GB2312+Big5⊆GBK⊆GB18030)  繁体中文：Big5  日文：Shift_JIS    Unicode编码  UTF-8:兼容ASCII，1-4个字节">
 <meta property="og:type" content="article">
 <meta property="og:title" content="字符编码">
 <meta property="og:url" content="https://chenyz2000.github.io/%E5%AD%97%E7%AC%A6%E7%BC%96%E7%A0%81/index.html">
 <meta property="og:site_name" content="CYZ&#39;s Blog">
-<meta property="og:description" content="编码方案 ASCII编码——0~127  扩展编码（加字节，ASCII的超集）  西欧语言：ISO 8859(1-15)——0~255  中文：  GB2312——0xA1A1~0xFEFE，双字节表示  GBK  GB18030 (GB2312+Big5⊆GBK⊆GB18030)    繁体中文：Big5  日文：Shift_JIS    Unicode编码  UTF-8:兼容ASCII，1-4">
+<meta property="og:description" content="编码方案 ASCII编码——0~127  扩展编码（加字节，ASCII的超集）  西欧语言：ISO 8859(1-15)——0~255  中文：  GB2312——0xA1A1~0xFEFE，双字节表示 GBK GB18030  (GB2312+Big5⊆GBK⊆GB18030)  繁体中文：Big5  日文：Shift_JIS    Unicode编码  UTF-8:兼容ASCII，1-4个字节">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://chenyz2000.github.io/images/image-20200529163153372.png">
 <meta property="og:image" content="https://chenyz2000.github.io/images/image-20200529163251557.png">
@@ -344,49 +344,46 @@
       
 
       
-        <h2 id="编码方案"><a href="#编码方案" class="headerlink" title="编码方案"></a>编码方案</h2><ol>
+        <h2 id="编码方案"><a href="#编码方案" class="headerlink" title="编码方案"></a>编码方案</h2><ul>
 <li><p>ASCII编码——0~127</p>
 </li>
 <li><p>扩展编码（加字节，ASCII的超集）</p>
-<ol>
+<ul>
 <li><p>西欧语言：ISO 8859(1-15)——0~255</p>
 </li>
 <li><p>中文：</p>
-<ol>
-<li><p>GB2312——0xA1A1~0xFEFE，双字节表示</p>
-</li>
-<li><p>GBK</p>
-</li>
-<li><p>GB18030</p>
+<ul>
+<li>GB2312——0xA1A1~0xFEFE，双字节表示</li>
+<li>GBK</li>
+<li>GB18030</li>
+</ul>
 <p>(GB2312+Big5⊆GBK⊆GB18030)</p>
-</li>
-</ol>
 </li>
 <li><p>繁体中文：Big5</p>
 </li>
 <li><p>日文：Shift_JIS</p>
 </li>
-</ol>
+</ul>
 </li>
 <li><p>Unicode编码</p>
-<ol>
+<ul>
 <li>UTF-8:兼容ASCII，1-4个字节变长</li>
 <li>UTF-16:2或4个字节变长</li>
 <li>UTF-32:4个字节（32bits）定长</li>
-</ol>
+</ul>
 </li>
 <li><p>ANSI</p>
-<ol>
-<li>windows上非Unicode的默认编码，记事本默认是ANSI存储</li>
-<li>简体中文系统中代表GBK，繁体中文系统中代表Big5，日文系统中代表Shift_JIS</li>
-</ol>
+<p>windows上非Unicode的默认编码，记事本默认是ANSI存储</p>
+<p>简体中文系统中代表GBK，繁体中文系统中代表Big5，日文系统中代表Shift_JIS</p>
 </li>
-</ol>
-<hr>
-<p>Java源文件建议用UTF-8，文件操作建议UTF-8 </p>
+</ul>
+<a id="more"></a>
+
+
+
+<h2 id="编码使用"><a href="#编码使用" class="headerlink" title="编码使用"></a>编码使用</h2><p>Java源文件建议用UTF-8，文件操作建议UTF-8 </p>
 <p>Java程序内部使用UTF-16（不由程序员控制）</p>
-<hr>
-<h3 id="字符集被计算机使用"><a href="#字符集被计算机使用" class="headerlink" title="字符集被计算机使用"></a>字符集被计算机使用</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">graph LR</span><br><span class="line">A[确定包含哪些字符]--&gt;B[数学编号]</span><br><span class="line">B--&gt;C[映射为二进制,确定逻辑编号]</span><br><span class="line">C--&gt;|编码方案|D[确定物理存储编码]</span><br></pre></td></tr></table></figure>
+<h2 id="字符集在计算机中的使用"><a href="#字符集在计算机中的使用" class="headerlink" title="字符集在计算机中的使用"></a>字符集在计算机中的使用</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">graph LR</span><br><span class="line">A[确定包含哪些字符]--&gt;B[数学编号]</span><br><span class="line">B--&gt;C[映射为二进制,确定逻辑编号]</span><br><span class="line">C--&gt;|编码方案|D[确定物理存储编码]</span><br></pre></td></tr></table></figure>
 <p>字符集：字库表+编码字符集（这个编码和计算机无关）</p>
 <p>编码方案：（最简单的形式就是直接用字符集编码后的二进制值）</p>
 <p>例如：</p>
@@ -600,7 +597,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#编码方案"><span class="nav-number">1.</span> <span class="nav-text">编码方案</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#字符集被计算机使用"><span class="nav-number">1.1.</span> <span class="nav-text">字符集被计算机使用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#中文字符"><span class="nav-number">1.2.</span> <span class="nav-text">中文字符</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#编码方案"><span class="nav-number">1.</span> <span class="nav-text">编码方案</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#编码使用"><span class="nav-number">2.</span> <span class="nav-text">编码使用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#字符集在计算机中的使用"><span class="nav-number">3.</span> <span class="nav-text">字符集在计算机中的使用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#中文字符"><span class="nav-number">3.1.</span> <span class="nav-text">中文字符</span></a></li></ol></li></ol></div>
             
 
           </div>
