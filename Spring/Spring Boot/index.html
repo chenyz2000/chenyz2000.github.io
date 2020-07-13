@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="Spring Boot," />
 
 
 
@@ -86,9 +86,10 @@
 <meta property="og:site_name" content="CYZ&#39;s Blog">
 <meta property="og:description" content="Helloworld 创建maven项目 导入springboot相关依赖  1234567891011&lt;parent&gt;    &lt;groupId&gt;org.springframework.boot&lt;&#x2F;groupId&gt;    &lt;artifactId&gt;spring-boot-starter-parent&lt;&#x2F;artifactId&gt;    &lt;">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2020-07-13T01:54:43.158Z">
-<meta property="article:modified_time" content="2020-07-13T02:42:55.679Z">
+<meta property="article:published_time" content="2020-07-11T13:46:52.000Z">
+<meta property="article:modified_time" content="2020-07-12T09:43:18.000Z">
 <meta property="article:author" content="Chen Yanzhi">
+<meta property="article:tag" content="Spring Boot">
 <meta name="twitter:card" content="summary">
 
 
@@ -191,7 +192,7 @@
       
         
         <li class="menu-item menu-item-about">
-          <a href="/about/" rel="section">
+          <a href="/about" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
             
@@ -201,7 +202,7 @@
       
         
         <li class="menu-item menu-item-tags">
-          <a href="/tags/" rel="section">
+          <a href="/tags" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
             
@@ -211,7 +212,7 @@
       
         
         <li class="menu-item menu-item-categories">
-          <a href="/categories/" rel="section">
+          <a href="/categories" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
             
@@ -221,7 +222,7 @@
       
         
         <li class="menu-item menu-item-archives">
-          <a href="/archives/" rel="section">
+          <a href="/archives" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
@@ -291,8 +292,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-07-13T09:54:43+08:00">
-                2020-07-13
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-07-11T21:46:52+08:00">
+                2020-07-11
               </time>
             
 
@@ -307,8 +308,8 @@
               
                 <span class="post-meta-item-text">Post modified&#58;</span>
               
-              <time title="Post modified" itemprop="dateModified" datetime="2020-07-13T10:42:55+08:00">
-                2020-07-13
+              <time title="Post modified" itemprop="dateModified" datetime="2020-07-12T17:43:18+08:00">
+                2020-07-12
               </time>
             
           </span>
@@ -390,7 +391,7 @@
 <p>jar包中，BOOT-INF/classes是程序的字节码，BOOT-INF/lib是程序依赖的jar包（包括tomcat-embeded）</p>
 </li>
 </ol>
-<h6 id="直接创建spring项目"><a href="#直接创建spring项目" class="headerlink" title="直接创建spring项目"></a>直接创建spring项目</h6><p>idea会自动从maven仓库的springframework下载创建项目所需的文件</p>
+<h4 id="直接创建spring项目"><a href="#直接创建spring项目" class="headerlink" title="直接创建spring项目"></a>直接创建spring项目</h4><p>idea会自动从maven仓库的springframework下载创建项目所需的文件</p>
 <p>系统会将main/java/com.cyz/Main创建好，并写好主类</p>
 <h2 id="POM文件"><a href="#POM文件" class="headerlink" title="POM文件"></a>POM文件</h2><h4 id="父项目"><a href="#父项目" class="headerlink" title="父项目"></a>父项目</h4><p>Ctrl+点击<code>spring-boot-starter-parent</code>，看到其pom文件</p>
 <p>其也有父项目<code>spring-boot-dependencies</code></p>
@@ -427,8 +428,7 @@
 <figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">spring.datasource.url</span>=<span class="string">jdbc:mysql://127.0.0.1:3306/springboottest</span></span><br><span class="line"><span class="meta">spring.datasource.username</span>=<span class="string">root</span></span><br><span class="line"><span class="meta">spring.datasource.password</span>=<span class="string">1019</span></span><br><span class="line"><span class="meta">spring.datasource.driver-class-name</span>=<span class="string">com.mysql.jdbc.Driver</span></span><br></pre></td></tr></table></figure>
 
 <blockquote>
-<p>遇到问题</p>
-<ul>
+<h4 id="遇到问题"><a href="#遇到问题" class="headerlink" title="遇到问题"></a>遇到问题</h4><ul>
 <li>jdbcTemplate为null。将测试程序和main所在的包保持统一，并注意写完整测试程序的注解</li>
 <li>连接mysql出现caching_sha2_password错误。默认的mysql-connector-java版本是5.7左右，连接8.0版本的mysql加密方式会出错，在pom.xml中将mysql-connector-java改为8.0以后的版本即可</li>
 <li>连接mysql出现timezone错误。在jdbc的url后加上<code>?serverTimezone=UTC</code></li>
@@ -467,6 +467,12 @@
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/Spring-Boot/" rel="tag"># Spring Boot</a>
+          
+        </div>
+      
 
       
       
@@ -476,8 +482,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/Solution/Hexo/" rel="next" title="Hexo">
-                <i class="fa fa-chevron-left"></i> Hexo
+              <a href="/Front%20End/CSS/" rel="next" title="CSS">
+                <i class="fa fa-chevron-left"></i> CSS
               </a>
             
           </div>
@@ -486,8 +492,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/Spring/%E6%A1%86%E6%9E%B6%E7%AE%80%E4%BB%8B/" rel="prev" title="框架简介">
-                框架简介 <i class="fa fa-chevron-right"></i>
+              <a href="/Front%20End/JS/" rel="prev" title="JS">
+                JS <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -566,14 +572,13 @@
 
             
               <div class="site-state-item site-state-posts">
-              
-                <a href="/archives/%7C%7C%20archive">
-              
+                <a href="/archives">
                   <span class="site-state-item-count">16</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
             
+
 
             
               
@@ -586,6 +591,15 @@
               </div>
             
 
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">14</span>
+                  <span class="site-state-item-name">tags</span>
+                </a>
+              </div>
             
 
           </nav>
@@ -631,7 +645,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Helloworld"><span class="nav-number">1.</span> <span class="nav-text">Helloworld</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#直接创建spring项目"><span class="nav-number">1.0.0.0.1.</span> <span class="nav-text">直接创建spring项目</span></a></li></ol></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#POM文件"><span class="nav-number">2.</span> <span class="nav-text">POM文件</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#父项目"><span class="nav-number">2.0.1.</span> <span class="nav-text">父项目</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#导入的依赖"><span class="nav-number">2.0.2.</span> <span class="nav-text">导入的依赖</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#主程序类"><span class="nav-number">3.</span> <span class="nav-text">主程序类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#集成"><span class="nav-number">4.</span> <span class="nav-text">集成</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Mysql"><span class="nav-number">4.0.1.</span> <span class="nav-text">Mysql</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Helloworld"><span class="nav-number">1.</span> <span class="nav-text">Helloworld</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#直接创建spring项目"><span class="nav-number">1.0.1.</span> <span class="nav-text">直接创建spring项目</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#POM文件"><span class="nav-number">2.</span> <span class="nav-text">POM文件</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#父项目"><span class="nav-number">2.0.1.</span> <span class="nav-text">父项目</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#导入的依赖"><span class="nav-number">2.0.2.</span> <span class="nav-text">导入的依赖</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#主程序类"><span class="nav-number">3.</span> <span class="nav-text">主程序类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#集成"><span class="nav-number">4.</span> <span class="nav-text">集成</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Mysql"><span class="nav-number">4.0.1.</span> <span class="nav-text">Mysql</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#遇到问题"><span class="nav-number">4.0.2.</span> <span class="nav-text">遇到问题</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
