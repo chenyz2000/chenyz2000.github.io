@@ -192,22 +192,12 @@
         </li>
       
         
-        <li class="menu-item menu-item-about">
-          <a href="/about" rel="section">
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
-            About
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-tags">
-          <a href="/tags" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
-            
-            Tags
+            Archives
           </a>
         </li>
       
@@ -222,12 +212,22 @@
         </li>
       
         
-        <li class="menu-item menu-item-archives">
-          <a href="/archives" rel="section">
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
             
-            Archives
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            About
           </a>
         </li>
       
@@ -412,6 +412,7 @@
 <p>报错：YAML Syntax Error Bad indentation of a mapping entry。yml配置文件语法有缩进，注意是不是哪里缩进出错</p>
 <p>部署时，github部署失败，发送邮件<code>the page build failed for the master branch</code>，邮件中提到Jekyll。这个问题是github自己抽风，大概是页面上存在一些Jekyll不支持的字符，但是我搭建的博客不需要使用Jekyll，解决方法是，在提交github的仓库里，建立名为<code>.nojekyll</code>的空文件，之后重新部署。</p>
 <p>更改永久链接：修改站点配置的permalink，默认值是<code>:year/:month/:day/:title/</code>。</p>
+<p>categories、tags下的index.md中加内容没有效果，只有about中有效果</p>
 
       
     </div>
