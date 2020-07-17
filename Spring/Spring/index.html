@@ -79,15 +79,15 @@
 
 
 
-<meta name="description" content="IoC控制反转IoC提供对象，DI把对象注入其他对象 传统程序开发中，对象是由调用者new创建出来的；但Spring框架中，对象由IoC容器创建，再推送给调用者，整个流程完成反转 是在解耦合">
+<meta name="description" content="IoC控制反转IoC提供对象，DI把IoC中bean对象注入其他对象 传统程序开发中，对象是由调用者new创建出来的；但Spring框架中，对象由IoC容器创建，再推送给调用者，整个流程完成反转 是在解耦合">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Spring">
 <meta property="og:url" content="https://chenyz2000.github.io/Spring/Spring/index.html">
 <meta property="og:site_name" content="CYZ&#39;s Blog">
-<meta property="og:description" content="IoC控制反转IoC提供对象，DI把对象注入其他对象 传统程序开发中，对象是由调用者new创建出来的；但Spring框架中，对象由IoC容器创建，再推送给调用者，整个流程完成反转 是在解耦合">
+<meta property="og:description" content="IoC控制反转IoC提供对象，DI把IoC中bean对象注入其他对象 传统程序开发中，对象是由调用者new创建出来的；但Spring框架中，对象由IoC容器创建，再推送给调用者，整个流程完成反转 是在解耦合">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2020-07-16T13:26:00.000Z">
-<meta property="article:modified_time" content="2020-07-16T15:48:00.000Z">
+<meta property="article:modified_time" content="2020-07-17T14:16:00.000Z">
 <meta property="article:author" content="Chen Yanzhi">
 <meta property="article:tag" content="Spring">
 <meta name="twitter:card" content="summary">
@@ -308,8 +308,8 @@
               
                 <span class="post-meta-item-text">Post modified&#58;</span>
               
-              <time title="Post modified" itemprop="dateModified" datetime="2020-07-16T23:48:00+08:00">
-                2020-07-16
+              <time title="Post modified" itemprop="dateModified" datetime="2020-07-17T22:16:00+08:00">
+                2020-07-17
               </time>
             
           </span>
@@ -364,7 +364,7 @@
       
 
       
-        <h2 id="IoC控制反转"><a href="#IoC控制反转" class="headerlink" title="IoC控制反转"></a>IoC控制反转</h2><p>IoC提供对象，DI把对象注入其他对象</p>
+        <h2 id="IoC控制反转"><a href="#IoC控制反转" class="headerlink" title="IoC控制反转"></a>IoC控制反转</h2><p>IoC提供对象，DI把IoC中bean对象注入其他对象</p>
 <p>传统程序开发中，对象是由调用者new创建出来的；但Spring框架中，对象由IoC容器创建，再推送给调用者，整个流程完成反转</p>
 <p>是在解耦合</p>
 <a id="more"></a>
@@ -376,11 +376,11 @@
 <li><p>在配置文件中添加需要管理的对象</p>
 <p>创建Spring配置文件（放在resource包里，格式为xml，文件名随意），自动生成beans标签</p>
 <p>在其中加入</p>
-  <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"zhangsan"</span> <span class="attr">class</span>=<span class="string">"com.cyz.entity.Student"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"id"</span> <span class="attr">value</span>=<span class="string">"id123"</span>&gt;</span><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"name"</span> <span class="attr">value</span>=<span class="string">"张三"</span>&gt;</span><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"age"</span> <span class="attr">value</span>=<span class="string">"18"</span>&gt;</span><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br></pre></td></tr></table></figure>
+  <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"zhangsan"</span> <span class="attr">class</span>=<span class="string">"com.cyz.entity.Student"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"id"</span> <span class="attr">value</span>=<span class="string">"id123"</span>&gt;</span><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"name"</span> <span class="attr">value</span>=<span class="string">"张三"</span>&gt;</span><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"address"</span> <span class="attr">ref</span>=<span class="string">"kejilu"</span>&gt;</span><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"kejilu"</span> <span class="attr">class</span>=<span class="string">"com.cyz.emtity.Address"</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"id"</span> <span class="attr">value</span>=<span class="string">"add987"</span>&gt;</span><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"name"</span> <span class="attr">value</span>=<span class="string">"科技路"</span>&gt;</span><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
-<p>id用来标识bean，class写类名</p>
-<p>property的name是属性名，value是实例的属性值</p>
-<p>要保证属性可写</p>
+<p>id用来标识bean，class写模板类名</p>
+<p>property的name是属性名，value是实例的基本数据属性值，ref是对象属性</p>
+<p>要保证属性可写，保证类有无参构造函数（因为Spring底层通过反射机制调用它创建对象）</p>
 <blockquote>
 <h6 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h6><p>配置文件页面提醒Application context not configured for this file。实际是没有配置该文件到项目中，需要File-Project Structure-Module，在项目中点击+，添加xml文件  </p>
 </blockquote>
@@ -388,12 +388,22 @@
 <li><p>从IoC中获取对象</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ApplicationContext applicationContext = <span class="keyword">new</span> ClassPathXmlApplicationContext(<span class="string">"setting.xml"</span>);</span><br><span class="line">Student student = (Student)applicationContext.getBean(<span class="string">"zhangsan"</span>);</span><br></pre></td></tr></table></figure>
 
-
-
-
-
 </li>
 </ul>
+<h4 id="底层原理"><a href="#底层原理" class="headerlink" title="底层原理"></a>底层原理</h4><p>xml解析+反射</p>
+<ul>
+<li><p>读取配置文件，解析xml</p>
+</li>
+<li><p>通过反射机制实例化所有的bean</p>
+<p>ApplicationContext是接口，ClassPathXmlApplicationContext是实现类</p>
+<p>实现类中拥有根据xml的建立&lt;String, Object&gt;的Map对象</p>
+</li>
+</ul>
+<p>  若模拟自己实现，可以使用dom4j读取xml，获取到的id属性对应的值作为Map的键，class属性值的类通过反射机制创建的对象作为Map的值</p>
+  <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//className是从class属性获取的值</span></span><br><span class="line">Class clazz = Class.forName(className);		<span class="comment">//通过反射机制创建对象</span></span><br><span class="line">Constructor constructor = clazz.getConstructor();		<span class="comment">//获取无参构造函数</span></span><br><span class="line">Object object = constructor.newInstance();</span><br></pre></td></tr></table></figure>
+
+
+
 <h2 id="AOP面向切面编程"><a href="#AOP面向切面编程" class="headerlink" title="AOP面向切面编程"></a>AOP面向切面编程</h2>
       
     </div>
@@ -442,7 +452,7 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/Git%E4%B8%8EGitHub/" rel="next" title="Git与GitHub">
+              <a href="/nec/Git%E4%B8%8EGitHub/" rel="next" title="Git与GitHub">
                 <i class="fa fa-chevron-left"></i> Git与GitHub
               </a>
             
@@ -529,7 +539,7 @@
             
               <div class="site-state-item site-state-posts">
                 <a href="/archives">
-                  <span class="site-state-item-count">18</span>
+                  <span class="site-state-item-count">22</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -541,7 +551,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-count">6</span>
                   <span class="site-state-item-name">categories</span>
                 </a>
               </div>
@@ -552,7 +562,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">15</span>
+                  <span class="site-state-item-count">19</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>
@@ -601,7 +611,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#IoC控制反转"><span class="nav-number">1.</span> <span class="nav-text">IoC控制反转</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#代码使用IoC"><span class="nav-number">1.0.1.</span> <span class="nav-text">代码使用IoC</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#问题"><span class="nav-number">1.0.1.0.1.</span> <span class="nav-text">问题</span></a></li></ol></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#AOP面向切面编程"><span class="nav-number">2.</span> <span class="nav-text">AOP面向切面编程</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#IoC控制反转"><span class="nav-number">1.</span> <span class="nav-text">IoC控制反转</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#代码使用IoC"><span class="nav-number">1.0.1.</span> <span class="nav-text">代码使用IoC</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#问题"><span class="nav-number">1.0.1.0.1.</span> <span class="nav-text">问题</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#底层原理"><span class="nav-number">1.0.2.</span> <span class="nav-text">底层原理</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#AOP面向切面编程"><span class="nav-number">2.</span> <span class="nav-text">AOP面向切面编程</span></a></li></ol></div>
             
 
           </div>
