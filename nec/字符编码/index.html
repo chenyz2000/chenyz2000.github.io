@@ -406,7 +406,12 @@
 
 <h2 id="编码使用"><a href="#编码使用" class="headerlink" title="编码使用"></a>编码使用</h2><p>Java源文件建议用UTF-8，文件操作建议UTF-8 </p>
 <p>Java程序内部使用UTF-16（不由程序员控制）</p>
-<h2 id="字符集在计算机中的使用"><a href="#字符集在计算机中的使用" class="headerlink" title="字符集在计算机中的使用"></a>字符集在计算机中的使用</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">graph LR</span><br><span class="line">A[确定包含哪些字符]--&gt;B[数学编号]</span><br><span class="line">B--&gt;C[映射为二进制,确定逻辑编号]</span><br><span class="line">C--&gt;|编码方案|D[确定物理存储编码]</span><br></pre></td></tr></table></figure>
+<h2 id="字符集在计算机中的使用"><a href="#字符集在计算机中的使用" class="headerlink" title="字符集在计算机中的使用"></a>字符集在计算机中的使用</h2><ol>
+<li>确定包含哪些字符</li>
+<li>数学编号</li>
+<li>映射为二进制,确定逻辑编号</li>
+<li>通过编码方案，确定物理存储编码</li>
+</ol>
 <p>字符集：字库表+编码字符集（这个编码和计算机无关）</p>
 <p>编码方案：（最简单的形式就是直接用字符集编码后的二进制值）</p>
 <p>例如：</p>
@@ -554,7 +559,7 @@
             
               <div class="site-state-item site-state-posts">
                 <a href="/archives">
-                  <span class="site-state-item-count">24</span>
+                  <span class="site-state-item-count">27</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -577,7 +582,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">30</span>
+                  <span class="site-state-item-count">33</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>

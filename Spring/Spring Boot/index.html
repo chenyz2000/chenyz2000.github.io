@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Spring Boot,Mysql,JDBC," />
+  <meta name="keywords" content="Spring Boot,JDBC,Mysql," />
 
 
 
@@ -90,8 +90,8 @@
 <meta property="article:modified_time" content="2020-07-14T13:30:00.000Z">
 <meta property="article:author" content="Chen Yanzhi">
 <meta property="article:tag" content="Spring Boot">
-<meta property="article:tag" content="Mysql">
 <meta property="article:tag" content="JDBC">
+<meta property="article:tag" content="Mysql">
 <meta name="twitter:card" content="summary">
 
 
@@ -389,11 +389,14 @@
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">build</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">plugins</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">plugin</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-maven-plugin<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">plugin</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">plugins</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">build</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
 <p>之后用maven package打包，打完包后放在项目文件夹的target目录中</p>
-<p>==此处打包失败，尚未解决==</p>
-<p>可以直接用<code>java -jar</code>运行项目</p>
-<p>jar包中，BOOT-INF/classes是程序的字节码，BOOT-INF/lib是程序依赖的jar包（包括tomcat-embeded）</p>
 </li>
 </ol>
+<ul>
+<li><input disabled="" type="checkbox"> <p>此处打包失败，尚未解决</p>
+<p> 可以直接用<code>java -jar</code>运行项目</p>
+<p> jar包中，BOOT-INF/classes是程序的字节码，BOOT-INF/lib是程序依赖的jar包（包括tomcat-embeded）</p>
+</li>
+</ul>
 <h4 id="直接创建spring项目"><a href="#直接创建spring项目" class="headerlink" title="直接创建spring项目"></a>直接创建spring项目</h4><p>idea会自动从maven仓库的springframework下载创建项目所需的文件</p>
 <p>系统会将main/java/com.cyz/Main创建好，并写好主类</p>
 <h2 id="POM文件"><a href="#POM文件" class="headerlink" title="POM文件"></a>POM文件</h2><h4 id="父项目"><a href="#父项目" class="headerlink" title="父项目"></a>父项目</h4><p>Ctrl+点击<code>spring-boot-starter-parent</code>，看到其pom文件</p>
@@ -404,7 +407,7 @@
 <p>在dependencies中已规定的依赖已有默认版本，导入项目中时可以不写版本</p>
 <h4 id="导入的依赖"><a href="#导入的依赖" class="headerlink" title="导入的依赖"></a>导入的依赖</h4><p>spring-boot-starter-web</p>
 <p>其中Spring-boot-starter指Spring Boot场景启动器</p>
-<p>Spring Boot将所有的功能场景都抽取出来，做成一个个==Starters==（启动器），只要在项目里引入启动器，相关场景的所有依赖都会导入进来</p>
+<p>Spring Boot将所有的功能场景都抽取出来，做成一个个<strong>Starters</strong>（启动器），只要在项目里引入启动器，相关场景的所有依赖都会导入进来</p>
 <p>Starters包含多种，web是web模块正常运行所依赖的组件，此外还有amqp，data-redis等</p>
 <h2 id="主程序类"><a href="#主程序类" class="headerlink" title="主程序类"></a>主程序类</h2><p><strong>@SpringBootApplication</strong>注解表示SpringBoot的主配置类，SpringBoot应该运行这个类的main方法来启动SpringBoot应用。使用这个注解能实现自动扫描包和自动配置默认配置的功能。</p>
 <p>它其实是许多注解的组合注解</p>
@@ -481,9 +484,9 @@
           
             <a href="/tags/Spring-Boot/" rel="tag"># Spring Boot</a>
           
-            <a href="/tags/Mysql/" rel="tag"># Mysql</a>
-          
             <a href="/tags/JDBC/" rel="tag"># JDBC</a>
+          
+            <a href="/tags/Mysql/" rel="tag"># Mysql</a>
           
         </div>
       
@@ -587,7 +590,7 @@
             
               <div class="site-state-item site-state-posts">
                 <a href="/archives">
-                  <span class="site-state-item-count">24</span>
+                  <span class="site-state-item-count">27</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -610,7 +613,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">30</span>
+                  <span class="site-state-item-count">33</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>

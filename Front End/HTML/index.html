@@ -369,21 +369,21 @@
 <a id="more"></a>
 
 <h2 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h2><p>后缀名:.html或.htm，二者一样</p>
-<h4 id="种类"><a href="#种类" class="headerlink" title="种类"></a>种类</h4><ul>
-<li>有开始标签和结束标签：围堵标签  </li>
+<h4 id="标签种类"><a href="#标签种类" class="headerlink" title="标签种类"></a>标签种类</h4><ul>
+<li>围堵标签：包含开始标签和结束标签 </li>
 <li>自闭合标签</li>
 </ul>
-<p>属性：值        值应该用引号括起</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!Doctype <span class="meta-keyword">html</span>&gt;</span>		<span class="comment">&lt;!--告诉浏览器使用什么样的规范来解析html文档，不写可能每个浏览器默认规范不同--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span>		<span class="comment">&lt;!--根标签--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>/&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">title</span>&gt;</span></span><br><span class="line">            标题，head中用户唯一可见的内容</span><br><span class="line">        <span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">link</span>&gt;</span><span class="tag">&lt;/<span class="name">link</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">		用户能看到的内容</span><br><span class="line">    <span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h4 id="标签属性"><a href="#标签属性" class="headerlink" title="标签属性"></a>标签属性</h4><p>key:”value”</p>
+<h4 id="基本结构"><a href="#基本结构" class="headerlink" title="基本结构"></a>基本结构</h4><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!Doctype <span class="meta-keyword">html</span>&gt;</span>		<span class="comment">&lt;!--告诉浏览器使用什么样的规范来解析html文档，不写可能每个浏览器默认规范不同--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span>		<span class="comment">&lt;!--根标签--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>/&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">title</span>&gt;</span></span><br><span class="line">            标题，head中用户唯一可见的内容</span><br><span class="line">        <span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">link</span>&gt;</span><span class="tag">&lt;/<span class="name">link</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">		用户能看到的内容</span><br><span class="line">    <span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
-<h4 id="meta"><a href="#meta" class="headerlink" title="meta"></a>meta</h4><p>提供页面的元信息</p>
+<h6 id="meta"><a href="#meta" class="headerlink" title="meta"></a>meta</h6><p>提供页面的元信息</p>
 <ul>
 <li>页面编码<code>&lt;meta charset=&quot;UTF-8&quot;&gt;</code></li>
 <li>刷新和跳转<code>&lt;meta http-equiv=&quot;Refresh&quot; Content=&quot;5;Url=...&quot;&gt;</code>Content里的数字是刷新时间，如果Content里有Url，则刷新之后跳转到该网站</li>
 <li>关键字<code>&lt;meta name=&quot;...&quot; Content=&quot;...&quot;&gt;</code>用来给爬虫和搜索引擎使用</li>
 <li>IE的兼容<code>&lt;meta http-equiv=&quot;X-UA-Compatible&quot; Content&gt;=&quot;IE=edge&quot;</code></li>
 </ul>
-<h4 id="link"><a href="#link" class="headerlink" title="link"></a>link</h4><ul>
+<h6 id="link"><a href="#link" class="headerlink" title="link"></a>link</h6><ul>
 <li>引入css<code>&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;...&quot;&gt;</code></li>
 <li>使用icon作为标题的图片<code>&lt;link rel=&quot;shortcut icon&quot; href=&quot;...&quot;&gt;</code></li>
 </ul>
@@ -400,23 +400,21 @@
 </li>
 <li><p>锚：也可以是#id，跳转到当前页面对应id的标签处</p>
 <blockquote>
-<p>id值需要唯一</p>
+<p>html中id值唯一</p>
 </blockquote>
 </li>
 </ul>
-<p>有<code>target=&quot;_blank&quot;</code>的属性，意思是打开新的标签页，此属性也是a标签特有的</p>
+<p>a标签有特有属性target，<code>target=&quot;_blank&quot;</code>表示跳转时打开新的标签页</p>
 <h4 id="h标签"><a href="#h标签" class="headerlink" title="h标签"></a>h标签</h4><p>从h1到h6</p>
-<blockquote>
-<p>html的样式默认情况下如此，不过它们都可以被自定义</p>
-</blockquote>
-<h4 id="div和span"><a href="#div和span" class="headerlink" title="div和span"></a>div和span</h4><p>本身没有效果，但是可以修改其中内容的样式</p>
-<h4 id="input"><a href="#input" class="headerlink" title="input"></a>input</h4><p>单行文本框<code>&lt;input type=&quot;text&quot; /&gt;</code></p>
-<p>密文<code>&lt;input type=&quot;password&quot; /&gt;</code></p>
-<p>多行文本框<code>&lt;textarea&gt;&lt;/textarea&gt;</code></p>
-<p>单选圆钮<code>&lt;input type=&quot;radio&quot; /&gt;</code>，想要多个互斥可以在每个标签里加<code>name=&quot;...&quot;</code>属性，且值相同</p>
-<p>复选框<code>&lt;input type=&quot;checkbox&quot; /&gt;</code></p>
+<p>html的样式默认情况下如此，不过它们都可以被css自定义</p>
+<h4 id="div和span"><a href="#div和span" class="headerlink" title="div和span"></a>div和span</h4><p>本身没有特殊效果，但是可以修改其中内容的样式</p>
+<h4 id="input"><a href="#input" class="headerlink" title="input"></a><u>input</u></h4><p>单行文本框<code>&lt;input type=&quot;text&quot;/&gt;</code></p>
+<p>密文<code>&lt;input type=&quot;password&quot;/&gt;</code></p>
+<p>多行文本框<code>&lt;textarea&gt;...&lt;/textarea&gt;</code></p>
+<p>单选圆钮<code>&lt;input type=&quot;radio&quot;/&gt;</code>，想要多个互斥可以在每个标签里加<code>name=&quot;...&quot;</code>属性且值相同</p>
+<p>复选框<code>&lt;input type=&quot;checkbox&quot;/&gt;</code>，可以通过cb.checked的true/false（是obj.property不是attribute）操作选中与不选</p>
 <p>选择文件<code>&lt;input type=&quot;file&quot; /&gt;</code></p>
-<p>按钮<code>&lt;input type=&quot;button&quot; value=&quot;&quot; /&gt;</code>空按钮，默认无功能</p>
+<p>按钮<code>&lt;input type=&quot;button&quot; value=&quot;&quot; /&gt;</code>，空按钮，默认无功能</p>
 <h4 id="select"><a href="#select" class="headerlink" title="select"></a>select</h4><p>选择下拉框</p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">select</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">oupgroup</span> <span class="attr">lable</span>=<span class="string">"..."</span>&gt;</span>		<span class="comment">&lt;!--分组--&gt;</span></span><br><span class="line">    	<span class="tag">&lt;<span class="name">option</span>&gt;</span>...<span class="tag">&lt;/<span class="name">option</span>&gt;</span>		<span class="comment">&lt;!--选择项--&gt;</span></span><br><span class="line">    	<span class="tag">&lt;<span class="name">option</span>&gt;</span>...<span class="tag">&lt;/<span class="name">option</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">oupgroup</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">oupgroup</span> <span class="attr">lable</span>=<span class="string">"..."</span>&gt;</span></span><br><span class="line">    	<span class="tag">&lt;<span class="name">option</span>&gt;</span>...<span class="tag">&lt;/<span class="name">option</span>&gt;</span></span><br><span class="line">    	<span class="tag">&lt;<span class="name">option</span>&gt;</span>...<span class="tag">&lt;/<span class="name">option</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">oupgroup</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
@@ -433,7 +431,7 @@
 </li>
 <li><p>表单中的互斥单选圆钮name属性相同，只要有其中之一勾选，提交的数据就为name:on；若想区分，则给每个圆钮加<code>value=&quot;...&quot;</code>的属性，提交的数据为name:value</p>
 </li>
-<li><p>进行==文件提交==，服务器获得的是name:文件名，而不是文件，需要在form中加入属性==<code>enctype=&quot;multipart/form-data&quot;</code>==才会分块上传</p>
+<li><p>进行<strong>文件提交</strong>，服务器获得的是name:文件名，而不是文件，需要在form中加入属性<strong><code>enctype=&quot;multipart/form-data&quot;</code></strong>才会分块上传</p>
 </li>
 <li><p>select中，name是select标签的属性，value是option标签的属性</p>
 </li>
@@ -591,7 +589,7 @@
             
               <div class="site-state-item site-state-posts">
                 <a href="/archives">
-                  <span class="site-state-item-count">24</span>
+                  <span class="site-state-item-count">27</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -614,7 +612,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">30</span>
+                  <span class="site-state-item-count">33</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>
@@ -663,7 +661,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#超文本标记语言"><span class="nav-number">1.</span> <span class="nav-text">超文本标记语言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#语法"><span class="nav-number">2.</span> <span class="nav-text">语法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#种类"><span class="nav-number">2.0.1.</span> <span class="nav-text">种类</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#meta"><span class="nav-number">2.0.2.</span> <span class="nav-text">meta</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#link"><span class="nav-number">2.0.3.</span> <span class="nav-text">link</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#body内标签"><span class="nav-number">3.</span> <span class="nav-text">body内标签</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#特殊字符"><span class="nav-number">3.0.1.</span> <span class="nav-text">特殊字符</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#分类"><span class="nav-number">3.0.2.</span> <span class="nav-text">分类</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#p和br标签"><span class="nav-number">3.0.3.</span> <span class="nav-text">p和br标签</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#a标签"><span class="nav-number">3.0.4.</span> <span class="nav-text">a标签</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#h标签"><span class="nav-number">3.0.5.</span> <span class="nav-text">h标签</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#div和span"><span class="nav-number">3.0.6.</span> <span class="nav-text">div和span</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#input"><span class="nav-number">3.0.7.</span> <span class="nav-text">input</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#select"><span class="nav-number">3.0.8.</span> <span class="nav-text">select</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#form中嵌套按钮"><span class="nav-number">3.0.9.</span> <span class="nav-text">form中嵌套按钮</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#标签向服务器发送数据"><span class="nav-number">3.0.10.</span> <span class="nav-text">标签向服务器发送数据</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#其他"><span class="nav-number">3.0.11.</span> <span class="nav-text">其他</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#image"><span class="nav-number">3.0.11.0.1.</span> <span class="nav-text">image</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#Lable"><span class="nav-number">3.0.11.0.2.</span> <span class="nav-text">Lable</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#ul，ol，dl"><span class="nav-number">3.0.11.0.3.</span> <span class="nav-text">ul，ol，dl</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#table"><span class="nav-number">3.0.11.0.4.</span> <span class="nav-text">table</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#fieldset"><span class="nav-number">3.0.11.0.5.</span> <span class="nav-text">fieldset</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#iframe"><span class="nav-number">3.0.11.0.6.</span> <span class="nav-text">iframe</span></a></li></ol></li></ol></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#超文本标记语言"><span class="nav-number">1.</span> <span class="nav-text">超文本标记语言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#语法"><span class="nav-number">2.</span> <span class="nav-text">语法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#标签种类"><span class="nav-number">2.0.1.</span> <span class="nav-text">标签种类</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#标签属性"><span class="nav-number">2.0.2.</span> <span class="nav-text">标签属性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#基本结构"><span class="nav-number">2.0.3.</span> <span class="nav-text">基本结构</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#meta"><span class="nav-number">2.0.3.0.1.</span> <span class="nav-text">meta</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#link"><span class="nav-number">2.0.3.0.2.</span> <span class="nav-text">link</span></a></li></ol></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#body内标签"><span class="nav-number">3.</span> <span class="nav-text">body内标签</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#特殊字符"><span class="nav-number">3.0.1.</span> <span class="nav-text">特殊字符</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#分类"><span class="nav-number">3.0.2.</span> <span class="nav-text">分类</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#p和br标签"><span class="nav-number">3.0.3.</span> <span class="nav-text">p和br标签</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#a标签"><span class="nav-number">3.0.4.</span> <span class="nav-text">a标签</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#h标签"><span class="nav-number">3.0.5.</span> <span class="nav-text">h标签</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#div和span"><span class="nav-number">3.0.6.</span> <span class="nav-text">div和span</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#input"><span class="nav-number">3.0.7.</span> <span class="nav-text">input</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#select"><span class="nav-number">3.0.8.</span> <span class="nav-text">select</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#form中嵌套按钮"><span class="nav-number">3.0.9.</span> <span class="nav-text">form中嵌套按钮</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#标签向服务器发送数据"><span class="nav-number">3.0.10.</span> <span class="nav-text">标签向服务器发送数据</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#其他"><span class="nav-number">3.0.11.</span> <span class="nav-text">其他</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#image"><span class="nav-number">3.0.11.0.1.</span> <span class="nav-text">image</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#Lable"><span class="nav-number">3.0.11.0.2.</span> <span class="nav-text">Lable</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#ul，ol，dl"><span class="nav-number">3.0.11.0.3.</span> <span class="nav-text">ul，ol，dl</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#table"><span class="nav-number">3.0.11.0.4.</span> <span class="nav-text">table</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#fieldset"><span class="nav-number">3.0.11.0.5.</span> <span class="nav-text">fieldset</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#iframe"><span class="nav-number">3.0.11.0.6.</span> <span class="nav-text">iframe</span></a></li></ol></li></ol></li></ol></li></ol></li></ol></div>
             
 
           </div>
