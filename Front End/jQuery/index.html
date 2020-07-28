@@ -40,7 +40,7 @@
 
   
   
-  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+  <link href="/Blog/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
 
 
 
@@ -48,21 +48,21 @@
 
 
 
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+<link href="/Blog/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
 
-<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
-
-
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+<link href="/Blog/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
 
 
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+  <link rel="apple-touch-icon" sizes="180x180" href="/Blog/images/apple-touch-icon-next.png?v=5.1.4">
 
 
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+  <link rel="icon" type="image/png" sizes="32x32" href="/Blog/images/favicon-32x32-next.png?v=5.1.4">
 
 
-  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+  <link rel="icon" type="image/png" sizes="16x16" href="/Blog/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/Blog/images/logo.svg?v=5.1.4" color="#222">
 
 
 
@@ -97,7 +97,7 @@
 <script type="text/javascript" id="hexo.configurations">
   var NexT = window.NexT || {};
   var CONFIG = {
-    root: '/',
+    root: '/Blog/',
     scheme: 'Gemini',
     version: '5.1.4',
     sidebar: {"position":"left","display":"always","offset":12,"b2t":true,"scrollpercent":true,"onmobile":false},
@@ -154,7 +154,7 @@
     
 
     <div class="custom-logo-site-title">
-      <a href="/"  class="brand" rel="start">
+      <a href="/Blog/"  class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
         <span class="site-title">CYZ's Blog</span>
         <span class="logo-line-after"><i></i></span>
@@ -182,7 +182,7 @@
       
         
         <li class="menu-item menu-item-home">
-          <a href="/" rel="section">
+          <a href="/Blog/" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
@@ -192,7 +192,7 @@
       
         
         <li class="menu-item menu-item-archives">
-          <a href="/archives" rel="section">
+          <a href="/Blog/archives" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
@@ -202,7 +202,7 @@
       
         
         <li class="menu-item menu-item-categories">
-          <a href="/categories" rel="section">
+          <a href="/Blog/categories" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
             
@@ -212,7 +212,7 @@
       
         
         <li class="menu-item menu-item-tags">
-          <a href="/tags" rel="section">
+          <a href="/Blog/tags" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
             
@@ -222,7 +222,7 @@
       
         
         <li class="menu-item menu-item-about">
-          <a href="/about" rel="section">
+          <a href="/Blog/about" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
             
@@ -263,12 +263,12 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://chenyz2000.github.io/Front%20End/jQuery/">
+    <link itemprop="mainEntityOfPage" href="https://chenyz2000.github.io/Blog/Front%20End/jQuery/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Chen Yanzhi">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="image" content="/Blog/images/avatar.jpg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -327,7 +327,7 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Front-End/" itemprop="url" rel="index">
+                  <a href="/Blog/categories/Front-End/" itemprop="url" rel="index">
                     <span itemprop="name">Front End</span>
                   </a>
                 </span>
@@ -414,7 +414,6 @@
 <h2 id="操作"><a href="#操作" class="headerlink" title="操作"></a>操作</h2><p>jQuery对选择到的所有标签可以统一进行处理，不需要像在Dom中循环</p>
 <p>根据参数不同，各个函数可以获得或设置属性的值</p>
 <p>一般有两种，无参获取有参设置，或一个key参数获取两个key-value参数设置</p>
-<p>若操作为自定函数，$(“…”).each(function(){})，函数可用实参i表示索引，函数体中可用$(this)表示当前对象</p>
 <h4 id="HTML-文本"><a href="#HTML-文本" class="headerlink" title="HTML/文本"></a>HTML/文本</h4><ul>
 <li>获取或设置对象内容：html()，text()</li>
 <li>删除：remove()同时删除绑定的事件，detach()不影响绑定的事件</li>
@@ -444,15 +443,18 @@
 </li>
 <li><p>尺寸：</p>
 <ul>
-<li><p>height()，width()，包括边框</p>
+<li>height()，width()，包括边框</li>
+</ul>
 </li>
 <li><p>innerHeight()，innerWidth()，不包括边框</p>
-</li>
-<li><p>outerHeight()，outerWidth()，默认包括边框，参数为false则不包括</p>
-</li>
+<ul>
+<li>outerHeight()，outerWidth()，默认包括边框，参数为false则不包括</li>
 </ul>
 </li>
 </ul>
+<h4 id="each"><a href="#each" class="headerlink" title="each"></a>each</h4><p>若操作为自定函数，$(“…”).each(function(){})，函数可用实参i表示索引，函数体中可用$(this)表示当前对象</p>
+<p>若在函数体内写return，只会return循环的当前次，后面的循环还继续，函数体中的return相当于each循环中的continue</p>
+<p>若在函数体内写return false，则该次循环之后的循环都会被终止，相当于each循环中的break</p>
 <h2 id="事件"><a href="#事件" class="headerlink" title="事件"></a>事件</h2><p>建议使用jQuery对象绑定事件，而不是在Dom对象属性中写onclick=””</p>
 <p>格式：$(“…”).click(function(){})，等价于$(“…”).bind(“click”,function(){})</p>
 <p>在函数体中可以使用$(this)指代当前jQuery对象</p>
@@ -461,6 +463,9 @@
 <p>这个功能适用于为html添加样式、绑定事件等，要注意onclick等DOM事件的函数不能写在它内部，不然作用域不同会找不到函数。</p>
 <p>它的内部绑定的事件只会在文档加载完毕后就加载完毕，不会在之后的html修改后还能绑定，若想要延迟这个加载，可以利用<strong>委托</strong>进行<strong>延迟加载</strong>，当使用时才会进行绑定而不是一开始绑定，$(“”).delegate(“选择器”, “click”, function(){})</p>
 <h4 id="事件链"><a href="#事件链" class="headerlink" title="事件链"></a>事件链</h4><p>jQuery只要在函数体中加return false，则可以阻止后面的事件执行</p>
+<h2 id="扩展方法"><a href="#扩展方法" class="headerlink" title="扩展方法"></a>扩展方法</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//扩展jQuery方法</span></span><br><span class="line">$.extend(&#123;</span><br><span class="line">    Func1:<span class="function"><span class="keyword">function</span>(<span class="params">arg</span>)</span>&#123;</span><br><span class="line">        ...</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br><span class="line">$.Func1();</span><br><span class="line"></span><br><span class="line"><span class="comment">//扩展选择器对象方法</span></span><br><span class="line">$.fn.extend(&#123;</span><br><span class="line">    Func2:<span class="function"><span class="keyword">function</span>(<span class="params">arg</span>)</span>&#123;</span><br><span class="line">        ...</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br><span class="line">$.(<span class="string">"selector"</span>).Func2();</span><br></pre></td></tr></table></figure>
+
+<p>为了方法不冲突，很多包都用(function(jq){})($);自执行函数将方法包裹起来，并传入jQuery作为参数</p>
 <hr>
 <h4 id="表单信息的验证"><a href="#表单信息的验证" class="headerlink" title="表单信息的验证"></a>表单信息的验证</h4><p>减少与服务器端的交互，但是服务器端也需要验证</p>
 <h2 id="Ajax"><a href="#Ajax" class="headerlink" title="Ajax"></a>Ajax</h2><p>异步的JS和XML</p>
@@ -503,7 +508,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/jQuery/" rel="tag"># jQuery</a>
+            <a href="/Blog/tags/jQuery/" rel="tag"># jQuery</a>
           
         </div>
       
@@ -516,7 +521,7 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/Front%20End/DOM/" rel="next" title="DOM">
+              <a href="/Blog/Front%20End/DOM/" rel="next" title="DOM">
                 <i class="fa fa-chevron-left"></i> DOM
               </a>
             
@@ -526,7 +531,7 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/Front%20End/Vue/" rel="prev" title="Vue">
+              <a href="/Blog/Front%20End/Vue/" rel="prev" title="Vue">
                 Vue <i class="fa fa-chevron-right"></i>
               </a>
             
@@ -595,7 +600,7 @@
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
               <img class="site-author-image" itemprop="image"
-                src="/images/avatar.jpg"
+                src="/Blog/images/avatar.jpg"
                 alt="Chen Yanzhi" />
             
               <p class="site-author-name" itemprop="name">Chen Yanzhi</p>
@@ -606,7 +611,7 @@
 
             
               <div class="site-state-item site-state-posts">
-                <a href="/archives">
+                <a href="/Blog/archives">
                   <span class="site-state-item-count">27</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
@@ -618,7 +623,7 @@
               
               
               <div class="site-state-item site-state-categories">
-                <a href="/categories/index.html">
+                <a href="/Blog/categories/index.html">
                   <span class="site-state-item-count">6</span>
                   <span class="site-state-item-name">categories</span>
                 </a>
@@ -629,7 +634,7 @@
               
               
               <div class="site-state-item site-state-tags">
-                <a href="/tags/index.html">
+                <a href="/Blog/tags/index.html">
                   <span class="site-state-item-count">33</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
@@ -679,7 +684,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#jQuery"><span class="nav-number">1.</span> <span class="nav-text">jQuery</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#选择"><span class="nav-number">2.</span> <span class="nav-text">选择</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#选择器"><span class="nav-number">2.0.1.</span> <span class="nav-text">选择器</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#选择器内筛选"><span class="nav-number">2.0.1.0.1.</span> <span class="nav-text">选择器内筛选</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#筛选器"><span class="nav-number">2.0.2.</span> <span class="nav-text">筛选器</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#操作"><span class="nav-number">3.</span> <span class="nav-text">操作</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#HTML-文本"><span class="nav-number">3.0.1.</span> <span class="nav-text">HTML&#x2F;文本</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Attribute属性"><span class="nav-number">3.0.2.</span> <span class="nav-text">Attribute属性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#CSS样式"><span class="nav-number">3.0.3.</span> <span class="nav-text">CSS样式</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#事件"><span class="nav-number">4.</span> <span class="nav-text">事件</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#文档加载完毕，自动执行"><span class="nav-number">4.0.1.</span> <span class="nav-text">文档加载完毕，自动执行</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#事件链"><span class="nav-number">4.0.2.</span> <span class="nav-text">事件链</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#表单信息的验证"><span class="nav-number">4.0.3.</span> <span class="nav-text">表单信息的验证</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Ajax"><span class="nav-number">5.</span> <span class="nav-text">Ajax</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#jQuery"><span class="nav-number">1.</span> <span class="nav-text">jQuery</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#选择"><span class="nav-number">2.</span> <span class="nav-text">选择</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#选择器"><span class="nav-number">2.0.1.</span> <span class="nav-text">选择器</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#选择器内筛选"><span class="nav-number">2.0.1.0.1.</span> <span class="nav-text">选择器内筛选</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#筛选器"><span class="nav-number">2.0.2.</span> <span class="nav-text">筛选器</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#操作"><span class="nav-number">3.</span> <span class="nav-text">操作</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#HTML-文本"><span class="nav-number">3.0.1.</span> <span class="nav-text">HTML&#x2F;文本</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Attribute属性"><span class="nav-number">3.0.2.</span> <span class="nav-text">Attribute属性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#CSS样式"><span class="nav-number">3.0.3.</span> <span class="nav-text">CSS样式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#each"><span class="nav-number">3.0.4.</span> <span class="nav-text">each</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#事件"><span class="nav-number">4.</span> <span class="nav-text">事件</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#文档加载完毕，自动执行"><span class="nav-number">4.0.1.</span> <span class="nav-text">文档加载完毕，自动执行</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#事件链"><span class="nav-number">4.0.2.</span> <span class="nav-text">事件链</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#扩展方法"><span class="nav-number">5.</span> <span class="nav-text">扩展方法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#表单信息的验证"><span class="nav-number">5.0.1.</span> <span class="nav-text">表单信息的验证</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Ajax"><span class="nav-number">6.</span> <span class="nav-text">Ajax</span></a></li></ol></div>
             
 
           </div>
@@ -778,64 +783,64 @@
 
   
   
-    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+    <script type="text/javascript" src="/Blog/lib/jquery/index.js?v=2.1.3"></script>
   
 
   
   
-    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+    <script type="text/javascript" src="/Blog/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
   
 
   
   
-    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+    <script type="text/javascript" src="/Blog/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
   
 
   
   
-    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+    <script type="text/javascript" src="/Blog/lib/velocity/velocity.min.js?v=1.2.1"></script>
   
 
   
   
-    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+    <script type="text/javascript" src="/Blog/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
   
 
   
   
-    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+    <script type="text/javascript" src="/Blog/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
   
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
-
-  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
-
-
-
-  
-  
-
-
-  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
-
-  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
-
-
-
-  
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
-
 
 
   
 
 
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+  <script type="text/javascript" src="/Blog/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/Blog/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/Blog/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/Blog/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/Blog/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/Blog/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/Blog/js/src/bootstrap.js?v=5.1.4"></script>
 
 
 
