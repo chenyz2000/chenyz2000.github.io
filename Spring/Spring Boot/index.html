@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Mysql,Spring Boot,JDBC," />
+  <meta name="keywords" content="Spring Boot,JDBC,Mysql," />
 
 
 
@@ -87,11 +87,11 @@
 <meta property="og:description" content="Helloworld 创建maven项目  导入springboot相关依赖">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2020-07-11T13:46:52.000Z">
-<meta property="article:modified_time" content="2020-07-14T13:30:00.000Z">
+<meta property="article:modified_time" content="2020-07-31T09:30:00.000Z">
 <meta property="article:author" content="Chen Yanzhi">
-<meta property="article:tag" content="Mysql">
 <meta property="article:tag" content="Spring Boot">
 <meta property="article:tag" content="JDBC">
+<meta property="article:tag" content="Mysql">
 <meta name="twitter:card" content="summary">
 
 
@@ -310,8 +310,8 @@
               
                 <span class="post-meta-item-text">Post modified&#58;</span>
               
-              <time title="Post modified" itemprop="dateModified" datetime="2020-07-14T21:30:00+08:00">
-                2020-07-14
+              <time title="Post modified" itemprop="dateModified" datetime="2020-07-31T17:30:00+08:00">
+                2020-07-31
               </time>
             
           </span>
@@ -373,6 +373,7 @@
  <a id="more"></a>
 
  <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">parent</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-parent<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.5.9.RELEASE<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">parent</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependencies</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-web<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependencies</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p> parent标签中的版本就是Spring Boot的版本</p>
 </li>
 <li><p>写一个主程序，启动springboot</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.cyz;</span><br><span class="line"></span><br><span class="line"><span class="comment">//标注主程序类，说明是一个SpringBoot应用</span></span><br><span class="line"><span class="meta">@SpringBootApplication</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Main</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="comment">//启动Springboot应用</span></span><br><span class="line">        SpringApplication.run(Main<span class="class">.<span class="keyword">class</span>,<span class="title">args</span>)</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -399,38 +400,58 @@
 </ul>
 <h4 id="直接创建spring项目"><a href="#直接创建spring项目" class="headerlink" title="直接创建spring项目"></a>直接创建spring项目</h4><p>idea会自动从maven仓库的springframework下载创建项目所需的文件</p>
 <p>系统会将main/java/com.cyz/Main创建好，并写好主类</p>
+<h4 id="使用Spring-initializr"><a href="#使用Spring-initializr" class="headerlink" title="使用Spring initializr"></a>使用Spring initializr</h4><p>选择jdk、maven等，之后选择模块，idea就会联网创建Spring Boot项目，其中pom和主程序都给创建好了</p>
 <h2 id="POM文件"><a href="#POM文件" class="headerlink" title="POM文件"></a>POM文件</h2><h4 id="父项目"><a href="#父项目" class="headerlink" title="父项目"></a>父项目</h4><p>Ctrl+点击<code>spring-boot-starter-parent</code>，看到其pom文件</p>
 <p>其也有父项目<code>spring-boot-dependencies</code></p>
 <p>点击dependencies后，看到其pom文件</p>
 <p>其中<code>&lt;properties&gt;</code>定义了SpringBoot的各个依赖</p>
 <p><code>spring-boot-dependencies</code>为Spring Boot的版本仲裁中心</p>
 <p>在dependencies中已规定的依赖已有默认版本，导入项目中时可以不写版本</p>
-<h4 id="导入的依赖"><a href="#导入的依赖" class="headerlink" title="导入的依赖"></a>导入的依赖</h4><p>spring-boot-starter-web</p>
-<p>其中Spring-boot-starter指Spring Boot场景启动器</p>
+<h2 id="Spring-Boot-Starter自动配置依赖模块"><a href="#Spring-Boot-Starter自动配置依赖模块" class="headerlink" title="Spring-Boot-Starter自动配置依赖模块"></a>Spring-Boot-Starter自动配置依赖模块</h2><p><a href="http://c.biancheng.net/view/4638.html" target="_blank" rel="noopener">参考</a></p>
+<p>Spring-boot-starter指Spring Boot场景启动器</p>
 <p>Spring Boot将所有的功能场景都抽取出来，做成一个个<strong>Starters</strong>（启动器），只要在项目里引入启动器，相关场景的所有依赖都会导入进来</p>
-<p>Starters包含多种，web是web模块正常运行所依赖的组件，此外还有amqp，data-redis等</p>
+<p>开箱即用，将模块作为依赖加入到当前应用的classpath</p>
+<h4 id="应用日志——logging"><a href="#应用日志——logging" class="headerlink" title="应用日志——logging"></a>应用日志——logging</h4><p>使用logback作为应用日志框架</p>
+<p>可以使用自己的logback.xml配置文件，只要在application.properties进行logging.config的配置</p>
+<h4 id="Web应用——web"><a href="#Web应用——web" class="headerlink" title="Web应用——web"></a>Web应用——web</h4><p>使用了嵌入式tomcat服务请求</p>
+<p>自动配置一些SpringMVC组件：必要的 ViewResolver，比如ContentNegotiatingViewResolver 和 Bean-NameViewResolver；将必要的 Converter、GenericConverter 和 Formatter 等 bean 注册到 IoC 容器。</p>
+<ul>
+<li>添加一系列的 HttpMessageConverter 以便支持对 Web 请求和相应的类型转换。</li>
+<li>自动配置和注册 MessageCodesResolver。</li>
+</ul>
+<p>需要提供web请求的Controller</p>
+<p>项目结构与传统打包成war包的JavaWeb应用不同，原来放在 src/main/webapp 目录下的一系列资源，现在都统一放在 src/main/resources 相应子目录下</p>
+<h4 id="访问数据库——jdbc"><a href="#访问数据库——jdbc" class="headerlink" title="访问数据库——jdbc"></a>访问数据库——jdbc</h4><p>通过DataSource自动配置模块配置DataSource实例</p>
+<p>默认自动配置DataSource遇到要配置多个DataSource实例指向多个数据库时，需要进行特殊处理</p>
+<h4 id="AOP——aop"><a href="#AOP——aop" class="headerlink" title="AOP——aop"></a>AOP——aop</h4><p>Java平台上的 AOP 方案基本上已经以 SpringAOP 结合 AspectJ 的方式稳固下来</p>
+<p>其自动配置行为由两部分内容组成：位于 spring-boot-autoconfigure的AopAutoConfiguration 提供 @Configuration 配置类和相应的配置项；spring-boot-starter-aop 模块自身提供了针对 spring-aop、aspectjrt 和 aspectjweaver 的依赖。</p>
 <h2 id="主程序类"><a href="#主程序类" class="headerlink" title="主程序类"></a>主程序类</h2><p><strong>@SpringBootApplication</strong>注解表示SpringBoot的主配置类，SpringBoot应该运行这个类的main方法来启动SpringBoot应用。使用这个注解能实现自动扫描包和自动配置默认配置的功能。</p>
-<p>它其实是许多注解的组合注解</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Target</span>(&#123;ElementType.TYPE&#125;)</span><br><span class="line"><span class="meta">@Retention</span>(RetentionPolicy.RUNTIME)</span><br><span class="line"><span class="meta">@Documented</span></span><br><span class="line"><span class="meta">@Inherited</span></span><br><span class="line"><span class="meta">@SpringBootConfiguration</span></span><br><span class="line"><span class="meta">@EnableAutoConfiguration</span></span><br><span class="line"><span class="meta">@ComponentScan</span>(excludeFilters =  <span class="meta">@Filter</span>(type = FilterType.CUSTOM, classes = &#123;TypeExcludeFilter<span class="class">.<span class="keyword">class</span>&#125;), @<span class="title">Filter</span>(<span class="title">type</span> </span>= FilterType.CUSTOM, classes = &#123;AutoConfigurationExcludeFilter<span class="class">.<span class="keyword">class</span>&#125;)&#125;)</span></span><br></pre></td></tr></table></figure>
-
+<p>@SpringBootApplication 是一个“三体”结构</p>
+<p>而“三体”结构实际上指的就是这三个：</p>
+<ul>
+<li>@SpringBootConfiguration</li>
+<li>@EnableAutoConfiguration</li>
+<li>@ComponentScan</li>
+</ul>
+<p>其中</p>
 <ul>
 <li><p><strong>@SpringBootConfiguration</strong>表示SpringBoot的配置类</p>
-<p>其基于Spring的配置类<code>@SpringBootConfiguration</code></p>
+<p>其基于的@Configuration是Spring的IoC容器配置类</p>
 </li>
 <li><p><strong>@EnableAutoConfiguration</strong>开启自动配置</p>
-<p>其包括<code>@AutoConfigurationPackage</code>和<code>@Import({EnableAutoConfigurationImportSelector.class})</code></p>
+<p>其包括<code>@AutoConfigurationPackage</code>和<code>@Import({EnableAutoConfigurationImportSelector.class})</code>，重要的是@Import()</p>
 <ul>
-<li><p><strong>@AutoConfigurationPackage</strong>，自动配置包</p>
-<ul>
-<li><p>包括<strong>@Import({Registrar.class})</strong>，Import是Spring的底层注解，给容器中导入一个组件。Registrar类的代码为</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">Registrar</span> <span class="keyword">implements</span> <span class="title">ImportBeanDefinitionRegistrar</span>, <span class="title">DeterminableImports</span> </span>&#123;</span><br><span class="line">    Registrar() &#123;&#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">registerBeanDefinitions</span><span class="params">(AnnotationMetadata metadata, BeanDefinitionRegistry registry)</span> </span>&#123;		<span class="comment">//注册Bean定义信息</span></span><br><span class="line">        AutoConfigurationPackages.register(registry, (<span class="keyword">new</span> AutoConfigurationPackages.PackageImport(metadata)).getPackageName());</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//metadata源信息，getPackageName()拿到包名</span></span><br><span class="line">    <span class="comment">//将主配置类所在包下所有的组件扫描到Spring容器中</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Set&lt;Object&gt; <span class="title">determineImports</span><span class="params">(AnnotationMetadata metadata)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> Collections.singleton(<span class="keyword">new</span> AutoConfigurationPackages.PackageImport(metadata));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<li><p><strong>@AutoConfigurationPackage</strong>，自动配置包，将主配置类所在包下所有的组件扫描到Spring容器中</p>
+</li>
+<li><p><strong>@Import({EnableAutoConfigurationImportSelector.class})</strong><br>借助 @Import 的帮助，将所有符合自动配置条件的Configuration配置加载到 IoC 容器，选择和加载配置，与@EnableScheduling、@EnableCaching、@EnableMBeanExport 等类似</p>
+<p>给容器中导入组件，组件为导入组件的选择器</p>
+<p>EnableAutoConfigurationImportSelector的父类AutoConfigurationImportSelector的方法selectImports()中借助了Spring框架原有的一个工具类SpringFactoriesLoader，得以完成此自动配置</p>
+<p>SpringFactoriesLoader主要功能就是从classpath中搜寻所有<strong>META-INF/spring.factories</strong> 配置文件，将扫描到的内容包装成<strong>properties对象</strong>，格式为Key=value。之后根据EnableAutoConfiguration作为 Key，获取对应的一组<strong>自动配置类</strong>(xxxAutoConfiguration)，汇总导入到IoC容器并配置好。有了自动配置类，免去了手动编写配置、注入功能组件等工作。</p>
 </li>
 </ul>
 </li>
-<li><p><strong>@Import({EnableAutoConfigurationImportSelector.class})</strong>，给容器中导入组件，组件为导入组件的选择器</p>
-<p>EnableAutoConfigurationImportSelector的父类AutoConfigurationImportSelector有方法public String[] selectImports(AnnotationMetadata annotationMetadata)，将所有需要导入的组件以全类名的方式返回，这些组件就会被添加到容器中，会给容器中导入非常多的自动配置类(xxxAutoConfiguration)，就是给容器中导入这个场景所需要的所有组件，并配置好这些组件，有了自动配置类，免去了手动编写配置、注入功能组件等工作</p>
-</li>
-</ul>
+<li><p>@ComponentScan，可有可无</p>
+<p>  @ComponentScan 的功能其实就是标注需要自动扫描并加载符合条件的组件或 bean 定义，最终将这些 bean 定义加载到容器中。加载 bean 定义到 Spring 的 IoC 容器，我们可以手工单个注册，不一定非要通过批量的自动扫描完成，所以说 @ComponentScan 是可有可无的。</p>
 </li>
 </ul>
 <h2 id="集成"><a href="#集成" class="headerlink" title="集成"></a>集成</h2><h4 id="Mysql"><a href="#Mysql" class="headerlink" title="Mysql"></a>Mysql</h4><p>添加依赖</p>
@@ -438,7 +459,7 @@
 
 <p>在main/resources下添加application.properties，为Spring Boot的配置文件</p>
 <p>在配置文件中添加配置</p>
-<figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">spring.datasource.url</span>=<span class="string">jdbc:mysql://127.0.0.1:3306/springboottest</span></span><br><span class="line"><span class="meta">spring.datasource.username</span>=<span class="string">root</span></span><br><span class="line"><span class="meta">spring.datasource.password</span>=<span class="string">1019</span></span><br><span class="line"><span class="meta">spring.datasource.driver-class-name</span>=<span class="string">com.mysql.jdbc.Driver</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">spring.datasource.url</span>=<span class="string">jdbc:mysql://121.36.63.84:3306/数据库名</span></span><br><span class="line"><span class="meta">spring.datasource.username</span>=<span class="string">test</span></span><br><span class="line"><span class="meta">spring.datasource.password</span>=<span class="string">12345678</span></span><br><span class="line"><span class="meta">spring.datasource.driver-class-name</span>=<span class="string">com.mysql.jdbc.Driver</span></span><br></pre></td></tr></table></figure>
 
 <blockquote>
 <h4 id="遇到问题"><a href="#遇到问题" class="headerlink" title="遇到问题"></a>遇到问题</h4><ul>
@@ -482,11 +503,11 @@
       
         <div class="post-tags">
           
-            <a href="/Blog/tags/Mysql/" rel="tag"># Mysql</a>
-          
             <a href="/Blog/tags/Spring-Boot/" rel="tag"># Spring Boot</a>
           
             <a href="/Blog/tags/JDBC/" rel="tag"># JDBC</a>
+          
+            <a href="/Blog/tags/Mysql/" rel="tag"># Mysql</a>
           
         </div>
       
@@ -590,7 +611,7 @@
             
               <div class="site-state-item site-state-posts">
                 <a href="/Blog/archives">
-                  <span class="site-state-item-count">27</span>
+                  <span class="site-state-item-count">28</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -613,7 +634,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/Blog/tags/index.html">
-                  <span class="site-state-item-count">33</span>
+                  <span class="site-state-item-count">35</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>
@@ -662,7 +683,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Helloworld"><span class="nav-number">1.</span> <span class="nav-text">Helloworld</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#直接创建spring项目"><span class="nav-number">1.0.1.</span> <span class="nav-text">直接创建spring项目</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#POM文件"><span class="nav-number">2.</span> <span class="nav-text">POM文件</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#父项目"><span class="nav-number">2.0.1.</span> <span class="nav-text">父项目</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#导入的依赖"><span class="nav-number">2.0.2.</span> <span class="nav-text">导入的依赖</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#主程序类"><span class="nav-number">3.</span> <span class="nav-text">主程序类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#集成"><span class="nav-number">4.</span> <span class="nav-text">集成</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Mysql"><span class="nav-number">4.0.1.</span> <span class="nav-text">Mysql</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#遇到问题"><span class="nav-number">4.0.2.</span> <span class="nav-text">遇到问题</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Helloworld"><span class="nav-number">1.</span> <span class="nav-text">Helloworld</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#直接创建spring项目"><span class="nav-number">1.0.1.</span> <span class="nav-text">直接创建spring项目</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#使用Spring-initializr"><span class="nav-number">1.0.2.</span> <span class="nav-text">使用Spring initializr</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#POM文件"><span class="nav-number">2.</span> <span class="nav-text">POM文件</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#父项目"><span class="nav-number">2.0.1.</span> <span class="nav-text">父项目</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Spring-Boot-Starter自动配置依赖模块"><span class="nav-number">3.</span> <span class="nav-text">Spring-Boot-Starter自动配置依赖模块</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#应用日志——logging"><span class="nav-number">3.0.1.</span> <span class="nav-text">应用日志——logging</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Web应用——web"><span class="nav-number">3.0.2.</span> <span class="nav-text">Web应用——web</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#访问数据库——jdbc"><span class="nav-number">3.0.3.</span> <span class="nav-text">访问数据库——jdbc</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#AOP——aop"><span class="nav-number">3.0.4.</span> <span class="nav-text">AOP——aop</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#主程序类"><span class="nav-number">4.</span> <span class="nav-text">主程序类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#集成"><span class="nav-number">5.</span> <span class="nav-text">集成</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Mysql"><span class="nav-number">5.0.1.</span> <span class="nav-text">Mysql</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#遇到问题"><span class="nav-number">5.0.2.</span> <span class="nav-text">遇到问题</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
