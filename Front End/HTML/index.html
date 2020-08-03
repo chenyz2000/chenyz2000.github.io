@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="HTML," />
+  <meta name="keywords" content="HTML,Spring Boot,request," />
 
 
 
@@ -90,6 +90,8 @@
 <meta property="article:modified_time" content="2020-07-08T16:00:00.000Z">
 <meta property="article:author" content="Chen Yanzhi">
 <meta property="article:tag" content="HTML">
+<meta property="article:tag" content="Spring Boot">
+<meta property="article:tag" content="request">
 <meta name="twitter:card" content="summary">
 
 
@@ -422,20 +424,6 @@
 <h4 id="form中嵌套按钮"><a href="#form中嵌套按钮" class="headerlink" title="form中嵌套按钮"></a>form中嵌套按钮</h4><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">form</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!--之前已经有一些需要填写的部件--&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"submit"</span> <span class="attr">value</span>=<span class="string">"按钮上显示的字"</span>&gt;</span>	<span class="comment">&lt;!--提交并清空--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"reset"</span> <span class="attr">value</span>=<span class="string">"按钮上显示的字"</span>&gt;</span>	<span class="comment">&lt;!--清空--&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
 <p>submit和reset可以对当前form表单里填写的内容进行控制，对input、select、textarea都有效</p>
-<h4 id="标签向服务器发送数据"><a href="#标签向服务器发送数据" class="headerlink" title="标签向服务器发送数据"></a>标签向服务器发送数据</h4><ul>
-<li><p><code>&lt;form action=&quot;url&quot; method=&quot;get&quot;&gt;</code></p>
-<p>action中填写提交到的url，默认为当前页面</p>
-<p>method是提交方式，默认为get，还有post方式</p>
-</li>
-<li><p>想要服务器获取数据，需要加name属性，文本框提交的数据格式是name:text的字典</p>
-</li>
-<li><p>表单中的互斥单选圆钮name属性相同，只要有其中之一勾选，提交的数据就为name:on；若想区分，则给每个圆钮加<code>value=&quot;...&quot;</code>的属性，提交的数据为name:value</p>
-</li>
-<li><p>进行<strong>文件提交</strong>，服务器获得的是name:文件名，而不是文件，需要在form中加入属性<strong><code>enctype=&quot;multipart/form-data&quot;</code></strong>才会分块上传</p>
-</li>
-<li><p>select中，name是select标签的属性，value是option标签的属性</p>
-</li>
-</ul>
 <h4 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h4><h6 id="image"><a href="#image" class="headerlink" title="image"></a>image</h6><p><code>&lt;img src=&quot;...&quot;&gt;</code>插入图片</p>
 <h6 id="Lable"><a href="#Lable" class="headerlink" title="Lable"></a>Lable</h6><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">lable</span> <span class="attr">for</span>=<span class="string">"id"</span>&gt;</span>...<span class="tag">&lt;/<span class="name">lable</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">id</span>=<span class="string">"..."</span> <span class="attr">type</span>=<span class="string">"..."</span> /&gt;</span></span><br></pre></td></tr></table></figure>
 
@@ -486,6 +474,10 @@
         <div class="post-tags">
           
             <a href="/Blog/tags/HTML/" rel="tag"># HTML</a>
+          
+            <a href="/Blog/tags/Spring-Boot/" rel="tag"># Spring Boot</a>
+          
+            <a href="/Blog/tags/request/" rel="tag"># request</a>
           
         </div>
       
@@ -589,7 +581,7 @@
             
               <div class="site-state-item site-state-posts">
                 <a href="/Blog/archives">
-                  <span class="site-state-item-count">28</span>
+                  <span class="site-state-item-count">29</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -612,7 +604,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/Blog/tags/index.html">
-                  <span class="site-state-item-count">35</span>
+                  <span class="site-state-item-count">37</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>
@@ -661,7 +653,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#超文本标记语言"><span class="nav-number">1.</span> <span class="nav-text">超文本标记语言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#语法"><span class="nav-number">2.</span> <span class="nav-text">语法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#标签种类"><span class="nav-number">2.0.1.</span> <span class="nav-text">标签种类</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#标签属性"><span class="nav-number">2.0.2.</span> <span class="nav-text">标签属性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#基本结构"><span class="nav-number">2.0.3.</span> <span class="nav-text">基本结构</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#meta"><span class="nav-number">2.0.3.0.1.</span> <span class="nav-text">meta</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#link"><span class="nav-number">2.0.3.0.2.</span> <span class="nav-text">link</span></a></li></ol></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#body内标签"><span class="nav-number">3.</span> <span class="nav-text">body内标签</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#特殊字符"><span class="nav-number">3.0.1.</span> <span class="nav-text">特殊字符</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#分类"><span class="nav-number">3.0.2.</span> <span class="nav-text">分类</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#p和br标签"><span class="nav-number">3.0.3.</span> <span class="nav-text">p和br标签</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#a标签"><span class="nav-number">3.0.4.</span> <span class="nav-text">a标签</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#h标签"><span class="nav-number">3.0.5.</span> <span class="nav-text">h标签</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#div和span"><span class="nav-number">3.0.6.</span> <span class="nav-text">div和span</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#input"><span class="nav-number">3.0.7.</span> <span class="nav-text">input</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#select"><span class="nav-number">3.0.8.</span> <span class="nav-text">select</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#form中嵌套按钮"><span class="nav-number">3.0.9.</span> <span class="nav-text">form中嵌套按钮</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#标签向服务器发送数据"><span class="nav-number">3.0.10.</span> <span class="nav-text">标签向服务器发送数据</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#其他"><span class="nav-number">3.0.11.</span> <span class="nav-text">其他</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#image"><span class="nav-number">3.0.11.0.1.</span> <span class="nav-text">image</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#Lable"><span class="nav-number">3.0.11.0.2.</span> <span class="nav-text">Lable</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#ul，ol，dl"><span class="nav-number">3.0.11.0.3.</span> <span class="nav-text">ul，ol，dl</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#table"><span class="nav-number">3.0.11.0.4.</span> <span class="nav-text">table</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#fieldset"><span class="nav-number">3.0.11.0.5.</span> <span class="nav-text">fieldset</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#iframe"><span class="nav-number">3.0.11.0.6.</span> <span class="nav-text">iframe</span></a></li></ol></li></ol></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#超文本标记语言"><span class="nav-number">1.</span> <span class="nav-text">超文本标记语言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#语法"><span class="nav-number">2.</span> <span class="nav-text">语法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#标签种类"><span class="nav-number">2.0.1.</span> <span class="nav-text">标签种类</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#标签属性"><span class="nav-number">2.0.2.</span> <span class="nav-text">标签属性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#基本结构"><span class="nav-number">2.0.3.</span> <span class="nav-text">基本结构</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#meta"><span class="nav-number">2.0.3.0.1.</span> <span class="nav-text">meta</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#link"><span class="nav-number">2.0.3.0.2.</span> <span class="nav-text">link</span></a></li></ol></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#body内标签"><span class="nav-number">3.</span> <span class="nav-text">body内标签</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#特殊字符"><span class="nav-number">3.0.1.</span> <span class="nav-text">特殊字符</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#分类"><span class="nav-number">3.0.2.</span> <span class="nav-text">分类</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#p和br标签"><span class="nav-number">3.0.3.</span> <span class="nav-text">p和br标签</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#a标签"><span class="nav-number">3.0.4.</span> <span class="nav-text">a标签</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#h标签"><span class="nav-number">3.0.5.</span> <span class="nav-text">h标签</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#div和span"><span class="nav-number">3.0.6.</span> <span class="nav-text">div和span</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#input"><span class="nav-number">3.0.7.</span> <span class="nav-text">input</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#select"><span class="nav-number">3.0.8.</span> <span class="nav-text">select</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#form中嵌套按钮"><span class="nav-number">3.0.9.</span> <span class="nav-text">form中嵌套按钮</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#其他"><span class="nav-number">3.0.10.</span> <span class="nav-text">其他</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#image"><span class="nav-number">3.0.10.0.1.</span> <span class="nav-text">image</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#Lable"><span class="nav-number">3.0.10.0.2.</span> <span class="nav-text">Lable</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#ul，ol，dl"><span class="nav-number">3.0.10.0.3.</span> <span class="nav-text">ul，ol，dl</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#table"><span class="nav-number">3.0.10.0.4.</span> <span class="nav-text">table</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#fieldset"><span class="nav-number">3.0.10.0.5.</span> <span class="nav-text">fieldset</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#iframe"><span class="nav-number">3.0.10.0.6.</span> <span class="nav-text">iframe</span></a></li></ol></li></ol></li></ol></li></ol></li></ol></div>
             
 
           </div>
