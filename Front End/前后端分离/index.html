@@ -1,0 +1,898 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="en">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/Blog/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/Blog/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/Blog/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/Blog/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/Blog/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/Blog/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/Blog/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Spring Boot,Vue,Http,Form表单," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="Spring Boot+Vue传统的Java开发中，前端使用JSP开发，JSP不是后端独立完成的 是由前端开发HTML，再由后端转成JSP 前后端开发的内容互相影响，互不理解 前后端耦合高，开发效率低">
+<meta property="og:type" content="article">
+<meta property="og:title" content="前后端分离">
+<meta property="og:url" content="https://chenyz2000.github.io/Blog/Front%20End/%E5%89%8D%E5%90%8E%E7%AB%AF%E5%88%86%E7%A6%BB/index.html">
+<meta property="og:site_name" content="CYZ&#39;s Blog">
+<meta property="og:description" content="Spring Boot+Vue传统的Java开发中，前端使用JSP开发，JSP不是后端独立完成的 是由前端开发HTML，再由后端转成JSP 前后端开发的内容互相影响，互不理解 前后端耦合高，开发效率低">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://chenyz2000.github.io/Blog/images/image-20200803160236920.png">
+<meta property="article:published_time" content="2020-07-29T16:00:00.000Z">
+<meta property="article:modified_time" content="2020-08-02T16:00:00.000Z">
+<meta property="article:author" content="Chen Yanzhi">
+<meta property="article:tag" content="Spring Boot">
+<meta property="article:tag" content="Vue">
+<meta property="article:tag" content="Http">
+<meta property="article:tag" content="Form表单">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://chenyz2000.github.io/Blog/images/image-20200803160236920.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/Blog/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"always","offset":12,"b2t":true,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://chenyz2000.github.io/Blog/Front End/前后端分离/"/>
+
+
+
+
+
+  <title>前后端分离 | CYZ's Blog</title>
+  
+
+
+
+
+
+
+
+
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/Blog/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">CYZ's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/Blog/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/Blog/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/Blog/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/Blog/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/Blog/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            About
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://chenyz2000.github.io/Blog/Blog/Front%20End/%E5%89%8D%E5%90%8E%E7%AB%AF%E5%88%86%E7%A6%BB/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Chen Yanzhi">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/Blog/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="CYZ's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">前后端分离</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-07-30T00:00:00+08:00">
+                2020-07-30
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Post modified&#58;</span>
+              
+              <time title="Post modified" itemprop="dateModified" datetime="2020-08-03T00:00:00+08:00">
+                2020-08-03
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/Blog/categories/Front-End/" itemprop="url" rel="index">
+                    <span itemprop="name">Front End</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="Spring-Boot-Vue"><a href="#Spring-Boot-Vue" class="headerlink" title="Spring Boot+Vue"></a>Spring Boot+Vue</h2><p>传统的Java开发中，前端使用JSP开发，JSP不是后端独立完成的</p>
+<p>是由前端开发HTML，再由后端转成JSP</p>
+<p>前后端开发的内容互相影响，互不理解</p>
+<p>前后端耦合高，开发效率低</p>
+<a id="more"></a>
+
+<p>所以采取前后端分离，只要后端提供数据接口即可</p>
+<p>前端通过Ajax请求访问后端的数据接口，将model展示到View中</p>
+<p>这要求前后端商量好接口文档（url、参数、数据类型），之后就可以独立开发</p>
+<p>前端使用假数据测试</p>
+<p>传统开发：单体式应用。客户端通过访问服务端应用，服务端中的JSP和Java Server（无论是Handler、sevlet也好，总之是Controller层）互调，JSP请求Controller里的数据，Controller将数据解析到JSP里，最后拼接起来之后返回给客户端</p>
+<p>前后端分离：单体应用分为前端和后端两个应用。客户端访问前端应用端口，前端应用访问后端应用端口，两者不同端口。前端应用里是html、css、js等代码，前端通过Ajax调用基于restful结构的后端数据接口，后端应用里是Java Server，Java Server响应前端给前端json数据，前端再把数据解析到页面中</p>
+<h4 id="Vue开发"><a href="#Vue开发" class="headerlink" title="Vue开发"></a>Vue开发</h4><p>vue开发，命令行创建vue项目，在idea中下载vue插件之后可以用idea打开，并编译项目，可以运行因为其中内嵌了一个服务器，运行命令npm run server</p>
+<p>vue应用只有一个主窗口，src/app.vue是主窗口，之后的操作都是在其中进行动态更新组件。<br>组件放在src/views/中（当然放在component也可以，只要之后能够成功引入），通过路由的映射将app.vue中的名称和资源关联，路由放在src/router/中，无论浏览器访问的是什么url，主窗口并不改变，改变的只是其中的组件</p>
+<p>使用vue，改了代码也不需要重新启动项目，可以动态更新页面</p>
+<p>注解@entity标注实体类，和数据库的表相绑定。其中的属性加上@Id表示主键。实体类的每个对象是表里的一个记录。</p>
+<h4 id="Vue与后端的交互"><a href="#Vue与后端的交互" class="headerlink" title="Vue与后端的交互"></a>Vue与后端的交互</h4><p>前端应用写好，后端应用写好，下一步是让前端应用通过Ajax访问后端端口<br>vue中是通过axios插件实现<br>vue中所有的js代码都要写到script的export default{}中</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">default</span>&#123;</span><br><span class="line">    name: <span class="string">"Book"</span>;</span><br><span class="line">    data()&#123;</span><br><span class="line">    <span class="keyword">return</span>&#123;</span><br><span class="line">    msg: <span class="string">""</span>,</span><br><span class="line">    books:[&#123;&#125;,&#123;&#125;]	<span class="comment">//在代码中用&#123;&#123;&#125;&#125;调用</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">created()&#123;	<span class="comment">//加载对象时调用</span></span><br><span class="line">    <span class="keyword">const</span> _this=<span class="keyword">this</span>;	<span class="comment">//vue对象</span></span><br><span class="line">    axios.get(<span class="string">"url"</span>).then(<span class="function"><span class="keyword">function</span>(<span class="params">resp</span>)</span>&#123;		<span class="comment">//形参resp承接从后端返回的结果</span></span><br><span class="line">        _this.books=resp.data;	<span class="comment">//只需要data信息	//这里的this不是vue对象，是回调</span></span><br><span class="line">        <span class="comment">//修改的是下划线处books的值</span></span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>会出现问题，跨服务了，需要解决，可在前端可在后端解决。如在Springboot中加一个配置类，实现WebMvcConfigurer接口，重写addCorsMappings方法</p>
+</blockquote>
+<h2 id="参数传递，向服务器发送数据"><a href="#参数传递，向服务器发送数据" class="headerlink" title="参数传递，向服务器发送数据"></a>参数传递，向服务器发送数据</h2><h4 id="四种参数传递的方式"><a href="#四种参数传递的方式" class="headerlink" title="四种参数传递的方式"></a>四种参数传递的方式</h4><ul>
+<li><p>在URL后面加参数</p>
+</li>
+<li><p>通过form表单传递，</p>
+</li>
+</ul>
+<ul>
+<li><p>用超链接的方法传递参数：当点击超链接的时候，首先会跳转到localhost:21811/Handler1.ashx页面，然后还会传递id 和name 两个参数过去<br><code>&lt;a href=&quot;localhost:21811/Handler1.ashx?id=1&amp;name=&#39;abc&#39;&quot;&gt;超链接传递参数&lt;/a&gt;</code></p>
+</li>
+<li><p>通过js方法传递:用户点击这个button按钮，触发onClick事件，执行Go()方法，跳转到localhost:21811/Handler1.ashx页面，同时传递了id，和name两个参数过去</p>
+<input type="button" onclick="Go()" value="通过js方法传递参数" /> 
+
+
+
+</li>
+</ul>
+<h2 id="表单"><a href="#表单" class="headerlink" title="表单"></a>表单</h2><h4 id="标签"><a href="#标签" class="headerlink" title="标签"></a>标签</h4><ul>
+<li><p><code>&lt;form action=&quot;url&quot; method=&quot;get&quot;&gt;</code></p>
+<p>action中填写提交到的url，不能带参数，默认为当前页面</p>
+<p>method是提交方式，默认为get，还有post方式</p>
+</li>
+<li><p>想要服务器获取数据，需要加name属性，文本框提交的数据格式是name:text的字典</p>
+</li>
+<li><p>表单中的互斥单选圆钮name属性相同，只要有其中之一勾选，提交的数据就为name:on；若想区分，则给每个圆钮加<code>value=&quot;...&quot;</code>的属性，提交的数据为name:value</p>
+</li>
+<li><p>进行<strong>文件提交</strong>，服务器获得的是name:文件名，而不是文件，需要在form中加入属性<strong><code>enctype=&quot;multipart/form-data&quot;</code></strong>才会分块上传</p>
+</li>
+<li><p>select中，name是select标签的属性，value是option标签的属性</p>
+</li>
+</ul>
+<h2 id="服务器接收数据"><a href="#服务器接收数据" class="headerlink" title="服务器接收数据"></a>服务器接收数据</h2><p>以Java、SpringBoot为例，方法都已通过RequestMapping等绑定url</p>
+<h4 id="方案一"><a href="#方案一" class="headerlink" title="方案一"></a>方案一</h4><p>在方法的参数里加入HttpServletRequest request，然后request.getParameter(“name”)就可以获得value</p>
+<h4 id="方案二"><a href="#方案二" class="headerlink" title="方案二"></a>方案二</h4><p>使用@RequestParam(“name”)注解方法的参数，程序会将对应name的value传给参数</p>
+<h4 id="方案三"><a href="#方案三" class="headerlink" title="方案三"></a>方案三</h4><p>也可以不使用注解，直接接收，此时要求方法的参数名称要跟form中name名称一致</p>
+<h2 id="HTTP"><a href="#HTTP" class="headerlink" title="HTTP"></a>HTTP</h2><p>HTTP，超文本传输协议，基于TCP/IP通信协议来传递数据，用于前端和后端的交互中</p>
+<blockquote>
+<p>浏览器的Ajax api，或者iOS/Android的http client，Java的commons-httpclient/okhttp或者是curl，postman之类的工具发出来的请求还能用在后端各个子服务的调用中（即当一种RPC协议使用）</p>
+</blockquote>
+<p>HTTP客户端（浏览器）通过URL向HTTP服务端（WEB服务器）发送<strong>请求</strong>，服务端根据接收到的请求向客户端发送<strong>响应</strong>信息</p>
+<p>HTTP使用统一资源标识符URI来传输数据和建立连接</p>
+<p>特点：</p>
+<ul>
+<li>每次连接只处理一个请求。服务器处理完客户的请求，并收到客户的应答后，即断开连接</li>
+<li>只要客户端和服务器知道如何处理的数据内容，可以发送任何类型的数据</li>
+<li>对于事务处理没有记忆能力，若后续处理需要先前的信息则必须重传</li>
+</ul>
+<h4 id="消息格式"><a href="#消息格式" class="headerlink" title="消息格式"></a>消息格式</h4><p>请求消息由请求行（request line）、请求头部（header）、空行和请求数据组成</p>
+<img src="..\..\images\image-20200803160236920.png">
+
+<p>响应消息由状态行、消息报头、空行和响应正文组成</p>
+<h4 id="请求方法"><a href="#请求方法" class="headerlink" title="请求方法"></a>请求方法</h4><p>有八九种请求方法，其中最常用的是GET和POST，多数网站只支持这两种</p>
+<p>在非Ajax中，get用来获取html、css、图片等资源，post用来提交一个form表单，并得到一个结果的网页</p>
+<p>区别</p>
+<ul>
+<li>GET后退按钮/刷新无害，POST数据会被重新提交（浏览器应该告知用户数据会被重新提交）。</li>
+<li>与 POST 相比，GET 的安全性较差，因为所发送的数据是 URL 的一部分。在发送密码或其他敏感信息时绝不要使用 GET ！POST 比 GET 更安全，因为参数不会被保存在浏览器历史或 web 服务器日志中。</li>
+<li>GET的参数在 URL 中对所有人都是可见的、会保留在历史中。POST的数据不会显示在 URL 中、不会保留在历史中。</li>
+<li>GET书签可收藏、能被缓存，POST为书签不可收藏、不能缓存。</li>
+<li>GET编码类型application/x-www-form-url，POST编码类型encodedapplication/x-www-form-urlencoded 或 multipart/form-data。为二进制数据使用多重编码。</li>
+<li>GET对数据长度有限制，当发送数据时，GET 方法向 URL 添加数据；URL 的长度是受限制的（URL 的最大长度是 2048 个字符）。POST无限制。</li>
+<li>GET只允许 ASCII 字符。POST没有限制。也允许二进制数据。</li>
+</ul>
+<p>查找时使用get，增添、修改（相当于删除再添加）时使用post，删除时有说用get的有说用post的</p>
+<p>与 POST 相比，GET 更简单也更快，并且在大部分情况下都能用。</p>
+<p>然而，在以下情况中，请使用 POST 请求：</p>
+<ul>
+<li>无法使用缓存文件（更新服务器上的文件或数据库）</li>
+<li>向服务器发送大量数据（POST 没有数据量限制）</li>
+<li>发送包含未知字符的用户输入时，POST 比 GET 更稳定也更可靠</li>
+</ul>
+<h4 id="编码类型"><a href="#编码类型" class="headerlink" title="编码类型"></a>编码类型</h4><p><a href="https://imququ.com/post/four-ways-to-post-data-in-http.html" target="_blank" rel="noopener">https://imququ.com/post/four-ways-to-post-data-in-http.html</a><br><a href="https://blog.csdn.net/bigtree_3721/article/details/82809459" target="_blank" rel="noopener">https://blog.csdn.net/bigtree_3721/article/details/82809459</a></p>
+<hr>
+<ul>
+<li><input disabled="" type="checkbox"> python里的request，axios里的请求</li>
+<li><input disabled="" type="checkbox"> 传递的是json还是什么格式</li>
+</ul>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>Post author:</strong>
+    Chen Yanzhi
+  </li>
+  <li class="post-copyright-link">
+    <strong>Post link:</strong>
+    <a href="https://chenyz2000.github.io/Blog/Front%20End/%E5%89%8D%E5%90%8E%E7%AB%AF%E5%88%86%E7%A6%BB/" title="前后端分离">https://chenyz2000.github.io/Blog/Front%20End/%E5%89%8D%E5%90%8E%E7%AB%AF%E5%88%86%E7%A6%BB/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>Copyright Notice: </strong>
+    All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> unless stating additionally.
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/Blog/tags/Spring-Boot/" rel="tag"># Spring Boot</a>
+          
+            <a href="/Blog/tags/Vue/" rel="tag"># Vue</a>
+          
+            <a href="/Blog/tags/Http/" rel="tag"># Http</a>
+          
+            <a href="/Blog/tags/Form%E8%A1%A8%E5%8D%95/" rel="tag"># Form表单</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/Blog/nec/Maven/" rel="next" title="Maven">
+                <i class="fa fa-chevron-left"></i> Maven
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/Blog/images/avatar.jpg"
+                alt="Chen Yanzhi" />
+            
+              <p class="site-author-name" itemprop="name">Chen Yanzhi</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+                <a href="/Blog/archives">
+                  <span class="site-state-item-count">29</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/Blog/categories/index.html">
+                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-name">categories</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/Blog/tags/index.html">
+                  <span class="site-state-item-count">37</span>
+                  <span class="site-state-item-name">tags</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/chenyz2000" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:chenyanzhi_2000@163.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Spring-Boot-Vue"><span class="nav-number">1.</span> <span class="nav-text">Spring Boot+Vue</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Vue开发"><span class="nav-number">1.0.1.</span> <span class="nav-text">Vue开发</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Vue与后端的交互"><span class="nav-number">1.0.2.</span> <span class="nav-text">Vue与后端的交互</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参数传递，向服务器发送数据"><span class="nav-number">2.</span> <span class="nav-text">参数传递，向服务器发送数据</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#四种参数传递的方式"><span class="nav-number">2.0.1.</span> <span class="nav-text">四种参数传递的方式</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#表单"><span class="nav-number">3.</span> <span class="nav-text">表单</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#标签"><span class="nav-number">3.0.1.</span> <span class="nav-text">标签</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#服务器接收数据"><span class="nav-number">4.</span> <span class="nav-text">服务器接收数据</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#方案一"><span class="nav-number">4.0.1.</span> <span class="nav-text">方案一</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#方案二"><span class="nav-number">4.0.2.</span> <span class="nav-text">方案二</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#方案三"><span class="nav-number">4.0.3.</span> <span class="nav-text">方案三</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HTTP"><span class="nav-number">5.</span> <span class="nav-text">HTTP</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#消息格式"><span class="nav-number">5.0.1.</span> <span class="nav-text">消息格式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#请求方法"><span class="nav-number">5.0.2.</span> <span class="nav-text">请求方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#编码类型"><span class="nav-number">5.0.3.</span> <span class="nav-text">编码类型</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Chen Yanzhi</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/Blog/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/Blog/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/Blog/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/Blog/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/Blog/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/Blog/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/Blog/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/Blog/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/Blog/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/Blog/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/Blog/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/Blog/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/Blog/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
