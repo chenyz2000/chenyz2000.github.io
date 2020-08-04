@@ -88,7 +88,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://chenyz2000.github.io/Blog/images/image-20200803160236920.png">
 <meta property="article:published_time" content="2020-07-29T16:00:00.000Z">
-<meta property="article:modified_time" content="2020-08-02T16:00:00.000Z">
+<meta property="article:modified_time" content="2020-08-04T09:30:00.000Z">
 <meta property="article:author" content="Chen Yanzhi">
 <meta property="article:tag" content="Spring Boot">
 <meta property="article:tag" content="Vue">
@@ -313,8 +313,8 @@
               
                 <span class="post-meta-item-text">Post modified&#58;</span>
               
-              <time title="Post modified" itemprop="dateModified" datetime="2020-08-03T00:00:00+08:00">
-                2020-08-03
+              <time title="Post modified" itemprop="dateModified" datetime="2020-08-04T17:30:00+08:00">
+                2020-08-04
               </time>
             
           </span>
@@ -391,47 +391,13 @@
 <blockquote>
 <p>会出现问题，跨服务了，需要解决，可在前端可在后端解决。如在Springboot中加一个配置类，实现WebMvcConfigurer接口，重写addCorsMappings方法</p>
 </blockquote>
-<h2 id="参数传递，向服务器发送数据"><a href="#参数传递，向服务器发送数据" class="headerlink" title="参数传递，向服务器发送数据"></a>参数传递，向服务器发送数据</h2><h4 id="四种参数传递的方式"><a href="#四种参数传递的方式" class="headerlink" title="四种参数传递的方式"></a>四种参数传递的方式</h4><ul>
-<li><p>在URL后面加参数</p>
-</li>
-<li><p>通过form表单传递，</p>
-</li>
-</ul>
-<ul>
-<li><p>用超链接的方法传递参数：当点击超链接的时候，首先会跳转到localhost:21811/Handler1.ashx页面，然后还会传递id 和name 两个参数过去<br><code>&lt;a href=&quot;localhost:21811/Handler1.ashx?id=1&amp;name=&#39;abc&#39;&quot;&gt;超链接传递参数&lt;/a&gt;</code></p>
-</li>
-<li><p>通过js方法传递:用户点击这个button按钮，触发onClick事件，执行Go()方法，跳转到localhost:21811/Handler1.ashx页面，同时传递了id，和name两个参数过去</p>
-<input type="button" onclick="Go()" value="通过js方法传递参数" /> 
-
-
-
-</li>
-</ul>
-<h2 id="表单"><a href="#表单" class="headerlink" title="表单"></a>表单</h2><h4 id="标签"><a href="#标签" class="headerlink" title="标签"></a>标签</h4><ul>
-<li><p><code>&lt;form action=&quot;url&quot; method=&quot;get&quot;&gt;</code></p>
-<p>action中填写提交到的url，不能带参数，默认为当前页面</p>
-<p>method是提交方式，默认为get，还有post方式</p>
-</li>
-<li><p>想要服务器获取数据，需要加name属性，文本框提交的数据格式是name:text的字典</p>
-</li>
-<li><p>表单中的互斥单选圆钮name属性相同，只要有其中之一勾选，提交的数据就为name:on；若想区分，则给每个圆钮加<code>value=&quot;...&quot;</code>的属性，提交的数据为name:value</p>
-</li>
-<li><p>进行<strong>文件提交</strong>，服务器获得的是name:文件名，而不是文件，需要在form中加入属性<strong><code>enctype=&quot;multipart/form-data&quot;</code></strong>才会分块上传</p>
-</li>
-<li><p>select中，name是select标签的属性，value是option标签的属性</p>
-</li>
-</ul>
-<h2 id="服务器接收数据"><a href="#服务器接收数据" class="headerlink" title="服务器接收数据"></a>服务器接收数据</h2><p>以Java、SpringBoot为例，方法都已通过RequestMapping等绑定url</p>
-<h4 id="方案一"><a href="#方案一" class="headerlink" title="方案一"></a>方案一</h4><p>在方法的参数里加入HttpServletRequest request，然后request.getParameter(“name”)就可以获得value</p>
-<h4 id="方案二"><a href="#方案二" class="headerlink" title="方案二"></a>方案二</h4><p>使用@RequestParam(“name”)注解方法的参数，程序会将对应name的value传给参数</p>
-<h4 id="方案三"><a href="#方案三" class="headerlink" title="方案三"></a>方案三</h4><p>也可以不使用注解，直接接收，此时要求方法的参数名称要跟form中name名称一致</p>
 <h2 id="HTTP"><a href="#HTTP" class="headerlink" title="HTTP"></a>HTTP</h2><p>HTTP，超文本传输协议，基于TCP/IP通信协议来传递数据，用于前端和后端的交互中</p>
 <blockquote>
 <p>浏览器的Ajax api，或者iOS/Android的http client，Java的commons-httpclient/okhttp或者是curl，postman之类的工具发出来的请求还能用在后端各个子服务的调用中（即当一种RPC协议使用）</p>
 </blockquote>
 <p>HTTP客户端（浏览器）通过URL向HTTP服务端（WEB服务器）发送<strong>请求</strong>，服务端根据接收到的请求向客户端发送<strong>响应</strong>信息</p>
 <p>HTTP使用统一资源标识符URI来传输数据和建立连接</p>
-<p>特点：</p>
+<p>HTTP特点：</p>
 <ul>
 <li>每次连接只处理一个请求。服务器处理完客户的请求，并收到客户的应答后，即断开连接</li>
 <li>只要客户端和服务器知道如何处理的数据内容，可以发送任何类型的数据</li>
@@ -442,30 +408,81 @@
 
 <p>响应消息由状态行、消息报头、空行和响应正文组成</p>
 <h4 id="请求方法"><a href="#请求方法" class="headerlink" title="请求方法"></a>请求方法</h4><p>有八九种请求方法，其中最常用的是GET和POST，多数网站只支持这两种</p>
-<p>在非Ajax中，get用来获取html、css、图片等资源，post用来提交一个form表单，并得到一个结果的网页</p>
-<p>区别</p>
-<ul>
+<h6 id="区别"><a href="#区别" class="headerlink" title="区别"></a>区别</h6><ul>
 <li>GET后退按钮/刷新无害，POST数据会被重新提交（浏览器应该告知用户数据会被重新提交）。</li>
-<li>与 POST 相比，GET 的安全性较差，因为所发送的数据是 URL 的一部分。在发送密码或其他敏感信息时绝不要使用 GET ！POST 比 GET 更安全，因为参数不会被保存在浏览器历史或 web 服务器日志中。</li>
+<li>与 POST 相比，GET 的安全性较差，因为所发送的数据是 URL 的一部分。在发送密码或其他敏感信息时绝不要使用 GET ，POST 比 GET 更安全，因为参数不会被保存在浏览器历史或 web 服务器日志中。</li>
 <li>GET的参数在 URL 中对所有人都是可见的、会保留在历史中。POST的数据不会显示在 URL 中、不会保留在历史中。</li>
 <li>GET书签可收藏、能被缓存，POST为书签不可收藏、不能缓存。</li>
-<li>GET编码类型application/x-www-form-url，POST编码类型encodedapplication/x-www-form-urlencoded 或 multipart/form-data。为二进制数据使用多重编码。</li>
 <li>GET对数据长度有限制，当发送数据时，GET 方法向 URL 添加数据；URL 的长度是受限制的（URL 的最大长度是 2048 个字符）。POST无限制。</li>
-<li>GET只允许 ASCII 字符。POST没有限制。也允许二进制数据。</li>
+<li>GET只允许 ASCII 字符。POST没有限制，也允许二进制数据。</li>
 </ul>
-<p>查找时使用get，增添、修改（相当于删除再添加）时使用post，删除时有说用get的有说用post的</p>
-<p>与 POST 相比，GET 更简单也更快，并且在大部分情况下都能用。</p>
-<p>然而，在以下情况中，请使用 POST 请求：</p>
-<ul>
-<li>无法使用缓存文件（更新服务器上的文件或数据库）</li>
-<li>向服务器发送大量数据（POST 没有数据量限制）</li>
-<li>发送包含未知字符的用户输入时，POST 比 GET 更稳定也更可靠</li>
+<h6 id="适用情景"><a href="#适用情景" class="headerlink" title="适用情景"></a>适用情景</h6><p>get用来获取html、css、图片等资源，post用来提交form表单，并得到一个结果的网页</p>
+<p>查找时使用get，增添、修改（相当于删除再添加）服务器的文件或数据时使用post，删除时有说用get的有说用post的</p>
+<p>向服务器发送大量数据时使用post</p>
+<p>get更简单也更快，并且在大部分情况下可以使用</p>
+<h4 id="编码类型"><a href="#编码类型" class="headerlink" title="编码类型"></a>编码类型</h4><ul>
+<li>text/xxx文本相关的格式，有html、plain、xml</li>
+<li>application/xxx媒体相关格式，有html+xml即XHTML格式、xml、atom+xml、json、pdf、msword即Word文档格式、octet-stream即二进制流数据（如常见的文件下载）、<strong>x-www-form-urlencoded</strong>即form表单默认编码</li>
+<li>key-value格式</li>
+<li>multipart/form-data即二进制流，文件上传</li>
+<li>image/xxx图片相关格式，有gif、jpeg、png</li>
 </ul>
-<h4 id="编码类型"><a href="#编码类型" class="headerlink" title="编码类型"></a>编码类型</h4><p><a href="https://imququ.com/post/four-ways-to-post-data-in-http.html" target="_blank" rel="noopener">https://imququ.com/post/four-ways-to-post-data-in-http.html</a><br><a href="https://blog.csdn.net/bigtree_3721/article/details/82809459" target="_blank" rel="noopener">https://blog.csdn.net/bigtree_3721/article/details/82809459</a></p>
-<hr>
+<h2 id="前后端数据交互"><a href="#前后端数据交互" class="headerlink" title="前后端数据交互"></a>前后端数据交互</h2><p>前后端数据交互：表单，Ajax</p>
+<h3 id="表单"><a href="#表单" class="headerlink" title="表单"></a>表单</h3><h4 id="提交数据"><a href="#提交数据" class="headerlink" title="提交数据"></a>提交数据</h4><p>表单用post/get方式提交</p>
+<p>get是将键值对<strong>拼接到url的后面</strong>，即请求数据直接放在url中，通过访问或跳转，向服务器发送url请求（地址栏、超链接访问都属于get提交方式  ）</p>
+<p>post是参数直接发送给后台，数据放在<strong>请求体body</strong>（或称HttpEntity，主体entity body）中，不是放在url中</p>
+<blockquote>
+<p>根据Http的请求方法对应的数据传输能力，把Http请求分为<a href="https://www.zhihu.com/question/64312188" target="_blank" rel="noopener"><strong>Url类请求和Body类请求</strong></a>，Url类请求包括但不限于GET、HEAD、OPTIONS、TRACE 等请求方法。Body类请求包括但不限于POST、PUSH、PATCH、DELETE 等请求方法。</p>
+<p>对于<strong>Url类请求</strong>，客户端是不能通过body写出数据的，服务端拿到的<strong>body是空的</strong>。</p>
+<p>对于<strong>Body类请求</strong>，客户端通过body写进数据，服务端通过body接收数据。根据不同的enctype，数据可由@RequestBody或@RequestParam接收，但@RequestParam也是通过body接收。</p>
+</blockquote>
+<h4 id="接收数据"><a href="#接收数据" class="headerlink" title="接收数据"></a><a href="https://blog.csdn.net/qfikh/article/details/88553603" target="_blank" rel="noopener">接收数据</a></h4><p>get方法接收数据：</p>
 <ul>
-<li><input disabled="" type="checkbox"> python里的request，axios里的请求</li>
-<li><input disabled="" type="checkbox"> 传递的是json还是什么格式</li>
+<li><p><strong>HttpServletRequest</strong></p>
+<p>在方法的参数里加入HttpServletRequest request，然后request.getParameter(“name”)就可以获得value</p>
+</li>
+<li><p><strong>直接接收</strong></p>
+<p>此时要求方法的参数名称要跟name名称一致</p>
+</li>
+<li><p><strong>@RequestParam(“name”)</strong></p>
+<p>注解方法的参数，将值传到对应name标注的参数</p>
+</li>
+</ul>
+<blockquote>
+<p>get方法编码类型为application/x-www-form-url</p>
+</blockquote>
+<p>post方法接收数据：</p>
+<ul>
+<li><p><strong>HttpServletRequest</strong></p>
+<p>同get方法</p>
+</li>
+<li><p><strong>@RequestBody</strong>无参，注解方法的参数</p>
+<p>编码类型为<strong>application/json或application/xml</strong>时，<br>必须使用<strong>@RequestBody</strong>处理。</p>
+<p>一次请求只能有一个Body，将body中的内容转为一个整体对象。请求体中的数据以json等格式传递（貌似没有简单的k-v格式），并要求接收数据的、被@RequestBody修饰的参数为String、Map、JSONObject或JavaBean数据类型。为Map时将内容绑定到单个K-V Map，内容拆分为其中的多个元素；为JavaBean时将内容绑定到单个对象中，需要保证内容的key和JavaBean的属性对应。</p>
+<p>由于get请求没有body所以只能用于post方式，所以@RequestBody不能用于get方式。</p>
+<p>注意，<strong>可以与url后面的参数一起用</strong>，即@RequestBody与@RequestParam同时使用，前者获取请求体的数据，后者获取url的数据</p>
+</li>
+<li><p><strong>@RequestParam(“name”)</strong>                        <em>@ModelAttribute也可以处理</em></p>
+<p>编码类型为<strong>application/x-www-form-urlencoded</strong>（form的默认类型）或<strong>multipart/form-data</strong>时，必须使用<strong>@RequestParam(“name”)</strong>处理，客户端将k-v对数据包装到body中。    </p>
+<blockquote>
+<p>这是比较统一保守的规则，某些地方可能会支持部分特殊特性</p>
+</blockquote>
+<p>原理是通过servlet实现，参数放置在request.paramter，解析成map。</p>
+</li>
+</ul>
+<blockquote>
+<p>@RequestParam(“name”)实质是将Request.getParameter() 中的K-V Map利用Spring的转化机制ConversionService配置，转化成参数接收对象或字段。get方式中query String的值，和post方式中body data的值都会被Servlet接受到并转化到Request.getParameter()参数集中，所以@RequestParam都可以获取的到。</p>
+</blockquote>
+<p>​        有一个有趣的现象，如果Content-Type=mutipart/form-data，Body中加入参数和URL后面拼接参数一起做Post请求，都可以被加载到Param中，如果是同名的，只取用form-data中的。<br>​        如果Content-Type=application/x-www-form-urlencoded和URL拼接的一起，如果是String类型，则两个值会被拼接，其他类型取的是URL拼接的参数。</p>
+<h2 id="Todo"><a href="#Todo" class="headerlink" title="Todo"></a>Todo</h2><ul>
+<li><input disabled="" type="checkbox"> form里的enctype，请求头的ContentType</li>
+</ul>
+<ul>
+<li><input disabled="" type="checkbox"> <p>@ModelAttribute</p>
+</li>
+<li><input disabled="" type="checkbox"> <p>python里的request，axios里的请求</p>
+<p><a href="https://www.cnblogs.com/youguanxinqing/p/9497000.html" target="_blank" rel="noopener">python爬虫</a></p>
+</li>
 </ul>
 
       
@@ -680,7 +697,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Spring-Boot-Vue"><span class="nav-number">1.</span> <span class="nav-text">Spring Boot+Vue</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Vue开发"><span class="nav-number">1.0.1.</span> <span class="nav-text">Vue开发</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Vue与后端的交互"><span class="nav-number">1.0.2.</span> <span class="nav-text">Vue与后端的交互</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参数传递，向服务器发送数据"><span class="nav-number">2.</span> <span class="nav-text">参数传递，向服务器发送数据</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#四种参数传递的方式"><span class="nav-number">2.0.1.</span> <span class="nav-text">四种参数传递的方式</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#表单"><span class="nav-number">3.</span> <span class="nav-text">表单</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#标签"><span class="nav-number">3.0.1.</span> <span class="nav-text">标签</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#服务器接收数据"><span class="nav-number">4.</span> <span class="nav-text">服务器接收数据</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#方案一"><span class="nav-number">4.0.1.</span> <span class="nav-text">方案一</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#方案二"><span class="nav-number">4.0.2.</span> <span class="nav-text">方案二</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#方案三"><span class="nav-number">4.0.3.</span> <span class="nav-text">方案三</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HTTP"><span class="nav-number">5.</span> <span class="nav-text">HTTP</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#消息格式"><span class="nav-number">5.0.1.</span> <span class="nav-text">消息格式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#请求方法"><span class="nav-number">5.0.2.</span> <span class="nav-text">请求方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#编码类型"><span class="nav-number">5.0.3.</span> <span class="nav-text">编码类型</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Spring-Boot-Vue"><span class="nav-number">1.</span> <span class="nav-text">Spring Boot+Vue</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Vue开发"><span class="nav-number">1.0.1.</span> <span class="nav-text">Vue开发</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Vue与后端的交互"><span class="nav-number">1.0.2.</span> <span class="nav-text">Vue与后端的交互</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HTTP"><span class="nav-number">2.</span> <span class="nav-text">HTTP</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#消息格式"><span class="nav-number">2.0.1.</span> <span class="nav-text">消息格式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#请求方法"><span class="nav-number">2.0.2.</span> <span class="nav-text">请求方法</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#区别"><span class="nav-number">2.0.2.0.1.</span> <span class="nav-text">区别</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#适用情景"><span class="nav-number">2.0.2.0.2.</span> <span class="nav-text">适用情景</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#编码类型"><span class="nav-number">2.0.3.</span> <span class="nav-text">编码类型</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#前后端数据交互"><span class="nav-number">3.</span> <span class="nav-text">前后端数据交互</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#表单"><span class="nav-number">3.1.</span> <span class="nav-text">表单</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#提交数据"><span class="nav-number">3.1.1.</span> <span class="nav-text">提交数据</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#接收数据"><span class="nav-number">3.1.2.</span> <span class="nav-text">接收数据</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Todo"><span class="nav-number">4.</span> <span class="nav-text">Todo</span></a></li></ol></div>
             
 
           </div>
