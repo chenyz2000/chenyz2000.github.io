@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Spring Boot,Spring,SSH,SSM," />
+  <meta name="keywords" content="Spring Boot,Annotation,Spring,Spring MVC," />
 
 
 
@@ -79,24 +79,21 @@
 
 
 
-<meta name="description" content="Java EE 框架SSH   Spring, Spring MVC, Spring Boot, Spring Cloud SSM">
+<meta name="description" content="参考 Spring注解import org.springframework.beans.factory.annotation.*; jar包位于仓库的org\springframework\spring-beans\5.x.x.RELEASE\spring-beans-5.1.5.RELEASE.jar @autowired和@Qualifier@Value@Required已废弃  import">
 <meta property="og:type" content="article">
-<meta property="og:title" content="框架简介">
-<meta property="og:url" content="https://chenyz2000.github.io/Blog/Spring/%E6%A1%86%E6%9E%B6%E7%AE%80%E4%BB%8B/index.html">
+<meta property="og:title" content="注解整理">
+<meta property="og:url" content="https://chenyz2000.github.io/Blog/Spring/%E6%B3%A8%E8%A7%A3%E6%95%B4%E7%90%86/index.html">
 <meta property="og:site_name" content="CYZ&#39;s Blog">
-<meta property="og:description" content="Java EE 框架SSH   Spring, Spring MVC, Spring Boot, Spring Cloud SSM">
+<meta property="og:description" content="参考 Spring注解import org.springframework.beans.factory.annotation.*; jar包位于仓库的org\springframework\spring-beans\5.x.x.RELEASE\spring-beans-5.1.5.RELEASE.jar @autowired和@Qualifier@Value@Required已废弃  import">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://chenyz2000.github.io/Blog/images/image-20200706152715560.png">
-<meta property="og:image" content="https://chenyz2000.github.io/Blog/images/image-20200706153109158.png">
-<meta property="article:published_time" content="2020-07-06T07:04:41.000Z">
-<meta property="article:modified_time" content="2020-07-11T13:49:49.000Z">
+<meta property="article:published_time" content="2020-08-06T02:39:00.000Z">
+<meta property="article:modified_time" content="2020-08-06T02:39:00.000Z">
 <meta property="article:author" content="Chen Yanzhi">
 <meta property="article:tag" content="Spring Boot">
+<meta property="article:tag" content="Annotation">
 <meta property="article:tag" content="Spring">
-<meta property="article:tag" content="SSH">
-<meta property="article:tag" content="SSM">
+<meta property="article:tag" content="Spring MVC">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://chenyz2000.github.io/Blog/images/image-20200706152715560.png">
 
 
 
@@ -126,13 +123,13 @@
 
 
 
-  <link rel="canonical" href="https://chenyz2000.github.io/Blog/Spring/框架简介/"/>
+  <link rel="canonical" href="https://chenyz2000.github.io/Blog/Spring/注解整理/"/>
 
 
 
 
 
-  <title>框架简介 | CYZ's Blog</title>
+  <title>注解整理 | CYZ's Blog</title>
   
 
 
@@ -269,7 +266,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://chenyz2000.github.io/Blog/Blog/Spring/%E6%A1%86%E6%9E%B6%E7%AE%80%E4%BB%8B/">
+    <link itemprop="mainEntityOfPage" href="https://chenyz2000.github.io/Blog/Blog/Spring/%E6%B3%A8%E8%A7%A3%E6%95%B4%E7%90%86/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Chen Yanzhi">
@@ -286,7 +283,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">框架简介</h1>
+          <h1 class="post-title" itemprop="name headline">注解整理</h1>
         
 
         <div class="post-meta">
@@ -298,8 +295,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-07-06T15:04:41+08:00">
-                2020-07-06
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-08-06T10:39:00+08:00">
+                2020-08-06
               </time>
             
 
@@ -314,8 +311,8 @@
               
                 <span class="post-meta-item-text">Post modified&#58;</span>
               
-              <time title="Post modified" itemprop="dateModified" datetime="2020-07-11T21:49:49+08:00">
-                2020-07-11
+              <time title="Post modified" itemprop="dateModified" datetime="2020-08-06T10:39:00+08:00">
+                2020-08-06
               </time>
             
           </span>
@@ -370,30 +367,14 @@
       
 
       
-        <h2 id="Java-EE-框架"><a href="#Java-EE-框架" class="headerlink" title="Java EE 框架"></a>Java EE 框架</h2><p>SSH</p>
-<img src="..\..\images\image-20200706152715560.png" alt="image-20200706152715560" style="zoom: 50%;" />
-
-<p>Spring, Spring MVC, Spring Boot, Spring Cloud</p>
-<p>SSM</p>
-<img src="..\..\images\image-20200706153109158.png" alt="image-20200706153109158" style="zoom:50%;" />
-
-<a id="more"></a>
-
-<h2 id="Spring"><a href="#Spring" class="headerlink" title="Spring"></a>Spring</h2><p>Java EE领域的<strong>企业级</strong>开发框架，是<strong>软件设计层面</strong>的框架，能帮企业实现复杂的网站后端服务</p>
-<h4 id="分层"><a href="#分层" class="headerlink" title="分层"></a>分层</h4><p>优势是可以将应用程序进行分层，开发者可以自主选择组件</p>
-<p>MVC层：Structs2、Spring MVC</p>
-<p>ORM层：Hibernate、MyBatis、Spring Data</p>
-<h4 id="两大核心机制"><a href="#两大核心机制" class="headerlink" title="两大核心机制"></a>两大核心机制</h4><ul>
-<li>IoC控制反转：针对复杂的对象管理问题，将设计好的对象交给IoC容器而不是new。工厂模式。</li>
-<li>AOP面向切面编程：代码解耦，不改变源代码功能流程的基础上加入新功能，扩展性。代理模式。</li>
-</ul>
-<p>痛点：配置文件多</p>
-<h2 id="Spring-Boot"><a href="#Spring-Boot" class="headerlink" title="Spring Boot"></a>Spring Boot</h2><p>简化Spring，将其中复杂的XML配置Bean的部分砍掉，是<strong>Spring的再封装</strong></p>
-<p>核心思想：CoC<strong>约定大于配置</strong>，Spring Boot已经配置好了约定俗成的部分，开发人员只需要定制不符合约定的部分</p>
-<p>Spring Boot使得易于<strong>集成</strong>，如集成数据库、缓存、权限、web容器、监控、消息队列</p>
-<p>原本开发Web项目需要：配置maven依赖，配置web.xml加载Spring，配置数据库连接配置Spring事务，配置加载配置文件的读取开启注解，配置日志文件，…，部署Tomcat进行调试</p>
-<p>而使用Spring Boot<strong>创建即可使用</strong>：建立一个Spring Boot工程，配置maven依赖，接可以直接启动</p>
-
+        <p><a href="https://blog.csdn.net/kxj19980524/article/details/85124785" target="_blank" rel="noopener">参考</a></p>
+<h2 id="Spring注解"><a href="#Spring注解" class="headerlink" title="Spring注解"></a>Spring注解</h2><p>import org.springframework.beans.factory.annotation.*;</p>
+<p>jar包位于仓库的org\springframework\spring-beans\5.x.x.RELEASE\spring-beans-5.1.5.RELEASE.jar</p>
+<h4 id="autowired和-Qualifier"><a href="#autowired和-Qualifier" class="headerlink" title="@autowired和@Qualifier"></a>@autowired和@Qualifier</h4><h4 id="Value"><a href="#Value" class="headerlink" title="@Value"></a>@Value</h4><h4 id="Required"><a href="#Required" class="headerlink" title="@Required"></a>@Required</h4><p>已废弃</p>
+<hr>
+<p>import org.springframework.context.annotation.*;</p>
+<p>jar包位于仓库的org\springframework\spring-context\5.x.x.RELEASE\spring-context-5.1.5.RELEASE.jar</p>
+<h4 id="Bean"><a href="#Bean" class="headerlink" title="@Bean"></a>@Bean</h4><h4 id="ComponentScan"><a href="#ComponentScan" class="headerlink" title="@ComponentScan"></a>@ComponentScan</h4><h4 id="Conditional"><a href="#Conditional" class="headerlink" title="@Conditional"></a>@Conditional</h4><h4 id="Configuration"><a href="#Configuration" class="headerlink" title="@Configuration"></a>@Configuration</h4><h4 id="Import"><a href="#Import" class="headerlink" title="@Import"></a>@Import</h4><h4 id="Lazy"><a href="#Lazy" class="headerlink" title="@Lazy"></a>@Lazy</h4><h4 id="PropertySources"><a href="#PropertySources" class="headerlink" title="@PropertySources"></a>@PropertySources</h4><h4 id="Scope"><a href="#Scope" class="headerlink" title="@Scope"></a>@Scope</h4>
       
     </div>
     
@@ -413,7 +394,7 @@
   </li>
   <li class="post-copyright-link">
     <strong>Post link:</strong>
-    <a href="https://chenyz2000.github.io/Blog/Spring/%E6%A1%86%E6%9E%B6%E7%AE%80%E4%BB%8B/" title="框架简介">https://chenyz2000.github.io/Blog/Spring/%E6%A1%86%E6%9E%B6%E7%AE%80%E4%BB%8B/</a>
+    <a href="https://chenyz2000.github.io/Blog/Spring/%E6%B3%A8%E8%A7%A3%E6%95%B4%E7%90%86/" title="注解整理">https://chenyz2000.github.io/Blog/Spring/%E6%B3%A8%E8%A7%A3%E6%95%B4%E7%90%86/</a>
   </li>
   <li class="post-copyright-license">
     <strong>Copyright Notice: </strong>
@@ -430,11 +411,11 @@
           
             <a href="/Blog/tags/Spring-Boot/" rel="tag"># Spring Boot</a>
           
+            <a href="/Blog/tags/Annotation/" rel="tag"># Annotation</a>
+          
             <a href="/Blog/tags/Spring/" rel="tag"># Spring</a>
           
-            <a href="/Blog/tags/SSH/" rel="tag"># SSH</a>
-          
-            <a href="/Blog/tags/SSM/" rel="tag"># SSM</a>
+            <a href="/Blog/tags/Spring-MVC/" rel="tag"># Spring MVC</a>
           
         </div>
       
@@ -447,8 +428,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/Blog/nec/Hexo/" rel="next" title="Hexo">
-                <i class="fa fa-chevron-left"></i> Hexo
+              <a href="/Blog/Java%20SE/%E8%AF%AD%E6%B3%95%E6%96%B0%E7%89%B9%E6%80%A7/" rel="next" title="语法新特性">
+                <i class="fa fa-chevron-left"></i> 语法新特性
               </a>
             
           </div>
@@ -456,10 +437,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/Blog/Front%20End/%E5%89%8D%E7%AB%AF%E7%AE%80%E4%BB%8B/" rel="prev" title="前端简介">
-                前端简介 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -610,7 +587,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Java-EE-框架"><span class="nav-number">1.</span> <span class="nav-text">Java EE 框架</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Spring"><span class="nav-number">2.</span> <span class="nav-text">Spring</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#分层"><span class="nav-number">2.0.1.</span> <span class="nav-text">分层</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#两大核心机制"><span class="nav-number">2.0.2.</span> <span class="nav-text">两大核心机制</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Spring-Boot"><span class="nav-number">3.</span> <span class="nav-text">Spring Boot</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Spring注解"><span class="nav-number">1.</span> <span class="nav-text">Spring注解</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#autowired和-Qualifier"><span class="nav-number">1.0.1.</span> <span class="nav-text">@autowired和@Qualifier</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Value"><span class="nav-number">1.0.2.</span> <span class="nav-text">@Value</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Required"><span class="nav-number">1.0.3.</span> <span class="nav-text">@Required</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Bean"><span class="nav-number">1.0.4.</span> <span class="nav-text">@Bean</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#ComponentScan"><span class="nav-number">1.0.5.</span> <span class="nav-text">@ComponentScan</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Conditional"><span class="nav-number">1.0.6.</span> <span class="nav-text">@Conditional</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Configuration"><span class="nav-number">1.0.7.</span> <span class="nav-text">@Configuration</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Import"><span class="nav-number">1.0.8.</span> <span class="nav-text">@Import</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Lazy"><span class="nav-number">1.0.9.</span> <span class="nav-text">@Lazy</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#PropertySources"><span class="nav-number">1.0.10.</span> <span class="nav-text">@PropertySources</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Scope"><span class="nav-number">1.0.11.</span> <span class="nav-text">@Scope</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
