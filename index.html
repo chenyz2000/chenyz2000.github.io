@@ -259,6 +259,169 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://chenyz2000.github.io/Blog/Blog/Spring/Redis/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Chen Yanzhi">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/Blog/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="CYZ's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/Blog/Spring/Redis/" itemprop="url">Redis</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-08-07T15:19:00+08:00">
+                2020-08-07
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Post modified&#58;</span>
+              
+              <time title="Post modified" itemprop="dateModified" datetime="2020-08-07T16:22:00+08:00">
+                2020-08-07
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/Blog/categories/Spring/" itemprop="url" rel="index">
+                    <span itemprop="name">Spring</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h2 id="Redis"><a href="#Redis" class="headerlink" title="Redis"></a>Redis</h2><p>非关系型数据库，缓存数据库，有点类似于mongodb不过是基于内存进行存储</p>
+<p>数据存储在内存中而不会存在硬盘的文件中，结构是K-V对，没有数据表的概念，只有一个整体的字典</p>
+<p>持久化存储，即使Redis服务关闭了，数据也在内存中</p>
+<p>底层使用C语言编写，Java可以通过Spring Boot调用Redis</p>
+<h4 id="支持数据类型"><a href="#支持数据类型" class="headerlink" title="支持数据类型"></a>支持数据类型</h4><p>字符串、列表、集合、有序集合、哈希</p>
+<p>除了哈希其他的存储形式都是{key:value}，哈希是{key:{key:value}}即通过key找到一个map</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/Blog/Spring/Redis/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://chenyz2000.github.io/Blog/Blog/Spring/MyBatis/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -306,8 +469,8 @@
               
                 <span class="post-meta-item-text">Post modified&#58;</span>
               
-              <time title="Post modified" itemprop="dateModified" datetime="2020-08-06T17:10:00+08:00">
-                2020-08-06
+              <time title="Post modified" itemprop="dateModified" datetime="2020-08-07T10:44:00+08:00">
+                2020-08-07
               </time>
             
           </span>
@@ -364,8 +527,8 @@
       
         
           <h2 id="MyBatis"><a href="#MyBatis" class="headerlink" title="MyBatis"></a>MyBatis</h2><h4 id="MyBatis是ORM框架"><a href="#MyBatis是ORM框架" class="headerlink" title="MyBatis是ORM框架"></a>MyBatis是ORM框架</h4><p>ORM，Object Relational Mapping，对象关系映射。三个单词分别指Java的对象，数据库的关系，和映射</p>
-<p>ORM框架，基于Java的持久层框架，实现了数据持久化</p>
-<p>连接Java程序和数据库，使Java开发者可以以面向对象的思想来管理数据库，支持通过配置或注解，将接口和POJO映射成数据库中的记录</p>
+<p>MyBatis是ORM框架，是基于Java的持久层框架，实现了数据持久化</p>
+<p>连接Java程序和数据库，使Java开发者可以用面向对象的思想来管理数据库，支持通过配置或注解，将接口和POJO映射成数据库中的记录</p>
 <p>是对JDBC的封装，相对于传统的JDBC，简化了连接、操作的过程，减少了一半的代码量，只需要把关注点放在SQL的增删改查上</p>
 <p>除了MyBatis以外，还有Hibernate、Spring Data。MyBatis是半自动的，Hibernate是全自动的，Spring Data是基于注解的</p>
           <!--noindex-->
@@ -525,14 +688,10 @@
 
       
         
-          
-          参考
-Spring注解import org.springframework.beans.factory.annotation.*;
-jar包位于仓库的org\springframework\spring-beans\5.x.x.RELEASE\spring-beans-5.1.5.RELEASE.jar
-@autowired和@Qualifier@Value@Required已废弃
-
-import
-          ...
+          <p><a href="https://blog.csdn.net/kxj19980524/article/details/85124785" target="_blank" rel="noopener">参考</a></p>
+<h2 id="Spring注解"><a href="#Spring注解" class="headerlink" title="Spring注解"></a>Spring注解</h2><p>import org.springframework.beans.factory.annotation.*;</p>
+<p>jar包位于仓库的org\springframework\spring-beans\5.x.x.RELEASE\spring-beans-5.1.5.RELEASE.jar</p>
+<h4 id="autowired和-Qualifier"><a href="#autowired和-Qualifier" class="headerlink" title="@autowired和@Qualifier"></a>@autowired和@Qualifier</h4><h4 id="Value"><a href="#Value" class="headerlink" title="@Value"></a>@Value</h4><h4 id="Required"><a href="#Required" class="headerlink" title="@Required"></a>@Required</h4><p>已废弃</p>
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/Blog/Spring/%E6%B3%A8%E8%A7%A3%E6%95%B4%E7%90%86/#more" rel="contents">
@@ -1223,171 +1382,6 @@ import
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://chenyz2000.github.io/Blog/Blog/Spring/Spring%20Boot/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Chen Yanzhi">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/Blog/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="CYZ's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/Blog/Spring/Spring%20Boot/" itemprop="url">Spring Boot</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-07-11T21:46:52+08:00">
-                2020-07-11
-              </time>
-            
-
-            
-              <span class="post-meta-divider">|</span>
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Post modified&#58;</span>
-              
-              <time title="Post modified" itemprop="dateModified" datetime="2020-08-04T09:30:00+08:00">
-                2020-08-04
-              </time>
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/Blog/categories/Spring/" itemprop="url" rel="index">
-                    <span itemprop="name">Spring</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h2 id="Spring-Boot"><a href="#Spring-Boot" class="headerlink" title="Spring Boot"></a>Spring Boot</h2><p><a href="https://docs.spring.io/spring-boot/docs/2.3.x/reference/htmlsingle/" target="_blank" rel="noopener">官方文档</a></p>
-<p>springBoot用于开发微服务中的一个个服务，springcloud用于管理springboot开发的多个服务</p>
-<h2 id="创建项目"><a href="#创建项目" class="headerlink" title="创建项目"></a>创建项目</h2><h4 id="通过maven项目构建"><a href="#通过maven项目构建" class="headerlink" title="通过maven项目构建"></a>通过maven项目构建</h4><ol>
-<li><p>创建maven项目</p>
-</li>
-<li><p>导入springboot相关依赖</p>
- <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">parent</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-parent<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>2.1.3.RELEASE<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">parent</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p> 其中指定的版本就是Spring Boot的版本</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/Blog/Spring/Spring%20Boot/#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1439,7 +1433,7 @@ import
             
               <div class="site-state-item site-state-posts">
                 <a href="/Blog/archives">
-                  <span class="site-state-item-count">34</span>
+                  <span class="site-state-item-count">35</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -1462,7 +1456,7 @@ import
               
               <div class="site-state-item site-state-tags">
                 <a href="/Blog/tags/index.html">
-                  <span class="site-state-item-count">45</span>
+                  <span class="site-state-item-count">48</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>
