@@ -401,7 +401,7 @@
 </blockquote>
 </li>
 </ul>
-<h4 id="筛选器"><a href="#筛选器" class="headerlink" title="筛选器"></a>筛选器</h4><p>对选择器结果进行的另一层筛选</p>
+<h3 id="筛选器"><a href="#筛选器" class="headerlink" title="筛选器"></a>筛选器</h3><p>对选择器结果进行的另一层筛选</p>
 <p>$(“…”).xxx其中xxx为筛选器</p>
 <ul>
 <li><p>过滤：eq()索引，first()，last()，hasClass()，is(标签类型)</p>
@@ -465,7 +465,7 @@
 <h4 id="事件链"><a href="#事件链" class="headerlink" title="事件链"></a>事件链</h4><p>jQuery只要在函数体中加return false，则可以阻止后面的事件执行</p>
 <h2 id="扩展方法"><a href="#扩展方法" class="headerlink" title="扩展方法"></a>扩展方法</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//扩展jQuery方法</span></span><br><span class="line">$.extend(&#123;</span><br><span class="line">    Func1:<span class="function"><span class="keyword">function</span>(<span class="params">arg</span>)</span>&#123;</span><br><span class="line">        ...</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br><span class="line">$.Func1();</span><br><span class="line"></span><br><span class="line"><span class="comment">//扩展选择器对象方法</span></span><br><span class="line">$.fn.extend(&#123;</span><br><span class="line">    Func2:<span class="function"><span class="keyword">function</span>(<span class="params">arg</span>)</span>&#123;</span><br><span class="line">        ...</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br><span class="line">$.(<span class="string">"selector"</span>).Func2();</span><br></pre></td></tr></table></figure>
 
-<p>为了方法不冲突，很多包都用(function(jq){})($);自执行函数将方法包裹起来，并传入jQuery作为参数</p>
+<p>为了方法不冲突，很多包都用(function(jq){   })($);自执行函数将方法包裹起来，并传入jQuery作为参数</p>
 <hr>
 <h4 id="表单信息的验证"><a href="#表单信息的验证" class="headerlink" title="表单信息的验证"></a>表单信息的验证</h4><p>减少与服务器端的交互，但是服务器端也需要验证</p>
 <h2 id="Ajax"><a href="#Ajax" class="headerlink" title="Ajax"></a>Ajax</h2><p>异步的JS和XML</p>
@@ -612,7 +612,7 @@
             
               <div class="site-state-item site-state-posts">
                 <a href="/Blog/archives">
-                  <span class="site-state-item-count">35</span>
+                  <span class="site-state-item-count">36</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -635,7 +635,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/Blog/tags/index.html">
-                  <span class="site-state-item-count">48</span>
+                  <span class="site-state-item-count">50</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>
@@ -684,7 +684,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#jQuery"><span class="nav-number">1.</span> <span class="nav-text">jQuery</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#选择"><span class="nav-number">2.</span> <span class="nav-text">选择</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#选择器"><span class="nav-number">2.0.1.</span> <span class="nav-text">选择器</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#选择器内筛选"><span class="nav-number">2.0.1.0.1.</span> <span class="nav-text">选择器内筛选</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#筛选器"><span class="nav-number">2.0.2.</span> <span class="nav-text">筛选器</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#操作"><span class="nav-number">3.</span> <span class="nav-text">操作</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#HTML-文本"><span class="nav-number">3.0.1.</span> <span class="nav-text">HTML&#x2F;文本</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Attribute属性"><span class="nav-number">3.0.2.</span> <span class="nav-text">Attribute属性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#CSS样式"><span class="nav-number">3.0.3.</span> <span class="nav-text">CSS样式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#each"><span class="nav-number">3.0.4.</span> <span class="nav-text">each</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#事件"><span class="nav-number">4.</span> <span class="nav-text">事件</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#文档加载完毕，自动执行"><span class="nav-number">4.0.1.</span> <span class="nav-text">文档加载完毕，自动执行</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#事件链"><span class="nav-number">4.0.2.</span> <span class="nav-text">事件链</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#扩展方法"><span class="nav-number">5.</span> <span class="nav-text">扩展方法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#表单信息的验证"><span class="nav-number">5.0.1.</span> <span class="nav-text">表单信息的验证</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Ajax"><span class="nav-number">6.</span> <span class="nav-text">Ajax</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#jQuery"><span class="nav-text">jQuery</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#选择"><span class="nav-text">选择</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#选择器"><span class="nav-text">选择器</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#选择器内筛选"><span class="nav-text">选择器内筛选</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#筛选器"><span class="nav-text">筛选器</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#操作"><span class="nav-text">操作</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#HTML-文本"><span class="nav-text">HTML&#x2F;文本</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Attribute属性"><span class="nav-text">Attribute属性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#CSS样式"><span class="nav-text">CSS样式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#each"><span class="nav-text">each</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#事件"><span class="nav-text">事件</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#文档加载完毕，自动执行"><span class="nav-text">文档加载完毕，自动执行</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#事件链"><span class="nav-text">事件链</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#扩展方法"><span class="nav-text">扩展方法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#表单信息的验证"><span class="nav-text">表单信息的验证</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Ajax"><span class="nav-text">Ajax</span></a></li></ol></div>
             
 
           </div>

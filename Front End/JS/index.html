@@ -370,8 +370,6 @@
 
 
 
-
-
 <h2 id="存在形式和放置位置"><a href="#存在形式和放置位置" class="headerlink" title="存在形式和放置位置"></a>存在形式和放置位置</h2><ul>
 <li><p>在script标签里</p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span></span><br><span class="line">	这里直接写代码</span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
@@ -402,7 +400,6 @@
 <h4 id="字符串"><a href="#字符串" class="headerlink" title="字符串"></a>字符串</h4><p>可以使用单引号，可以使用双引号</p>
 <p>s.length</p>
 <p>s.trim()，s.charAt(n)，s.substring(from,to)等等，方法类似于python，区间也是左闭右开，也有字符串相加</p>
-<h6 id="正则表达式"><a href="#正则表达式" class="headerlink" title="正则表达式"></a>正则表达式</h6><p>用于表单验证</p>
 <h4 id="布尔值"><a href="#布尔值" class="headerlink" title="布尔值"></a>布尔值</h4><p>true    false</p>
 <h6 id="比较"><a href="#比较" class="headerlink" title="比较"></a>比较</h6><p>值相同==        !=</p>
 <p>类型和值都相同===        !==</p>
@@ -434,7 +431,36 @@
 
 
 <h4 id="eval"><a href="#eval" class="headerlink" title="eval"></a>eval</h4><p>eval(“代码”)，相当于Python中eval和exec的合集，既可以编译代码也可以获取返回值</p>
-<h4 id="正则表达式-1"><a href="#正则表达式-1" class="headerlink" title="正则表达式"></a>正则表达式</h4><h4 id="时间处理"><a href="#时间处理" class="headerlink" title="时间处理"></a>时间处理</h4><p>全球统一时间UTC，本地时间</p>
+<h4 id="正则表达式"><a href="#正则表达式" class="headerlink" title="正则表达式"></a>正则表达式</h4><h6 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h6><p>var reg = /123\d\w456/，用两个斜线括住的字符串就是正则表达式的reg</p>
+<p>此外，/…/后面可以加任意个参数，表示不同的匹配模式：</p>
+<ul>
+<li><p>g表示全局匹配</p>
+</li>
+<li><p>i表示不区分大小写</p>
+</li>
+<li><p>m表示多行匹配，只在^$时有影响</p>
+<blockquote>
+<p>JS正则原本就支持多行，默认模式将所有内容视为一整个字符串进行^$匹配，m模式将每一行分开进行^$匹配</p>
+</blockquote>
+</li>
+</ul>
+<h6 id="匹配"><a href="#匹配" class="headerlink" title="匹配"></a>匹配</h6><ul>
+<li><p>reg.test(str)，测试str是否匹配reg，返回true或false</p>
+</li>
+<li><p>reg.exec(str)，获取str中匹配的内容，返回数组或null</p>
+<p>返回的数组，第一个元素为匹配到的字符串，若reg里有()进行分组，列表第二个以后的元素为分组获取到的字符串</p>
+<p>默认模式时，每次返回匹配的都是第一个；g全局模式时，第一次执行exec获取匹配到的第一个字符串，第二次获取第二个</p>
+</li>
+<li><p>str.match(reg)，获取匹配的字符串，返回数组，默认模式只显示第一个，g模式显示全部</p>
+</li>
+<li><p>str.replace(reg, string)，默认模式只替换第一个，g模式替换全部</p>
+<p>string中可以用$&amp;表示当前匹配到的内容，$1表示匹配到所有内容中的第1个，$`表示当前匹配字符串的左侧所有文本，$’表示当前匹配字符串的右侧所有文本，$$表示$符号</p>
+</li>
+</ul>
+<ul>
+<li>str.search(reg)，返回匹配成功的第一个索引位置（g模式无效）</li>
+</ul>
+<h4 id="时间处理"><a href="#时间处理" class="headerlink" title="时间处理"></a>时间处理</h4><p>全球统一时间UTC，本地时间</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">d = <span class="keyword">new</span> <span class="built_in">Date</span>();</span><br><span class="line">d.getFullYear();</span><br><span class="line">d.getHours();</span><br><span class="line">d.getUTCHours();	<span class="comment">//获取UTC时间</span></span><br><span class="line">d.setMinutes(d.getMinutes()+<span class="number">75</span>);	<span class="comment">//当前时间向后推75分钟</span></span><br></pre></td></tr></table></figure>
 
 
@@ -476,12 +502,22 @@
 </li>
 </ul>
 <h4 id="作用域"><a href="#作用域" class="headerlink" title="作用域"></a>作用域</h4><p>作用域和Python类似</p>
-<h6 id="JS中无块级作用域"><a href="#JS中无块级作用域" class="headerlink" title="JS中无块级作用域"></a>JS中无块级作用域</h6><p>花括号里的变量可以被外部访问</p>
+<ul>
+<li><p>JS中无块级作用域</p>
+<p>花括号里的变量可以被外部访问</p>
 <p>注：JS6之后有新特性，let关键字可以支持块级作用域</p>
-<h6 id="JS采用函数作用域"><a href="#JS采用函数作用域" class="headerlink" title="JS采用函数作用域"></a>JS采用函数作用域</h6><p>函数内的变量是内部形参，外部无法访问</p>
-<h6 id="JS采用作用域链"><a href="#JS采用作用域链" class="headerlink" title="JS采用作用域链"></a>JS采用作用域链</h6><p>函数嵌套时由内向外找变量，内部优先，每个函数有自己的一个作用域链</p>
-<h6 id="作用域链在函数执行前已经创建"><a href="#作用域链在函数执行前已经创建" class="headerlink" title="作用域链在函数执行前已经创建"></a>作用域链在函数执行前已经创建</h6><p>浏览器解释函数时已经创建了作用域链，此时变量已经声明但<strong>未赋值</strong></p>
+</li>
+<li><p>JS采用函数作用域</p>
+<p>函数内的变量是内部形参，外部无法访问</p>
+</li>
+<li><p>JS采用作用域链</p>
+<p>函数嵌套时由内向外找变量，内部优先，每个函数有自己的一个作用域链</p>
+</li>
+<li><p>作用域链在函数执行前已经创建</p>
+<p>浏览器解释函数时已经创建了作用域链，此时变量已经声明但<strong>未赋值</strong></p>
 <p><strong>函数写在哪里作用域就在哪里</strong>，跟返回没有关系</p>
+</li>
+</ul>
 <h4 id="闭包"><a href="#闭包" class="headerlink" title="闭包"></a>闭包</h4><p>将变量和函数封装到函数里，外部无法获取函数内部的变量</p>
 <p>自执行函数就是闭包</p>
 <h4 id="面向对象"><a href="#面向对象" class="headerlink" title="面向对象"></a>面向对象</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Foo</span>(<span class="params">name, age</span>)</span>&#123;		<span class="comment">//充当构造函数</span></span><br><span class="line">    <span class="keyword">this</span>.Name = name;</span><br><span class="line">    <span class="keyword">this</span>.Age = age;</span><br><span class="line">    <span class="keyword">this</span>.Func = <span class="function"><span class="keyword">function</span>(<span class="params">arg</span>)</span>&#123;		<span class="comment">//函数属于了对象，不是属于类</span></span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>.Name+arg;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> obj = <span class="keyword">new</span> Foo(<span class="string">"zhangsan"</span>,<span class="number">18</span>);		<span class="comment">//创建对象时需要使用new</span></span><br><span class="line"><span class="keyword">var</span> ret = obj.Func(<span class="string">"is good"</span>);</span><br></pre></td></tr></table></figure>
@@ -628,7 +664,7 @@
             
               <div class="site-state-item site-state-posts">
                 <a href="/Blog/archives">
-                  <span class="site-state-item-count">35</span>
+                  <span class="site-state-item-count">36</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -651,7 +687,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/Blog/tags/index.html">
-                  <span class="site-state-item-count">48</span>
+                  <span class="site-state-item-count">50</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>
@@ -700,7 +736,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#JavaScript"><span class="nav-number">1.</span> <span class="nav-text">JavaScript</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#存在形式和放置位置"><span class="nav-number">2.</span> <span class="nav-text">存在形式和放置位置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#语法"><span class="nav-number">3.</span> <span class="nav-text">语法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#变量"><span class="nav-number">3.0.1.</span> <span class="nav-text">变量</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数据类型"><span class="nav-number">4.</span> <span class="nav-text">数据类型</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#数字"><span class="nav-number">4.0.1.</span> <span class="nav-text">数字</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#字符串"><span class="nav-number">4.0.2.</span> <span class="nav-text">字符串</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#正则表达式"><span class="nav-number">4.0.2.0.1.</span> <span class="nav-text">正则表达式</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#布尔值"><span class="nav-number">4.0.3.</span> <span class="nav-text">布尔值</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#比较"><span class="nav-number">4.0.3.0.1.</span> <span class="nav-text">比较</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#数组"><span class="nav-number">4.0.4.</span> <span class="nav-text">数组</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#字典"><span class="nav-number">4.0.5.</span> <span class="nav-text">字典</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#其他"><span class="nav-number">5.</span> <span class="nav-text">其他</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#序列化"><span class="nav-number">5.0.1.</span> <span class="nav-text">序列化</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#转义"><span class="nav-number">5.0.2.</span> <span class="nav-text">转义</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#url转义"><span class="nav-number">5.0.2.0.1.</span> <span class="nav-text">url转义</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#字符串转义"><span class="nav-number">5.0.2.0.2.</span> <span class="nav-text">字符串转义</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#eval"><span class="nav-number">5.0.3.</span> <span class="nav-text">eval</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#正则表达式-1"><span class="nav-number">5.0.4.</span> <span class="nav-text">正则表达式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#时间处理"><span class="nav-number">5.0.5.</span> <span class="nav-text">时间处理</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#语句"><span class="nav-number">6.</span> <span class="nav-text">语句</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#条件语句"><span class="nav-number">6.0.1.</span> <span class="nav-text">条件语句</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#循环语句"><span class="nav-number">6.0.2.</span> <span class="nav-text">循环语句</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#异常"><span class="nav-number">6.0.3.</span> <span class="nav-text">异常</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#函数"><span class="nav-number">7.</span> <span class="nav-text">函数</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#函数类型"><span class="nav-number">7.0.1.</span> <span class="nav-text">函数类型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#作用域"><span class="nav-number">7.0.2.</span> <span class="nav-text">作用域</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#JS中无块级作用域"><span class="nav-number">7.0.2.0.1.</span> <span class="nav-text">JS中无块级作用域</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#JS采用函数作用域"><span class="nav-number">7.0.2.0.2.</span> <span class="nav-text">JS采用函数作用域</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#JS采用作用域链"><span class="nav-number">7.0.2.0.3.</span> <span class="nav-text">JS采用作用域链</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#作用域链在函数执行前已经创建"><span class="nav-number">7.0.2.0.4.</span> <span class="nav-text">作用域链在函数执行前已经创建</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#闭包"><span class="nav-number">7.0.3.</span> <span class="nav-text">闭包</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#面向对象"><span class="nav-number">7.0.4.</span> <span class="nav-text">面向对象</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#JavaScript"><span class="nav-text">JavaScript</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#存在形式和放置位置"><span class="nav-text">存在形式和放置位置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#语法"><span class="nav-text">语法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#变量"><span class="nav-text">变量</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数据类型"><span class="nav-text">数据类型</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#数字"><span class="nav-text">数字</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#字符串"><span class="nav-text">字符串</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#布尔值"><span class="nav-text">布尔值</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#比较"><span class="nav-text">比较</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#数组"><span class="nav-text">数组</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#字典"><span class="nav-text">字典</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#其他"><span class="nav-text">其他</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#序列化"><span class="nav-text">序列化</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#转义"><span class="nav-text">转义</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#url转义"><span class="nav-text">url转义</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#字符串转义"><span class="nav-text">字符串转义</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#eval"><span class="nav-text">eval</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#正则表达式"><span class="nav-text">正则表达式</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#定义"><span class="nav-text">定义</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#匹配"><span class="nav-text">匹配</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#时间处理"><span class="nav-text">时间处理</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#语句"><span class="nav-text">语句</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#条件语句"><span class="nav-text">条件语句</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#循环语句"><span class="nav-text">循环语句</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#异常"><span class="nav-text">异常</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#函数"><span class="nav-text">函数</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#函数类型"><span class="nav-text">函数类型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#作用域"><span class="nav-text">作用域</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#闭包"><span class="nav-text">闭包</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#面向对象"><span class="nav-text">面向对象</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>

@@ -86,6 +86,8 @@
 <meta property="og:site_name" content="CYZ&#39;s Blog">
 <meta property="og:description" content="Spring Boot+Vue传统的Java开发中，前端使用JSP开发，JSP不是后端独立完成的 是由前端开发HTML，再由后端转成JSP 前后端开发的内容互相影响，互不理解 前后端耦合高，开发效率低">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://chenyz2000.github.io/Blog/images/image-20200809173332672.png">
+<meta property="og:image" content="https://chenyz2000.github.io/Blog/images/image-20200809175156936.png">
 <meta property="og:image" content="https://chenyz2000.github.io/Blog/images/image-20200803160236920.png">
 <meta property="article:published_time" content="2020-07-29T16:00:00.000Z">
 <meta property="article:modified_time" content="2020-08-04T09:30:00.000Z">
@@ -95,7 +97,7 @@
 <meta property="article:tag" content="Http">
 <meta property="article:tag" content="Form表单">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://chenyz2000.github.io/Blog/images/image-20200803160236920.png">
+<meta name="twitter:image" content="https://chenyz2000.github.io/Blog/images/image-20200809173332672.png">
 
 
 
@@ -380,7 +382,13 @@
 <p>这要求前后端商量好接口文档（url、参数、数据类型），之后就可以独立开发</p>
 <p>前端使用假数据测试</p>
 <p>传统开发：单体式应用。客户端通过访问服务端应用，服务端中的JSP和Java Server（无论是Handler、sevlet也好，总之是Controller层）互调，JSP请求Controller里的数据，Controller将数据解析到JSP里，最后拼接起来之后返回给客户端</p>
+<img src="..\..\images\image-20200809173332672.png">
+
 <p>前后端分离：单体应用分为前端和后端两个应用。客户端访问前端应用端口，前端应用访问后端应用端口，两者不同端口。前端应用里是html、css、js等代码，前端通过Ajax调用基于restful结构的后端数据接口，后端应用里是Java Server，Java Server响应前端给前端json数据，前端再把数据解析到页面中</p>
+<img src="..\..\images\image-20200809175156936.png">
+
+
+
 <h4 id="Vue开发"><a href="#Vue开发" class="headerlink" title="Vue开发"></a>Vue开发</h4><p>vue开发，命令行创建vue项目，在idea中下载vue插件之后可以用idea打开，并编译项目，可以运行因为其中内嵌了一个服务器，运行命令npm run server</p>
 <p>vue应用只有一个主窗口，src/app.vue是主窗口，之后的操作都是在其中进行动态更新组件。<br>组件放在src/views/中（当然放在component也可以，只要之后能够成功引入），通过路由的映射将app.vue中的名称和资源关联，路由放在src/router/中，无论浏览器访问的是什么url，主窗口并不改变，改变的只是其中的组件</p>
 <p>使用vue，改了代码也不需要重新启动项目，可以动态更新页面</p>
@@ -629,7 +637,7 @@
             
               <div class="site-state-item site-state-posts">
                 <a href="/Blog/archives">
-                  <span class="site-state-item-count">35</span>
+                  <span class="site-state-item-count">36</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -652,7 +660,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/Blog/tags/index.html">
-                  <span class="site-state-item-count">48</span>
+                  <span class="site-state-item-count">50</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>
@@ -701,7 +709,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Spring-Boot-Vue"><span class="nav-number">1.</span> <span class="nav-text">Spring Boot+Vue</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Vue开发"><span class="nav-number">1.0.1.</span> <span class="nav-text">Vue开发</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Vue与后端的交互"><span class="nav-number">1.0.2.</span> <span class="nav-text">Vue与后端的交互</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HTTP"><span class="nav-number">2.</span> <span class="nav-text">HTTP</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#消息格式"><span class="nav-number">2.0.1.</span> <span class="nav-text">消息格式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#请求方法"><span class="nav-number">2.0.2.</span> <span class="nav-text">请求方法</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#区别"><span class="nav-number">2.0.2.0.1.</span> <span class="nav-text">区别</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#适用情景"><span class="nav-number">2.0.2.0.2.</span> <span class="nav-text">适用情景</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#编码类型"><span class="nav-number">2.0.3.</span> <span class="nav-text">编码类型</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#前后端数据交互"><span class="nav-number">3.</span> <span class="nav-text">前后端数据交互</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#表单"><span class="nav-number">3.1.</span> <span class="nav-text">表单</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#提交数据"><span class="nav-number">3.1.1.</span> <span class="nav-text">提交数据</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#接收数据"><span class="nav-number">3.1.2.</span> <span class="nav-text">接收数据</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Todo"><span class="nav-number">4.</span> <span class="nav-text">Todo</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Spring-Boot-Vue"><span class="nav-text">Spring Boot+Vue</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Vue开发"><span class="nav-text">Vue开发</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Vue与后端的交互"><span class="nav-text">Vue与后端的交互</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HTTP"><span class="nav-text">HTTP</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#消息格式"><span class="nav-text">消息格式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#请求方法"><span class="nav-text">请求方法</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#区别"><span class="nav-text">区别</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#适用情景"><span class="nav-text">适用情景</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#编码类型"><span class="nav-text">编码类型</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#前后端数据交互"><span class="nav-text">前后端数据交互</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#表单"><span class="nav-text">表单</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#提交数据"><span class="nav-text">提交数据</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#接收数据"><span class="nav-text">接收数据</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Todo"><span class="nav-text">Todo</span></a></li></ol></div>
             
 
           </div>
