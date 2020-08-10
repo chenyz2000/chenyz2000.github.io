@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Spring Boot,ORM,MyBatis,动态代理," />
+  <meta name="keywords" content="Spring Boot,MyBatis,ORM,动态代理," />
 
 
 
@@ -88,11 +88,11 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://chenyz2000.github.io/Blog/images/image-20200809195537434.png">
 <meta property="article:published_time" content="2020-08-05T03:30:00.000Z">
-<meta property="article:modified_time" content="2020-08-07T02:44:00.000Z">
+<meta property="article:modified_time" content="2020-08-10T06:48:00.000Z">
 <meta property="article:author" content="Chen Yanzhi">
 <meta property="article:tag" content="Spring Boot">
-<meta property="article:tag" content="ORM">
 <meta property="article:tag" content="MyBatis">
+<meta property="article:tag" content="ORM">
 <meta property="article:tag" content="动态代理">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://chenyz2000.github.io/Blog/images/image-20200809195537434.png">
@@ -313,8 +313,8 @@
               
                 <span class="post-meta-item-text">Post modified&#58;</span>
               
-              <time title="Post modified" itemprop="dateModified" datetime="2020-08-07T10:44:00+08:00">
-                2020-08-07
+              <time title="Post modified" itemprop="dateModified" datetime="2020-08-10T14:48:00+08:00">
+                2020-08-10
               </time>
             
           </span>
@@ -394,22 +394,34 @@
 </ul>
 <p>先前准备：创建maven项目，添加<code>mybatis</code>和<code>mysql-connector-java</code>两个依赖，在数据库里建表</p>
 <h3 id="原始Dao开发方法"><a href="#原始Dao开发方法" class="headerlink" title="原始Dao开发方法"></a>原始Dao开发方法</h3><p>使用原生接口不需要自定义Mapper接口，通过sqlSession调用原生接口不需要代理对象调用Mapper接口</p>
-<h4 id="映射文件——Mapper-xml"><a href="#映射文件——Mapper-xml" class="headerlink" title="映射文件——Mapper.xml"></a>映射文件——Mapper.xml</h4><p>为每个实体类创建对应的Mapper.xml，SQL语句写在其中，以AccountMapper.xml为例：</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version="1.0" encoding="UTF-8" ?&gt;</span></span><br><span class="line"><span class="meta">&lt;!DOCTYPE <span class="meta-keyword">configuration</span> <span class="meta-keyword">PUBLIC</span> <span class="meta-string">"-//mybatis.org//DTD Config 3.0//EN"</span> <span class="meta-string">"http://mybatis.org/dtd/mybatis-3-config.dtd"</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">mapper</span> <span class="attr">namespace</span>=<span class="string">"com.cyz.mapper.AccountMapper"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">insert</span> <span class="attr">id</span>=<span class="string">"save"</span> <span class="attr">parameterType</span>=<span class="string">"com.cyz.entity.Account"</span>&gt;</span></span><br><span class="line">        insert into account(username,money) values(#&#123;username&#125;,#&#123;money&#125;)</span><br><span class="line">    <span class="tag">&lt;/<span class="name">insert</span>&gt;</span></span><br><span class="line">    ......</span><br><span class="line">    <span class="tag">&lt;<span class="name">select</span> <span class="attr">id</span>=<span class="string">"findAll"</span> <span class="attr">resultType</span>=<span class="string">"com.cyz.entity.Account"</span>&gt;</span>	<span class="comment">&lt;!--写泛型的类型--&gt;</span></span><br><span class="line">        select * form account</span><br><span class="line">    <span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">select</span> <span class="attr">id</span>=<span class="string">"findById"</span> <span class="attr">parameterType</span>=<span class="string">"int"</span> <span class="attr">resultType</span>=<span class="string">"com.cyz.entity.Account"</span>&gt;</span></span><br><span class="line">        select * from account where id=#&#123;id&#125;</span><br><span class="line">    <span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">mapper</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h4 id="映射文件——Mapper-xml"><a href="#映射文件——Mapper-xml" class="headerlink" title="映射文件——Mapper.xml"></a>映射文件——Mapper.xml</h4><p>创建接口方法和SQL语句的映射文件Mapper.xml，以AccountMapper.xml为例：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version="1.0" encoding="UTF-8" ?&gt;</span></span><br><span class="line"><span class="meta">&lt;!DOCTYPE <span class="meta-keyword">configuration</span> <span class="meta-keyword">PUBLIC</span> <span class="meta-string">"-//mybatis.org//DTD Config 3.0//EN"</span> <span class="meta-string">"http://mybatis.org/dtd/mybatis-3-config.dtd"</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">mapper</span> <span class="attr">namespace</span>=<span class="string">"com.cyz.mapper.AccountMapper"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">insert</span> <span class="attr">id</span>=<span class="string">"save"</span> <span class="attr">parameterType</span>=<span class="string">"com.cyz.entity.Account"</span>&gt;</span></span><br><span class="line">        insert into account(username,money) values(#&#123;username&#125;,#&#123;money&#125;)</span><br><span class="line">    <span class="tag">&lt;/<span class="name">insert</span>&gt;</span></span><br><span class="line">    ......</span><br><span class="line">    <span class="tag">&lt;<span class="name">select</span> <span class="attr">id</span>=<span class="string">"findAll"</span> <span class="attr">resultType</span>=<span class="string">"com.cyz.entity.Account"</span>&gt;</span>	<span class="comment">&lt;!--写泛型的类型，而不是写List&lt;泛型&gt;--&gt;</span></span><br><span class="line">        select * form account</span><br><span class="line">    <span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">select</span> <span class="attr">id</span>=<span class="string">"findById"</span> <span class="attr">parameterType</span>=<span class="string">"int"</span> <span class="attr">resultType</span>=<span class="string">"com.cyz.entity.Account"</span>&gt;</span></span><br><span class="line">        select * from account where id=#&#123;id&#125;</span><br><span class="line">    <span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">mapper</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
-<p>除了insert标签，还有update、delete、select，四者同理</p>
-<p>namespace是当前mapper文件的全路径，不加后缀名</p>
-<p>id是实际调用MyBatis方法时传入的参数，用来标示sql语句的id</p>
-<p>parameterType是调用对应方法时，方法参数的类型</p>
+<ul>
+<li><p>除了insert标签，还有update、delete、select，四者同理</p>
+</li>
+<li><p>namespace是当前mapper文件的全路径，不加后缀名</p>
+</li>
+<li><p>id是实际调用MyBatis方法时传入的参数，用来标示sql语句的id</p>
+</li>
+<li><p>parameterType是调用对应方法时，方法参数的类型</p>
 <blockquote>
 <p>方法参数只有一个时（基本数据类型、String、数据类型包装类），sql语句里#{name}的name随便写</p>
 <p>方法参数有多个时，省略parameterType，sql语句里用下标#{arg0}、#{arg1}取</p>
 <p>方法参数为一个Bean对象时，sql语句可以用#{name}使用参数对象的属性</p>
 </blockquote>
-<p>resultType是对应方法的返回值类型，用于select中</p>
+</li>
+<li><p>resultType是对应方法的返回值类型，用于select中</p>
 <blockquote>
-<p>若方法返回值为Bean，select查询结果的字段与Bean的属性对应赋值，对应不上的不赋值（若sql里有as则根据as后的字段名），有多个重复字段（多表联合查询会有这种可能）的赋第一个字段</p>
+<p>使用resultType进行到对象的输出映射</p>
+<p>Mapper.xml的resultType中写实体类名，代码中用实体类的列表承接返回值。当查询结果的字段与实体类的属性对应时才赋值，对应不上的不赋值，查询结果字段有重复时（如多表联合查询时）赋第一个字段的值。</p>
 </blockquote>
+<blockquote>
+<p>属性resultMap可以引用在resultMap标签里定义的字段到属性的输出映射</p>
+</blockquote>
+</li>
+</ul>
+<p>实体类的作用主要就是在parameterType中提供参数和resultType中承接查询结果</p>
 <h4 id="MyBatis配置文件——config-xml"><a href="#MyBatis配置文件——config-xml" class="headerlink" title="MyBatis配置文件——config.xml"></a>MyBatis配置文件——config.xml</h4><p>MyBatis全局配置文件config.xml放在resource中，文件名可自定义</p>
    <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version="1.0" encoding="UTF-8" ?&gt;</span></span><br><span class="line"><span class="meta">&lt;!DOCTYPE <span class="meta-keyword">configuration</span> <span class="meta-keyword">PUBLIC</span> <span class="meta-string">"-//mybatis.org//DTD Config 3.0//EN"</span> <span class="meta-string">"http://mybatis.org/dtd/mybatis-3-config.dtd"</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">configuration</span>&gt;</span>		<span class="comment">&lt;!--根节点--&gt;</span></span><br><span class="line">    </span><br><span class="line">    <span class="tag">&lt;<span class="name">environments</span> <span class="attr">default</span>=<span class="string">""</span>&gt;</span>	<span class="comment">&lt;!--配置MyBatis运行环境（数据库环境），可以配多个选一个--&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">environment</span> <span class="attr">id</span>=<span class="string">""</span>&gt;</span></span><br><span class="line">            <span class="comment">&lt;!--jdbc的事务管理--&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">transactionManager</span> <span class="attr">type</span>=<span class="string">"JDBC"</span>&gt;</span><span class="tag">&lt;/<span class="name">transactionManager</span>&gt;</span></span><br><span class="line">            <span class="comment">&lt;!--数据源连接池，以POOLED为例--&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">dataSource</span> <span class="attr">type</span>=<span class="string">"POOLED"</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"driver"</span> <span class="attr">value</span>=<span class="string">"com.mysql.cj.jdbc.driver"</span>&gt;</span><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"url"</span> <span class="attr">value</span>=<span class="string">"此处写jdbc的url"</span>&gt;</span><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"username"</span> <span class="attr">value</span>=<span class="string">"..."</span>&gt;</span><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"password"</span> <span class="attr">value</span>=<span class="string">"..."</span>&gt;</span><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">dataSource</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">environment</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">environment</span> <span class="attr">id</span>=<span class="string">""</span>&gt;</span></span><br><span class="line">            ......</span><br><span class="line">        <span class="tag">&lt;/<span class="name">environment</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">environments</span>&gt;</span></span><br><span class="line">    </span><br><span class="line">    <span class="tag">&lt;<span class="name">mappers</span>&gt;</span>		<span class="comment">&lt;!--在全局配置文件config.xml中注册AccountMapper.xml--&gt;</span></span><br><span class="line">    	<span class="tag">&lt;<span class="name">mapper</span> <span class="attr">resource</span>=<span class="string">"com/cyz/mapper/AccountMapper.xml"</span>&gt;</span><span class="tag">&lt;/<span class="name">mapper</span>&gt;</span>		<span class="comment">&lt;!--resource写Mapper.xml的路径，带后缀，所以不能用.得用/--&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">mappers</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">configuration</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
@@ -524,9 +536,9 @@
           
             <a href="/Blog/tags/Spring-Boot/" rel="tag"># Spring Boot</a>
           
-            <a href="/Blog/tags/ORM/" rel="tag"># ORM</a>
-          
             <a href="/Blog/tags/MyBatis/" rel="tag"># MyBatis</a>
+          
+            <a href="/Blog/tags/ORM/" rel="tag"># ORM</a>
           
             <a href="/Blog/tags/%E5%8A%A8%E6%80%81%E4%BB%A3%E7%90%86/" rel="tag"># 动态代理</a>
           
@@ -655,7 +667,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/Blog/tags/index.html">
-                  <span class="site-state-item-count">50</span>
+                  <span class="site-state-item-count">52</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>

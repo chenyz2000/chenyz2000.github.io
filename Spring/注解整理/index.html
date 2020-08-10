@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Spring Boot,Annotation,Spring,Spring MVC," />
+  <meta name="keywords" content="Annotation,Spring Boot,Spring,Spring MVC," />
 
 
 
@@ -89,8 +89,8 @@
 <meta property="article:published_time" content="2020-08-06T02:39:00.000Z">
 <meta property="article:modified_time" content="2020-08-06T02:39:00.000Z">
 <meta property="article:author" content="Chen Yanzhi">
-<meta property="article:tag" content="Spring Boot">
 <meta property="article:tag" content="Annotation">
+<meta property="article:tag" content="Spring Boot">
 <meta property="article:tag" content="Spring">
 <meta property="article:tag" content="Spring MVC">
 <meta name="twitter:card" content="summary">
@@ -376,7 +376,25 @@
 <hr>
 <p>import org.springframework.context.annotation.*;</p>
 <p>jar包位于仓库的org\springframework\spring-context\5.x.x.RELEASE\spring-context-5.1.5.RELEASE.jar</p>
-<h4 id="Bean"><a href="#Bean" class="headerlink" title="@Bean"></a>@Bean</h4><h4 id="ComponentScan"><a href="#ComponentScan" class="headerlink" title="@ComponentScan"></a>@ComponentScan</h4><h4 id="Conditional"><a href="#Conditional" class="headerlink" title="@Conditional"></a>@Conditional</h4><h4 id="Configuration"><a href="#Configuration" class="headerlink" title="@Configuration"></a>@Configuration</h4><h4 id="Import"><a href="#Import" class="headerlink" title="@Import"></a>@Import</h4><h4 id="Lazy"><a href="#Lazy" class="headerlink" title="@Lazy"></a>@Lazy</h4><h4 id="PropertySources"><a href="#PropertySources" class="headerlink" title="@PropertySources"></a>@PropertySources</h4><h4 id="Scope"><a href="#Scope" class="headerlink" title="@Scope"></a>@Scope</h4>
+<h4 id="Bean"><a href="#Bean" class="headerlink" title="@Bean"></a>@Bean</h4><p>见@Configuration</p>
+<h4 id="ComponentScan"><a href="#ComponentScan" class="headerlink" title="@ComponentScan"></a>@ComponentScan</h4><p>@ComponentScan对应XML配置形式中的&lt;context：component-scan&gt;元素，用于配合一些元信息JavaAnnotation，比如@Component和@Repository等，将标注了这些元信息Annotation的bean定义类<strong>批量采集</strong>到Spring的IoC容器中。</p>
+<p>我们可以通过basePackages等属性来细粒度地定制@ComponentScan自动扫描的范围，如果不指定，则默认Spring框架实现会从声明@ComponentScan所在类的package进行扫描。</p>
+<h4 id="Conditional"><a href="#Conditional" class="headerlink" title="@Conditional"></a>@Conditional</h4><h4 id="Configuration"><a href="#Configuration" class="headerlink" title="@Configuration"></a>@Configuration</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">StudentConfiguration</span></span>&#123;		<span class="comment">//配置类</span></span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> StudentService <span class="title">studentService</span><span class="params">()</span></span>&#123;		<span class="comment">//bean的定义</span></span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> StudentServiceImpl();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>标注了@Bean的方法，返回值将作为一个bean定义注册到 Spring 的 IoC 容器，其id默认为方法名</p>
+<p>依赖注入</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">StudentConfiguration</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> StudentService <span class="title">studentService</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> StudentServiceImpl(dependencyService());</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> DependencyService <span class="title">dependencyService</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> DependencyServiceImpl();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>注意：这里DependencyServiceImpl就算多次实例化也只创建同一个对象，采取的实现方式是通过拦截配置类的方法调用，一旦拥有拦截逻辑的子类发现当前方法没有对应的类型实例时才会去请求父类的同一方法来初始化对象实例，否则直接返回之前的对象实例。</p>
+<h4 id="Import"><a href="#Import" class="headerlink" title="@Import"></a>@Import</h4><p>在XML形式的配置中，我们通过&lt; import resource=”XXX.xml”/&gt;的形式将多个分开的容器配置合到一个配置中，在JavaConfig形式的配置中，我们则使用@Import这个Annotation完成同样目的：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="meta">@Import</span>(MockConfiguration<span class="class">.<span class="keyword">class</span>)</span></span><br><span class="line"><span class="class"><span class="title">public</span> <span class="title">class</span> <span class="title">XConfiguration</span></span>&#123;</span><br><span class="line">	......</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>@Import只负责引入JavaConfig形式定义的IoC容器配置，如果有一些遗留的配置或者遗留系统需要以XML形式来配置（比如dubbo框架），我们依然可以通过<u>@ImportResource</u>将它们一起合并到当前JavaConfig配置的容器中。</p>
+<h4 id="Lazy"><a href="#Lazy" class="headerlink" title="@Lazy"></a>@Lazy</h4><h4 id="PropertySources"><a href="#PropertySources" class="headerlink" title="@PropertySources"></a>@PropertySources</h4><p><u>@PropertySource</u>用于从某些地方加载*.properties文件内容，并将其中的属性加载到IoC容器中，便于填充一些bean定义属性的占位符（placeholder），当然，这需要PropertySourcesPlaceholderConfigurer的配合。</p>
+<p>如果我们使用Java8或者更高版本开发，那么，我们可以并行声明多个@PropertySource：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="meta">@PropertySource</span>(<span class="string">"classpath:1.properties"</span>)</span><br><span class="line"><span class="meta">@PropertySource</span>(<span class="string">"classpath:2.properties"</span>)</span><br><span class="line"><span class="meta">@PropertySource</span>(<span class="string">"..."</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">XConfiguration</span></span>&#123;</span><br><span class="line">	......</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="Scope"><a href="#Scope" class="headerlink" title="@Scope"></a>@Scope</h4>
       
     </div>
     
@@ -411,9 +429,9 @@
       
         <div class="post-tags">
           
-            <a href="/Blog/tags/Spring-Boot/" rel="tag"># Spring Boot</a>
-          
             <a href="/Blog/tags/Annotation/" rel="tag"># Annotation</a>
+          
+            <a href="/Blog/tags/Spring-Boot/" rel="tag"># Spring Boot</a>
           
             <a href="/Blog/tags/Spring/" rel="tag"># Spring</a>
           
@@ -430,8 +448,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/Blog/Java%20SE/%E8%AF%AD%E6%B3%95%E6%96%B0%E7%89%B9%E6%80%A7/" rel="next" title="语法新特性">
-                <i class="fa fa-chevron-left"></i> 语法新特性
+              <a href="/Blog/Spring/MVC%E6%A1%86%E6%9E%B6%E4%B8%8E%E4%B8%89%E5%B1%82%E6%9E%B6%E6%9E%84/" rel="next" title="MVC框架与三层架构">
+                <i class="fa fa-chevron-left"></i> MVC框架与三层架构
               </a>
             
           </div>
@@ -544,7 +562,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/Blog/tags/index.html">
-                  <span class="site-state-item-count">50</span>
+                  <span class="site-state-item-count">52</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>

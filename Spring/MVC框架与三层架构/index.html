@@ -86,11 +86,13 @@
 <meta property="og:site_name" content="CYZ&#39;s Blog">
 <meta property="og:description" content="参考 MVC与三层架构没有关系，它们之间并不对应 MVC框架 Model：模型，代表业务模型 View：视图，代表用户界面 Controller：控制器，控制器接受用户的输入并调用模型和视图去完成用户的需求">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://chenyz2000.github.io/Blog/images/20200810213836.png">
 <meta property="article:published_time" content="2020-08-05T03:33:00.000Z">
 <meta property="article:modified_time" content="2020-08-05T03:33:00.000Z">
 <meta property="article:author" content="Chen Yanzhi">
 <meta property="article:tag" content="MVC">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://chenyz2000.github.io/Blog/images/20200810213836.png">
 
 
 
@@ -385,13 +387,12 @@
 <p>Web层（SpringMVC），业务层（Java），数据访问层（Mybatis 或者JPA 等）</p>
 <p>持久化指的是把数据长期保存在文件、磁盘里。</p>
 <p>DAO层和DAL层经常混指的是一个意思</p>
-<h2 id="Controller、Service、DAO等"><a href="#Controller、Service、DAO等" class="headerlink" title="Controller、Service、DAO等"></a>Controller、Service、DAO等</h2><ul>
-<li><p>Service，服务，业务逻辑，只完成业务功能的实现</p>
-</li>
-<li><p>Dao，数据存取对象，只关心数据的CRUD(创建、读取、更新、删除)，与数据库进行数据交互</p>
-</li>
-<li><p>Controller，控制器，控制逻辑，完成Service业务的<strong>调用</strong>和跳转的<strong>管理</strong>，控制业务的流程</p>
-</li>
+<h2 id="Controller、Service、DAO等"><a href="#Controller、Service、DAO等" class="headerlink" title="Controller、Service、DAO等"></a>Controller、Service、DAO等</h2><img src="../../images/20200810213836.png" style="zoom:45%">
+
+<ul>
+<li>Controller，控制器，控制逻辑，完成Service业务的<strong>调用</strong>和跳转的<strong>管理</strong>，控制业务的流程</li>
+<li>Service，服务，业务逻辑，只完成业务功能的实现</li>
+<li>Dao，数据存取对象，只关心数据的CRUD(创建、读取、更新、删除)，与数据库进行数据交互</li>
 </ul>
 <p>除了controller、service、dao，还有mapper、view、model/entity层这些说法</p>
 <p>model=entity</p>
@@ -464,8 +465,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/Blog/Java%20SE/%E8%AF%AD%E6%B3%95%E6%96%B0%E7%89%B9%E6%80%A7/" rel="prev" title="语法新特性">
-                语法新特性 <i class="fa fa-chevron-right"></i>
+              <a href="/Blog/Spring/%E6%B3%A8%E8%A7%A3%E6%95%B4%E7%90%86/" rel="prev" title="注解整理">
+                注解整理 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -568,7 +569,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/Blog/tags/index.html">
-                  <span class="site-state-item-count">50</span>
+                  <span class="site-state-item-count">52</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>
