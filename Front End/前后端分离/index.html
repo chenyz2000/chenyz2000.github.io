@@ -79,12 +79,12 @@
 
 
 
-<meta name="description" content="Spring Boot+Vue传统的Java开发中，前端使用JSP开发，JSP不是后端独立完成的 是由前端开发HTML，再由后端转成JSP 前后端开发的内容互相影响，互不理解 前后端耦合高，开发效率低">
+<meta name="description" content="Spring Boot+Vue传统的Java Web开发中，前端使用JSP开发，后端使用Java语言开发 JSP不是后端独立完成的，是由前端开发HTML，再由后端转成JSP 前后端开发的内容互相影响，互不理解 前后端耦合高，开发效率低">
 <meta property="og:type" content="article">
 <meta property="og:title" content="前后端分离">
 <meta property="og:url" content="https://chenyz2000.github.io/Blog/Front%20End/%E5%89%8D%E5%90%8E%E7%AB%AF%E5%88%86%E7%A6%BB/index.html">
 <meta property="og:site_name" content="CYZ&#39;s Blog">
-<meta property="og:description" content="Spring Boot+Vue传统的Java开发中，前端使用JSP开发，JSP不是后端独立完成的 是由前端开发HTML，再由后端转成JSP 前后端开发的内容互相影响，互不理解 前后端耦合高，开发效率低">
+<meta property="og:description" content="Spring Boot+Vue传统的Java Web开发中，前端使用JSP开发，后端使用Java语言开发 JSP不是后端独立完成的，是由前端开发HTML，再由后端转成JSP 前后端开发的内容互相影响，互不理解 前后端耦合高，开发效率低">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://chenyz2000.github.io/Blog/images/image-20200809173332672.png">
 <meta property="og:image" content="https://chenyz2000.github.io/Blog/images/image-20200809175156936.png">
@@ -371,13 +371,14 @@
       
 
       
-        <h2 id="Spring-Boot-Vue"><a href="#Spring-Boot-Vue" class="headerlink" title="Spring Boot+Vue"></a>Spring Boot+Vue</h2><p>传统的Java开发中，前端使用JSP开发，JSP不是后端独立完成的</p>
-<p>是由前端开发HTML，再由后端转成JSP</p>
+        <h2 id="Spring-Boot-Vue"><a href="#Spring-Boot-Vue" class="headerlink" title="Spring Boot+Vue"></a>Spring Boot+Vue</h2><p>传统的Java Web开发中，前端使用JSP开发，后端使用Java语言开发</p>
+<p>JSP不是后端独立完成的，是由前端开发HTML，再由后端转成JSP</p>
 <p>前后端开发的内容互相影响，互不理解</p>
 <p>前后端耦合高，开发效率低</p>
 <a id="more"></a>
 
-<p>所以采取前后端分离，只要后端提供数据接口即可</p>
+<p>但是随着浏览器端展现和交互的要求越来越高，以及浏览器近些年性能和标准长足的发展，服务器端由JSP产生简单的HTML和CSS/JS已经无法满足需要。</p>
+<p>所以采取前后端分离，服务器端不再负责任何展现和交付的工作，这些工作完全由前端独立完成。服务器端只通过接口给前端提供数据服务</p>
 <p>前端通过Ajax请求访问后端的数据接口，将model展示到View中</p>
 <p>这要求前后端商量好接口文档（url、参数、数据类型），之后就可以独立开发</p>
 <p>前端使用假数据测试</p>
@@ -660,7 +661,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/Blog/tags/index.html">
-                  <span class="site-state-item-count">52</span>
+                  <span class="site-state-item-count">53</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>

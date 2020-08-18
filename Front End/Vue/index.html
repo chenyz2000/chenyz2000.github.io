@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Vue," />
+  <meta name="keywords" content="Vue,axios," />
 
 
 
@@ -79,17 +79,18 @@
 
 
 
-<meta name="description" content="VueJavaScript框架，适用于数据操作、表单填写 页面由数据生成，通过对数据的操作就完成对页面视图的渲染 通过Vue对象将数据和Dom对象绑定，而不是直接操作Dom对象 和类库jQuery对比，框架功能更强大，且需要遵守一套规则 响应式数据驱动">
+<meta name="description" content="Vue前端框架，擅长于数据操作、表单填写、页面内容根据数据进行渲染、页面元素部分刷新 页面由数据生成，只要数据就可以进行页面视图的渲染 前端发展过程：  原生JS jQuery等类库。解决了浏览器大部分兼容性问题 前端模板引擎。调用模板引擎的方法生成DOM元素渲染页面，而不是直接操作DOM，解决了频繁操作DOM的问题 Vue等前端框架。只渲染变更内容，减少不必要的操作，提高渲染效率，解决渲染整个页">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Vue">
 <meta property="og:url" content="https://chenyz2000.github.io/Blog/Front%20End/Vue/index.html">
 <meta property="og:site_name" content="CYZ&#39;s Blog">
-<meta property="og:description" content="VueJavaScript框架，适用于数据操作、表单填写 页面由数据生成，通过对数据的操作就完成对页面视图的渲染 通过Vue对象将数据和Dom对象绑定，而不是直接操作Dom对象 和类库jQuery对比，框架功能更强大，且需要遵守一套规则 响应式数据驱动">
+<meta property="og:description" content="Vue前端框架，擅长于数据操作、表单填写、页面内容根据数据进行渲染、页面元素部分刷新 页面由数据生成，只要数据就可以进行页面视图的渲染 前端发展过程：  原生JS jQuery等类库。解决了浏览器大部分兼容性问题 前端模板引擎。调用模板引擎的方法生成DOM元素渲染页面，而不是直接操作DOM，解决了频繁操作DOM的问题 Vue等前端框架。只渲染变更内容，减少不必要的操作，提高渲染效率，解决渲染整个页">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2020-07-23T03:19:00.000Z">
-<meta property="article:modified_time" content="2020-07-30T02:40:00.000Z">
+<meta property="article:modified_time" content="2020-08-18T01:40:00.000Z">
 <meta property="article:author" content="Chen Yanzhi">
 <meta property="article:tag" content="Vue">
+<meta property="article:tag" content="axios">
 <meta name="twitter:card" content="summary">
 
 
@@ -308,8 +309,8 @@
               
                 <span class="post-meta-item-text">Post modified&#58;</span>
               
-              <time title="Post modified" itemprop="dateModified" datetime="2020-07-30T10:40:00+08:00">
-                2020-07-30
+              <time title="Post modified" itemprop="dateModified" datetime="2020-08-18T09:40:00+08:00">
+                2020-08-18
               </time>
             
           </span>
@@ -364,30 +365,115 @@
       
 
       
-        <h2 id="Vue"><a href="#Vue" class="headerlink" title="Vue"></a>Vue</h2><p>JavaScript框架，适用于数据操作、表单填写</p>
-<p>页面由数据生成，通过对数据的操作就完成对页面视图的渲染</p>
-<p>通过Vue对象将数据和Dom对象绑定，而不是直接操作Dom对象</p>
-<p>和类库jQuery对比，框架功能更强大，且需要遵守一套规则</p>
-<p>响应式数据驱动</p>
+        <h2 id="Vue"><a href="#Vue" class="headerlink" title="Vue"></a>Vue</h2><p>前端框架，擅长于数据操作、表单填写、页面内容根据数据进行渲染、页面元素部分刷新</p>
+<p>页面由数据生成，只要数据就可以进行页面视图的渲染</p>
+<p>前端发展过程：</p>
+<ol>
+<li>原生JS</li>
+<li>jQuery等类库。解决了浏览器大部分兼容性问题</li>
+<li>前端模板引擎。调用模板引擎的方法生成DOM元素渲染页面，而不是直接操作DOM，解决了频繁操作DOM的问题</li>
+<li>Vue等前端框架。只渲染变更内容，减少不必要的操作，提高渲染效率，解决渲染整个页面的问题</li>
+</ol>
+<p>框架是一套完整的技术解决方案，项目选择框架后难以更改；类库提供的是单一的小功能，对项目的侵入性较小</p>
 <a id="more"></a>
 
+
+
+<p>Vue人气比较高，React使用的人比较多</p>
+<p>React除了开发网站还可以开发手机APP，Vue在Weex的帮助下也可以</p>
 <p>开发环境版本<code>&lt;script src=&quot;https://cdn.jsdelivr.net/npm/vue/dist/vue.js&quot;&gt;&lt;/script&gt;</code></p>
 <p>生产环境mini版本<code>&lt;script src=&quot;https://cdn.jsdelivr.net/npm/vue&quot;&gt;&lt;/script&gt;</code></p>
-<h2 id="基础"><a href="#基础" class="headerlink" title="基础"></a>基础</h2><h4 id="el挂载点"><a href="#el挂载点" class="headerlink" title="el挂载点"></a>el挂载点</h4><p>el的作用是设置Vue实例挂载</p>
-<p>Vue实例的作用域为el命中的元素内部</p>
-<p>可以根据id选择器、class选择器、标签选择器进行el的挂载</p>
-<p>Vue不可以挂载到<html>和<body>上</p>
-<h4 id="data数据对象"><a href="#data数据对象" class="headerlink" title="data数据对象"></a>data数据对象</h4><p>Vue用到的数据定义在data中</p>
-<p>普通数据的引用：</p>
-<p>数组内数据的引用：</p>
-<p>集合内数据的引用：</p>
-<h4 id="methods方法"><a href="#methods方法" class="headerlink" title="methods方法"></a>methods方法</h4><p>方法中通过this可以获取data中的数据</p>
-<h2 id="指令"><a href="#指令" class="headerlink" title="指令"></a>指令</h2><p>Vue指令作为标签的属性</p>
-<h4 id="内容绑定"><a href="#内容绑定" class="headerlink" title="内容绑定"></a>内容绑定</h4><p>v-text，设置标签的文本，作为标签的属性，属性值写在Vue实例的data中。类似直接把{ {  } }写在标签的文本中，但v-text不保留标签中文本的内容</p>
+<h2 id="Vue实例"><a href="#Vue实例" class="headerlink" title="Vue实例"></a>Vue实例</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">    new Vue()&#123;</span><br><span class="line">        el:&quot;#abc&quot;,</span><br><span class="line">        data:&#123;</span><br><span class="line">            msg:&quot;hello&quot;</span><br><span class="line">        &#125;,</span><br><span class="line">        methods:&#123;</span><br><span class="line">            Function:function()&#123;&#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&lt;&#x2F;script&gt;</span><br></pre></td></tr></table></figure>
+
+<p>在Vue实例中有多个私有属性，分别为</p>
+<h4 id="el-挂载点"><a href="#el-挂载点" class="headerlink" title="el 挂载点"></a>el 挂载点</h4><p>设置Vue实例挂载点，使实例的作用域为挂载的元素内</p>
+<p>可以根据id、class、标签选择器进行挂载，但不可以挂载到<html>和<body>上</p>
+<h4 id="data-数据对象"><a href="#data-数据对象" class="headerlink" title="data 数据对象"></a>data 数据对象</h4><p>Vue实例的数据定义在data中</p>
+<p>当引用这些数据时，普通数据用，数组内数据用，集合内数据用</p>
+<h4 id="methods-方法"><a href="#methods-方法" class="headerlink" title="methods 方法"></a>methods 方法</h4><p>方法中通过this代表Vue实例，可以获取data中的数据</p>
+<h4 id="components-组件"><a href="#components-组件" class="headerlink" title="components 组件"></a>components 组件</h4><p>见文章后面<em>创建Vue实例的私有组件</em></p>
+<ul>
+<li><input disabled="" type="checkbox"> Vue实例的其他<u>私有</u>属性还有过滤器filters，指令directives</li>
+<li><input disabled="" type="checkbox"> 还有生命周期钩子函数beforeCreate(){}、created(){}、beforeMount(){}、mounted(){}、beforeUpdate(){}、updated(){}、beforeDestroy(){}、destroyed(){}</li>
+</ul>
+<h2 id="Vue指令"><a href="#Vue指令" class="headerlink" title="Vue指令"></a>Vue指令</h2><p>Vue指令，作为<strong>标签的属性</strong>，属性值写在Vue实例中</p>
+<h4 id="v-text与v-html"><a href="#v-text与v-html" class="headerlink" title="v-text与v-html"></a>v-text与v-html</h4><p>v-text，设置标签的文本。属性值写在Vue实例的data中。类似直接把{ {  } }写在标签的文本中，但v-text会覆盖标签文本的内容</p>
 <p>v-html，设置标签的innerHTML，内容中有HTML结构会被解析为标签，其他与v-text一样</p>
-<h4 id="事件绑定"><a href="#事件绑定" class="headerlink" title="事件绑定"></a>事件绑定</h4><p>v-on:事件名=”Func()”或@事件名=”Func()”，为元素绑定事件，函数Func()写在Vue的methods里，写法Func:function(){}</p>
-<h4 id="显示隐藏"><a href="#显示隐藏" class="headerlink" title="显示隐藏"></a>显示隐藏</h4><p>常用与广告、遮罩层等</p>
-<p>v-show=”isShow”且isShow写在data中，或v-show=”age&gt;=18”</p>
+<h4 id="v-on"><a href="#v-on" class="headerlink" title="v-on"></a>v-on</h4><p><code>v-on:事件名=&quot;Func()&quot;</code>，v-on:可简写为<code>@</code>，为元素绑定事件，函数Func()写在Vue的methods里，写法<code>Func:function(){  }</code></p>
+<h4 id="v-show"><a href="#v-show" class="headerlink" title="v-show"></a>v-show</h4><p><code>v-show=&quot;条件表达式&quot;</code></p>
+<p>满足条件时显示元素，不满足时隐藏元素</p>
+<p>无论显示还是隐藏，<strong>元素都存在</strong>，修改的只是css的display属性</p>
+<h4 id="v-if与v-else-if与v-else"><a href="#v-if与v-else-if与v-else" class="headerlink" title="v-if与v-else-if与v-else"></a>v-if与v-else-if与v-else</h4><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">v-if</span>=<span class="string">"type==='A'"</span>&gt;</span>A<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">v-else-if</span>=<span class="string">"type==='B'"</span>&gt;</span>B<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">v-else-if</span>=<span class="string">"type==='C'"</span>&gt;</span>C<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">v-else</span>&gt;</span>Not A,B,C<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>用来实现条件渲染，表达式为值为真则渲染元素，值为假则<strong>销毁</strong>这个元素</p>
+<h4 id="v-for"><a href="#v-for" class="headerlink" title="v-for"></a>v-for</h4><p>遍历数组进行渲染</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">v-for</span>=<span class="string">"item in items"</span>&gt;</span>&#123;&#123;parent&#125;&#125;--&#123;&#123;item.text&#125;&#125;<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="actionscript">    <span class="keyword">var</span> example = <span class="keyword">new</span> Vue(&#123;</span></span><br><span class="line"><span class="actionscript">      el:<span class="string">'#app'</span>,</span></span><br><span class="line">      data:&#123;</span><br><span class="line"><span class="actionscript">        parent:<span class="string">'父作用域'</span></span></span><br><span class="line">        items:[</span><br><span class="line"><span class="actionscript">          &#123;text:<span class="string">'文本1'</span>&#125;,</span></span><br><span class="line"><span class="actionscript">          &#123;text:<span class="string">'文本2'</span>&#125;</span></span><br><span class="line">        ]</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;)</span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>渲染结果为</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span>&gt;</span>父作用域--abc<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span>&gt;</span>父作用域--def<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>注意，在v-for中，拥有对父作用域属性的完全访问权限。（虽然item是items中的，但是还可以使用items外的parent）</p>
+<h4 id="v-model"><a href="#v-model" class="headerlink" title="v-model"></a>v-model</h4><p><strong>只用于表单</strong>，创建双向数据绑定</p>
+<p><code>&lt;input v-model=&quot;msg&quot;&gt;</code>，输入文本框的值会改变Vue实例data中msg的值</p>
+<h4 id="v-bind"><a href="#v-bind" class="headerlink" title="v-bind"></a>v-bind</h4><p>用于<strong>绑定属性</strong>，可以是src、style、herf、class等标签属性</p>
+<p>如<code>&lt;div v-bind:style=&quot;{fontSize: size +&#39;px&#39;}&quot;&gt;&lt;/div&gt;</code></p>
+<p>其中属性的值可以是一个字符串，（引号内部）也可以是JS表达式</p>
+<ul>
+<li><p>可以是字符串加法，可以是函数</p>
+</li>
+<li><p>可以是对象，渲染结果为该对象的toString（对象属性值改变）</p>
+</li>
+<li><p>可以是数组，渲染结果是”[a,b,c]”</p>
+</li>
+</ul>
+<p>对布尔值的属性也有效，若值为false的话该属性会被移除</p>
+<h2 id="axios"><a href="#axios" class="headerlink" title="axios"></a>axios</h2><p>网络请求库，类似$.ajax一样都是Ajax技术的具体实现</p>
+<p>axios写在js中，结合Vue一起使用</p>
+<p>CDN导包：<code>&lt;script src=&quot;https://unpkg.com/axios/dist/axios.min.js&quot;&gt;&lt;/script&gt;</code></p>
+<h4 id="axios-get-和post"><a href="#axios-get-和post" class="headerlink" title="axios.get()和post"></a>axios.get()和post</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">axios.get(url?查询字符串).then(<span class="function"><span class="keyword">function</span>(<span class="params">response</span>)</span>&#123;&#125;).catch(<span class="function"><span class="keyword">function</span>(<span class="params">err</span>)</span>&#123;&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>then方法内部传递的回调函数会在<strong>请求响应完成</strong>的时候触发</p>
+<p>这两个回调函数的形参可以自动获取信息，response是服务器的<strong>响应内容</strong>，err是<strong>错误信息</strong></p>
+<blockquote>
+<p>其实是还有一种写法是<code>axios.get().then(function(response){}, function(err){})</code>，即then方法的第二个参数也是一个回调函数，它在响应失败时触发。这种写法和then-catch的区别是，catch不仅可以捕捉响应失败、也可以捕捉响应成功的操作中的逻辑错误，所以建议使用then-catch。</p>
+</blockquote>
+<ul>
+<li><input disabled="" type="checkbox"> then(response=&gt;{})</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">axios.post(url, 查询json对象).then(<span class="function"><span class="keyword">function</span>(<span class="params">response</span>)</span>&#123;&#125;).catch(<span class="function"><span class="keyword">function</span>(<span class="params">err</span>)</span>&#123;&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>其中查询参数对象可写作<code>{k1:v1, k2:v2}</code></p>
+<blockquote>
+<p>其他还有axios.request，head，delete，put等</p>
+</blockquote>
+<h4 id="与Vue配合"><a href="#与Vue配合" class="headerlink" title="与Vue配合"></a>与Vue配合</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">	new Vue()&#123;</span><br><span class="line">        el:&quot;#abc&quot;,</span><br><span class="line">        data:&#123;</span><br><span class="line">            msg:&quot;hello&quot;</span><br><span class="line">        &#125;,</span><br><span class="line">        methods:&#123;</span><br><span class="line">            getMsg:function()&#123;</span><br><span class="line">                var _this &#x3D; this;</span><br><span class="line">                axios.get(&quot;url&quot;).then(function(response)&#123;</span><br><span class="line">                    _this.msg &#x3D; response.data;</span><br><span class="line">                &#125;,function(err)&#123;&#125;)</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&lt;&#x2F;script&gt;</span><br></pre></td></tr></table></figure>
+
+<p>axios写在Vue实例的methods中，通过调用方法进行对data的改变</p>
+<p>注意，若在then方法参数的函数内使用this，它指代的不是外面的Vue实例</p>
+<h2 id="Vue组件"><a href="#Vue组件" class="headerlink" title="Vue组件"></a>Vue组件</h2><p>如果将所有内容都写在Vue的实例中，则它会很大</p>
+<p>所以出现了组件，用来将Vue实例划分为不同的模块</p>
+<p>以后需要什么功能只要调用对应的组件</p>
+<blockquote>
+<p>组件化和模块化的区别：模块化是从代码逻辑的角度划分（如Node），组件化是从UI界面的角度划分</p>
+</blockquote>
+<h4 id="创建全局组件"><a href="#创建全局组件" class="headerlink" title="创建全局组件"></a>创建全局组件</h4><h6 id="方式一"><a href="#方式一" class="headerlink" title="方式一"></a>方式一</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">	var comp &#x3D; Vue.extend(&#123;		&#x2F;&#x2F;创建全局的Vue组件,返回组件对象</span><br><span class="line">        template:&quot;&lt;div&gt;123&lt;&#x2F;div&gt;&quot;		&#x2F;&#x2F;通过template属性指定组件要展示的HTML结构</span><br><span class="line">    &#125;)</span><br><span class="line">    Vue.component(&quot;组件名&quot;, comp)		&#x2F;&#x2F;注册组件</span><br><span class="line">&lt;&#x2F;script&gt;</span><br></pre></td></tr></table></figure>
+
+<p>注意，template中只能有一个元素（可以内部嵌套其他元素，但是不能同级并列）    </p>
+<h6 id="方式二"><a href="#方式二" class="headerlink" title="方式二"></a>方式二</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">	Vue.component(&quot;组件名&quot;, &#123;</span><br><span class="line">        template:&quot;&lt;div&gt;123&lt;&#x2F;div&gt;&quot;</span><br><span class="line">    &#125;)</span><br><span class="line">&lt;&#x2F;script&gt;</span><br></pre></td></tr></table></figure>
+
+<h4 id="创建Vue实例的私有组件"><a href="#创建Vue实例的私有组件" class="headerlink" title="创建Vue实例的私有组件"></a>创建Vue实例的私有组件</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">    new Vue()&#123;</span><br><span class="line">        el:&quot;&quot;,</span><br><span class="line">        components:&#123;</span><br><span class="line">            comp:&#123;		&#x2F;&#x2F;组件名</span><br><span class="line">                template:&quot;&lt;div&gt;123&lt;&#x2F;div&gt;&quot;		&#x2F;&#x2F;组件html</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&lt;&#x2F;script&gt;</span><br></pre></td></tr></table></figure>
+
+<p>只能在挂载了此Vue实例的元素的内部使用</p>
+<h4 id="抽出template"><a href="#抽出template" class="headerlink" title="抽出template"></a>抽出template</h4><p>可以将<code>template:&quot;&lt;div&gt;123&lt;/div&gt;&quot;</code>值的HTML抽出到template标签中，并指定id</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">template</span> <span class="attr">id</span>=<span class="string">"temp"</span>&gt;</span>		<span class="comment">&lt;!--每个template中也是只能有一个元素--&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">div</span>&gt;</span>123<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>将template属性改为<code>template:&quot;#temp&quot;</code></p>
+<h4 id="使用组件"><a href="#使用组件" class="headerlink" title="使用组件"></a>使用组件</h4><p>使用组件时，将组件名作为HTML标签名使用（若组件名为驼峰命名则变为横线命名，非驼峰则不变）</p>
+<p>如组件名为<code>myComp</code>，则在HTML中使用<code>&lt;my-comp&gt;&lt;/my-comp&gt;</code></p>
+<h4 id="组件的data属性"><a href="#组件的data属性" class="headerlink" title="组件的data属性"></a>组件的data属性</h4><p>定义方式与实例的data不同，必须是一个<strong>返回值为对象</strong>的<strong>方法</strong>，例如</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> comp = Vue.extend(&#123;</span><br><span class="line">	template:<span class="string">"&lt;div&gt;123&#123;&#123;msg&#125;&#125;321&lt;/div&gt;"</span>,</span><br><span class="line">	data: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">		<span class="keyword">return</span> &#123;<span class="attr">msg</span>:<span class="string">"abc"</span>&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>使用方式和实例的data相同</p>
 <h2 id="Vue单文件组件"><a href="#Vue单文件组件" class="headerlink" title="Vue单文件组件"></a>Vue单文件组件</h2><p><a href="https://cn.vuejs.org/v2/guide/single-file-components.html" target="_blank" rel="noopener">参考</a><br>基于HTML、且JavaScript只被用来加强特定的视图的Vue项目中，在script标签里使用Vue.component来定义全局组件，紧接着用new Vue({ el: ‘#container ‘})在每个页面内指定一个容器元素</p>
 <p>可是，有的项目完全由JavaScript驱动、组件化时，会遇到一些问题，此时选择使用扩展名为.vue的单文件组件</p>
 
@@ -426,6 +512,8 @@
         <div class="post-tags">
           
             <a href="/Blog/tags/Vue/" rel="tag"># Vue</a>
+          
+            <a href="/Blog/tags/axios/" rel="tag"># axios</a>
           
         </div>
       
@@ -552,7 +640,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/Blog/tags/index.html">
-                  <span class="site-state-item-count">52</span>
+                  <span class="site-state-item-count">53</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>
@@ -601,7 +689,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Vue"><span class="nav-text">Vue</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#基础"><span class="nav-text">基础</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#el挂载点"><span class="nav-text">el挂载点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#data数据对象"><span class="nav-text">data数据对象</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#methods方法"><span class="nav-text">methods方法</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#指令"><span class="nav-text">指令</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#内容绑定"><span class="nav-text">内容绑定</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#事件绑定"><span class="nav-text">事件绑定</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#显示隐藏"><span class="nav-text">显示隐藏</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Vue单文件组件"><span class="nav-text">Vue单文件组件</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Vue"><span class="nav-text">Vue</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Vue实例"><span class="nav-text">Vue实例</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#el-挂载点"><span class="nav-text">el 挂载点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#data-数据对象"><span class="nav-text">data 数据对象</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#methods-方法"><span class="nav-text">methods 方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#components-组件"><span class="nav-text">components 组件</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Vue指令"><span class="nav-text">Vue指令</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#v-text与v-html"><span class="nav-text">v-text与v-html</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#v-on"><span class="nav-text">v-on</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#v-show"><span class="nav-text">v-show</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#v-if与v-else-if与v-else"><span class="nav-text">v-if与v-else-if与v-else</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#v-for"><span class="nav-text">v-for</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#v-model"><span class="nav-text">v-model</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#v-bind"><span class="nav-text">v-bind</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#axios"><span class="nav-text">axios</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#axios-get-和post"><span class="nav-text">axios.get()和post</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#与Vue配合"><span class="nav-text">与Vue配合</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Vue组件"><span class="nav-text">Vue组件</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#创建全局组件"><span class="nav-text">创建全局组件</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#方式一"><span class="nav-text">方式一</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#方式二"><span class="nav-text">方式二</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#创建Vue实例的私有组件"><span class="nav-text">创建Vue实例的私有组件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#抽出template"><span class="nav-text">抽出template</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#使用组件"><span class="nav-text">使用组件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#组件的data属性"><span class="nav-text">组件的data属性</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Vue单文件组件"><span class="nav-text">Vue单文件组件</span></a></li></ol></div>
             
 
           </div>

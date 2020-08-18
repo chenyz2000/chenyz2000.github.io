@@ -88,7 +88,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://chenyz2000.github.io/Blog/images/image-20200809195537434.png">
 <meta property="article:published_time" content="2020-08-05T03:30:00.000Z">
-<meta property="article:modified_time" content="2020-08-11T00:50:00.000Z">
+<meta property="article:modified_time" content="2020-08-13T07:29:00.000Z">
 <meta property="article:author" content="Chen Yanzhi">
 <meta property="article:tag" content="Spring Boot">
 <meta property="article:tag" content="MyBatis">
@@ -313,8 +313,8 @@
               
                 <span class="post-meta-item-text">Post modified&#58;</span>
               
-              <time title="Post modified" itemprop="dateModified" datetime="2020-08-11T08:50:00+08:00">
-                2020-08-11
+              <time title="Post modified" itemprop="dateModified" datetime="2020-08-13T15:29:00+08:00">
+                2020-08-13
               </time>
             
           </span>
@@ -470,6 +470,9 @@
 <h3 id="使用注解形式"><a href="#使用注解形式" class="headerlink" title="使用注解形式"></a>使用注解形式</h3><h4 id="MyBatis配置文件"><a href="#MyBatis配置文件" class="headerlink" title="MyBatis配置文件"></a>MyBatis配置文件</h4><p>Spring Boot中在application.properties配置MyBatis</p>
   <figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">mybatis.type-aliases-package</span>=<span class="string">com.neo.model</span></span><br><span class="line"></span><br><span class="line"><span class="meta">spring.datasource.url</span>=<span class="string">jdbc:mysql://localhost:3306/test?serverTimezone=UTC&amp;useUnicode=true&amp;characterEncoding=utf-8&amp;useSSL=true</span></span><br><span class="line"><span class="meta">spring.datasource.username</span>=<span class="string">root</span></span><br><span class="line"><span class="meta">spring.datasource.password</span>=<span class="string">root</span></span><br><span class="line"><span class="meta">spring.datasource.driver-class-name</span>=<span class="string">com.mysql.cj.jdbc.Driver</span></span><br></pre></td></tr></table></figure>
 
+<p>此外，也可以使用配置类进行配置</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="meta">@ComponentScan</span> <span class="comment">//开启spring的自动扫描bean和管理bean</span></span><br><span class="line"><span class="meta">@MapperScan</span>(<span class="string">"com.spring.study.dao"</span>)<span class="comment">//开启mybatis的自动扫描mapper接口和管理</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SpringConfig</span> </span>&#123; <span class="comment">//数据源</span></span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> PooledDataSource <span class="title">dataSource</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        PooledDataSource dataSource = <span class="keyword">new</span> PooledDataSource();</span><br><span class="line">        dataSource.setDriver(<span class="string">"com.mysql.jdbc.Driver"</span>);</span><br><span class="line">        dataSource.setUrl(<span class="string">"jdbc:mysql://localhost:3306/test?serverTimezone=UTC&amp;useUnicode=true&amp;characterEncoding=utf-8&amp;useSSL=true"</span>);</span><br><span class="line">        dataSource.setUsername(<span class="string">"root"</span>);</span><br><span class="line">        dataSource.setPassword(<span class="string">"root"</span>);</span><br><span class="line">        <span class="keyword">return</span> dataSource;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> SqlSessionFactoryBean <span class="title">sqlSessionFactory</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        SqlSessionFactoryBean sqlSessionFactory = <span class="keyword">new</span> SqlSessionFactoryBean();</span><br><span class="line">        sqlSessionFactory.setDataSource(dataSource());</span><br><span class="line">        FileSystemResource fileSystemResource = <span class="keyword">new</span> FileSystemResource(<span class="string">"C:\\mapping\\InstrumentMapper.xml"</span>);</span><br><span class="line">        sqlSessionFactory.setMapperLocations(<span class="keyword">new</span> Resource[]&#123;fileSystemResource&#125;);</span><br><span class="line">        <span class="keyword">return</span> sqlSessionFactory;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <h4 id="Mapper接口与映射"><a href="#Mapper接口与映射" class="headerlink" title="Mapper接口与映射"></a>Mapper接口与映射</h4><p>编写Mapper接口，用@Insert(“sql语句”)等四个注解、@Results注解对每个方法进行映射</p>
 <h4 id="注册Mapper接口"><a href="#注册Mapper接口" class="headerlink" title="注册Mapper接口"></a>注册Mapper接口</h4><p>在每个Mapper上加上@Mapper注解，或在启动类中使用@MapperScan注解扫描Mapper接口</p>
 <p>@Mapper注解，在每一个Mapper接口上添加此注解</p>
@@ -485,9 +488,7 @@
 <p>在application.propertis中配置mybatis.mapper-location和mybatis.config-location</p>
 <p>注册Mapper接口</p>
 <p>之后通过自动注入使用对象</p>
-<h2 id="实例化接口"><a href="#实例化接口" class="headerlink" title="实例化接口"></a>实例化接口</h2><ul>
-<li><input disabled="" type="checkbox"> MyBatis的Configuration类</li>
-</ul>
+<h2 id="实例化接口"><a href="#实例化接口" class="headerlink" title="实例化接口"></a>实例化接口</h2><p>使用配置类进行配置的话</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">DataSource dataSource = BlogDataSourceFactory.getBlogDataSource();</span><br><span class="line">TransactionFactory transactionFactory = <span class="keyword">new</span> JdbcTransactionFactory();</span><br><span class="line">Environment environment = <span class="keyword">new</span> Environment(<span class="string">"development"</span>, transactionFactory, dataSource);</span><br><span class="line">Configuration configuration = <span class="keyword">new</span> Configuration(environment);</span><br><span class="line">configuration.addMapper(BlogMapper<span class="class">.<span class="keyword">class</span>)</span>;<span class="comment">// 添加Mapper接口</span></span><br><span class="line"></span><br><span class="line">SqlSessionFactory sqlSessionFactory = <span class="keyword">new</span> SqlSessionFactoryBuilder().build(configuration);</span><br><span class="line">SqlSession session = sqlSessionFactory.openSession();</span><br></pre></td></tr></table></figure>
 
 
@@ -703,7 +704,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/Blog/tags/index.html">
-                  <span class="site-state-item-count">52</span>
+                  <span class="site-state-item-count">53</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>
