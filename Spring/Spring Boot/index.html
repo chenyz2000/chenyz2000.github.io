@@ -481,7 +481,10 @@
 <p>@PropertySource()读取指定的properties、yml配置文件，可以指定多个，和ConfigurationProperties啥的一起用</p>
 <p>@ImportResource(locations={})读取xml配置文件（因为springboot默认不读取xml配置）</p>
 <p>推荐方式：全注解。@Configuration标注配置类，相当于配置文件；@bean标注方法，将方法的返回值添加到IoC容器中，方法名即为默认的id</p>
-<h2 id="整合Mysql"><a href="#整合Mysql" class="headerlink" title="整合Mysql"></a>整合Mysql</h2><p>添加依赖</p>
+<h2 id="整合Mysql"><a href="#整合Mysql" class="headerlink" title="整合Mysql"></a>整合Mysql</h2><blockquote>
+<p>在整合其他技术时，需要先安装对应的环境，整合只是使Spring Boot能调用它罢了</p>
+</blockquote>
+<p>添加依赖</p>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>mysql<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>mysql-connector-java<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-jdbc<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
 <p>在main/resources下添加application.properties，为Spring Boot的配置文件</p>
