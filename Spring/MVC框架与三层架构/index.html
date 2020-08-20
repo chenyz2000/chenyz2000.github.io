@@ -79,21 +79,24 @@
 
 
 
-<meta name="description" content="参考 MVC与三层架构没有关系，它们之间并不对应 MVC架构模式对MVC并没有明确的定义，不同的实现有不同的细节，人们对它的理解也不全一样  Model：数据模型  View：视图，代表用户操作界面，展示数据  Controller：应用程序逻辑 View中用户进行操作，通知给Controller要让Model进行数据更新（可能是发起请求，可能是Controller直接修改Model） 控制器作用">
+<meta name="description" content="MVC与三层架构没有关系，它们之间并不对应 MVX架构模式参考 MVC&#x3D;&gt;MVP&#x3D;&gt;MVVM MVCMVC并定义最不明确，也没有一个标准的架构图，每个人对它的理解都不太一样，不同的技术实现也有不同的细节差异 目前可以总结的共同点有： 将整个应用分成Model、View和Controller三个部分，它们都有一定的职责  Model：数据模型，管理应用的数据（和行为） View：视图，展">
 <meta property="og:type" content="article">
 <meta property="og:title" content="MVC框架与三层架构">
 <meta property="og:url" content="https://chenyz2000.github.io/Blog/Spring/MVC%E6%A1%86%E6%9E%B6%E4%B8%8E%E4%B8%89%E5%B1%82%E6%9E%B6%E6%9E%84/index.html">
 <meta property="og:site_name" content="CYZ&#39;s Blog">
-<meta property="og:description" content="参考 MVC与三层架构没有关系，它们之间并不对应 MVC架构模式对MVC并没有明确的定义，不同的实现有不同的细节，人们对它的理解也不全一样  Model：数据模型  View：视图，代表用户操作界面，展示数据  Controller：应用程序逻辑 View中用户进行操作，通知给Controller要让Model进行数据更新（可能是发起请求，可能是Controller直接修改Model） 控制器作用">
+<meta property="og:description" content="MVC与三层架构没有关系，它们之间并不对应 MVX架构模式参考 MVC&#x3D;&gt;MVP&#x3D;&gt;MVVM MVCMVC并定义最不明确，也没有一个标准的架构图，每个人对它的理解都不太一样，不同的技术实现也有不同的细节差异 目前可以总结的共同点有： 将整个应用分成Model、View和Controller三个部分，它们都有一定的职责  Model：数据模型，管理应用的数据（和行为） View：视图，展">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://chenyz2000.github.io/Blog/images/%E6%90%9C%E7%8B%97%E6%88%AA%E5%9B%BE20200820105909.png">
+<meta property="og:image" content="https://chenyz2000.github.io/Blog/images/%E6%90%9C%E7%8B%97%E6%88%AA%E5%9B%BE20200820103036.png">
 <meta property="og:image" content="https://chenyz2000.github.io/Blog/images/v2-d81b101ed82efc1bbfb918f03ff3f452_r.jpg">
+<meta property="og:image" content="https://chenyz2000.github.io/Blog/images/%E6%90%9C%E7%8B%97%E6%88%AA%E5%9B%BE20200820094715.png">
 <meta property="og:image" content="https://chenyz2000.github.io/Blog/images/20200810213836.png">
 <meta property="article:published_time" content="2020-08-05T03:33:00.000Z">
-<meta property="article:modified_time" content="2020-08-19T01:31:00.000Z">
+<meta property="article:modified_time" content="2020-08-20T02:08:00.000Z">
 <meta property="article:author" content="Chen Yanzhi">
 <meta property="article:tag" content="MVC">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://chenyz2000.github.io/Blog/images/v2-d81b101ed82efc1bbfb918f03ff3f452_r.jpg">
+<meta name="twitter:image" content="https://chenyz2000.github.io/Blog/images/%E6%90%9C%E7%8B%97%E6%88%AA%E5%9B%BE20200820105909.png">
 
 
 
@@ -311,8 +314,8 @@
               
                 <span class="post-meta-item-text">Post modified&#58;</span>
               
-              <time title="Post modified" itemprop="dateModified" datetime="2020-08-19T09:31:00+08:00">
-                2020-08-19
+              <time title="Post modified" itemprop="dateModified" datetime="2020-08-20T10:08:00+08:00">
+                2020-08-20
               </time>
             
           </span>
@@ -367,27 +370,53 @@
       
 
       
-        <p><a href="https://www.cnblogs.com/progor/p/9456983.html" target="_blank" rel="noopener">参考</a></p>
-<p>MVC与三层架构没有关系，它们之间并不对应</p>
-<h2 id="MVC架构模式"><a href="#MVC架构模式" class="headerlink" title="MVC架构模式"></a>MVC架构模式</h2><p>对MVC并没有明确的定义，不同的实现有不同的细节，人们对它的理解也不全一样</p>
+        <p>MVC与三层架构没有关系，它们之间并不对应</p>
+<h1 id="MVX架构模式"><a href="#MVX架构模式" class="headerlink" title="MVX架构模式"></a>MVX架构模式</h1><p><a href="https://draveness.me/mvx/" target="_blank" rel="noopener">参考</a></p>
+<p>MVC=&gt;MVP=&gt;MVVM</p>
+<h2 id="MVC"><a href="#MVC" class="headerlink" title="MVC"></a>MVC</h2><p>MVC并<strong>定义最不明确</strong>，也没有一个标准的架构图，每个人对它的理解都不太一样，不同的技术实现也有不同的细节差异</p>
+<p>目前可以总结的共同点有：</p>
+<p>将整个应用分成Model、View和Controller三个部分，它们都有一定的职责</p>
 <ul>
-<li><p>Model：<strong>数据模型</strong></p>
-</li>
-<li><p>View：视图，代表用户操作界面，<strong>展示数据</strong></p>
-</li>
-<li><p>Controller：<strong>应用程序逻辑</strong></p>
+<li>Model：<strong>数据模型</strong>，管理应用的数据（和行为）</li>
+<li>View：视图，<strong>展示数据</strong>，代表用户界面</li>
+<li>Controller：作用于<strong>模型和视图</strong>，接受<strong>用户的输入</strong>并调用模型和视图去完成用户的需求（<strong>应用程序逻辑</strong>）</li>
+</ul>
+<a id="more"></a>
+
+<p>三者之间的关系却有多种说法，一种参考架构是维基百科指出的架构，如图</p>
+<img src="../../images/搜狗截图20200820105909.png">
+
+<p>四个箭头分别表示：视图被用户看到，用户使用控制器，控制器操作模型，模型更新视图</p>
+<blockquote>
+<ul>
+<li><p>Controller：</p>
 <p>View中用户进行操作，通知给Controller要让Model进行数据更新（可能是发起请求，可能是Controller直接修改Model）</p>
-<p>控制器作用于模型和视图上。它控制数据流向模型对象，并在数据变化时更新视图。它使视图与模型分离开；接受用户的输入并调用模型和视图去完成用户的需求（应用程序逻辑）</p>
+<p>它控制数据流向模型对象，并在数据变化时更新视图。它使视图与模型分离开</p>
 </li>
 </ul>
 <p>并没有定死的规矩，比如业务逻辑可以放在Model中和数据封装成对象（较为合适一点），但也可以合并到Controller中，也可以从Model中抽出来分成ORM层和Service层</p>
-<a id="more"></a>
+</blockquote>
+<h2 id="MVP"><a href="#MVP" class="headerlink" title="MVP"></a>MVP</h2><p>定义略微清楚一些，但还是有一些争议</p>
+<p>可以确定的是，MVP主要使用Presenter对视图和模型进行了<strong>解耦</strong></p>
+<blockquote>
+<p>也有人说对比MVC的改进是将数据返回给Controller，让Controller来控制View的渲染</p>
+</blockquote>
+<p>最终被广泛接受的定义如图</p>
+<img src="../../images/搜狗截图20200820103036.png">
 
+<blockquote>
+<p>很多框架都自称遵循 MVC 架构模式，但是它们实际上却实现了 MVP 模式，一部分人认为MVC也是Controller对视图和模型进行了解耦的，如图</p>
 <img src="../../images/v2-d81b101ed82efc1bbfb918f03ff3f452_r.jpg">
+</blockquote>
+<h2 id="MVVM"><a href="#MVVM" class="headerlink" title="MVVM"></a>MVVM</h2><p>定义比较清晰，架构基本上与MVP一致</p>
+<p>MVVM是MVP的衍生，改进是实现了View和Model的<strong>状态同步/数据绑定</strong>（Vue和angular是双向绑定，React是单向数据流）</p>
+<h2 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h2><h4 id="早期MVC"><a href="#早期MVC" class="headerlink" title="早期MVC"></a>早期MVC</h4><p>设计的目的是在人的mental model与计算机computer model之间建立一个桥梁，MVC 能够解决这一问题并为用户提<strong>供直接看到信息和操作信息的功能</strong>，如图</p>
+<img src="../../images/搜狗截图20200820094715.png">
 
-<p>使视图与数据解耦</p>
-<p>MVP是MVC的衍生，改进是将数据返回给Controller，让Controller来控制View的渲染</p>
-<p>MVVM是MVP的衍生，改进是实现了View和Model的数据绑定（Vue和angular是双向绑定，React是单向数据流）</p>
+<h4 id="ASP-NET-MVC"><a href="#ASP-NET-MVC" class="headerlink" title="ASP.NET MVC"></a>ASP.NET MVC</h4><ol>
+<li>控制器负责管理视图和模型；</li>
+<li>视图负责展示模型中的内容；</li>
+</ol>
 <h4 id="node（后端）里的MVC"><a href="#node（后端）里的MVC" class="headerlink" title="node（后端）里的MVC"></a>node（后端）里的MVC</h4><p>M，model，处理数据的CRUD</p>
 <p>V，视图层view，前端页面</p>
 <p>C，业务逻辑层，路由分发+业务代码</p>
@@ -428,9 +457,6 @@
 <p>Angular框架是MVC架构模式的实现</p>
 <h5 id="一些暴论"><a href="#一些暴论" class="headerlink" title="一些暴论"></a>一些暴论</h5><p>Vue只关注视图层（是前端概念，MVC是后端概念）</p>
 <p>前端工作主要负责MVC中的View层</p>
-<p><a href="https://zhuanlan.zhihu.com/p/64257809" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/64257809</a></p>
-<p><a href="https://www.cnblogs.com/whitewolf/p/4581254.html" target="_blank" rel="noopener">https://www.cnblogs.com/whitewolf/p/4581254.html</a></p>
-<p><a href="https://blog.csdn.net/yw00yw/article/details/88737316" target="_blank" rel="noopener">https://blog.csdn.net/yw00yw/article/details/88737316</a></p>
 <p>传统的Model层在SpringMVC中被拆分成了业务层和数据访问层</p>
 <p>Web层（SpringMVC），业务层（Java），数据访问层（Mybatis 或者JPA 等）</p>
 <p>持久化指的是把数据长期保存在文件、磁盘里。</p>
@@ -594,7 +620,7 @@
             
               <div class="site-state-item site-state-posts">
                 <a href="/Blog/archives">
-                  <span class="site-state-item-count">36</span>
+                  <span class="site-state-item-count">38</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -666,7 +692,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#MVC架构模式"><span class="nav-text">MVC架构模式</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#node（后端）里的MVC"><span class="nav-text">node（后端）里的MVC</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#前端中的MVVM"><span class="nav-text">前端中的MVVM</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#二者不同"><span class="nav-text">二者不同</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Vue里的MVVM"><span class="nav-text">Vue里的MVVM</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#SpringMVC中的MVC"><span class="nav-text">SpringMVC中的MVC</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三层架构"><span class="nav-text">三层架构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#架构模式和框架"><span class="nav-text">架构模式和框架</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#一些暴论"><span class="nav-text">一些暴论</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Controller、Service、DAO等"><span class="nav-text">Controller、Service、DAO等</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#DAL、DAO与ORM"><span class="nav-text">DAL、DAO与ORM</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#MVX架构模式"><span class="nav-text">MVX架构模式</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#MVC"><span class="nav-text">MVC</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#MVP"><span class="nav-text">MVP</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#MVVM"><span class="nav-text">MVVM</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#实例"><span class="nav-text">实例</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#早期MVC"><span class="nav-text">早期MVC</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#ASP-NET-MVC"><span class="nav-text">ASP.NET MVC</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#node（后端）里的MVC"><span class="nav-text">node（后端）里的MVC</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#前端中的MVVM"><span class="nav-text">前端中的MVVM</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#二者不同"><span class="nav-text">二者不同</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Vue里的MVVM"><span class="nav-text">Vue里的MVVM</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#SpringMVC中的MVC"><span class="nav-text">SpringMVC中的MVC</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三层架构"><span class="nav-text">三层架构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#架构模式和框架"><span class="nav-text">架构模式和框架</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#一些暴论"><span class="nav-text">一些暴论</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Controller、Service、DAO等"><span class="nav-text">Controller、Service、DAO等</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#DAL、DAO与ORM"><span class="nav-text">DAL、DAO与ORM</span></a></li></ol></li></ol></li></ol></li></ol></div>
             
 
           </div>

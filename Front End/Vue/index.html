@@ -87,7 +87,7 @@
 <meta property="og:description" content="Vue.js前端框架，擅长于数据操作、表单填写、页面内容根据数据进行渲染、页面元素部分刷新 页面由数据生成，只要数据就可以进行页面视图的渲染，不需要再操作DOM元素 前端发展过程：  原生JS jQuery等类库。解决了浏览器大部分兼容性问题 前端模板引擎。调用模板引擎的方法生成DOM元素渲染页面，而不是直接操作DOM，解决了频繁操作DOM的问题 Vue等前端框架。只渲染变更内容，减少不必要的操作">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2020-07-23T03:19:00.000Z">
-<meta property="article:modified_time" content="2020-08-19T09:23:00.000Z">
+<meta property="article:modified_time" content="2020-08-20T07:30:00.000Z">
 <meta property="article:author" content="Chen Yanzhi">
 <meta property="article:tag" content="Vue">
 <meta property="article:tag" content="axios">
@@ -309,8 +309,8 @@
               
                 <span class="post-meta-item-text">Post modified&#58;</span>
               
-              <time title="Post modified" itemprop="dateModified" datetime="2020-08-19T17:23:00+08:00">
-                2020-08-19
+              <time title="Post modified" itemprop="dateModified" datetime="2020-08-20T15:30:00+08:00">
+                2020-08-20
               </time>
             
           </span>
@@ -389,12 +389,11 @@
 <h4 id="el-挂载点"><a href="#el-挂载点" class="headerlink" title="el 挂载点"></a>el 挂载点</h4><p>设置Vue实例挂载点，使实例的作用域为挂载的元素内</p>
 <p>可以根据id、class、标签选择器进行挂载，但不可以挂载到<html>和<body>上</p>
 <h4 id="data-数据对象"><a href="#data-数据对象" class="headerlink" title="data 数据对象"></a>data 数据对象</h4><p>Vue实例的数据定义在data中</p>
-<p>当引用这些数据时，普通数据用，数组内数据用，集合内数据用</p>
+<p>当引用这些数据时，普通数据用<code></code>，数组内数据用<code></code>，集合内数据用<code></code></p>
 <h4 id="methods-方法"><a href="#methods-方法" class="headerlink" title="methods 方法"></a>methods 方法</h4><p>有两种定义方法，类似声明式定义<code>Func(){}</code>，类似表达式定义<code>Func:function(){}</code></p>
 <p>方法中通过this代表Vue实例，可以获取data中的数据</p>
-<h4 id="components-组件"><a href="#components-组件" class="headerlink" title="components 组件"></a>components 组件</h4><p>见文章后面<em>创建Vue实例的私有组件</em></p>
+<h4 id="directives-指令"><a href="#directives-指令" class="headerlink" title="directives 指令"></a>directives 指令</h4><h4 id="components-组件"><a href="#components-组件" class="headerlink" title="components 组件"></a>components 组件</h4><h4 id="filters-过滤器"><a href="#filters-过滤器" class="headerlink" title="filters 过滤器"></a>filters 过滤器</h4><p>见<em>Vue自定义指令、组件、过滤器</em></p>
 <ul>
-<li><input disabled="" type="checkbox"> Vue实例的其他<u>私有</u>属性还有过滤器filters，指令directives</li>
 <li><input disabled="" type="checkbox"> 还有生命周期钩子函数beforeCreate(){}、created(){}、beforeMount(){}、mounted(){}、beforeUpdate(){}、updated(){}、beforeDestroy(){}、destroyed(){}</li>
 </ul>
 <h2 id="Vue指令"><a href="#Vue指令" class="headerlink" title="Vue指令"></a>Vue指令</h2><p>Vue指令，作为<strong>标签的属性</strong>，属性值写在Vue实例中</p>
@@ -423,7 +422,7 @@
 
 <p>用来实现条件渲染，表达式为值为真则渲染<strong>创建</strong>元素，值为假则<strong>移除</strong>这个元素，有较高的切换性能消耗</p>
 <h4 id="v-for"><a href="#v-for" class="headerlink" title="v-for"></a>v-for</h4><p>遍历数组、对象属性、基本数据范围，进行渲染</p>
-<p>格式<code>v-for=&quot;e in xxx&quot;</code>，之后可以用<code></code>表示获取的元素，而xxx可以有一下几种情形</p>
+<p>格式<code>v-for=&quot;e in xxx&quot;</code>，之后可以用<code></code>表示获取的元素，而xxx可以有以下几种情形</p>
 <ul>
 <li><p>数据范围<code>v-for=&quot;i in 10&quot;</code>，范围是[1,10]</p>
 </li>
@@ -470,30 +469,6 @@
 
 <p>axios写在Vue实例的methods中，通过调用方法进行对data的改变</p>
 <p>注意，若在then方法参数的函数内使用this，它指代的不是外面的Vue实例</p>
-<h2 id="Vue组件"><a href="#Vue组件" class="headerlink" title="Vue组件"></a>Vue组件</h2><p>如果将所有内容都写在Vue的实例中，则它会很大</p>
-<p>所以出现了组件，用来将Vue实例划分为不同的模块</p>
-<p>以后需要什么功能只要调用对应的组件</p>
-<blockquote>
-<p>组件化和模块化的区别：模块化是从代码逻辑的角度划分（如Node），组件化是从UI界面的角度划分</p>
-</blockquote>
-<h4 id="创建全局组件"><a href="#创建全局组件" class="headerlink" title="创建全局组件"></a>创建全局组件</h4><h6 id="方式一"><a href="#方式一" class="headerlink" title="方式一"></a>方式一</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">	var comp &#x3D; Vue.extend(&#123;		&#x2F;&#x2F;创建全局的Vue组件,返回组件对象</span><br><span class="line">        template:&quot;&lt;div&gt;123&lt;&#x2F;div&gt;&quot;		&#x2F;&#x2F;通过template属性指定组件要展示的HTML结构</span><br><span class="line">    &#125;)</span><br><span class="line">    Vue.component(&quot;组件名&quot;, comp)		&#x2F;&#x2F;注册组件</span><br><span class="line">&lt;&#x2F;script&gt;</span><br></pre></td></tr></table></figure>
-
-<p>注意，template中只能有一个元素（可以内部嵌套其他元素，但是不能同级并列）    </p>
-<h6 id="方式二"><a href="#方式二" class="headerlink" title="方式二"></a>方式二</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">	Vue.component(&quot;组件名&quot;, &#123;</span><br><span class="line">        template:&quot;&lt;div&gt;123&lt;&#x2F;div&gt;&quot;</span><br><span class="line">    &#125;)</span><br><span class="line">&lt;&#x2F;script&gt;</span><br></pre></td></tr></table></figure>
-
-<h4 id="创建Vue实例的私有组件"><a href="#创建Vue实例的私有组件" class="headerlink" title="创建Vue实例的私有组件"></a>创建Vue实例的私有组件</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">    new Vue()&#123;</span><br><span class="line">        el:&quot;&quot;,</span><br><span class="line">        components:&#123;</span><br><span class="line">            comp:&#123;		&#x2F;&#x2F;组件名</span><br><span class="line">                template:&quot;&lt;div&gt;123&lt;&#x2F;div&gt;&quot;		&#x2F;&#x2F;组件html</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&lt;&#x2F;script&gt;</span><br></pre></td></tr></table></figure>
-
-<p>只能在挂载了此Vue实例的元素的内部使用</p>
-<h4 id="抽出template"><a href="#抽出template" class="headerlink" title="抽出template"></a>抽出template</h4><p>可以将<code>template:&quot;&lt;div&gt;123&lt;/div&gt;&quot;</code>值的HTML抽出到template标签中，并指定id</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">template</span> <span class="attr">id</span>=<span class="string">"temp"</span>&gt;</span>		<span class="comment">&lt;!--每个template中也是只能有一个元素--&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">div</span>&gt;</span>123<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p>将template属性改为<code>template:&quot;#temp&quot;</code></p>
-<h4 id="使用组件"><a href="#使用组件" class="headerlink" title="使用组件"></a>使用组件</h4><p>使用组件时，将组件名作为HTML标签名使用（若组件名为驼峰命名则变为横线命名，非驼峰则不变）</p>
-<p>如组件名为<code>myComp</code>，则在HTML中使用<code>&lt;my-comp&gt;&lt;/my-comp&gt;</code></p>
-<h4 id="组件的data属性"><a href="#组件的data属性" class="headerlink" title="组件的data属性"></a>组件的data属性</h4><p>定义方式与实例的data不同，必须是一个<strong>返回值为对象</strong>的<strong>方法</strong>，例如</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> comp = Vue.extend(&#123;</span><br><span class="line">	template:<span class="string">"&lt;div&gt;123&#123;&#123;msg&#125;&#125;321&lt;/div&gt;"</span>,</span><br><span class="line">	data: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">		<span class="keyword">return</span> &#123;<span class="attr">msg</span>:<span class="string">"abc"</span>&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-
-<p>使用方式和实例的data相同</p>
 <h2 id="Vue单文件组件"><a href="#Vue单文件组件" class="headerlink" title="Vue单文件组件"></a>Vue单文件组件</h2><p><a href="https://cn.vuejs.org/v2/guide/single-file-components.html" target="_blank" rel="noopener">参考</a><br>基于HTML、且JavaScript只被用来加强特定的视图的Vue项目中，在script标签里使用Vue.component来定义全局组件，紧接着用new Vue({ el: ‘#container ‘})在每个页面内指定一个容器元素</p>
 <p>可是，有的项目完全由JavaScript驱动、组件化时，会遇到一些问题，此时选择使用扩展名为.vue的单文件组件</p>
 
@@ -637,7 +612,7 @@
             
               <div class="site-state-item site-state-posts">
                 <a href="/Blog/archives">
-                  <span class="site-state-item-count">36</span>
+                  <span class="site-state-item-count">38</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -709,7 +684,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Vue-js"><span class="nav-text">Vue.js</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#三大前端框架"><span class="nav-text">三大前端框架</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Vue实例"><span class="nav-text">Vue实例</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#el-挂载点"><span class="nav-text">el 挂载点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#data-数据对象"><span class="nav-text">data 数据对象</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#methods-方法"><span class="nav-text">methods 方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#components-组件"><span class="nav-text">components 组件</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Vue指令"><span class="nav-text">Vue指令</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#v-text与v-html"><span class="nav-text">v-text与v-html</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#v-on"><span class="nav-text">v-on</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#v-bind"><span class="nav-text">v-bind</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#举例v-bind-class-””"><span class="nav-text">举例v-bind:class&#x3D;””</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#举例v-bind-style-””"><span class="nav-text">举例v-bind:style&#x3D;””</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#v-show"><span class="nav-text">v-show</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#v-if与v-else-if与v-else"><span class="nav-text">v-if与v-else-if与v-else</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#v-for"><span class="nav-text">v-for</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#v-model"><span class="nav-text">v-model</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#v-cloak"><span class="nav-text">v-cloak</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#axios"><span class="nav-text">axios</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#axios-get-和post"><span class="nav-text">axios.get()和post</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#与Vue配合"><span class="nav-text">与Vue配合</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Vue组件"><span class="nav-text">Vue组件</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#创建全局组件"><span class="nav-text">创建全局组件</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#方式一"><span class="nav-text">方式一</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#方式二"><span class="nav-text">方式二</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#创建Vue实例的私有组件"><span class="nav-text">创建Vue实例的私有组件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#抽出template"><span class="nav-text">抽出template</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#使用组件"><span class="nav-text">使用组件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#组件的data属性"><span class="nav-text">组件的data属性</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Vue单文件组件"><span class="nav-text">Vue单文件组件</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Vue-js"><span class="nav-text">Vue.js</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#三大前端框架"><span class="nav-text">三大前端框架</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Vue实例"><span class="nav-text">Vue实例</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#el-挂载点"><span class="nav-text">el 挂载点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#data-数据对象"><span class="nav-text">data 数据对象</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#methods-方法"><span class="nav-text">methods 方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#directives-指令"><span class="nav-text">directives 指令</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#components-组件"><span class="nav-text">components 组件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#filters-过滤器"><span class="nav-text">filters 过滤器</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Vue指令"><span class="nav-text">Vue指令</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#v-text与v-html"><span class="nav-text">v-text与v-html</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#v-on"><span class="nav-text">v-on</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#v-bind"><span class="nav-text">v-bind</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#举例v-bind-class-””"><span class="nav-text">举例v-bind:class&#x3D;””</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#举例v-bind-style-””"><span class="nav-text">举例v-bind:style&#x3D;””</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#v-show"><span class="nav-text">v-show</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#v-if与v-else-if与v-else"><span class="nav-text">v-if与v-else-if与v-else</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#v-for"><span class="nav-text">v-for</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#v-model"><span class="nav-text">v-model</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#v-cloak"><span class="nav-text">v-cloak</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#axios"><span class="nav-text">axios</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#axios-get-和post"><span class="nav-text">axios.get()和post</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#与Vue配合"><span class="nav-text">与Vue配合</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Vue单文件组件"><span class="nav-text">Vue单文件组件</span></a></li></ol></div>
             
 
           </div>
