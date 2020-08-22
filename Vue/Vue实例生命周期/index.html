@@ -79,18 +79,20 @@
 
 
 
-<meta name="description" content="分类 表单修饰符 事件修饰符√ 鼠标事件修饰符√ 键盘事件修饰符√ v-bind修饰符  参考">
+<meta name="description" content="Vue实例生命周期Vue实例从创建、运行到销毁，伴随着各种各样的事件，这些事件就统称为生命周期Lifecycle 生命周期钩子&#x3D;生命周期函数&#x3D;生命周期事件 12345678new Vue(&amp;#123;    el:&quot;#app&quot;,    data:&amp;#123;&amp;#125;,    methods:&amp;#123;&amp;#125;,        create()&amp;#123;&amp;#125;,		&#x2F;&#x2F;生命周期函数">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Vue修饰符">
-<meta property="og:url" content="https://chenyz2000.github.io/Blog/Front%20End/Vue%E4%BF%AE%E9%A5%B0%E7%AC%A6/index.html">
+<meta property="og:title" content="Vue实例生命周期">
+<meta property="og:url" content="https://chenyz2000.github.io/Blog/Vue/Vue%E5%AE%9E%E4%BE%8B%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/index.html">
 <meta property="og:site_name" content="CYZ&#39;s Blog">
-<meta property="og:description" content="分类 表单修饰符 事件修饰符√ 鼠标事件修饰符√ 键盘事件修饰符√ v-bind修饰符  参考">
+<meta property="og:description" content="Vue实例生命周期Vue实例从创建、运行到销毁，伴随着各种各样的事件，这些事件就统称为生命周期Lifecycle 生命周期钩子&#x3D;生命周期函数&#x3D;生命周期事件 12345678new Vue(&amp;#123;    el:&quot;#app&quot;,    data:&amp;#123;&amp;#125;,    methods:&amp;#123;&amp;#125;,        create()&amp;#123;&amp;#125;,		&#x2F;&#x2F;生命周期函数">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2020-08-20T07:44:00.000Z">
-<meta property="article:modified_time" content="2020-08-20T07:44:00.000Z">
+<meta property="og:image" content="https://chenyz2000.github.io/Blog/images/lifecycle.png">
+<meta property="article:published_time" content="2020-08-21T06:30:00.000Z">
+<meta property="article:modified_time" content="2020-08-21T06:30:00.000Z">
 <meta property="article:author" content="Chen Yanzhi">
 <meta property="article:tag" content="Vue">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://chenyz2000.github.io/Blog/images/lifecycle.png">
 
 
 
@@ -120,13 +122,13 @@
 
 
 
-  <link rel="canonical" href="https://chenyz2000.github.io/Blog/Front End/Vue修饰符/"/>
+  <link rel="canonical" href="https://chenyz2000.github.io/Blog/Vue/Vue实例生命周期/"/>
 
 
 
 
 
-  <title>Vue修饰符 | CYZ's Blog</title>
+  <title>Vue实例生命周期 | CYZ's Blog</title>
   
 
 
@@ -263,7 +265,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://chenyz2000.github.io/Blog/Blog/Front%20End/Vue%E4%BF%AE%E9%A5%B0%E7%AC%A6/">
+    <link itemprop="mainEntityOfPage" href="https://chenyz2000.github.io/Blog/Blog/Vue/Vue%E5%AE%9E%E4%BE%8B%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Chen Yanzhi">
@@ -280,7 +282,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Vue修饰符</h1>
+          <h1 class="post-title" itemprop="name headline">Vue实例生命周期</h1>
         
 
         <div class="post-meta">
@@ -292,8 +294,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-08-20T15:44:00+08:00">
-                2020-08-20
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-08-21T14:30:00+08:00">
+                2020-08-21
               </time>
             
 
@@ -308,8 +310,8 @@
               
                 <span class="post-meta-item-text">Post modified&#58;</span>
               
-              <time title="Post modified" itemprop="dateModified" datetime="2020-08-20T15:44:00+08:00">
-                2020-08-20
+              <time title="Post modified" itemprop="dateModified" datetime="2020-08-21T14:30:00+08:00">
+                2020-08-21
               </time>
             
           </span>
@@ -327,8 +329,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/Blog/categories/Front-End/" itemprop="url" rel="index">
-                    <span itemprop="name">Front End</span>
+                  <a href="/Blog/categories/Vue/" itemprop="url" rel="index">
+                    <span itemprop="name">Vue</span>
                   </a>
                 </span>
 
@@ -364,46 +366,20 @@
       
 
       
-        <h2 id="分类"><a href="#分类" class="headerlink" title="分类"></a>分类</h2><ul>
-<li>表单修饰符</li>
-<li>事件修饰符√</li>
-<li>鼠标事件修饰符√</li>
-<li>键盘事件修饰符√</li>
-<li>v-bind修饰符</li>
-</ul>
-<p><a href="https://segmentfault.com/a/1190000016786254" target="_blank" rel="noopener">参考</a></p>
+        <h2 id="Vue实例生命周期"><a href="#Vue实例生命周期" class="headerlink" title="Vue实例生命周期"></a>Vue实例生命周期</h2><p>Vue实例从创建、运行到销毁，伴随着各种各样的事件，这些事件就统称为生命周期Lifecycle</p>
+<p>生命周期钩子=生命周期函数=生命周期事件</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">new</span> Vue(&#123;</span><br><span class="line">    el:<span class="string">"#app"</span>,</span><br><span class="line">    data:&#123;&#125;,</span><br><span class="line">    methods:&#123;&#125;,</span><br><span class="line">    </span><br><span class="line">    create()&#123;&#125;,		<span class="comment">//生命周期函数写在这里</span></span><br><span class="line">    mounted()&#123;&#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
 <a id="more"></a>
 
-<h2 id="事件修饰符"><a href="#事件修饰符" class="headerlink" title="事件修饰符"></a>事件修饰符</h2><ul>
-<li><p>.stop阻止事件冒泡，阻止父标签事件发生，相当于调用了event.stopPropagation()方法</p>
-</li>
-<li><p>.prevent阻止标签默认事件</p>
-</li>
-<li><p>.self当事件是由自己本身触发的才反应（子标签冒泡的不反应）</p>
-</li>
-<li><p>.once事件只触发一次</p>
-</li>
-<li><p>.capture事件触发从包含此标签的顶层开始往下触发，具体见下例</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> @<span class="attr">click.capture</span>=<span class="string">"print(1)"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> @<span class="attr">click.capture</span>=<span class="string">"print(2)"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> @<span class="attr">click</span>=<span class="string">"print(3)"</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">div</span> @<span class="attr">click</span>=<span class="string">"print(4)"</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">结果为1 2 4 3</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>.passive使用在监听滚动事件时提高性能，表示处理事件函数中不会调用preventDefault函数，不能和.prevent一起使用</p>
-</li>
-<li><p>.native用于给组件绑定事件时，若不加它则事件没有绑定成功。若给普通标签使用则会使事件失效</p>
-</li>
-</ul>
-<h2 id="鼠标事件修饰符"><a href="#鼠标事件修饰符" class="headerlink" title="鼠标事件修饰符"></a>鼠标事件修饰符</h2><p>修饰鼠标点击click事件</p>
-<ul>
-<li>.left左键点击</li>
-<li>.right右键点击</li>
-<li>.middle中键点击</li>
-</ul>
-<h2 id="按键事件修饰符"><a href="#按键事件修饰符" class="headerlink" title="按键事件修饰符"></a>按键事件修饰符</h2><p>修饰keyup，keydown等事件</p>
-<p>.num，使用按键码数字作为修饰，如<code>@keyup.67</code></p>
-<p>而一些常用键也提供了别名，更具兼容性</p>
-<p>如普通键.enter    .tab    .delete(删除和退格)    .space    .esc    .up    .down    .left    .right    .page-up    .page-down</p>
-<p>和系统键.ctrl    .alt    .shift    .meta(win键盘中是win键)</p>
-<p>此外有对系统键限制的修饰符.exact，只限制系统键，不限制普通键</p>
-<p>如<code>@keydown.ctrl.enter.exact</code>，即可以用ctrl+enter触发，可以用ctrl+enter+其他普通键触发，但不能ctrl+shift+enter触发</p>
+<p>生命周期图示如下，图中红色圆角矩形框的就是生命周期函数</p>
+<img src="../../images/lifecycle.png" style="zoom:50%">
+
+<p>如果要操作Vue实例里的data和methods，最早只能在created()操作</p>
+<p>如果要操作页面上的Dom元素，最早只能在mounted()操作</p>
+<p>在monted()之后，组件已经从创建阶段到了运行阶段</p>
+<p>根据data的更改，beforeUpdate()和update()可能触发零次，也可能触发多次</p>
+<p>beforeUpdate()是数据已更新、界面未更新时触发</p>
 
       
     </div>
@@ -424,7 +400,7 @@
   </li>
   <li class="post-copyright-link">
     <strong>Post link:</strong>
-    <a href="https://chenyz2000.github.io/Blog/Front%20End/Vue%E4%BF%AE%E9%A5%B0%E7%AC%A6/" title="Vue修饰符">https://chenyz2000.github.io/Blog/Front%20End/Vue%E4%BF%AE%E9%A5%B0%E7%AC%A6/</a>
+    <a href="https://chenyz2000.github.io/Blog/Vue/Vue%E5%AE%9E%E4%BE%8B%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/" title="Vue实例生命周期">https://chenyz2000.github.io/Blog/Vue/Vue%E5%AE%9E%E4%BE%8B%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/</a>
   </li>
   <li class="post-copyright-license">
     <strong>Copyright Notice: </strong>
@@ -452,8 +428,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/Blog/Spring/MyBatis-Plus/" rel="next" title="MyBatis-Plus">
-                <i class="fa fa-chevron-left"></i> MyBatis-Plus
+              <a href="/Blog/Front%20End/JS%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/" rel="next" title="JS面向对象">
+                <i class="fa fa-chevron-left"></i> JS面向对象
               </a>
             
           </div>
@@ -462,8 +438,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/Blog/Front%20End/Vue%E8%87%AA%E5%AE%9A%E4%B9%89%E6%8C%87%E4%BB%A4%E3%80%81%E7%BB%84%E4%BB%B6%E3%80%81%E8%BF%87%E6%BB%A4%E5%99%A8/" rel="prev" title="Vue自定义指令、组件、过滤器">
-                Vue自定义指令、组件、过滤器 <i class="fa fa-chevron-right"></i>
+              <a href="/Blog/Vue/Vue%E4%B8%AD%E7%9A%84Ajax%E8%AF%B7%E6%B1%82/" rel="prev" title="Vue中的Ajax请求">
+                Vue中的Ajax请求 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -543,7 +519,7 @@
             
               <div class="site-state-item site-state-posts">
                 <a href="/Blog/archives">
-                  <span class="site-state-item-count">38</span>
+                  <span class="site-state-item-count">41</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -555,7 +531,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/Blog/categories/index.html">
-                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-count">8</span>
                   <span class="site-state-item-name">categories</span>
                 </a>
               </div>
@@ -615,7 +591,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#分类"><span class="nav-text">分类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#事件修饰符"><span class="nav-text">事件修饰符</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#鼠标事件修饰符"><span class="nav-text">鼠标事件修饰符</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#按键事件修饰符"><span class="nav-text">按键事件修饰符</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Vue实例生命周期"><span class="nav-text">Vue实例生命周期</span></a></li></ol></div>
             
 
           </div>

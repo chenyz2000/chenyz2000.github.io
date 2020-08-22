@@ -259,7 +259,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://chenyz2000.github.io/Blog/Blog/Front%20End/Vue%E8%87%AA%E5%AE%9A%E4%B9%89%E6%8C%87%E4%BB%A4%E3%80%81%E7%BB%84%E4%BB%B6%E3%80%81%E8%BF%87%E6%BB%A4%E5%99%A8/">
+    <link itemprop="mainEntityOfPage" href="https://chenyz2000.github.io/Blog/Blog/Vue/Vue%E8%87%AA%E5%AE%9A%E4%B9%89%E6%8C%87%E4%BB%A4%E3%80%81%E7%BB%84%E4%BB%B6%E3%80%81%E8%BF%87%E6%BB%A4%E5%99%A8/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Chen Yanzhi">
@@ -278,7 +278,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/Blog/Front%20End/Vue%E8%87%AA%E5%AE%9A%E4%B9%89%E6%8C%87%E4%BB%A4%E3%80%81%E7%BB%84%E4%BB%B6%E3%80%81%E8%BF%87%E6%BB%A4%E5%99%A8/" itemprop="url">Vue自定义指令、组件、过滤器</a></h1>
+                <a class="post-title-link" href="/Blog/Vue/Vue%E8%87%AA%E5%AE%9A%E4%B9%89%E6%8C%87%E4%BB%A4%E3%80%81%E7%BB%84%E4%BB%B6%E3%80%81%E8%BF%87%E6%BB%A4%E5%99%A8/" itemprop="url">Vue自定义指令、组件、过滤器</a></h1>
         
 
         <div class="post-meta">
@@ -306,8 +306,493 @@
               
                 <span class="post-meta-item-text">Post modified&#58;</span>
               
-              <time title="Post modified" itemprop="dateModified" datetime="2020-08-20T17:35:00+08:00">
-                2020-08-20
+              <time title="Post modified" itemprop="dateModified" datetime="2020-08-21T17:14:00+08:00">
+                2020-08-21
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/Blog/categories/Vue/" itemprop="url" rel="index">
+                    <span itemprop="name">Vue</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>自定义指令、组件、过滤器都有全局和Vue实例私有两种形式</p>
+<p>私有形式是只能在挂载了Vue实例的标签内部使用</p>
+<h2 id="Vue自定义指令"><a href="#Vue自定义指令" class="headerlink" title="Vue自定义指令"></a>Vue自定义指令</h2><h4 id="创建全局指令"><a href="#创建全局指令" class="headerlink" title="创建全局指令"></a>创建全局指令</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Vue.directive(<span class="string">"name"</span>, &#123;</span><br><span class="line">    钩子函数</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>指令的name定义时不需要加v-前缀，调用的时候需要加前缀</p>
+<p>第二个参数是一个对象，对象的每个元素是钩子函数</p>
+<h4 id="创建Vue实例的私有指令"><a href="#创建Vue实例的私有指令" class="headerlink" title="创建Vue实例的私有指令"></a>创建Vue实例的私有指令</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">new</span> Vue(&#123;</span><br><span class="line">    directives:&#123;</span><br><span class="line">        name:&#123;</span><br><span class="line">            钩子函数</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/Blog/Vue/Vue%E8%87%AA%E5%AE%9A%E4%B9%89%E6%8C%87%E4%BB%A4%E3%80%81%E7%BB%84%E4%BB%B6%E3%80%81%E8%BF%87%E6%BB%A4%E5%99%A8/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://chenyz2000.github.io/Blog/Blog/Vue/Vue%E4%B8%AD%E7%9A%84Ajax%E8%AF%B7%E6%B1%82/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Chen Yanzhi">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/Blog/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="CYZ's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/Blog/Vue/Vue%E4%B8%AD%E7%9A%84Ajax%E8%AF%B7%E6%B1%82/" itemprop="url">Vue中的Ajax请求</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-08-21T15:41:00+08:00">
+                2020-08-21
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Post modified&#58;</span>
+              
+              <time title="Post modified" itemprop="dateModified" datetime="2020-08-21T15:41:00+08:00">
+                2020-08-21
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/Blog/categories/Vue/" itemprop="url" rel="index">
+                    <span itemprop="name">Vue</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h2 id="axios（建议使用）"><a href="#axios（建议使用）" class="headerlink" title="axios（建议使用）"></a>axios（建议使用）</h2><p>网络请求库，类似$.ajax一样都是Ajax技术的具体实现</p>
+<p>axios写在js中，结合Vue一起使用</p>
+<p>CDN导包：<code>&lt;script src=&quot;https://unpkg.com/axios/dist/axios.min.js&quot;&gt;&lt;/script&gt;</code></p>
+<h4 id="axios-get-和post"><a href="#axios-get-和post" class="headerlink" title="axios.get()和post"></a>axios.get()和post</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">axios.get(url?查询字符串).then(<span class="function"><span class="keyword">function</span>(<span class="params">response</span>)</span>&#123;&#125;).catch(<span class="function"><span class="keyword">function</span>(<span class="params">err</span>)</span>&#123;&#125;)</span><br></pre></td></tr></table></figure>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/Blog/Vue/Vue%E4%B8%AD%E7%9A%84Ajax%E8%AF%B7%E6%B1%82/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://chenyz2000.github.io/Blog/Blog/Vue/Vue%E5%AE%9E%E4%BE%8B%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Chen Yanzhi">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/Blog/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="CYZ's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/Blog/Vue/Vue%E5%AE%9E%E4%BE%8B%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/" itemprop="url">Vue实例生命周期</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-08-21T14:30:00+08:00">
+                2020-08-21
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Post modified&#58;</span>
+              
+              <time title="Post modified" itemprop="dateModified" datetime="2020-08-21T14:30:00+08:00">
+                2020-08-21
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/Blog/categories/Vue/" itemprop="url" rel="index">
+                    <span itemprop="name">Vue</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h2 id="Vue实例生命周期"><a href="#Vue实例生命周期" class="headerlink" title="Vue实例生命周期"></a>Vue实例生命周期</h2><p>Vue实例从创建、运行到销毁，伴随着各种各样的事件，这些事件就统称为生命周期Lifecycle</p>
+<p>生命周期钩子=生命周期函数=生命周期事件</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">new</span> Vue(&#123;</span><br><span class="line">    el:<span class="string">"#app"</span>,</span><br><span class="line">    data:&#123;&#125;,</span><br><span class="line">    methods:&#123;&#125;,</span><br><span class="line">    </span><br><span class="line">    create()&#123;&#125;,		<span class="comment">//生命周期函数写在这里</span></span><br><span class="line">    mounted()&#123;&#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/Blog/Vue/Vue%E5%AE%9E%E4%BE%8B%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://chenyz2000.github.io/Blog/Blog/Front%20End/JS%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Chen Yanzhi">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/Blog/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="CYZ's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/Blog/Front%20End/JS%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/" itemprop="url">JS面向对象</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-08-21T10:53:00+08:00">
+                2020-08-21
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Post modified&#58;</span>
+              
+              <time title="Post modified" itemprop="dateModified" datetime="2020-08-21T10:53:00+08:00">
+                2020-08-21
               </time>
             
           </span>
@@ -363,15 +848,15 @@
 
       
         
-          <p>自定义指令、组件、过滤器都有全局和Vue实例私有两种形式</p>
-<h2 id="Vue自定义指令"><a href="#Vue自定义指令" class="headerlink" title="Vue自定义指令"></a>Vue自定义指令</h2><h4 id="创建全局指令"><a href="#创建全局指令" class="headerlink" title="创建全局指令"></a>创建全局指令</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Vue.directive(<span class="string">"name"</span>, &#123;</span><br><span class="line">    钩子函数</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+          <p>Java和C++是基于类的面向对象</p>
+<p>JS不同，JS是基于原型的面向对象，没有类class的声明语句，而是依靠构造器和原型创建对象的</p>
+<h2 id="使用字面式声明构造对象"><a href="#使用字面式声明构造对象" class="headerlink" title="使用字面式声明构造对象"></a>使用字面式声明构造对象</h2><p>JS可以使用字面式声明（literal notation）的方式来构造一个对象，并对其不存在的属性直接赋值，或者用 delete 将属性删除，如</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> person = &#123; </span><br><span class="line">    name: <span class="string">"张三”,</span></span><br><span class="line"><span class="string">    age: 26,</span></span><br><span class="line"><span class="string">    gender: "</span>男”,</span><br><span class="line">    eat: <span class="function"><span class="keyword">function</span>(<span class="params">stuff</span>)</span>&#123;</span><br><span class="line">        alert( <span class="string">"我在吃"</span> + stuff);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line">person.height = <span class="number">176</span>;</span><br><span class="line"><span class="keyword">delete</span> person[<span class="string">"age"</span>];</span><br></pre></td></tr></table></figure>
 
-<p>指令的name定义时不需要加v-前缀，调用的时候需要加前缀</p>
-<p>第二个参数是一个对象，对象的每个元素是钩子函数</p>
-<h4 id="创建Vue实例的私有指令"><a href="#创建Vue实例的私有指令" class="headerlink" title="创建Vue实例的私有指令"></a>创建Vue实例的私有指令</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">new</span> Vue(&#123;</span><br><span class="line">    directives:&#123;</span><br><span class="line">        name:&#123;</span><br><span class="line">            钩子函数</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>这是一种最简单的封装，但复用性弱是其主要缺点，所以ECMA引入了原型来解决对象的继承问题</p>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/Blog/Front%20End/Vue%E8%87%AA%E5%AE%9A%E4%B9%89%E6%8C%87%E4%BB%A4%E3%80%81%E7%BB%84%E4%BB%B6%E3%80%81%E8%BF%87%E6%BB%A4%E5%99%A8/#more" rel="contents">
+            <a class="btn" href="/Blog/Front%20End/JS%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/#more" rel="contents">
               Read more &raquo;
             </a>
           </div>
@@ -422,7 +907,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://chenyz2000.github.io/Blog/Blog/Front%20End/Vue%E4%BF%AE%E9%A5%B0%E7%AC%A6/">
+    <link itemprop="mainEntityOfPage" href="https://chenyz2000.github.io/Blog/Blog/Vue/Vue%E4%BF%AE%E9%A5%B0%E7%AC%A6/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Chen Yanzhi">
@@ -441,7 +926,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/Blog/Front%20End/Vue%E4%BF%AE%E9%A5%B0%E7%AC%A6/" itemprop="url">Vue修饰符</a></h1>
+                <a class="post-title-link" href="/Blog/Vue/Vue%E4%BF%AE%E9%A5%B0%E7%AC%A6/" itemprop="url">Vue修饰符</a></h1>
         
 
         <div class="post-meta">
@@ -488,8 +973,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/Blog/categories/Front-End/" itemprop="url" rel="index">
-                    <span itemprop="name">Front End</span>
+                  <a href="/Blog/categories/Vue/" itemprop="url" rel="index">
+                    <span itemprop="name">Vue</span>
                   </a>
                 </span>
 
@@ -536,7 +1021,7 @@
 <p><a href="https://segmentfault.com/a/1190000016786254" target="_blank" rel="noopener">参考</a></p>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/Blog/Front%20End/Vue%E4%BF%AE%E9%A5%B0%E7%AC%A6/#more" rel="contents">
+            <a class="btn" href="/Blog/Vue/Vue%E4%BF%AE%E9%A5%B0%E7%AC%A6/#more" rel="contents">
               Read more &raquo;
             </a>
           </div>
@@ -587,7 +1072,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://chenyz2000.github.io/Blog/Blog/Front%20End/Vue/">
+    <link itemprop="mainEntityOfPage" href="https://chenyz2000.github.io/Blog/Blog/Vue/Vue%E5%9F%BA%E7%A1%80/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Chen Yanzhi">
@@ -606,7 +1091,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/Blog/Front%20End/Vue/" itemprop="url">Vue</a></h1>
+                <a class="post-title-link" href="/Blog/Vue/Vue%E5%9F%BA%E7%A1%80/" itemprop="url">Vue基础</a></h1>
         
 
         <div class="post-meta">
@@ -653,8 +1138,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/Blog/categories/Front-End/" itemprop="url" rel="index">
-                    <span itemprop="name">Front End</span>
+                  <a href="/Blog/categories/Vue/" itemprop="url" rel="index">
+                    <span itemprop="name">Vue</span>
                   </a>
                 </span>
 
@@ -703,7 +1188,7 @@
 <p>框架是一套完整的技术解决方案，项目选择框架后难以更改；类库提供的是单一的小功能，对项目的侵入性较小</p>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/Blog/Front%20End/Vue/#more" rel="contents">
+            <a class="btn" href="/Blog/Vue/Vue%E5%9F%BA%E7%A1%80/#more" rel="contents">
               Read more &raquo;
             </a>
           </div>
@@ -858,7 +1343,7 @@
 
       
         
-          <h2 id="JavaScript"><a href="#JavaScript" class="headerlink" title="JavaScript"></a>JavaScript</h2><p>是一门编程语言，由浏览器编译并运行</p>
+          <h2 id="JavaScript"><a href="#JavaScript" class="headerlink" title="JavaScript"></a>JavaScript</h2><p>是一门通用脚本编程语言，由浏览器编译并运行，遵循了ECMAScript标准</p>
 <p>本身和页面动态没有关系，只有和Dom结合，才能使网页动起来</p>
           <!--noindex-->
           <div class="post-button text-center">
@@ -913,7 +1398,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://chenyz2000.github.io/Blog/Blog/Spring/MVC%E6%A1%86%E6%9E%B6%E4%B8%8E%E4%B8%89%E5%B1%82%E6%9E%B6%E6%9E%84/">
+    <link itemprop="mainEntityOfPage" href="https://chenyz2000.github.io/Blog/Blog/nec/MVC%E6%A1%86%E6%9E%B6%E4%B8%8E%E4%B8%89%E5%B1%82%E6%9E%B6%E6%9E%84/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Chen Yanzhi">
@@ -932,7 +1417,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/Blog/Spring/MVC%E6%A1%86%E6%9E%B6%E4%B8%8E%E4%B8%89%E5%B1%82%E6%9E%B6%E6%9E%84/" itemprop="url">MVC框架与三层架构</a></h1>
+                <a class="post-title-link" href="/Blog/nec/MVC%E6%A1%86%E6%9E%B6%E4%B8%8E%E4%B8%89%E5%B1%82%E6%9E%B6%E6%9E%84/" itemprop="url">MVC框架与三层架构</a></h1>
         
 
         <div class="post-meta">
@@ -979,8 +1464,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/Blog/categories/Spring/" itemprop="url" rel="index">
-                    <span itemprop="name">Spring</span>
+                  <a href="/Blog/categories/nec/" itemprop="url" rel="index">
+                    <span itemprop="name">nec</span>
                   </a>
                 </span>
 
@@ -1030,507 +1515,7 @@
 </ul>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/Blog/Spring/MVC%E6%A1%86%E6%9E%B6%E4%B8%8E%E4%B8%89%E5%B1%82%E6%9E%B6%E6%9E%84/#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://chenyz2000.github.io/Blog/Blog/Spring/MyBatis/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Chen Yanzhi">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/Blog/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="CYZ's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/Blog/Spring/MyBatis/" itemprop="url">MyBatis</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-08-05T11:30:00+08:00">
-                2020-08-05
-              </time>
-            
-
-            
-              <span class="post-meta-divider">|</span>
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Post modified&#58;</span>
-              
-              <time title="Post modified" itemprop="dateModified" datetime="2020-08-13T15:29:00+08:00">
-                2020-08-13
-              </time>
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/Blog/categories/Spring/" itemprop="url" rel="index">
-                    <span itemprop="name">Spring</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h2 id="MyBatis"><a href="#MyBatis" class="headerlink" title="MyBatis"></a>MyBatis</h2><h4 id="MyBatis是ORM框架"><a href="#MyBatis是ORM框架" class="headerlink" title="MyBatis是ORM框架"></a>MyBatis是ORM框架</h4><p>ORM，Object Relational Mapping，对象关系映射。三个单词分别指Java的对象，数据库的关系，和映射</p>
-<p>MyBatis是ORM框架，是基于Java的持久层框架，实现了数据持久化</p>
-<p>连接Java程序和数据库，使Java开发者可以用面向对象的思想来管理数据库，支持通过配置或注解，将接口和POJO映射成数据库中的记录</p>
-<p>是对JDBC的封装，相对于传统的JDBC，简化了连接、操作的过程，减少了一半的代码量，只需要把关注点放在SQL的增删改查上</p>
-<p>除了MyBatis以外，还有Hibernate、Spring Data。MyBatis是半自动的，Hibernate是全自动的，Spring Data是基于注解的</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/Blog/Spring/MyBatis/#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://chenyz2000.github.io/Blog/Blog/Spring/Security/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Chen Yanzhi">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/Blog/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="CYZ's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/Blog/Spring/Security/" itemprop="url">Security</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-08-05T09:17:00+08:00">
-                2020-08-05
-              </time>
-            
-
-            
-              <span class="post-meta-divider">|</span>
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Post modified&#58;</span>
-              
-              <time title="Post modified" itemprop="dateModified" datetime="2020-08-12T00:00:00+08:00">
-                2020-08-12
-              </time>
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/Blog/categories/Spring/" itemprop="url" rel="index">
-                    <span itemprop="name">Spring</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p><a href="https://juejin.im/post/6844903959627300872" target="_blank" rel="noopener">参考</a></p>
-<p>主要有两种选择Spring Security和Apache Shiro</p>
-<p>Spring Security因为是利用了Spring IOC 和AOP的特性而无法脱离Spring独立存在。而Apache Shiro可以独立存在</p>
-<h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><p>认证authentication：如通过账户密码知道你是谁</p>
-<p>鉴权authorization：是通过认证后的用户所绑定的角色等凭证来证明你可以做什么</p>
-<p>RBAC，基于角色的访问控制，Role-Based Access Control：权限赋予给角色，角色赋予给用户</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/Blog/Spring/Security/#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://chenyz2000.github.io/Blog/Blog/Spring/MyBatis-Plus/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Chen Yanzhi">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/Blog/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="CYZ's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/Blog/Spring/MyBatis-Plus/" itemprop="url">MyBatis-Plus</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-08-10T16:06:00+08:00">
-                2020-08-10
-              </time>
-            
-
-            
-              <span class="post-meta-divider">|</span>
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Post modified&#58;</span>
-              
-              <time title="Post modified" itemprop="dateModified" datetime="2020-08-11T09:31:00+08:00">
-                2020-08-11
-              </time>
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/Blog/categories/Spring/" itemprop="url" rel="index">
-                    <span itemprop="name">Spring</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h2 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h2><ul>
-<li><p>不用加MyBatis依赖，改成</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.baomidou<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>mybatis-plus-boot-starter<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>3.3.2<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p>其中也包括了分页查询的插件</p>
-</li>
-<li><p>在application.properties中添加配置</p>
-</li>
-<li><p>编写对应数据表的实体类</p>
-</li>
-<li><p>不需要自己再写Mapper接口的方法也不需要写Mapper.xml，只需要<strong>Mapper接口extends BaseMapper&lt;实体类&gt;</strong></p>
-</li>
-<li><p>之后接口对象也是用自动注入</p>
-</li>
-<li><p>mybatis plus只需继承，Dao继承<code>BaseMapper&lt;T&gt;</code>，Service继承<code>IService&lt;T&gt;</code>，Service实现类继承<code>ServiceImpl&lt;DAO,T&gt;</code>并实现Service</p>
-<p>然后在src/main/resource下只需保留一个mybatis放置的xml文件即可，里面什么resultMap都不需要写，一片空白即可。<a href="https://www.cnblogs.com/youcong/p/9010653.html" target="_blank" rel="noopener">https://www.cnblogs.com/youcong/p/9010653.html</a></p>
-</li>
-</ul>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/Blog/Spring/MyBatis-Plus/#more" rel="contents">
+            <a class="btn" href="/Blog/nec/MVC%E6%A1%86%E6%9E%B6%E4%B8%8E%E4%B8%89%E5%B1%82%E6%9E%B6%E6%9E%84/#more" rel="contents">
               Read more &raquo;
             </a>
           </div>
@@ -1572,7 +1557,7 @@
 
   
  <nav class="pagination">
-   <span class="page-number current">1</span><a class="page-number" href="/Blog/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/Blog/page/5/">5</a><a class="extend next" rel="next" href="/Blog/page/2/"><i class="fa fa-angle-right" aria-label="accessibility.next_page"></i></a>
+   <span class="page-number current">1</span><a class="page-number" href="/Blog/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/Blog/page/6/">6</a><a class="extend next" rel="next" href="/Blog/page/2/"><i class="fa fa-angle-right" aria-label="accessibility.next_page"></i></a>
  </nav>
 
 
@@ -1619,7 +1604,7 @@
             
               <div class="site-state-item site-state-posts">
                 <a href="/Blog/archives">
-                  <span class="site-state-item-count">38</span>
+                  <span class="site-state-item-count">41</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -1631,7 +1616,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/Blog/categories/index.html">
-                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-count">8</span>
                   <span class="site-state-item-name">categories</span>
                 </a>
               </div>

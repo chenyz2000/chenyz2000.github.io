@@ -81,8 +81,8 @@
 
 <meta name="description" content="Vue.js前端框架，擅长于数据操作、表单填写、页面内容根据数据进行渲染、页面元素部分刷新 页面由数据生成，只要数据就可以进行页面视图的渲染，不需要再操作DOM元素 前端发展过程：  原生JS jQuery等类库。解决了浏览器大部分兼容性问题 前端模板引擎。调用模板引擎的方法生成DOM元素渲染页面，而不是直接操作DOM，解决了频繁操作DOM的问题 Vue等前端框架。只渲染变更内容，减少不必要的操作">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Vue">
-<meta property="og:url" content="https://chenyz2000.github.io/Blog/Front%20End/Vue/index.html">
+<meta property="og:title" content="Vue基础">
+<meta property="og:url" content="https://chenyz2000.github.io/Blog/Vue/Vue%E5%9F%BA%E7%A1%80/index.html">
 <meta property="og:site_name" content="CYZ&#39;s Blog">
 <meta property="og:description" content="Vue.js前端框架，擅长于数据操作、表单填写、页面内容根据数据进行渲染、页面元素部分刷新 页面由数据生成，只要数据就可以进行页面视图的渲染，不需要再操作DOM元素 前端发展过程：  原生JS jQuery等类库。解决了浏览器大部分兼容性问题 前端模板引擎。调用模板引擎的方法生成DOM元素渲染页面，而不是直接操作DOM，解决了频繁操作DOM的问题 Vue等前端框架。只渲染变更内容，减少不必要的操作">
 <meta property="og:locale" content="en_US">
@@ -121,13 +121,13 @@
 
 
 
-  <link rel="canonical" href="https://chenyz2000.github.io/Blog/Front End/Vue/"/>
+  <link rel="canonical" href="https://chenyz2000.github.io/Blog/Vue/Vue基础/"/>
 
 
 
 
 
-  <title>Vue | CYZ's Blog</title>
+  <title>Vue基础 | CYZ's Blog</title>
   
 
 
@@ -264,7 +264,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://chenyz2000.github.io/Blog/Blog/Front%20End/Vue/">
+    <link itemprop="mainEntityOfPage" href="https://chenyz2000.github.io/Blog/Blog/Vue/Vue%E5%9F%BA%E7%A1%80/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Chen Yanzhi">
@@ -281,7 +281,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Vue</h1>
+          <h1 class="post-title" itemprop="name headline">Vue基础</h1>
         
 
         <div class="post-meta">
@@ -328,8 +328,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/Blog/categories/Front-End/" itemprop="url" rel="index">
-                    <span itemprop="name">Front End</span>
+                  <a href="/Blog/categories/Vue/" itemprop="url" rel="index">
+                    <span itemprop="name">Vue</span>
                   </a>
                 </span>
 
@@ -393,9 +393,6 @@
 <h4 id="methods-方法"><a href="#methods-方法" class="headerlink" title="methods 方法"></a>methods 方法</h4><p>有两种定义方法，类似声明式定义<code>Func(){}</code>，类似表达式定义<code>Func:function(){}</code></p>
 <p>方法中通过this代表Vue实例，可以获取data中的数据</p>
 <h4 id="directives-指令"><a href="#directives-指令" class="headerlink" title="directives 指令"></a>directives 指令</h4><h4 id="components-组件"><a href="#components-组件" class="headerlink" title="components 组件"></a>components 组件</h4><h4 id="filters-过滤器"><a href="#filters-过滤器" class="headerlink" title="filters 过滤器"></a>filters 过滤器</h4><p>见<em>Vue自定义指令、组件、过滤器</em></p>
-<ul>
-<li><input disabled="" type="checkbox"> 还有生命周期钩子函数beforeCreate(){}、created(){}、beforeMount(){}、mounted(){}、beforeUpdate(){}、updated(){}、beforeDestroy(){}、destroyed(){}</li>
-</ul>
 <h2 id="Vue指令"><a href="#Vue指令" class="headerlink" title="Vue指令"></a>Vue指令</h2><p>Vue指令，作为<strong>标签的属性</strong>，属性值写在Vue实例中</p>
 <h4 id="v-text与v-html"><a href="#v-text与v-html" class="headerlink" title="v-text与v-html"></a>v-text与v-html</h4><p>v-text，设置标签的文本。属性值写在Vue实例的data中。类似直接把{ {  } }写在标签的文本中，但v-text会覆盖标签文本的内容</p>
 <p>v-html，设置标签的innerHTML，内容中有HTML结构会被解析为标签，其他与v-text一样</p>
@@ -446,29 +443,6 @@
 <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-attr">[v-cloak]</span>&#123;</span><br><span class="line">    <span class="attribute">display</span>:none;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>并在需要的标签上加上v-cloak</p>
-<h2 id="axios"><a href="#axios" class="headerlink" title="axios"></a>axios</h2><p>网络请求库，类似$.ajax一样都是Ajax技术的具体实现</p>
-<p>axios写在js中，结合Vue一起使用</p>
-<p>CDN导包：<code>&lt;script src=&quot;https://unpkg.com/axios/dist/axios.min.js&quot;&gt;&lt;/script&gt;</code></p>
-<h4 id="axios-get-和post"><a href="#axios-get-和post" class="headerlink" title="axios.get()和post"></a>axios.get()和post</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">axios.get(url?查询字符串).then(<span class="function"><span class="keyword">function</span>(<span class="params">response</span>)</span>&#123;&#125;).catch(<span class="function"><span class="keyword">function</span>(<span class="params">err</span>)</span>&#123;&#125;)</span><br></pre></td></tr></table></figure>
-
-<p>then方法内部传递的回调函数会在<strong>请求响应完成</strong>的时候触发</p>
-<p>这两个回调函数的形参可以自动获取信息，response是服务器的<strong>响应内容</strong>，err是<strong>错误信息</strong></p>
-<blockquote>
-<p>其实是还有一种写法是<code>axios.get().then(function(response){}, function(err){})</code>，即then方法的第二个参数也是一个回调函数，它在响应失败时触发。这种写法和then-catch的区别是，catch不仅可以捕捉响应失败、也可以捕捉响应成功的操作中的逻辑错误，所以建议使用then-catch。</p>
-</blockquote>
-<ul>
-<li><input disabled="" type="checkbox"> then(response=&gt;{})</li>
-</ul>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">axios.post(url, 查询json对象).then(<span class="function"><span class="keyword">function</span>(<span class="params">response</span>)</span>&#123;&#125;).catch(<span class="function"><span class="keyword">function</span>(<span class="params">err</span>)</span>&#123;&#125;)</span><br></pre></td></tr></table></figure>
-
-<p>其中查询参数对象可写作<code>{k1:v1, k2:v2}</code></p>
-<blockquote>
-<p>其他还有axios.request，head，delete，put等</p>
-</blockquote>
-<h4 id="与Vue配合"><a href="#与Vue配合" class="headerlink" title="与Vue配合"></a>与Vue配合</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">	new Vue()&#123;</span><br><span class="line">        el:&quot;#abc&quot;,</span><br><span class="line">        data:&#123;</span><br><span class="line">            msg:&quot;hello&quot;</span><br><span class="line">        &#125;,</span><br><span class="line">        methods:&#123;</span><br><span class="line">            getMsg:function()&#123;</span><br><span class="line">                var _this &#x3D; this;</span><br><span class="line">                axios.get(&quot;url&quot;).then(function(response)&#123;</span><br><span class="line">                    _this.msg &#x3D; response.data;</span><br><span class="line">                &#125;,function(err)&#123;&#125;)</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&lt;&#x2F;script&gt;</span><br></pre></td></tr></table></figure>
-
-<p>axios写在Vue实例的methods中，通过调用方法进行对data的改变</p>
-<p>注意，若在then方法参数的函数内使用this，它指代的不是外面的Vue实例</p>
 <h2 id="Vue单文件组件"><a href="#Vue单文件组件" class="headerlink" title="Vue单文件组件"></a>Vue单文件组件</h2><p><a href="https://cn.vuejs.org/v2/guide/single-file-components.html" target="_blank" rel="noopener">参考</a><br>基于HTML、且JavaScript只被用来加强特定的视图的Vue项目中，在script标签里使用Vue.component来定义全局组件，紧接着用new Vue({ el: ‘#container ‘})在每个页面内指定一个容器元素</p>
 <p>可是，有的项目完全由JavaScript驱动、组件化时，会遇到一些问题，此时选择使用扩展名为.vue的单文件组件</p>
 
@@ -491,7 +465,7 @@
   </li>
   <li class="post-copyright-link">
     <strong>Post link:</strong>
-    <a href="https://chenyz2000.github.io/Blog/Front%20End/Vue/" title="Vue">https://chenyz2000.github.io/Blog/Front%20End/Vue/</a>
+    <a href="https://chenyz2000.github.io/Blog/Vue/Vue%E5%9F%BA%E7%A1%80/" title="Vue基础">https://chenyz2000.github.io/Blog/Vue/Vue%E5%9F%BA%E7%A1%80/</a>
   </li>
   <li class="post-copyright-license">
     <strong>Copyright Notice: </strong>
@@ -612,7 +586,7 @@
             
               <div class="site-state-item site-state-posts">
                 <a href="/Blog/archives">
-                  <span class="site-state-item-count">38</span>
+                  <span class="site-state-item-count">41</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -624,7 +598,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/Blog/categories/index.html">
-                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-count">8</span>
                   <span class="site-state-item-name">categories</span>
                 </a>
               </div>
@@ -684,7 +658,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Vue-js"><span class="nav-text">Vue.js</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#三大前端框架"><span class="nav-text">三大前端框架</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Vue实例"><span class="nav-text">Vue实例</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#el-挂载点"><span class="nav-text">el 挂载点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#data-数据对象"><span class="nav-text">data 数据对象</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#methods-方法"><span class="nav-text">methods 方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#directives-指令"><span class="nav-text">directives 指令</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#components-组件"><span class="nav-text">components 组件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#filters-过滤器"><span class="nav-text">filters 过滤器</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Vue指令"><span class="nav-text">Vue指令</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#v-text与v-html"><span class="nav-text">v-text与v-html</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#v-on"><span class="nav-text">v-on</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#v-bind"><span class="nav-text">v-bind</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#举例v-bind-class-””"><span class="nav-text">举例v-bind:class&#x3D;””</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#举例v-bind-style-””"><span class="nav-text">举例v-bind:style&#x3D;””</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#v-show"><span class="nav-text">v-show</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#v-if与v-else-if与v-else"><span class="nav-text">v-if与v-else-if与v-else</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#v-for"><span class="nav-text">v-for</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#v-model"><span class="nav-text">v-model</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#v-cloak"><span class="nav-text">v-cloak</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#axios"><span class="nav-text">axios</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#axios-get-和post"><span class="nav-text">axios.get()和post</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#与Vue配合"><span class="nav-text">与Vue配合</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Vue单文件组件"><span class="nav-text">Vue单文件组件</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Vue-js"><span class="nav-text">Vue.js</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#三大前端框架"><span class="nav-text">三大前端框架</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Vue实例"><span class="nav-text">Vue实例</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#el-挂载点"><span class="nav-text">el 挂载点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#data-数据对象"><span class="nav-text">data 数据对象</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#methods-方法"><span class="nav-text">methods 方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#directives-指令"><span class="nav-text">directives 指令</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#components-组件"><span class="nav-text">components 组件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#filters-过滤器"><span class="nav-text">filters 过滤器</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Vue指令"><span class="nav-text">Vue指令</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#v-text与v-html"><span class="nav-text">v-text与v-html</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#v-on"><span class="nav-text">v-on</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#v-bind"><span class="nav-text">v-bind</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#举例v-bind-class-””"><span class="nav-text">举例v-bind:class&#x3D;””</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#举例v-bind-style-””"><span class="nav-text">举例v-bind:style&#x3D;””</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#v-show"><span class="nav-text">v-show</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#v-if与v-else-if与v-else"><span class="nav-text">v-if与v-else-if与v-else</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#v-for"><span class="nav-text">v-for</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#v-model"><span class="nav-text">v-model</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#v-cloak"><span class="nav-text">v-cloak</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Vue单文件组件"><span class="nav-text">Vue单文件组件</span></a></li></ol></div>
             
 
           </div>
