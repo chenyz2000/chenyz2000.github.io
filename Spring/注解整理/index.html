@@ -379,7 +379,8 @@
 <h4 id="Bean"><a href="#Bean" class="headerlink" title="@Bean"></a>@Bean</h4><p>见@Configuration</p>
 <h4 id="ComponentScan"><a href="#ComponentScan" class="headerlink" title="@ComponentScan"></a>@ComponentScan</h4><p>@ComponentScan对应XML配置形式中的&lt;context：component-scan&gt;元素，用于配合一些元信息JavaAnnotation，比如@Component和@Repository等，将标注了这些元信息Annotation的bean定义类<strong>批量采集</strong>到Spring的IoC容器中。</p>
 <p>我们可以通过basePackages等属性来细粒度地定制@ComponentScan自动扫描的范围，如果不指定，则默认Spring框架实现会从声明@ComponentScan所在类的package进行扫描。</p>
-<h4 id="Conditional"><a href="#Conditional" class="headerlink" title="@Conditional"></a>@Conditional</h4><h4 id="Configuration"><a href="#Configuration" class="headerlink" title="@Configuration"></a>@Configuration</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">StudentConfiguration</span></span>&#123;		<span class="comment">//配置类</span></span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> StudentService <span class="title">studentService</span><span class="params">()</span></span>&#123;		<span class="comment">//bean的定义</span></span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> StudentServiceImpl();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="Conditional"><a href="#Conditional" class="headerlink" title="@Conditional"></a>@Conditional</h4><h4 id="Configuration"><a href="#Configuration" class="headerlink" title="@Configuration"></a>@Configuration</h4><p>Spring3.0后可以通过注解标注Config配置类，替代xml配置</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">StudentConfiguration</span></span>&#123;		<span class="comment">//配置类</span></span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> StudentService <span class="title">studentService</span><span class="params">()</span></span>&#123;		<span class="comment">//bean的定义</span></span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> StudentServiceImpl();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>标注了@Bean的方法，返回值将作为一个bean定义注册到 Spring 的 IoC 容器，其id默认为方法名</p>
 <p>依赖注入</p>
@@ -539,7 +540,7 @@
             
               <div class="site-state-item site-state-posts">
                 <a href="/Blog/archives">
-                  <span class="site-state-item-count">42</span>
+                  <span class="site-state-item-count">43</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -562,7 +563,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/Blog/tags/index.html">
-                  <span class="site-state-item-count">53</span>
+                  <span class="site-state-item-count">54</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>
