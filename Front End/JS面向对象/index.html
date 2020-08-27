@@ -382,7 +382,11 @@
 
 <p>定义类的函数就可以作为构造器使用</p>
 <p>其中this表示对当前对象的引用</p>
-<h4 id="prototype"><a href="#prototype" class="headerlink" title="prototype"></a>prototype</h4><p>构造器函数含有一个prototype属性用于实现基于原型的继承和共享属性</p>
+<hr>
+<p>定义静态属性</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Person.maxHeight=<span class="string">"250cm"</span>;</span><br></pre></td></tr></table></figure>
+
+<h2 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h2><h4 id="prototype"><a href="#prototype" class="headerlink" title="prototype"></a>prototype</h4><p>构造器函数含有一个prototype属性用于实现基于原型的继承和共享属性</p>
 <p>每个由构造器创建的对象拥有一个指向构造器prototype属性值的隐式引用（implicit reference） ，这个引用称之为原型（prototype）</p>
 <h4 id="Prototype"><a href="#Prototype" class="headerlink" title="Prototype"></a>Prototype</h4><p>每个对象中保存了功能相同的函数，浪费内存，使用原型可以解决该问题</p>
 <p>Person.prototype是一个对象，可以在其中定义name:function(){}的键值对</p>
@@ -390,10 +394,13 @@
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params">name</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.name = name;		<span class="comment">//设置对象属性</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Person.prototype = &#123;</span><br><span class="line">	GetInfo : <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="keyword">this</span>.Name+<span class="keyword">this</span>.Age;</span><br><span class="line">	&#125;,</span><br><span class="line">	Func : <span class="function"><span class="keyword">function</span>(<span class="params">arg</span>)</span>&#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="keyword">this</span>.Name+arg;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>生成实例后每个对象的方法指向的都是同一个内存地址，即prototype对象</p>
-<h4 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Student</span>(<span class="params">name, id</span>)</span>&#123;</span><br><span class="line">    Person.call(<span class="keyword">this</span>, name);		<span class="comment">//使用call或apply调用父类构造器，第一个参数是this</span></span><br><span class="line">    <span class="keyword">this</span>.id = id;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="继承-1"><a href="#继承-1" class="headerlink" title="继承"></a>继承</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Student</span>(<span class="params">name, id</span>)</span>&#123;</span><br><span class="line">    Person.call(<span class="keyword">this</span>, name);		<span class="comment">//使用call或apply调用父类构造器，第一个参数是this</span></span><br><span class="line">    <span class="keyword">this</span>.id = id;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>或将父类实例赋值给子类的prototype对象，这样子类的所有实例都可以继承父类了</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Student.prototype = <span class="keyword">new</span> Person();</span><br><span class="line">Student.prototype.constructor = Student;	<span class="comment">//因为前一行让Student的构造器指向了Person</span></span><br></pre></td></tr></table></figure>
+
+
+<h2 id="ES6提供了Class语法"><a href="#ES6提供了Class语法" class="headerlink" title="ES6提供了Class语法"></a>ES6提供了Class语法</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span></span>&#123;</span><br><span class="line">    <span class="keyword">static</span> info=&#123;<span class="attr">name</span>:<span class="string">"abc"</span>,<span class="attr">age</span>:<span class="number">20</span>&#125;		<span class="comment">//静态属性，可以通过类名直接访问</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -535,7 +542,7 @@
             
               <div class="site-state-item site-state-posts">
                 <a href="/Blog/archives">
-                  <span class="site-state-item-count">43</span>
+                  <span class="site-state-item-count">44</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -607,7 +614,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#使用字面式声明构造对象"><span class="nav-text">使用字面式声明构造对象</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用函数构造器构造对象"><span class="nav-text">使用函数构造器构造对象</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#prototype"><span class="nav-text">prototype</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Prototype"><span class="nav-text">Prototype</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#继承"><span class="nav-text">继承</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#使用字面式声明构造对象"><span class="nav-text">使用字面式声明构造对象</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用函数构造器构造对象"><span class="nav-text">使用函数构造器构造对象</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#继承"><span class="nav-text">继承</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#prototype"><span class="nav-text">prototype</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Prototype"><span class="nav-text">Prototype</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#继承-1"><span class="nav-text">继承</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ES6提供了Class语法"><span class="nav-text">ES6提供了Class语法</span></a></li></ol></div>
             
 
           </div>
