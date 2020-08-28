@@ -259,6 +259,185 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://chenyz2000.github.io/Blog/Blog/Vue/webpack%E4%B8%AD%E4%BD%BF%E7%94%A8Vue/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Chen Yanzhi">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/Blog/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="CYZ's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/Blog/Vue/webpack%E4%B8%AD%E4%BD%BF%E7%94%A8Vue/" itemprop="url">webpack中使用Vue</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-08-28T09:34:00+08:00">
+                2020-08-28
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Post modified&#58;</span>
+              
+              <time title="Post modified" itemprop="dateModified" datetime="2020-08-28T15:44:00+08:00">
+                2020-08-28
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/Blog/categories/Vue/" itemprop="url" rel="index">
+                    <span itemprop="name">Vue</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h2 id="webpack导入Vue包"><a href="#webpack导入Vue包" class="headerlink" title="webpack导入Vue包"></a>webpack导入Vue包</h2><p>npm安装Vue，然后在main.js中导入Vue模块</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> Vue <span class="keyword">from</span> <span class="string">"vue"</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="Vue分为两个版本"><a href="#Vue分为两个版本" class="headerlink" title="Vue分为两个版本"></a>Vue分为两个版本</h4><ul>
+<li>完整版vue/dist/vue.js</li>
+<li>非完整版vue/dist/vue.runtime.common.js，webpack<strong>默认导入</strong></li>
+</ul>
+<p>非完整版仅提供了runtime-only的方式，功能不全，不能按照注册组件的方式使用组件</p>
+<h4 id="导入完整版Vue"><a href="#导入完整版Vue" class="headerlink" title="导入完整版Vue"></a>导入完整版Vue</h4><p>有以下多种修改方法：</p>
+<ul>
+<li><p>修改main.js中的导包<code>import Vue form &quot;../node_modules/vue/dist/vue.js&quot;</code></p>
+</li>
+<li><p>修改node_modules/vue/package.json，将<code>&quot;main&quot;:&quot;dist/vue.runtime.common.js&quot;</code>改为<code>&quot;main&quot;:&quot;dist/vue.js&quot;</code>。</p>
+<blockquote>
+<p>import查找规则（node的require与它一致）：找node_modules文件夹=&gt;找包的文件夹=&gt;找package.json包配置文件=&gt;找main属性，main属性指定了这个包在被加载时的入口文件</p>
+</blockquote>
+</li>
+<li><p>配置webpack.config.js</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">    resolve:&#123;</span><br><span class="line">        alias:&#123;<span class="string">"vue$"</span>:<span class="string">"vue/dist/vue.js"</span>&#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/Blog/Vue/webpack%E4%B8%AD%E4%BD%BF%E7%94%A8Vue/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://chenyz2000.github.io/Blog/Blog/Vue/Vue%E8%87%AA%E5%AE%9A%E4%B9%89%E6%8C%87%E4%BB%A4%E3%80%81%E7%BB%84%E4%BB%B6%E3%80%81%E8%BF%87%E6%BB%A4%E5%99%A8%E3%80%81%E7%9B%91%E5%90%AC%E5%99%A8%E3%80%81%E8%AE%A1%E7%AE%97%E5%B1%9E%E6%80%A7/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1400,171 +1579,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://chenyz2000.github.io/Blog/Blog/Vue/Vue%E4%BF%AE%E9%A5%B0%E7%AC%A6/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Chen Yanzhi">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/Blog/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="CYZ's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/Blog/Vue/Vue%E4%BF%AE%E9%A5%B0%E7%AC%A6/" itemprop="url">Vue修饰符</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-08-20T15:44:00+08:00">
-                2020-08-20
-              </time>
-            
-
-            
-              <span class="post-meta-divider">|</span>
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Post modified&#58;</span>
-              
-              <time title="Post modified" itemprop="dateModified" datetime="2020-08-20T15:44:00+08:00">
-                2020-08-20
-              </time>
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/Blog/categories/Vue/" itemprop="url" rel="index">
-                    <span itemprop="name">Vue</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h2 id="分类"><a href="#分类" class="headerlink" title="分类"></a>分类</h2><ul>
-<li>表单修饰符</li>
-<li>事件修饰符√</li>
-<li>鼠标事件修饰符√</li>
-<li>键盘事件修饰符√</li>
-<li>v-bind修饰符</li>
-</ul>
-<p><a href="https://segmentfault.com/a/1190000016786254" target="_blank" rel="noopener">参考</a></p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/Blog/Vue/Vue%E4%BF%AE%E9%A5%B0%E7%AC%A6/#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1616,7 +1630,7 @@
             
               <div class="site-state-item site-state-posts">
                 <a href="/Blog/archives">
-                  <span class="site-state-item-count">44</span>
+                  <span class="site-state-item-count">45</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
