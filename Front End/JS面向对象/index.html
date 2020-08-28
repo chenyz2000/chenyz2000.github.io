@@ -373,6 +373,8 @@
 <p>这是一种最简单的封装，但复用性弱是其主要缺点，所以ECMA引入了原型来解决对象的继承问题</p>
 <a id="more"></a>
 
+<br />
+
 <h2 id="使用函数构造器构造对象"><a href="#使用函数构造器构造对象" class="headerlink" title="使用函数构造器构造对象"></a>使用函数构造器构造对象</h2><p>ECMAScript允许通过构造器创建对象，每个构造器实际上是一个函数</p>
 <p>对象通过new来创建，但是此处的new原理和Java里完全不同</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//创建构造器，有两种方式</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params"></span>)</span>&#123;&#125;</span><br><span class="line">或</span><br><span class="line"><span class="keyword">var</span> Person = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//创建对象</span></span><br><span class="line"><span class="keyword">var</span> person = <span class="keyword">new</span> Person();</span><br></pre></td></tr></table></figure>

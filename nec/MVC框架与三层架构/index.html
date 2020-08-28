@@ -431,16 +431,22 @@
 <p>Vue实例中的data是M</p>
 <h4 id="SpringMVC中的MVC"><a href="#SpringMVC中的MVC" class="headerlink" title="SpringMVC中的MVC"></a>SpringMVC中的MVC</h4><p>通过 DispatchServlet 将控制器层和视图层完全解耦</p>
 <p>视图层和模型层之间没有直接关系，只有间接关系，通过控制器对模型进行查询、返回给 DispatchServlet 后再传递至视图层；</p>
+<br />
+
 <h2 id="三层架构"><a href="#三层架构" class="headerlink" title="三层架构"></a>三层架构</h2><ul>
 <li>表现层UI，Web层：（顶层）负责用户界面的显示，并且负责帮助用户向业务层提交业务逻辑处理请求，通常还负责将业务层发来的处理结果显示到界面中</li>
 <li>业务逻辑层BLL，service层：（中间层）负责处理业务逻辑，它可以根据不同的业务来调用不同的代码来处理</li>
 <li>数据访问层DAL，持久层（与DAO层混用）：（底层）负责向一个或多个数据库中读取或写入数据。通常用来给业务层的业务逻辑处理提供数据。这个层次通常必须包括业务实体模型</li>
 </ul>
 <p>从整个应用程序架构的角度来分的三层，可以应用于任何语言、任何技术的应用程序</p>
+<br />
+
 <h2 id="架构模式和框架"><a href="#架构模式和框架" class="headerlink" title="架构模式和框架"></a>架构模式和框架</h2><p>平台Platform——\——应用级复用——\——</p>
 <p>架构、构架、体系结构Architecture——建筑蓝图——系统级复用——系统的抽象</p>
 <p>框架Framework——骨架，已成型的方法——代码的模块级复用——一套解决方案</p>
 <p>设计模式Pattern——通用的设计——设计的复用——方法论</p>
+<br />
+
 <p>架构模式和架构风格有一丝丝区别（也可以忽略不记），架构模式侧重于面对<strong>某类反复问题</strong>而提炼的方案</p>
 <p>框架是架构模式的具体实现</p>
 <ul>
@@ -454,12 +460,18 @@
 <li><p>持久层的架构模式有入口模式、数据映射器模式等，MyBatis框架是数据映射器模式的具体实现，</p>
 </li>
 </ul>
+<br />
+
 <p>Angular框架是MVC架构模式的实现</p>
+<br />
+
 <h5 id="一些暴论"><a href="#一些暴论" class="headerlink" title="一些暴论"></a>一些暴论</h5><p>Vue只关注视图层（是前端概念，MVC是后端概念）</p>
 <p>前端工作主要负责MVC中的View层</p>
 <p>传统的Model层在SpringMVC中被拆分成了业务层和数据访问层</p>
 <p>Web层（SpringMVC），业务层（Java），数据访问层（Mybatis 或者JPA 等）</p>
 <p>持久化指的是把数据长期保存在文件、磁盘里。</p>
+<br />
+
 <p>DAO层和DAL层经常混指的是一个意思</p>
 <h2 id="Controller、Service、DAO等"><a href="#Controller、Service、DAO等" class="headerlink" title="Controller、Service、DAO等"></a>Controller、Service、DAO等</h2><img src="../../images/20200810213836.png" style="zoom:45%">
 
@@ -477,6 +489,8 @@
 <hr>
 <p>代码中经常要和数据库交互，如果为每个场景写sql语句，代码则非常乱。为了让代码整洁于是有了解决方案，将数据库持久化封装为一个对象，与数据库的交互改成看上去是和对象的交互，这个对象就是数据存取对象。当操作DAO时，DAO会自动生成sql语句。</p>
 <p>服务，需要独立完成一定的工作，有高度的抽象性。例如数据库服务、缓存服务、文件存储服务、身份验证服务、消息队列服务等</p>
+<br />
+
 <h4 id="DAL、DAO与ORM"><a href="#DAL、DAO与ORM" class="headerlink" title="DAL、DAO与ORM"></a>DAL、DAO与ORM</h4><p>DAO针对分层结构，很多Java程序都有DAO层</p>
 <p>ORM针对开发方式</p>
 <p>DAO层实现时可以使用ORM框架，也可以使用JDBC等对数据库直接进行操作</p>

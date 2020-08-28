@@ -393,6 +393,8 @@
 <img src="..\..\images\7673f507a9914ccfa381c0a582a6a19d.webp" alt="img" style="zoom:50%;" />
 
 <p><strong>问题三：</strong> 虚拟机内Linux系统节点与节点之间无法连通（如果装了多个Linux节点的话）</p>
+<br />
+
 <h2 id="网络配置（极其重要！）"><a href="#网络配置（极其重要！）" class="headerlink" title="网络配置（极其重要！）"></a>网络配置（极其重要！）</h2><ol>
 <li>首先尝试查看虚拟机系统的IP地址**</li>
 </ol>
@@ -422,6 +424,8 @@
 
 <p>编辑完成，重启网络设置即可：</p>
 <p><strong>systemctl restart network.service</strong></p>
+<br />
+
 <h2 id="检查安装配置结果"><a href="#检查安装配置结果" class="headerlink" title="检查安装配置结果"></a>检查安装配置结果</h2><p><strong>1、检验虚拟机系统网络和外界的连通性</strong></p>
 <p>包括检查和外网的连通、和物理宿主机的连通、以及和兄弟节点（前提是你安装了多个虚拟机系统节点的话）之间的连接</p>
 <img src="..\..\images\853eb369b4d3477b9cdc93a9adef7612.webp" alt="img" style="zoom:50%;" />
@@ -430,15 +434,19 @@
 <img src="..\..\images\8effd81dc7dc465ba6b0ee0476934a4b.webp" alt="img" style="zoom:50%;" />
 
 <p>至此，大功告成！</p>
+<br />
+
 <h2 id="SSH远程连接"><a href="#SSH远程连接" class="headerlink" title="SSH远程连接"></a>SSH远程连接</h2><p>在宿主机通过SSH终端连接虚拟机内Linux系统，成功！</p>
 <img src="..\..\images\8da30191c01846bb8d220a0130532670.webp" alt="img" style="zoom:50%;" />
 
-
+<br />
 
 <h2 id="SFTP文件传输"><a href="#SFTP文件传输" class="headerlink" title="SFTP文件传输"></a>SFTP文件传输</h2><p>在宿主机通过SFTP工具即可访问虚拟机内Linux节点，从而可以实现本地和服务器的文件互传</p>
 <img src="..\..\images\1eb70b8c1adb47fda432c10e983fdb2e.webp" alt="img" style="zoom:50%;" />
 
 <p>这样一来，一个可用的Linux节点就打造完成了！</p>
+<br />
+
 <h2 id="命令"><a href="#命令" class="headerlink" title="命令"></a>命令</h2><p>网卡默认关闭</p>
 <p>systemctl status xxx</p>
 <p>systemctl stop xxx</p>

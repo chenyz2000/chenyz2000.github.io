@@ -79,12 +79,12 @@
 
 
 
-<meta name="description" content="自定义指令、组件、过滤器都可以进行全局注册 自定义指令、组件、过滤器、监听器、计算都是Vue实例的私有属性，只能在挂载了Vue实例的标签内部使用 directive 自定义指令创建全局指令123Vue.directive(&quot;name&quot;, &amp;#123;    钩子函数&amp;#125;)  指令的name定义时不需要加v-前缀，调用的时候需要加前缀 第二个参数是一个对象，对象的每个元素是钩子函数 创建Vu">
+<meta name="description" content="自定义指令、组件、过滤器都可以进行全局注册 自定义指令、组件、过滤器、监听器、计算都是Vue实例的私有属性，只能在挂载了Vue实例的标签内部使用   directive 自定义指令创建全局指令123Vue.directive(&quot;name&quot;, &amp;#123;    钩子函数&amp;#125;)  指令的name定义时不需要加v-前缀，调用的时候需要加前缀 第二个参数是一个对象，对象的每个元素是钩子函数 创建">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Vue自定义指令、组件、过滤器、监听器、计算">
 <meta property="og:url" content="https://chenyz2000.github.io/Blog/Vue/Vue%E8%87%AA%E5%AE%9A%E4%B9%89%E6%8C%87%E4%BB%A4%E3%80%81%E7%BB%84%E4%BB%B6%E3%80%81%E8%BF%87%E6%BB%A4%E5%99%A8%E3%80%81%E7%9B%91%E5%90%AC%E5%99%A8%E3%80%81%E8%AE%A1%E7%AE%97%E5%B1%9E%E6%80%A7/index.html">
 <meta property="og:site_name" content="CYZ&#39;s Blog">
-<meta property="og:description" content="自定义指令、组件、过滤器都可以进行全局注册 自定义指令、组件、过滤器、监听器、计算都是Vue实例的私有属性，只能在挂载了Vue实例的标签内部使用 directive 自定义指令创建全局指令123Vue.directive(&quot;name&quot;, &amp;#123;    钩子函数&amp;#125;)  指令的name定义时不需要加v-前缀，调用的时候需要加前缀 第二个参数是一个对象，对象的每个元素是钩子函数 创建Vu">
+<meta property="og:description" content="自定义指令、组件、过滤器都可以进行全局注册 自定义指令、组件、过滤器、监听器、计算都是Vue实例的私有属性，只能在挂载了Vue实例的标签内部使用   directive 自定义指令创建全局指令123Vue.directive(&quot;name&quot;, &amp;#123;    钩子函数&amp;#125;)  指令的name定义时不需要加v-前缀，调用的时候需要加前缀 第二个参数是一个对象，对象的每个元素是钩子函数 创建">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2020-08-20T09:35:00.000Z">
 <meta property="article:modified_time" content="2020-08-27T09:56:00.000Z">
@@ -366,6 +366,8 @@
       
         <p>自定义指令、组件、过滤器都可以进行全局注册</p>
 <p>自定义指令、组件、过滤器、监听器、计算都是Vue实例的私有属性，只能在挂载了Vue实例的标签内部使用</p>
+<br />
+
 <h2 id="directive-自定义指令"><a href="#directive-自定义指令" class="headerlink" title="directive 自定义指令"></a>directive 自定义指令</h2><h4 id="创建全局指令"><a href="#创建全局指令" class="headerlink" title="创建全局指令"></a>创建全局指令</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Vue.directive(<span class="string">"name"</span>, &#123;</span><br><span class="line">    钩子函数</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
 
 <p>指令的name定义时不需要加v-前缀，调用的时候需要加前缀</p>
@@ -373,6 +375,8 @@
 <h4 id="创建Vue实例的私有指令"><a href="#创建Vue实例的私有指令" class="headerlink" title="创建Vue实例的私有指令"></a>创建Vue实例的私有指令</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">new</span> Vue(&#123;</span><br><span class="line">    directives:&#123;</span><br><span class="line">        name:&#123;</span><br><span class="line">            钩子函数</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
 
 <a id="more"></a>
+
+<br />
 
 <h4 id="钩子函数"><a href="#钩子函数" class="headerlink" title="钩子函数"></a>钩子函数</h4><ul>
 <li><p>bind: function(){}</p>
@@ -419,6 +423,8 @@
 <li>vnode</li>
 <li>oldVnode</li>
 </ol>
+<br />
+
 <h2 id="component-组件"><a href="#component-组件" class="headerlink" title="component 组件"></a>component 组件</h2><p>如果将所有内容都写在Vue的实例中，则它会很大</p>
 <p>所以出现了组件，用来将Vue实例划分为不同的模块</p>
 <p>以后需要什么功能只要调用对应的组件，提高了复用性</p>
@@ -470,6 +476,9 @@
 <h4 id="创建Vue实例的私有过滤器"><a href="#创建Vue实例的私有过滤器" class="headerlink" title="创建Vue实例的私有过滤器"></a>创建Vue实例的私有过滤器</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">new</span> Vue(&#123;</span><br><span class="line">    filters:&#123;</span><br><span class="line">        name: <span class="function"><span class="keyword">function</span>(<span class="params">data</span>)</span>&#123;</span><br><span class="line">            <span class="keyword">return</span>...;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
 
 <p>私有的优先级比全局更高</p>
+<br />
+
+
 <h2 id="watch-监听器"><a href="#watch-监听器" class="headerlink" title="watch 监听器"></a>watch 监听器</h2><p>可以监听指定数据的变化，然后触发watch中对应的处理函数</p>
 <p>watch对象中元素的键就是监听的数据名，值就是对应的处理函数</p>
 <p>处理函数可自带两个参数newVal和OldVal</p>
@@ -477,12 +486,13 @@
 
 <h4 id="监听路由地址"><a href="#监听路由地址" class="headerlink" title="监听路由地址"></a>监听路由地址</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">watch:&#123;</span><br><span class="line">    <span class="string">"$route.path"</span>:<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-
+<br />
 
 <h2 id="computed-计算属性"><a href="#computed-计算属性" class="headerlink" title="computed 计算属性"></a>computed 计算属性</h2><p>可以定义一些计算属性，其本质是一个方法，但在使用时是<strong>当做属性调用</strong>的</p>
 <p>只要计算属性方法中用到的任何数据发生变化，就会<strong>立即</strong>重新计算结果值（结果值会被<strong>缓存</strong>，数据不变化时直接调用缓存值，不重新计算）</p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"app"</span>&gt;</span>&#123;&#123;fullname&#125;&#125;<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="actionscript">    <span class="keyword">new</span> Vue(&#123;</span></span><br><span class="line"><span class="actionscript">        el:<span class="string">"#app"</span>,</span></span><br><span class="line"><span class="actionscript">        data:&#123;firstname:<span class="string">""</span>,lastname:<span class="string">""</span>&#125;,</span></span><br><span class="line">        computed:&#123;</span><br><span class="line"><span class="actionscript">            fullname:<span class="function"><span class="keyword">function</span><span class="params">()</span></span>&#123;</span></span><br><span class="line"><span class="actionscript">                <span class="keyword">return</span> <span class="keyword">this</span>.firstname+<span class="keyword">this</span>.lastname;	<span class="comment">//将返回值赋给fullname</span></span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)</span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
+<br />
 
 <h2 id="render-渲染属性"><a href="#render-渲染属性" class="headerlink" title="render 渲染属性"></a>render 渲染属性</h2><p>值是一个函数，有一个形参createElements，这个形参是一个方法，调用它可以把指定的组件模板对象渲染成html结构，return的结果会<strong>替换挂载了Vue实例的元素</strong>（元素整个被替换，不管内部是啥）</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">new</span> Vue(&#123;</span><br><span class="line">	el:<span class="string">"#app"</span>;</span><br><span class="line">	render:<span class="function"><span class="keyword">function</span>(<span class="params">createElements</span>)</span>&#123;</span><br><span class="line">		<span class="keyword">var</span> html = createElements(&#123;<span class="attr">template</span>:<span class="string">""</span>&#125;);</span><br><span class="line">		<span class="keyword">return</span> html;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>

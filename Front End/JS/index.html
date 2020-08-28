@@ -368,7 +368,7 @@
 <p>本身和页面动态没有关系，只有和Dom结合，才能使网页动起来</p>
 <a id="more"></a>
 
-
+<br />
 
 <h2 id="存在形式和放置位置"><a href="#存在形式和放置位置" class="headerlink" title="存在形式和放置位置"></a>存在形式和放置位置</h2><ul>
 <li><p>在script标签里</p>
@@ -377,23 +377,31 @@
 <li><p>以文件形式存在，在script里调用</p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"xxx.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
-
-
 </li>
 </ul>
+<br />
+
 <p>script的type属性默认值是”text/javascript”，可以省略不写</p>
 <p>script标签可以写在head里，也可以写在body里</p>
 <p>页面会按照从上到下的顺序运行js和显示html</p>
 <p>所以script最好写在<strong>body里的最下面</strong></p>
+<br />
+
 <h2 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h2><p>每行以分号结尾</p>
 <p>使用花括号，不要求缩进</p>
 <p>alert()在页面上显示通知</p>
 <p>console.log()在控制台打印</p>
 <h4 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h4><p>用var定义局部变量，无var定义全局变量</p>
+<br />
+
 <h2 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h2><p>原始类型：数字，字符串，布尔值</p>
 <p>对象类型：数组，字典</p>
+<br />
+
 <p>原始类型、null、undefined都不可变</p>
 <p>null和undefined分别是对象和基本数据类型的空值</p>
+<br />
+
 <h4 id="数字"><a href="#数字" class="headerlink" title="数字"></a>数字</h4><p>parseInt()，parseFloat()将某数字转换成整数、浮点数，不成功则NaN</p>
 <p>NaN，表示非数字</p>
 <p>Infinity表示无穷大，数字的特殊值</p>
@@ -427,6 +435,8 @@
 <h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><h4 id="序列化"><a href="#序列化" class="headerlink" title="序列化"></a>序列化</h4><p>JSON字符串和对象之间的转化</p>
 <p>序列化：<code>JSON.stringify(obj)</code></p>
 <p>反序列化：<code>JSON.parse(str)</code></p>
+<br />
+
 <h4 id="转义"><a href="#转义" class="headerlink" title="转义"></a>转义</h4><h6 id="url转义"><a href="#url转义" class="headerlink" title="url转义"></a>url转义</h6><p>将中文等转为百分号是encode</p>
 <p>encodeURI()和decodeURI()</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">encodeURI</span>()</span><br><span class="line"><span class="built_in">decodeURI</span>()</span><br><span class="line"></span><br><span class="line"><span class="built_in">encodeURIComponent</span>()</span><br><span class="line"><span class="built_in">decodeURIComponent</span>()</span><br></pre></td></tr></table></figure>
@@ -434,9 +444,11 @@
 <p>前两个不对字母数字 ~!@#$&amp;*()=:/,;?+’转义，后两个不对字母数字 ~!*()’转义，两组范围不同</p>
 <h6 id="字符串转义"><a href="#字符串转义" class="headerlink" title="字符串转义"></a>字符串转义</h6><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">escape</span>()	<span class="comment">//转义</span></span><br><span class="line"><span class="built_in">unescape</span>()		<span class="comment">//解码</span></span><br></pre></td></tr></table></figure>
 
-
+<br />
 
 <h4 id="eval"><a href="#eval" class="headerlink" title="eval"></a>eval</h4><p>eval(“代码”)，相当于Python中eval和exec的合集，既可以编译代码也可以获取返回值</p>
+<br />
+
 <h4 id="正则表达式"><a href="#正则表达式" class="headerlink" title="正则表达式"></a>正则表达式</h4><h6 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h6><p>var reg = /123\d\w456/，用两个斜线括住的字符串就是正则表达式的reg</p>
 <p>此外，/…/后面可以加任意个参数，表示不同的匹配模式：</p>
 <ul>
@@ -466,10 +478,12 @@
 <ul>
 <li>str.search(reg)，返回匹配成功的第一个索引位置（g模式无效）</li>
 </ul>
+<br />
+
 <h4 id="时间处理"><a href="#时间处理" class="headerlink" title="时间处理"></a>时间处理</h4><p>全球统一时间UTC，本地时间</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">d = <span class="keyword">new</span> <span class="built_in">Date</span>();</span><br><span class="line">d.getFullYear();</span><br><span class="line">d.getHours();</span><br><span class="line">d.getUTCHours();	<span class="comment">//获取UTC时间</span></span><br><span class="line">d.setMinutes(d.getMinutes()+<span class="number">75</span>);	<span class="comment">//当前时间向后推75分钟</span></span><br></pre></td></tr></table></figure>
 
-
+<br />
 
 <h2 id="语句"><a href="#语句" class="headerlink" title="语句"></a>语句</h2><p>语句和Java形式类似</p>
 <h4 id="条件语句"><a href="#条件语句" class="headerlink" title="条件语句"></a>条件语句</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(条件)&#123;&#125;</span><br><span class="line"><span class="keyword">else</span> <span class="keyword">if</span>(条件)&#123;&#125;</span><br><span class="line"><span class="keyword">else</span>&#123;&#125;</span><br></pre></td></tr></table></figure>
@@ -491,7 +505,7 @@
 
 
 
-
+<br />
 
 <h2 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h2><h4 id="函数类型"><a href="#函数类型" class="headerlink" title="函数类型"></a>函数类型</h4><ul>
 <li><p>普通函数</p>
@@ -530,6 +544,8 @@
 <p><strong>函数写在哪里作用域就在哪里</strong>，跟返回没有关系</p>
 </li>
 </ul>
+<br />
+
 <h4 id="闭包"><a href="#闭包" class="headerlink" title="闭包"></a>闭包</h4><p>将变量和函数封装到函数里，外部无法获取函数内部的变量</p>
 <p>自执行函数就是闭包</p>
 

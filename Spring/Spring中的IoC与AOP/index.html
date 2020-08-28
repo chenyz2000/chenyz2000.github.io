@@ -412,11 +412,13 @@
 <li><p>通过反射机制实例化所有的bean</p>
 <p>ApplicationContext是接口，ClassPathXmlApplicationContext是实现类</p>
 <p>实现类中拥有根据xml的建立<strong>&lt;String, Object&gt;的Map对象</strong></p>
+<br />
+
+<p>若模拟自己实现，可以使用dom4j读取xml，获取到的id属性对应的值作为Map的键，class属性值的类通过反射机制创建的对象作为Map的值</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//className是从class属性获取的值</span></span><br><span class="line">Class clazz = Class.forName(className);		<span class="comment">//通过反射机制创建对象</span></span><br><span class="line">Constructor constructor = clazz.getConstructor();		<span class="comment">//获取无参构造函数</span></span><br><span class="line">Object object = constructor.newInstance();</span><br></pre></td></tr></table></figure>
+
 </li>
 </ul>
-<p>  若模拟自己实现，可以使用dom4j读取xml，获取到的id属性对应的值作为Map的键，class属性值的类通过反射机制创建的对象作为Map的值</p>
-  <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//className是从class属性获取的值</span></span><br><span class="line">Class clazz = Class.forName(className);		<span class="comment">//通过反射机制创建对象</span></span><br><span class="line">Constructor constructor = clazz.getConstructor();		<span class="comment">//获取无参构造函数</span></span><br><span class="line">Object object = constructor.newInstance();</span><br></pre></td></tr></table></figure>
-
 <h4 id="scope作用域"><a href="#scope作用域" class="headerlink" title="scope作用域"></a>scope作用域</h4><p>Spring管理的bean是根据scope来生成的，表示bean的作用域</p>
 <p>默认是单例模式，可以在bean标签的scope属性修改</p>
 <ul>
@@ -470,7 +472,7 @@
 
 
 
-
+<br />
 
 <h2 id="AOP面向切面编程"><a href="#AOP面向切面编程" class="headerlink" title="AOP面向切面编程"></a>AOP面向切面编程</h2><p><strong>模块之间、业务逻辑与非业务代码</strong>的解耦合</p>
 <blockquote>

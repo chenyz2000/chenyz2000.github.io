@@ -377,22 +377,28 @@
 <p>前后端耦合高，开发效率低</p>
 <a id="more"></a>
 
+<br />
+
 <p>但是随着浏览器端展现和交互的要求越来越高，以及浏览器近些年性能和标准长足的发展，服务器端由JSP产生简单的HTML和CSS/JS已经无法满足需要。</p>
 <p>所以采取前后端分离，服务器端不再负责任何展现和交付的工作，这些工作完全由前端独立完成。服务器端只通过接口给前端提供数据服务</p>
 <p>前端通过Ajax请求访问后端的数据接口，将model展示到View中</p>
 <p>这要求前后端商量好接口文档（url、参数、数据类型），之后就可以独立开发</p>
 <p>前端使用假数据测试</p>
+<br />
+
 <p>传统开发：单体式应用。客户端通过访问服务端应用，服务端中的JSP和Java Server（无论是Handler、sevlet也好，总之是Controller层）互调，JSP请求Controller里的数据，Controller将数据解析到JSP里，最后拼接起来之后返回给客户端</p>
 <img src="..\..\images\image-20200809173332672.png">
 
 <p>前后端分离：单体应用分为前端和后端两个应用。客户端访问前端应用端口，前端应用访问后端应用端口，两者不同端口。前端应用里是html、css、js等代码，前端通过Ajax调用基于restful结构的后端数据接口，后端应用里是Java Server，Java Server响应前端给前端json数据，前端再把数据解析到页面中</p>
 <img src="..\..\images\image-20200809175156936.png">
 
-
+<br />
 
 <h4 id="Vue开发"><a href="#Vue开发" class="headerlink" title="Vue开发"></a>Vue开发</h4><p>vue开发，命令行创建vue项目，在idea中下载vue插件之后可以用idea打开，并编译项目，可以运行因为其中内嵌了一个服务器，运行命令npm run server</p>
 <p>vue应用只有一个主窗口，src/app.vue是主窗口，之后的操作都是在其中进行动态更新组件。<br>组件放在src/views/中（当然放在component也可以，只要之后能够成功引入），通过路由的映射将app.vue中的名称和资源关联，路由放在src/router/中，无论浏览器访问的是什么url，主窗口并不改变，改变的只是其中的组件</p>
 <p>使用vue，改了代码也不需要重新启动项目，可以动态更新页面</p>
+<br />
+
 <p>注解@entity标注实体类，和数据库的表相绑定。其中的属性加上@Id表示主键。实体类的每个对象是表里的一个记录。</p>
 <h4 id="Vue与后端的交互"><a href="#Vue与后端的交互" class="headerlink" title="Vue与后端的交互"></a>Vue与后端的交互</h4><p>前端应用写好，后端应用写好，下一步是让前端应用通过Ajax访问后端端口<br>vue中是通过axios插件实现<br>vue中所有的js代码都要写到script的export default{}中</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">default</span>&#123;</span><br><span class="line">    name: <span class="string">"Book"</span>;</span><br><span class="line">    data()&#123;</span><br><span class="line">        <span class="keyword">return</span>&#123;</span><br><span class="line">            msg: <span class="string">""</span>,</span><br><span class="line">            books:[&#123;&#125;,&#123;&#125;]	<span class="comment">//在代码中用插值表达式调用</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    created()&#123;	<span class="comment">//加载对象时调用</span></span><br><span class="line">        <span class="keyword">const</span> _this=<span class="keyword">this</span>;	<span class="comment">//vue对象</span></span><br><span class="line">        axios.get(<span class="string">"url"</span>).then(<span class="function"><span class="keyword">function</span>(<span class="params">resp</span>)</span>&#123;		<span class="comment">//形参resp承接从后端返回的结果</span></span><br><span class="line">            _this.books=resp.data;	<span class="comment">//只需要data信息	//这里的this不是vue对象，是回调</span></span><br><span class="line">            <span class="comment">//修改的是下划线处books的值</span></span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -400,6 +406,8 @@
 <blockquote>
 <p>会出现问题，跨服务了，需要解决，可在前端可在后端解决。如在Springboot中加一个配置类，实现WebMvcConfigurer接口，重写addCorsMappings方法</p>
 </blockquote>
+<br />
+
 <h2 id="HTTP"><a href="#HTTP" class="headerlink" title="HTTP"></a>HTTP</h2><p>HTTP，超文本传输协议，基于TCP/IP通信协议来传递数据，用于前端和后端的交互中</p>
 <blockquote>
 <p>浏览器的Ajax api，或者iOS/Android的http client，Java的commons-httpclient/okhttp或者是curl，postman之类的工具发出来的请求还能用在后端各个子服务的调用中（即当一种RPC协议使用）</p>
@@ -436,6 +444,8 @@
 <li>multipart/form-data即二进制流，文件上传</li>
 <li>image/xxx图片相关格式，有gif、jpeg、png</li>
 </ul>
+<br />
+
 <h2 id="前后端数据交互"><a href="#前后端数据交互" class="headerlink" title="前后端数据交互"></a>前后端数据交互</h2><p>前后端数据交互：表单，Ajax</p>
 <h3 id="表单"><a href="#表单" class="headerlink" title="表单"></a>表单</h3><h4 id="提交数据"><a href="#提交数据" class="headerlink" title="提交数据"></a>提交数据</h4><p>表单用post/get方式提交</p>
 <p>get是将键值对<strong>拼接到url的后面</strong>，即请求数据直接放在url中，通过访问或跳转，向服务器发送url请求（地址栏、超链接访问都属于get提交方式  ）</p>
@@ -482,7 +492,11 @@
 <blockquote>
 <p>@RequestParam(“name”)实质是将Request.getParameter() 中的K-V Map利用Spring的转化机制ConversionService配置，转化成参数接收对象或字段。get方式中query String的值，和post方式中body data的值都会被Servlet接受到并转化到Request.getParameter()参数集中，所以@RequestParam都可以获取的到。</p>
 </blockquote>
+<br />
+
 <p>​        有一个有趣的现象，如果Content-Type=mutipart/form-data，Body中加入参数和URL后面拼接参数一起做Post请求，都可以被加载到Param中，如果是同名的，只取用form-data中的。<br>​        如果Content-Type=application/x-www-form-urlencoded和URL拼接的一起，如果是String类型，则两个值会被拼接，其他类型取的是URL拼接的参数。</p>
+<br />
+
 <h2 id="Todo"><a href="#Todo" class="headerlink" title="Todo"></a>Todo</h2><ul>
 <li><input disabled="" type="checkbox"> form里的enctype，请求头的ContentType</li>
 </ul>

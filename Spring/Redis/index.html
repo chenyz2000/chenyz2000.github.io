@@ -390,6 +390,8 @@
 <p>获取：get key value</p>
 <p>删除：del key</p>
 <p>查询所有的key：keys *</p>
+<br />
+
 <h2 id="Spring-Boot整合Redis"><a href="#Spring-Boot整合Redis" class="headerlink" title="Spring Boot整合Redis"></a>Spring Boot整合Redis</h2><p>实际是在Spring Boot中用Spring Data Redis框架操作Redis</p>
 <p>在maven工程中添加<code>spirng-boot-starter-data-redis</code>和<code>commons-pools2</code>依赖</p>
 <h4 id="在application-properties中配置Radis"><a href="#在application-properties中配置Radis" class="headerlink" title="在application.properties中配置Radis"></a>在application.properties中配置Radis</h4><figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">spring.redis.database</span>:<span class="string">0		//表示的是统一的整体数据库</span></span><br><span class="line"><span class="meta">spring.redis.host</span>:<span class="string">localhost</span></span><br><span class="line"><span class="meta">spring.redis.port</span>:<span class="string">6379</span></span><br></pre></td></tr></table></figure>

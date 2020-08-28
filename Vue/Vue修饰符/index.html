@@ -374,6 +374,8 @@
 <p><a href="https://segmentfault.com/a/1190000016786254" target="_blank" rel="noopener">参考</a></p>
 <a id="more"></a>
 
+<br />
+
 <h2 id="事件修饰符"><a href="#事件修饰符" class="headerlink" title="事件修饰符"></a>事件修饰符</h2><ul>
 <li><p>.stop阻止事件冒泡，阻止父标签事件发生，相当于调用了event.stopPropagation()方法</p>
 </li>
@@ -391,17 +393,25 @@
 <li><p>.native用于给组件绑定事件时，若不加它则事件没有绑定成功。若给普通标签使用则会使事件失效</p>
 </li>
 </ul>
+<br />
+
 <h2 id="鼠标事件修饰符"><a href="#鼠标事件修饰符" class="headerlink" title="鼠标事件修饰符"></a>鼠标事件修饰符</h2><p>修饰鼠标点击click事件</p>
 <ul>
 <li>.left左键点击</li>
 <li>.right右键点击</li>
 <li>.middle中键点击</li>
 </ul>
+<br />
+
 <h2 id="按键事件修饰符"><a href="#按键事件修饰符" class="headerlink" title="按键事件修饰符"></a>按键事件修饰符</h2><p>修饰keyup，keydown等事件</p>
 <p>.num，使用按键码数字作为修饰，如<code>@keyup.67</code></p>
+<br />
+
 <p>而一些常用键也提供了别名，更具兼容性</p>
 <p>如普通键.enter    .tab    .delete(删除和退格)    .space    .esc    .up    .down    .left    .right    .page-up    .page-down</p>
 <p>和系统键.ctrl    .alt    .shift    .meta(win键盘中是win键)</p>
+<br />
+
 <p>此外有对系统键限制的修饰符.exact，只限制系统键，不限制普通键</p>
 <p>如<code>@keydown.ctrl.enter.exact</code>，即可以用ctrl+enter触发，可以用ctrl+enter+其他普通键触发，但不能ctrl+shift+enter触发</p>
 

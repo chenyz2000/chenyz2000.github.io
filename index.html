@@ -544,6 +544,8 @@
         
           <p>自定义指令、组件、过滤器都可以进行全局注册</p>
 <p>自定义指令、组件、过滤器、监听器、计算都是Vue实例的私有属性，只能在挂载了Vue实例的标签内部使用</p>
+<br />
+
 <h2 id="directive-自定义指令"><a href="#directive-自定义指令" class="headerlink" title="directive 自定义指令"></a>directive 自定义指令</h2><h4 id="创建全局指令"><a href="#创建全局指令" class="headerlink" title="创建全局指令"></a>创建全局指令</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Vue.directive(<span class="string">"name"</span>, &#123;</span><br><span class="line">    钩子函数</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
 
 <p>指令的name定义时不需要加v-前缀，调用的时候需要加前缀</p>
@@ -884,6 +886,8 @@
           <h2 id="路由"><a href="#路由" class="headerlink" title="路由"></a>路由</h2><p>后端路由：把URL地址对应到服务器上的资源，这个对应关系就叫路由</p>
 <p>前端路由：只涉及到前端页面的跳转，不发送到后台服务器。单页面程序主要借助hash实现（URL中第一个#后面的内容）不同组件之间的切换，特点是http请求中不会包含hash的内容。通过hash切换前端页面的方式叫做前端路由</p>
 <p><a href="https://www.cnblogs.com/joyho/articles/4430148.html" target="_blank" rel="noopener">URL中的hash</a></p>
+<br />
+
 <h2 id="安装Vue-router"><a href="#安装Vue-router" class="headerlink" title="安装Vue-router"></a>安装Vue-router</h2><p>先引入Vue包再引入Vue-router包，因为Vue-router要向Vue中注册一些属性</p>
 <p>导入CDN<code>&lt;script src=&quot;https://unpkg.com/vue-router/dist/vue-router.js&quot;&gt;&lt;/script&gt;</code></p>
 <p>或npm安装，模块化开发（如webpack）时，需要手动安装，用<code>Vue.use()</code>注册</p>
@@ -1047,6 +1051,8 @@
           <h2 id="Vue-js"><a href="#Vue-js" class="headerlink" title="Vue.js"></a>Vue.js</h2><p>前端框架，擅长于数据操作、表单填写、页面内容根据数据进行渲染、页面元素部分刷新</p>
 <p>页面由数据生成，只要数据就可以进行页面视图的渲染，不需要再操作DOM元素</p>
 <p>使用Vue时，建议不使用jQuery，尽量不要做Dom操作</p>
+<br />
+
 <p>前端发展过程：</p>
 <ol>
 <li>原生JS</li>

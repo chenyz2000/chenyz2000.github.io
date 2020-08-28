@@ -392,6 +392,8 @@
 <hr>
 <p>导入完整版Vue之后可以用习惯的方式进行Vue开发：</p>
 <p>在main.js中创建Vue实例，在Vue实例中<strong>注册组件</strong>，挂载到index.html标签上，在标签内部使用组件</p>
+<br />
+
 <h2 id="使用runtime版本Vue开发"><a href="#使用runtime版本Vue开发" class="headerlink" title="使用runtime版本Vue开发"></a>使用runtime版本Vue开发</h2><p>不支持template的编译，只能使用<strong>render</strong>方式渲染组件</p>
 <ul>
 <li><p>在main.js中导入Vue包</p>
@@ -422,7 +424,7 @@
 <p>在webpack.config.js中配置module.rules</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;<span class="attr">test</span>:<span class="regexp">/\.vue$/</span>,<span class="attr">use</span>:<span class="string">"vue-loader"</span>&#125;</span><br></pre></td></tr></table></figure>
 
-
+<br />
 
 <h2 id="ES6中的导入导出模块"><a href="#ES6中的导入导出模块" class="headerlink" title="ES6中的导入导出模块"></a>ES6中的导入导出模块</h2><p>ES6向外暴露成员（常量、函数、对象等等）用export default和export，export default每个文件里唯一</p>
 <p>ES6中导入模块用<code>import 变量 from &quot;模块包名&quot;</code>或<code>import &quot;表示路径&quot;</code></p>
@@ -434,14 +436,18 @@
 </blockquote>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//test.js</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;<span class="attr">name</span>:<span class="string">"abc"</span>, <span class="attr">age</span>:<span class="number">18</span>&#125;		<span class="comment">//导出对象，定义组件对象的属性</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">var</span> name=<span class="string">"xyz"</span>;		<span class="comment">//导出变量</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">var</span> age=<span class="number">16</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">//main.js</span></span><br><span class="line"><span class="keyword">import</span> person <span class="keyword">from</span> <span class="string">"./test.js"</span>		<span class="comment">//接收export defalt导出的成员，可以自定义变量接收</span></span><br><span class="line"><span class="keyword">import</span> &#123;name&#125; <span class="keyword">from</span> <span class="string">"./test.js"</span>		<span class="comment">//按需接收export导出的成员，&#123;&#125;中变量名与导出时一致</span></span><br><span class="line"><span class="keyword">import</span> person, &#123;name <span class="keyword">as</span> nm, age&#125; <span class="keyword">from</span> <span class="string">"./test.js"</span>		<span class="comment">//混合使用</span></span><br></pre></td></tr></table></figure>
 
-
+<br />
 
 <h2 id="webpack中使用Vue-router"><a href="#webpack中使用Vue-router" class="headerlink" title="webpack中使用Vue-router"></a>webpack中使用Vue-router</h2><p>npm安装，导入VueRouter，并把它手动安装到Vue上</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> Vue <span class="keyword">from</span> <span class="string">"vue"</span></span><br><span class="line"><span class="keyword">import</span> VueRouter <span class="keyword">from</span> <span class="string">"vue-router"</span>		<span class="comment">//此处的VueRouter就是后面创建路由对象的构造类</span></span><br><span class="line">Vue.use(VueRouter)		<span class="comment">//模块化开发时，需要手动安装路由功能</span></span><br></pre></td></tr></table></figure>
 
 <p>之后的使用和<em>Vue Router</em>中一样：</p>
 <p>创建一个路由对象，注册到main.js的Vue实例上，在html中用router-view占位、用router-link跳转</p>
+<br />
+
 <p>如果，注册了router的Vue实例已经有render属性了，router-view和router-link应该放在render组件对象的template中，而不是放在挂载了Vue实例的标签内部，不然会被render组件对象覆盖</p>
+<br />
+
 <p>main.js中代码太多，抽离路由模块</p>
 <p>将导入路由组件、创建路由对象抽离到router.js中，然后把路由对象export暴露，main.js中import即可</p>
 

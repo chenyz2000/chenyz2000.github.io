@@ -387,6 +387,8 @@
 </ul>
 <a id="more"></a>
 
+<br />
+
 <h2 id="IService，BaseMapper和ServiceImpl"><a href="#IService，BaseMapper和ServiceImpl" class="headerlink" title="IService，BaseMapper和ServiceImpl"></a>IService，BaseMapper和ServiceImpl</h2><p>Mapper接口继承BaseMapper，通过自动注入获得Mapper接口对象就可以调用Mapper接口的方法，操作数据库。</p>
 <p>我们可以自己写一个业务，包括接口xxxService和实现类xxxServiceImpl。在业务接口中定义save、get等业务方法，然后在实现类中使用Mapper接口对象、调用其方法操作数据库，完成业务。</p>
 <p>就像层次图画的一样</p>
@@ -397,11 +399,15 @@
 <p>IService是通用Service CRUD，属于Service层，是业务逻辑和一些关于数据库处理的操作，但不是直接和数据库打交道，如save()，remove()，get()，返回值是boolean表示是否操作成功</p>
 <p>BaseMapper是通用CRUD，属于Mapper层，是直接跟数据库打交道的，如insert()，delete()，select()，返回值是int表示操作行数</p>
 <p>此外，IService闭BaseMapper多了批量处理的方法</p>
+<br />
+
 <h2 id="实体类与数据表的映射"><a href="#实体类与数据表的映射" class="headerlink" title="实体类与数据表的映射"></a>实体类与数据表的映射</h2><p>实体类名与数据表名相同时，属性名与字段名相同时不需要注解，但是不相同时需要用：</p>
 <p>@TableName注解实体类，映射数据表</p>
 <p>@TableId注解属性，映射主键</p>
 <p>@TableField注解属性，映射字段</p>
 <p>它们的属性值见文档<a href="https://mybatis.plus/guide/annotation.html" target="_blank" rel="noopener">https://mybatis.plus/guide/annotation.html</a></p>
+<br />
+
 <h2 id="CRUD"><a href="#CRUD" class="headerlink" title="CRUD"></a>CRUD</h2><p>首先自动注入一个接口对象xxxDao</p>
 <h4 id="增删改查"><a href="#增删改查" class="headerlink" title="增删改查"></a>增删改查</h4><p>以下的t为实体类对象</p>
 <p>xxxDao.insert(t);</p>
@@ -430,6 +436,8 @@
 
 <p>当前页默认是1，每页条数默认是10</p>
 <p>注意：分页插件目前仅支持单表查询，同时在MyBatis中不建议使用多表连接查询</p>
+<br />
+
 <h2 id="AutoGenerator"><a href="#AutoGenerator" class="headerlink" title="AutoGenerator"></a>AutoGenerator</h2><p>可以快速生成Entity、Mapper、Mapper XML、Service、Controller等各个模块的代码</p>
 <p>与mybatis中的mybatis-generator-core类似</p>
 <p>添加依赖</p>
@@ -450,7 +458,7 @@
 <p>创建代码生成器对象，绑定配置，执行生成操作</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">AutoGenerator mpg = <span class="keyword">new</span> AutoGenerator();</span><br><span class="line">mpg.setGlobalConfig(gc);</span><br><span class="line">mpg.setDataSource(dsc);</span><br><span class="line">mpg.setPackageInfo(pc);</span><br><span class="line">mpg.setStrategy(strategy);</span><br><span class="line">mpg.excute();</span><br></pre></td></tr></table></figure>
 
-
+<br />
 
 <h2 id="多数据源"><a href="#多数据源" class="headerlink" title="多数据源"></a>多数据源</h2><p><a href="https://mybatis.plus/guide/dynamic-datasource.html" target="_blank" rel="noopener">https://mybatis.plus/guide/dynamic-datasource.html</a></p>
 <p>添加依赖，配置数据源</p>

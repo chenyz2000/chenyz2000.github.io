@@ -79,12 +79,12 @@
 
 
 
-<meta name="description" content="Vue.js前端框架，擅长于数据操作、表单填写、页面内容根据数据进行渲染、页面元素部分刷新 页面由数据生成，只要数据就可以进行页面视图的渲染，不需要再操作DOM元素 使用Vue时，建议不使用jQuery，尽量不要做Dom操作 前端发展过程：  原生JS jQuery等类库。解决了浏览器大部分兼容性问题 前端模板引擎。调用模板引擎的方法生成DOM元素渲染页面，而不是直接操作DOM，解决了频繁操作DO">
+<meta name="description" content="Vue.js前端框架，擅长于数据操作、表单填写、页面内容根据数据进行渲染、页面元素部分刷新 页面由数据生成，只要数据就可以进行页面视图的渲染，不需要再操作DOM元素 使用Vue时，建议不使用jQuery，尽量不要做Dom操作   前端发展过程：  原生JS jQuery等类库。解决了浏览器大部分兼容性问题 前端模板引擎。调用模板引擎的方法生成DOM元素渲染页面，而不是直接操作DOM，解决了频繁操作">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Vue基础">
 <meta property="og:url" content="https://chenyz2000.github.io/Blog/Vue/Vue%E5%9F%BA%E7%A1%80/index.html">
 <meta property="og:site_name" content="CYZ&#39;s Blog">
-<meta property="og:description" content="Vue.js前端框架，擅长于数据操作、表单填写、页面内容根据数据进行渲染、页面元素部分刷新 页面由数据生成，只要数据就可以进行页面视图的渲染，不需要再操作DOM元素 使用Vue时，建议不使用jQuery，尽量不要做Dom操作 前端发展过程：  原生JS jQuery等类库。解决了浏览器大部分兼容性问题 前端模板引擎。调用模板引擎的方法生成DOM元素渲染页面，而不是直接操作DOM，解决了频繁操作DO">
+<meta property="og:description" content="Vue.js前端框架，擅长于数据操作、表单填写、页面内容根据数据进行渲染、页面元素部分刷新 页面由数据生成，只要数据就可以进行页面视图的渲染，不需要再操作DOM元素 使用Vue时，建议不使用jQuery，尽量不要做Dom操作   前端发展过程：  原生JS jQuery等类库。解决了浏览器大部分兼容性问题 前端模板引擎。调用模板引擎的方法生成DOM元素渲染页面，而不是直接操作DOM，解决了频繁操作">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2020-07-23T03:19:00.000Z">
 <meta property="article:modified_time" content="2020-08-24T02:30:00.000Z">
@@ -368,6 +368,8 @@
         <h2 id="Vue-js"><a href="#Vue-js" class="headerlink" title="Vue.js"></a>Vue.js</h2><p>前端框架，擅长于数据操作、表单填写、页面内容根据数据进行渲染、页面元素部分刷新</p>
 <p>页面由数据生成，只要数据就可以进行页面视图的渲染，不需要再操作DOM元素</p>
 <p>使用Vue时，建议不使用jQuery，尽量不要做Dom操作</p>
+<br />
+
 <p>前端发展过程：</p>
 <ol>
 <li>原生JS</li>
@@ -383,6 +385,8 @@
 <h4 id="三大前端框架"><a href="#三大前端框架" class="headerlink" title="三大前端框架"></a>三大前端框架</h4><p>都适用于做单页面应用程序</p>
 <p>Vue人气比较高，React使用的人比较多</p>
 <p>React除了开发网站还可以开发手机APP，Vue在Weex的帮助下也可以</p>
+<br />
+
 <h2 id="Vue实例"><a href="#Vue实例" class="headerlink" title="Vue实例"></a>Vue实例</h2><p>Vue实例写在js文件中</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">    new Vue(&#123;</span><br><span class="line">        el:&quot;#abc&quot;,</span><br><span class="line">        data:&#123;</span><br><span class="line">            msg:&quot;hello&quot;</span><br><span class="line">        &#125;,</span><br><span class="line">        methods:&#123;</span><br><span class="line">            Function:function()&#123;&#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">&lt;&#x2F;script&gt;</span><br></pre></td></tr></table></figure>
 
@@ -401,6 +405,8 @@
 <p>ref的作用是用来给元素或子组件注册引用信息，引用信息会注册到Vue实例的$refs上。</p>
 <p>如果使用ref的是普通的DOM元素，引用指向的就是该DOM元素，Vue实例中定位这个DOM对象可以进行JS操作</p>
 <p>如果使用ref的是子组件，引用指向的就是该子组件，Vue实例中定位这个子组件可以访问它的data和methods</p>
+<br />
+
 <h2 id="Vue指令"><a href="#Vue指令" class="headerlink" title="Vue指令"></a>Vue指令</h2><p>Vue指令，作为<strong>标签的属性</strong>，属性值写在Vue实例中</p>
 <h4 id="v-text与v-html"><a href="#v-text与v-html" class="headerlink" title="v-text与v-html"></a>v-text与v-html</h4><p>v-text，设置标签的文本。属性值写在Vue实例的data中。类似直接把{ {  } }写在标签的文本中，但v-text会覆盖标签文本的内容</p>
 <p>v-html，设置标签的innerHTML，内容中有HTML结构会被解析为标签，其他与v-text一样</p>

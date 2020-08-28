@@ -1361,7 +1361,7 @@
 <p>fetch是全局量window的一个方法</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 链式处理,将异步变为类似单线程的写法: 高级用法.</span></span><br><span class="line">fetch(<span class="string">'/some/url'</span>).then(<span class="function"><span class="keyword">function</span>(<span class="params">response</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> . <span class="comment">//... 执行成功, 第1步...</span></span><br><span class="line">&#125;).then(<span class="function"><span class="keyword">function</span>(<span class="params">returnedValue</span>) </span>&#123;</span><br><span class="line">    <span class="comment">// ... 执行成功, 第2步...</span></span><br><span class="line">&#125;).catch(<span class="function"><span class="keyword">function</span>(<span class="params">err</span>) </span>&#123;</span><br><span class="line">    <span class="comment">// 中途任何地方出错...在此处理 :( </span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
 
-
+<br />
 
 <h2 id="Ajax"><a href="#Ajax" class="headerlink" title="Ajax"></a>Ajax</h2><p>Asynchronous JavaScript and XML，异步的JS和XML</p>
 <blockquote>

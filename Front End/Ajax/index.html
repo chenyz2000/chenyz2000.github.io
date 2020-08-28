@@ -371,7 +371,7 @@
 <p>fetch是全局量window的一个方法</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 链式处理,将异步变为类似单线程的写法: 高级用法.</span></span><br><span class="line">fetch(<span class="string">'/some/url'</span>).then(<span class="function"><span class="keyword">function</span>(<span class="params">response</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> . <span class="comment">//... 执行成功, 第1步...</span></span><br><span class="line">&#125;).then(<span class="function"><span class="keyword">function</span>(<span class="params">returnedValue</span>) </span>&#123;</span><br><span class="line">    <span class="comment">// ... 执行成功, 第2步...</span></span><br><span class="line">&#125;).catch(<span class="function"><span class="keyword">function</span>(<span class="params">err</span>) </span>&#123;</span><br><span class="line">    <span class="comment">// 中途任何地方出错...在此处理 :( </span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
 
-
+<br />
 
 <h2 id="Ajax"><a href="#Ajax" class="headerlink" title="Ajax"></a>Ajax</h2><p>Asynchronous JavaScript and XML，异步的JS和XML</p>
 <blockquote>
@@ -383,7 +383,7 @@
 <p>Ajax的核心是<strong>XMLHttpRequest</strong>对象（XHR），XHR为向服务器发送请求、解析服务器响应提供了接口，使浏览器可以发出HTTP请求与接收HTTP响应、实现在页面不刷新的情况下和服务端进行数据交互</p>
 <a id="more"></a>
 
-
+<br />
 
 <h2 id="JS原生XMLHttpRequest"><a href="#JS原生XMLHttpRequest" class="headerlink" title="JS原生XMLHttpRequest"></a>JS原生XMLHttpRequest</h2><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="actionscript">  <span class="keyword">var</span> xhr = <span class="keyword">new</span> XMLHttpRequest();</span></span><br><span class="line"><span class="actionscript">  xhr.open(<span class="string">'GET'</span>,<span class="string">'/helloAjax.json'</span>,<span class="literal">false</span>)		<span class="comment">//设置ajax</span></span></span><br><span class="line"><span class="actionscript">  xhr.send()		<span class="comment">//发送请求</span></span></span><br><span class="line"><span class="actionscript">  <span class="keyword">var</span> data = xhr.responseText  <span class="comment">//当请求到来时，读取请求中的数据</span></span></span><br><span class="line"><span class="javascript">  <span class="built_in">console</span>.log(data);</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
@@ -407,7 +407,7 @@
 <p> POST 请求，对象则拼接成字符串形式</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">xhr.open(<span class="string">'POST'</span>,<span class="string">'/login'</span>,<span class="literal">true</span>)</span><br><span class="line">xhr.send(<span class="string">'username=Iris&amp;password=12345'</span>)</span><br></pre></td></tr></table></figure>
 
-
+<br />
 
 <h2 id="jQuery-Ajax"><a href="#jQuery-Ajax" class="headerlink" title="jQuery Ajax"></a>jQuery Ajax</h2><p>通过callback+XHR实现</p>
 <p>语法：$.ajax({name:value, name:value})</p>
@@ -425,6 +425,8 @@
 <li>success: function，请求成功后调用，参数为返回并经过处理的数据data和textStatus</li>
 <li>error: function，请求失败后调用，参数为XMLHttpRequest对象、错误信息textStatus、捕获的错误对象errorThrown(可选)</li>
 </ul>
+<br />
+
 <h2 id="Axios"><a href="#Axios" class="headerlink" title="Axios"></a>Axios</h2><p>Ajax技术一种实现</p>
 <p>通过Promise封装XHR实现的HTTP客户端</p>
 

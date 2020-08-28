@@ -379,6 +379,8 @@
 
 <p>启动项目，命令行会打印一个默认用户user的随机密码</p>
 <p>访问<a href="http://localhost:8080/actuator" target="_blank" rel="noopener">http://localhost:8080/actuator</a>会跳转到一个登录页面<a href="http://localhost:8080/login" target="_blank" rel="noopener">http://localhost:8080/login</a></p>
+<br />
+
 <h2 id="核心组件"><a href="#核心组件" class="headerlink" title="核心组件"></a>核心组件</h2><h4 id="UserDetailsService接口"><a href="#UserDetailsService接口" class="headerlink" title="UserDetailsService接口"></a>UserDetailsService接口</h4><p>负责从<strong>特定的地方加载</strong>用户信息</p>
 <p>只有一个方法<code>UserDetails loadUserByUsername(String var1)</code>，通过用户名来加载用户，从系统数据中查询并加载具体的用户到Spring Security中</p>
 <hr>
@@ -407,6 +409,8 @@
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Bean</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> MyUserDetailsManager <span class="title">myUserDetailsManager</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    MyUserDetailsManager myUserDetailsManager = <span class="keyword">new</span> MyUserDetailsManager();</span><br><span class="line"></span><br><span class="line">    <span class="comment">//为了能够登录，初始化一个用户CYZ</span></span><br><span class="line">    <span class="comment">//密码使用前缀&#123;noop&#125;表示不使用加密，可以用PasswordEncoder指定一种加密方式，默认为Bcrypt</span></span><br><span class="line">    <span class="comment">//authorities代表用户的角色权限集合、一定不能为null</span></span><br><span class="line">    UserDetails CYZ = User.withUsername(<span class="string">"CYZ"</span>)</span><br><span class="line">        						.password(<span class="string">"&#123;noop&#125;12345"</span>)</span><br><span class="line">        						.authorities(AuthorityUtils.NO_AUTHORITIES).build();</span><br><span class="line">    myUserDetailsManager.createUser(CYZ);</span><br><span class="line">    <span class="keyword">return</span> myUserDetailsManager;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <h4 id="使用数据库管理用户"><a href="#使用数据库管理用户" class="headerlink" title="使用数据库管理用户"></a>使用数据库管理用户</h4><p>用Mapper接口对象进行数据库处理，替代users进行Map操作</p>
+<br />
+
 <h2 id="密码"><a href="#密码" class="headerlink" title="密码"></a>密码</h2><p><a href="https://juejin.im/post/6844903961456197646" target="_blank" rel="noopener">参考</a></p>
 <blockquote>
 <p>md5不是一种加密算法，由于彩虹表的出现，已经变得容易破解</p>
@@ -418,6 +422,8 @@
 <img src="../../images/image-20200805135934193.png">
 
 <h4 id="实现类DelegatingPasswordEncoder"><a href="#实现类DelegatingPasswordEncoder" class="headerlink" title="实现类DelegatingPasswordEncoder"></a>实现类DelegatingPasswordEncoder</h4><p>委托密码编码器</p>
+<br />
+
 <h2 id="注解"><a href="#注解" class="headerlink" title="注解"></a>注解</h2><h4 id="Secured"><a href="#Secured" class="headerlink" title="@Secured"></a>@Secured</h4><p>注解方法，指定可以调用该方法的角色或权限，若不符合则拒绝访问，例如</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Secured</span>(<span class="string">"ROLE_ADMIN"</span>)</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">updateUser</span><span class="params">(User user)</span></span>;</span><br></pre></td></tr></table></figure>
 

@@ -373,7 +373,7 @@
 <p>extern修饰全局变量使之对整个程序可见</p>
 <a id="more"></a>
 
-
+<br />
 
 <h2 id="函数传参"><a href="#函数传参" class="headerlink" title="函数传参"></a>函数传参</h2><ul>
 <li><p>将变量名作为实参和形参。这时传给形参的是变量的值，传递是单向的。如果在执行函数期间形参的值发生变化，并不传回给实参。因为在调用函数时，形参和实参不是同一个存储单元。//同c</p>
@@ -385,14 +385,18 @@
 </ul>
 <img src="..\..\images\clipboard.png" alt="clipboard.png" style="zoom: 100%;" />
 
-
+<br />
 
 <h2 id="指针"><a href="#指针" class="headerlink" title="指针"></a>指针</h2><p>int * ptr[3]相当于int *(ptr[3])，是指针的数组</p>
 <p>int (*ptr)[3]是指向数组的指针</p>
 <p>如const char *names[MAX] = { “Zara”, “Hina”, “Nuha”,  “Sara”};指针数组，存储的是各个字符串数组的首地址，cout时输出字符串</p>
+<br />
+
 <p>指向结构的指针struct Books *struct_pointer;</p>
 <p>指针访问结构的成员，必须使用 -&gt; 运算符struct_pointer-&gt;title;</p>
 <p>通过对象访问结构的成员时使用点运算符，通过指针访问结构的成员时使用箭头运算符。</p>
+<br />
+
 <h2 id="类与结构体"><a href="#类与结构体" class="headerlink" title="类与结构体"></a>类与结构体</h2><p>类与结构体在 C++ 中只有以下几点区别，除此这外无任何区别。</p>
 <ul>
 <li><p>class 中默认的成员访问权限是 private 的，而 struct 中则是 public 的。</p>
@@ -402,10 +406,12 @@
 <li><p>class 可以定义模板，而 struct 不可以。</p>
 </li>
 </ul>
+<br />
+
 <h2 id="sort比较函数"><a href="#sort比较函数" class="headerlink" title="sort比较函数"></a>sort比较函数</h2><p>sort比较函数要求：必须返回布尔值，而且有两个参数（可以是不同类型的），它们要么是迭代器解引用后得到的类型，要么是迭代器解引用后可以隐式转换成的类型。包括 lambda 表达式，如</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sort(s, s+<span class="number">5</span>,[](**<span class="keyword">const</span>** <span class="built_in">string</span>&amp; s1, **<span class="keyword">const</span>** <span class="built_in">string</span>&amp; s2) &#123; **<span class="keyword">return</span>** s1.back()&gt; s2.back();&#125;);</span><br></pre></td></tr></table></figure>
 
-
+<br />
 
 <p>c++11提供了lambda表达式</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[](<span class="keyword">int</span> x, <span class="keyword">int</span> y) -&gt; <span class="keyword">int</span> &#123; <span class="keyword">int</span> z = x + y; <span class="keyword">return</span> z + x; &#125;</span><br></pre></td></tr></table></figure>

@@ -371,7 +371,7 @@
 <p>之后把hexo.cmd所在的路径加入环境变量，应该是直接在安装路径中而不是在bin中</p>
 <a id="more"></a>
 
-
+<br />
 
 <h2 id="创建一个hexo博客项目"><a href="#创建一个hexo博客项目" class="headerlink" title="创建一个hexo博客项目"></a>创建一个hexo博客项目</h2><h4 id="创建博客项目"><a href="#创建博客项目" class="headerlink" title="创建博客项目"></a>创建博客项目</h4><p>命令<code>hexo init 本地博客目录</code></p>
 <h4 id="安装依赖文件"><a href="#安装依赖文件" class="headerlink" title="安装依赖文件"></a>安装依赖文件</h4><p>在本地博客目录，命令<code>npm install</code></p>
@@ -380,6 +380,8 @@
 <h4 id="新建页面"><a href="#新建页面" class="headerlink" title="新建页面"></a>新建页面</h4><p>在本地博客目录，命令<code>hexo new page categories</code></p>
 <p>会生成sources/categories/index.md</p>
 <p>tags，about等页面同理</p>
+<br />
+
 <h2 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h2><h4 id="托管到github"><a href="#托管到github" class="headerlink" title="托管到github"></a>托管到github</h4><p>修改仓库里的_config.yml</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">deploy:</span><br><span class="line">  type: git</span><br><span class="line">  repository: https:&#x2F;&#x2F;github.com&#x2F;chenyz2000&#x2F;chenyz2000.github.io</span><br><span class="line">  branch: master</span><br></pre></td></tr></table></figure>
 
@@ -389,6 +391,8 @@
 
 <p>需要补充type这一行</p>
 <p><strong>注意冒号后需要有一个空格</strong></p>
+<br />
+
 <h2 id="运行博客"><a href="#运行博客" class="headerlink" title="运行博客"></a>运行博客</h2><h4 id="更新html"><a href="#更新html" class="headerlink" title="更新html"></a>更新html</h4><p><strong>每次修改</strong>，都需要在<strong>本地博客目录下</strong>使用如下命令更新html</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hexo clean</span><br><span class="line">hexo generate   #可简写hexo g</span><br></pre></td></tr></table></figure>
 
@@ -400,18 +404,34 @@
 
 
 
-
+<br />
 
 <h1 id="Temp"><a href="#Temp" class="headerlink" title="Temp"></a>Temp</h1><p>模仿<a href="https://tru-xu.github.io/2019/05/10/hexo搭建博客踩坑/" target="_blank" rel="noopener">https://tru-xu.github.io/2019/05/10/hexo%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%E8%B8%A9%E5%9D%91/</a></p>
+<br />
+
 <h4 id="设置主题"><a href="#设置主题" class="headerlink" title="设置主题"></a>设置主题</h4><p>将模板主题clone到themes文件夹里</p>
 <p><code>git clone 模板主题url 目标路径</code></p>
 <p>并且修改_config.yml的theme为主题名称</p>
+<br />
+
 <h4 id="博客配置"><a href="#博客配置" class="headerlink" title="博客配置"></a>博客配置</h4><p>问题：本地server打开主题与github托管的项目主题不一致，github不能正确打开主题。修改本地博客的配置文件，将url改为<a href="https://chenyz2000.github.io/">https://chenyz2000.github.io/</a></p>
+<br />
+
 <p>报错：cannot get /categories/20%。20%是空格，在next的配置文件中，需要把categories等的路径后的空格去掉</p>
+<br />
+
 <p>文章的tags:和categories:后一定要加一个空格</p>
+<br />
+
 <p>报错：YAML Syntax Error Bad indentation of a mapping entry。yml配置文件语法有缩进，注意是不是哪里缩进出错</p>
+<br />
+
 <p>部署时，github部署失败，发送邮件<code>the page build failed for the master branch</code>，邮件中提到Jekyll。这个问题是github自己抽风，大概是页面上存在一些Jekyll不支持的字符，但是我搭建的博客不需要使用Jekyll，解决方法是，在提交github的仓库里，建立名为<code>.nojekyll</code>的空文件，之后重新部署。</p>
+<br />
+
 <p>更改永久链接：修改站点配置的permalink，默认值是<code>:year/:month/:day/:title/</code>。</p>
+<br />
+
 <p>categories、tags下的index.md中加内容没有效果，只有about中有效果</p>
 
       
