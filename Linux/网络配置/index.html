@@ -79,31 +79,27 @@
 
 
 
-<meta name="description" content="部分摘录自CodeSheep大神的专栏，原文链接  网络部分选择「桥接模式」即可：">
+<meta name="description" content="部分摘录自CodeSheep大神的专栏，原文链接 参考   首先在宿主机中开启VMWare开头的所有服务，之前怎么设置都连不上网，后来发现是虚拟机的网络服务没有开，开了之后发现网络设置非常容易 在宿主机网络设置中查看网络适配器，查看虚拟机的网卡是否处于启用状态">
 <meta property="og:type" content="article">
 <meta property="og:title" content="网络配置">
 <meta property="og:url" content="https://chenyz2000.github.io/Blog/Linux/%E7%BD%91%E7%BB%9C%E9%85%8D%E7%BD%AE/index.html">
 <meta property="og:site_name" content="CYZ&#39;s Blog">
-<meta property="og:description" content="部分摘录自CodeSheep大神的专栏，原文链接  网络部分选择「桥接模式」即可：">
+<meta property="og:description" content="部分摘录自CodeSheep大神的专栏，原文链接 参考   首先在宿主机中开启VMWare开头的所有服务，之前怎么设置都连不上网，后来发现是虚拟机的网络服务没有开，开了之后发现网络设置非常容易 在宿主机网络设置中查看网络适配器，查看虚拟机的网卡是否处于启用状态">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://chenyz2000.github.io/Blog/images/b45ae8758f7f4da496c5a477dba87115.webp">
 <meta property="og:image" content="https://chenyz2000.github.io/Blog/images/42de8041e80b42f8bac15ec3bd852c04.webp">
 <meta property="og:image" content="https://chenyz2000.github.io/Blog/images/7673f507a9914ccfa381c0a582a6a19d.webp">
 <meta property="og:image" content="https://chenyz2000.github.io/Blog/images/3855639392c341ec9a5a81c9b7f6aad3.webp">
 <meta property="og:image" content="https://chenyz2000.github.io/Blog/images/15f1cf127929473995050a45e7c3a9d8.webp">
 <meta property="og:image" content="https://chenyz2000.github.io/Blog/images/9ebc9697b0b0468c935b4efbe1602dbb.webp">
 <meta property="og:image" content="https://chenyz2000.github.io/Blog/images/194dde1278344613b30856d44eaa9ce8.webp">
-<meta property="og:image" content="https://chenyz2000.github.io/Blog/images/b572ff9237f24726bf7884ed64d6948f.webp">
 <meta property="og:image" content="https://chenyz2000.github.io/Blog/images/853eb369b4d3477b9cdc93a9adef7612.webp">
 <meta property="og:image" content="https://chenyz2000.github.io/Blog/images/8effd81dc7dc465ba6b0ee0476934a4b.webp">
-<meta property="og:image" content="https://chenyz2000.github.io/Blog/images/8da30191c01846bb8d220a0130532670.webp">
-<meta property="og:image" content="https://chenyz2000.github.io/Blog/images/1eb70b8c1adb47fda432c10e983fdb2e.webp">
 <meta property="article:published_time" content="2020-05-29T08:08:20.000Z">
-<meta property="article:modified_time" content="2020-05-28T16:00:00.000Z">
+<meta property="article:modified_time" content="2020-10-01T03:54:00.000Z">
 <meta property="article:author" content="Chen Yanzhi">
 <meta property="article:tag" content="Linux">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://chenyz2000.github.io/Blog/images/b45ae8758f7f4da496c5a477dba87115.webp">
+<meta name="twitter:image" content="https://chenyz2000.github.io/Blog/images/42de8041e80b42f8bac15ec3bd852c04.webp">
 
 
 
@@ -321,8 +317,8 @@
               
                 <span class="post-meta-item-text">Post modified&#58;</span>
               
-              <time title="Post modified" itemprop="dateModified" datetime="2020-05-29T00:00:00+08:00">
-                2020-05-29
+              <time title="Post modified" itemprop="dateModified" datetime="2020-10-01T11:54:00+08:00">
+                2020-10-01
               </time>
             
           </span>
@@ -378,14 +374,21 @@
 
       
         <p>部分摘录自CodeSheep大神的专栏，<a href="https://www.bilibili.com/read/cv5884033" target="_blank" rel="noopener">原文链接</a></p>
-<hr>
-<p>网络部分选择「桥接模式」即可：</p>
-<img src="..\..\images\b45ae8758f7f4da496c5a477dba87115.webp" alt="img" style="zoom: 50%;" />
+<p><a href="https://blog.csdn.net/qq_31924435/article/details/89361184" target="_blank" rel="noopener">参考</a></p>
+<br />
 
+<p>首先在宿主机中<strong>开启VMWare开头的所有服务</strong>，之前怎么设置都连不上网，后来发现是虚拟机的网络服务没有开，开了之后发现网络设置非常容易</p>
+<p>在宿主机网络设置中查看<strong>网络适配器</strong>，查看虚拟机的网卡是否处于启用状态</p>
 <a id="more"></a>
 
-<p><strong>系统是装好了，但还有几个问题</strong></p>
-<p><strong>问题一：</strong> 虚拟机内Linux系统与外网无法连通</p>
+<br />
+
+<h2 id="NAT模式"><a href="#NAT模式" class="headerlink" title="NAT模式"></a>NAT模式</h2><br />
+
+
+
+<h2 id="桥接模式"><a href="#桥接模式" class="headerlink" title="桥接模式"></a>桥接模式</h2><p>选择桥接模式</p>
+<h4 id="系统是装好了，但还有几个问题"><a href="#系统是装好了，但还有几个问题" class="headerlink" title="系统是装好了，但还有几个问题"></a>系统是装好了，但还有几个问题</h4><p><strong>问题一：</strong> 虚拟机内Linux系统与外网无法连通</p>
 <img src="..\..\images\42de8041e80b42f8bac15ec3bd852c04.webp" alt="img" style="zoom: 35%;" />
 
 <p><strong>问题二：</strong> 虚拟机内Linux系统与外部宿主机无法连通</p>
@@ -395,12 +398,12 @@
 <p><strong>问题三：</strong> 虚拟机内Linux系统节点与节点之间无法连通（如果装了多个Linux节点的话）</p>
 <br />
 
-<h2 id="网络配置（极其重要！）"><a href="#网络配置（极其重要！）" class="headerlink" title="网络配置（极其重要！）"></a>网络配置（极其重要！）</h2><ol>
-<li>首先尝试查看虚拟机系统的IP地址**</li>
+<h4 id="网络配置（极其重要！）"><a href="#网络配置（极其重要！）" class="headerlink" title="网络配置（极其重要！）"></a>网络配置（极其重要！）</h4><ol>
+<li>首先尝试查看虚拟机系统的IP地址</li>
 </ol>
-<p>使用命令<strong>ifconfig</strong>进行查看。我们会发现装好的系统并没有为它设置IP地址。</p>
+<p>使用ifconfig进行查看。我们会发现装好的系统并没有为它设置IP地址。</p>
 <ol start="2">
-<li>设置虚拟机与物理宿主机的网络连接**</li>
+<li>设置虚拟机与物理宿主机的网络连接</li>
 </ol>
 <img src="..\..\images\3855639392c341ec9a5a81c9b7f6aad3.webp" alt="img" style="zoom: 67%;" />
 
@@ -415,18 +418,15 @@
 <img src="..\..\images\9ebc9697b0b0468c935b4efbe1602dbb.webp" alt="img" style="zoom:50%;" />
 
 <p>接下来编辑虚拟机系统网卡配置，将上面分配所得的IP地址配置进去：</p>
-<p>使用命令编辑：<strong>vim /etc/sysconfig/network-scripts/ifcfg-ens33</strong></p>
+<p>编辑<code>/etc/sysconfig/network-scripts/ifcfg-ens33</code></p>
 <p>修改配置如下：</p>
 <img src="..\..\images\194dde1278344613b30856d44eaa9ce8.webp" alt="img" style="zoom: 40%;" />
 
-<p>尤其注意下图红色标记部分的配置：</p>
-<img src="..\..\images\b572ff9237f24726bf7884ed64d6948f.webp" alt="img" style="zoom:50%;" />
-
-<p>编辑完成，重启网络设置即可：</p>
-<p><strong>systemctl restart network.service</strong></p>
+<p>尤其注意BOOTPROTO、ONBOOT、IPADDR、NETMASK、GATEWAY、DNS1的配置</p>
+<p>编辑完成，重启网络设置即可<code>systemctl restart network.service</code></p>
 <br />
 
-<h2 id="检查安装配置结果"><a href="#检查安装配置结果" class="headerlink" title="检查安装配置结果"></a>检查安装配置结果</h2><p><strong>1、检验虚拟机系统网络和外界的连通性</strong></p>
+<h4 id="检查安装配置结果"><a href="#检查安装配置结果" class="headerlink" title="检查安装配置结果"></a>检查安装配置结果</h4><p><strong>1、检验虚拟机系统网络和外界的连通性</strong></p>
 <p>包括检查和外网的连通、和物理宿主机的连通、以及和兄弟节点（前提是你安装了多个虚拟机系统节点的话）之间的连接</p>
 <img src="..\..\images\853eb369b4d3477b9cdc93a9adef7612.webp" alt="img" style="zoom:50%;" />
 
@@ -434,30 +434,6 @@
 <img src="..\..\images\8effd81dc7dc465ba6b0ee0476934a4b.webp" alt="img" style="zoom:50%;" />
 
 <p>至此，大功告成！</p>
-<br />
-
-<h2 id="SSH远程连接"><a href="#SSH远程连接" class="headerlink" title="SSH远程连接"></a>SSH远程连接</h2><p>在宿主机通过SSH终端连接虚拟机内Linux系统，成功！</p>
-<img src="..\..\images\8da30191c01846bb8d220a0130532670.webp" alt="img" style="zoom:50%;" />
-
-<br />
-
-<h2 id="SFTP文件传输"><a href="#SFTP文件传输" class="headerlink" title="SFTP文件传输"></a>SFTP文件传输</h2><p>在宿主机通过SFTP工具即可访问虚拟机内Linux节点，从而可以实现本地和服务器的文件互传</p>
-<img src="..\..\images\1eb70b8c1adb47fda432c10e983fdb2e.webp" alt="img" style="zoom:50%;" />
-
-<p>这样一来，一个可用的Linux节点就打造完成了！</p>
-<br />
-
-<h2 id="命令"><a href="#命令" class="headerlink" title="命令"></a>命令</h2><p>网卡默认关闭</p>
-<p>systemctl status xxx</p>
-<p>systemctl stop xxx</p>
-<p>service xxx status</p>
-<p>stop, start, restart</p>
-<p>chkconfig NetworkManger off    #关闭开机自启</p>
-<p>chkconfig xxx on</p>
-<p>systemctl enable xxx</p>
-<p>systemctl disable xxx</p>
-<p>systemctl is-enabled xxx #查询是否禁用</p>
-<p><a href="https://blog.csdn.net/weiyongle1996/article/details/75128239" target="_blank" rel="noopener">https://blog.csdn.net/weiyongle1996/article/details/75128239</a></p>
 
       
     </div>
@@ -597,7 +573,7 @@
             
               <div class="site-state-item site-state-posts">
                 <a href="/Blog/archives">
-                  <span class="site-state-item-count">45</span>
+                  <span class="site-state-item-count">44</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -620,7 +596,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/Blog/tags/index.html">
-                  <span class="site-state-item-count">54</span>
+                  <span class="site-state-item-count">53</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>
@@ -669,7 +645,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#网络配置（极其重要！）"><span class="nav-text">网络配置（极其重要！）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#检查安装配置结果"><span class="nav-text">检查安装配置结果</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SSH远程连接"><span class="nav-text">SSH远程连接</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SFTP文件传输"><span class="nav-text">SFTP文件传输</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#命令"><span class="nav-text">命令</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#NAT模式"><span class="nav-text">NAT模式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#桥接模式"><span class="nav-text">桥接模式</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#系统是装好了，但还有几个问题"><span class="nav-text">系统是装好了，但还有几个问题</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#网络配置（极其重要！）"><span class="nav-text">网络配置（极其重要！）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#检查安装配置结果"><span class="nav-text">检查安装配置结果</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
