@@ -1,0 +1,158 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title></title>
+  <meta name="description" content="" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="robots" content="all,follow" />
+  <!-- Bootstrap CSS-->
+  <link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.min.css" />
+  <!-- Font Awesome CSS-->
+  <link rel="stylesheet" href="vendor/font-awesome/css/font-awesome.min.css" />
+  <!-- Custom Font Icons CSS-->
+  <link rel="stylesheet" href="css/landy-iconfont.css" />
+  <!-- Google fonts - Open Sans-->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700,800" />
+  <!-- owl carousel-->
+  <link rel="stylesheet" href="vendor/owl.carousel/assets/owl.carousel.css" />
+  <link rel="stylesheet" href="vendor/owl.carousel/assets/owl.theme.default.css" />
+  <!-- theme stylesheet-->
+  <link rel="stylesheet" href="css/style.default.css" id="theme-stylesheet" />
+  <!-- Custom stylesheet - for your changes-->
+  <link rel="stylesheet" href="css/custom.css" />
+  <!-- Favicon-->
+  <link rel="shortcut icon" href="favicon.png" />
+  <!-- Tweaks for older IEs-->
+  <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script
+    ><![endif]-->
+</head>
+
+<body>
+  <!-- navbar-->
+  <header class="header">
+    <nav class="navbar navbar-expand-lg fixed-top">
+      <a href="index.html" class="navbar-brand">Lie Group</a>
+      <button type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"
+        class="navbar-toggler navbar-toggler-right">
+        <span></span><span></span><span></span>
+      </button>
+      <div id="navbarSupportedContent" class="collapse navbar-collapse">
+        <ul class="navbar-nav ml-auto align-items-start align-items-lg-center">
+          <li class="nav-item">
+            <a href="index.html" class="nav-link link-scroll">Introduction</a>
+          </li>
+          <li class="nav-item">
+            <a href="algorithm.html" class="nav-link">Algorithm</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+
+  <section class="align-items-center">
+    <div class="container">
+      <div class="row d-flex justify-content-center">
+        <div class="text-center">
+          <h2 class="h2 ">算法描述</h2>
+        </div>
+        <p class="lead col-12 " style="font-size:20px;text-align: center;">
+          这里主要介绍李群和覆盖思想相关的知识，以及一些基本知识概念的理解。 </p>
+      </div>
+    </div>
+    <br>
+    <br>
+    <div class="container">
+      <div class="row block">
+        <h3>群</h3><br>
+        <p style="font-size: 20px">
+          首先从群开始，对于一个非空集合G，如果它的运算满足结合律，而且存在一个元素e满足ea=a（a是集合G中的任意元素），同时，对于G中的任意一个元素a，G中都存在a1，使得a*a1=e，那这个G就是一个群。<br><br>
+        </p>
+
+        <h3>拓扑</h3><br>
+        <p style="font-size: 20px">
+          而所谓的拓扑就是对于一个非空集合M来说，它的子集族r（就是集合M部分子集的集合）包含M的全集以及空集。同时，对于两个属于子集族的子集U1，U2，他们的交集是属于子集族r的。而对于子集族所有子集的并集也存在于这个子集族里。这样的子集族r叫做非空集合M的拓扑。而（M，r）为一个拓扑空间。<br><br>
+        </p>
+
+        <h3>开集</h3><br>
+        <p style="font-size: 20px">
+          开集就是子集族r中的元素U，开集的补集叫做（M，r）的闭集。假定x是非空集合M的任意一个，x的开邻域就是含有x的开集U。<br><br>
+        </p>
+
+        <h3>球邻域、内点</h3><br>
+        <p style="font-size: 20px">
+          球领域，正如他的名字，我们可以把它理解成一个球形空间。内点就是这个球形空间中的点。对于集合Y，我们可以看做是一个总的空间集合，对于这空间集合里的一个点x，如果对于x，以x为圆心，ε为半径的球形邻域（可以看作几何空间中的球），这个球邻域是包含在集合Y之内的，那么可以说x是Y的内点。Y集合空间中，所有内点的子集成为开集。<br><br>
+        </p>
+
+
+        <h3>T2（Hausdorff）空间</h3><br>
+        <p style="font-size: 20px">
+          假设（M，r）为一个拓扑空间，如果对M集合中的任意两个元素x，y（x与y不相同），空间内必定存在x的开邻域U和y的开邻域V，使得U∩V=Ø，那么这个拓扑空间就是Hausdorff空间。<br><br>
+        </p>
+
+
+        <h3>n维拓扑流形</h3><br>
+        <p style="font-size: 20px">
+          假设M为T2空间，对于M中的任意元素p，都存在p在M中的开邻域U和同胚映射ε：a→ε(a)，其中ε (a)⸦R<sub>n</sub>为开集（局部欧氏），则称T2空间M为n维拓扑流形。
+          所谓拓扑流形就是在拓扑空间的基础上加上了连续的概念，也就是提到的同胚映射。
+          (U,ε)称为p的局部坐标系，U为局部坐标邻域，ε为局部坐标映射。<br><br>
+        </p>
+
+        <h3>坐标卡</h3><br>
+        <p style="font-size: 20px">
+          在流行M中，假定φ:U→φ(U) ⸦R<sub>n</sub>是同胚的，其中φ(U)是R<sub>n</sub>中的开集，则称（U, φ）为流形M的一个坐标卡。<br><br>
+        </p>
+
+        <h3>C<sup>r</sup>相关</h3><br>
+        <p style="font-size: 20px">
+          设（U1, φ1），（U2, φ2）是n维流形M的两个坐标卡，当U1∩U2≠Ø时，φ1(U1∩U2)→φ2(U1∩U2)和它的逆映射都是r次可微的，则（U1, φ1），（U2,
+          φ2）是C<sup>r</sup>相关的。这个是用于判断微分流形。<br><br>
+        </p>
+
+        <h3>覆盖与开覆盖</h3><br>
+        <p style="font-size: 20px">
+          A为集合X的子集，对于X的子集族U（U中的每个子集U<sub>a</sub>都包含着集合A中的元素），且A⸦子集族U中所有集合的并集，则称U为A的覆盖。如果任意U<sub>a</sub>是拓扑空间的开集，则U叫做A的开覆盖。<br><br>
+          我们可以这样想，在总集合X中，部分子集A中的每一个元素所在的X的子集族U中的子集U<sub>a</sub>都能够把这个元素覆盖住，
+          而A集合中所有元素所在的X子集族U中的子集U<sub>a</sub>并起来的时候，就理所当然地能够把整个A集合给完全覆盖住。
+          当然，各个关于A中元素的子集族U的子集U<sub>a</sub>之间会有重合的元素。简单来说就是A中每个元素，按照子集族U的规则进行扩充，最终会把A整个覆盖住。这个概念也是用来判断微分流形的一个条件。<br><br>
+        </p>
+
+        <h3>微分流形</h3><br>
+        <p style="font-size: 20px">
+          设M是n维流形，若在M上指定了一个C<sup>r</sup>微分结构Λ，则称（M，Λ）维一个n维C<sup>r</sup>微分流形，其中Λ是M上坐标卡的一个子集合。<br><br>
+        </p>
+
+        <h3>李群</h3><br>
+        <p style="font-size: 20px">目前到这里，我们就大概了解了微分流形、拓扑空间以及群的一些基本的概念。这个时候就可以给出了李群的定义了。
+          <br />设G是一个非空集合，满足下面三个条件：
+        </p>
+        <ul style="font-size: 20px">
+          <li>G是一个群;</li>
+          <li>G也是一个为微分流形;</li>
+          <li>群的运算是可微的;</li>
+        </ul>
+        <p style="font-size: 20px">
+          我们可以看出李群是一个群，也是一个微分流形，同时具有二者的性质。从一般定义上讲，流形就是点、线、面以及各种高维连续空间概念的推广，机器学习领域中的所有观察数据都是可以和点、线、面等结构建立起对应关系的。
+          也就是说，李群可以用来表示机器学习领域中的数据。通过李群的几何、代数表示，从几何的角度对数据进行定性分析描述,从代数的角度对数据进行定量描述。
+          这样对学习表达式的多对一或多对多这样的题目就找到一种解决途径。
+        </p>
+      </div>
+
+  </section>
+
+
+  <!-- Javascript files-->
+  <script src="js/jquery-3.2.1.min.js"></script>
+  <script src="js/popper.min.js"></script>
+  <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+  <script src="vendor/jquery.cookie/jquery.cookie.js"></script>
+  <script src="vendor/owl.carousel/owl.carousel.min.js"></script>
+  <script src="js/front.js"></script>
+</body>
+
+</html>

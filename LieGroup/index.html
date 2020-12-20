@@ -1,0 +1,426 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Home</title>
+  <meta name="description" content="" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="robots" content="all,follow" />
+  <!-- Bootstrap CSS-->
+  <link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.min.css" />
+  <!-- Font Awesome CSS-->
+  <link rel="stylesheet" href="vendor/font-awesome/css/font-awesome.min.css" />
+  <!-- Custom Font Icons CSS-->
+  <link rel="stylesheet" href="css/landy-iconfont.css" />
+  <!-- Google fonts - Open Sans-->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700,800" />
+  <!-- owl carousel-->
+  <link rel="stylesheet" href="vendor/owl.carousel/assets/owl.carousel.css" />
+  <link rel="stylesheet" href="vendor/owl.carousel/assets/owl.theme.default.css" />
+  <!-- theme stylesheet-->
+  <link rel="stylesheet" href="css/style.default.css" id="theme-stylesheet" />
+  <!-- Custom stylesheet - for your changes-->
+  <link rel="stylesheet" href="css/custom.css" />
+  <!-- Favicon-->
+  <link rel="shortcut icon" href="favicon.png" />
+  <!-- Tweaks for older IEs-->
+  <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script
+    ><![endif]-->
+</head>
+
+<body>
+  <!-- navbar-->
+  <header class="header">
+    <nav class="navbar navbar-expand-lg fixed-top">
+      <a href="index.html" class="navbar-brand">Lie Group</a>
+      <button type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"
+        class="navbar-toggler navbar-toggler-right">
+        <span></span><span></span><span></span>
+      </button>
+      <div id="navbarSupportedContent" class="collapse navbar-collapse">
+        <ul class="navbar-nav ml-auto align-items-start align-items-lg-center">
+          <li class="nav-item">
+            <a href="index.html" class="nav-link link-scroll">Introduction</a>
+          </li>
+          <li class="nav-item">
+            <a href="algorithm.html" class="nav-link">Algorithm</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Modal-->
+  <div id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true"
+    class="modal fade">
+    <div role="document" class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 id="exampleModalLabel" class="modal-title">Sign Up Modal</h5>
+          <button type="button" data-dismiss="modal" aria-label="Close" class="close">
+            <span aria-hidden="true">×</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form id="signupform" action="#">
+            <div class="form-group">
+              <label for="fullname">Full Name</label>
+              <input type="text" name="fullname" placeholder="Full Name" id="fullname" />
+            </div>
+            <div class="form-group">
+              <label for="username">User Name</label>
+              <input type="text" name="username" placeholder="User Name" id="username" />
+            </div>
+            <div class="form-group">
+              <label for="email">Email Address</label>
+              <input type="text" name="email" placeholder="Email Address" id="email" />
+            </div>
+            <div class="form-group">
+              <button type="submit" class="submit btn btn-primary btn-shadow btn-gradient">
+                Signup
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <section id="hero" class="hero hero-home bg-gray">
+    <div class="container">
+      <div class="row d-flex">
+        <div class="col-lg-10 text order-2 order-lg-1">
+          <h1>Lie Group Covering Learning Algorithm</h1>
+          <p class="hero-text">
+            覆盖是代数几何研究中的重要工具。在机器学习中，基于覆盖的思想可以得到多种分类手段。
+          </p>
+          <div class="CTA"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="browser" class="browser">
+    <div class="container">
+      <div class="row d-flex justify-content-center">
+        <div class="col-lg-8 text-center">
+          <h2 class="h2 ">背景介绍</h2>
+        </div>
+      </div>
+      <p style="font-size: 20px"><br><br>&nbsp;&nbsp;&nbsp;&nbsp;
+        覆盖学习算法是一种具有高分类准确度和强泛化能力的构造性学习算法，可以处理海量数据的多种分类和聚类，在许多应用和研究领域应用广泛。<br><br>&nbsp;&nbsp;&nbsp;&nbsp;属于监督学习，在一些研究方向上都发挥着重要的作用，如图像检索、金融预测、无线传感网络监控、文本分类、手写汉字的识别等。<br><br>&nbsp;&nbsp;&nbsp;&nbsp;其优势在于：将李群结构分解，将其映射到各覆盖群中，能够有效地提高学习效率，丰富李群机器学习理论，同时也为数据分析提供一种新的机器学习方法。
+      </p>
+    </div>
+  </section>
+
+  <section class="bg-gray">
+    <div id="algorithm" class="container">
+      <div class="row block">
+        <div class="col-lg-12" style="text-align: center;">
+          <h2>研究意义</h2>
+        </div>
+      </div>
+      <div class="block">
+        <block class="block">
+          <h4>Question</h4><br>
+          <p style="font-size: 20px">
+            &nbsp;&nbsp;&nbsp;&nbsp;在学习过程中，直接对多值表示问题进行分析时，往往是困难的。<br><br>
+          </p>
+          <h4>Solution</h4><br>
+          <p style="font-size: 20px">
+            &nbsp;&nbsp;&nbsp;&nbsp;我们可以把李群问题转化到其覆盖群上进行求解，利用李群和覆盖群之间的同构关系，有效的解决这一难题。
+          </p>
+          </p>
+        </block>
+      </div>
+      <div class="row d-flex align-items-center block">
+        <div class="col-lg-6 image">
+          <img src="img/feature-1.png" alt="..." class="img-fluid" />
+        </div>
+        <div class="col-lg-6 text">
+          <h4>Specific Ideas</h4><br>
+          <p style="font-size: 20px;">
+            &nbsp;&nbsp;&nbsp;&nbsp;在数学中可以证明，当李群G的群空间是多连通时，一定存在另一个群空间是单连通的简单李群，它与原李群G之间有多一对应的同态关系，称之为李群G的覆盖群。<br><br>
+            &nbsp;&nbsp;&nbsp;&nbsp;覆盖群和李群之间存在着局域同构的关系，可以同构的表示原李群的性质，这恰好对应着学习问题，通过对样本集的学习，可以部分地还原问题世界，从而解决真实问题。
+          </p>
+        </div>
+      </div>
+      <div class="row d-flex align-items-center block">
+        <div class="col-lg-6 text text-left order-2 order-lg-1">
+
+          <p style="font-size: 20px;">
+            &nbsp;&nbsp;&nbsp;&nbsp;我们可以利用李群特殊的代数几何结构，对样本数据进行有效表示。样本构成空间是嵌入在一个微分流形中，构成一个李群。<br><br>
+            &nbsp;&nbsp;&nbsp;&nbsp;通过对李群性质的分析，得知李群的性质与其群空间的连通度有密切关系。<br><br>
+            &nbsp;&nbsp;&nbsp;&nbsp;利用单连通覆盖算法可以找到其覆盖群和覆盖映射，通过覆盖映射就可以将李群中的元素和覆盖群的元素建立一个一一对应的关系，就能够把李群问题转换为其覆盖群上的问题，从而将非线性问题转化为线性问题。
+          </p>
+        </div>
+        <div class="col-lg-6 image order-1 order-lg-2">
+          <img src="img/feature-2.png" alt="..." class="img-fluid" />
+        </div>
+      </div>
+
+      <block class="block">
+        <h4>Question</h4><br>
+        <p style="font-size: 20px">
+          &nbsp;&nbsp;&nbsp;&nbsp;然而，很多情况下，学习问题并不是一一对应的，往往会有多输入空间但输出域的情况，甚至是多输入多输出。
+          在学习过程中，直接对多值表示问题进行分析时，往往是困难的。<br><br>
+        </p>
+        <h4>Solution</h4><br>
+        <p style="font-size: 20px">
+          &nbsp;&nbsp;&nbsp;&nbsp; 同样，可以将李群问题转化到其覆盖群上进行求解，因为李群的许多整体性质可以从群的无穷小结构推出，即群的若干个片给出后，通过对局域性质的分析，李群的整体性质就可以完全确定。
+
+        </p>
+        </p>
+      </block>
+
+      <div class="row d-flex align-items-center block">
+        <div class="col-lg-6 image">
+          <img src="img/feature-3.png" alt="..." class="img-fluid" />
+        </div>
+        <div class="col-lg-6 text">
+          <h4>Specific Ideas</h4><br>
+          <p style="font-size: 20px;">
+            &nbsp;&nbsp;&nbsp;&nbsp;多连通李群的群空间内的连线根据是否能够连续变化，可以分成若干组，同一组内的连线可以互相变化。这样群空间就被分成不相连结的若干片，每个片表示一个独立的部分，都可以找到各片的覆盖群。<br><br>
+            &nbsp;&nbsp;&nbsp;&nbsp;覆盖群由于与李群之间是局域同构的，因此覆盖群的组合函数真实地反映了多连通李群的性质。根据覆盖群这一特性，就可以把复杂的多连通问题简化为覆盖群的组合问题。 </p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="align-items-center">
+    <div class="container">
+      <div style="text-align: center;">
+        <h2>研究现状</h2><br><br>
+        <p class="lead col-12 " style="font-size:20px">
+          覆盖技巧是研究代数几何的重要工具，比如在研究基变换、典范映射、奇点等问题的时候都会涉及覆盖。现在覆盖思想具有较高的准确度和强泛化能力，已经被应用到更多的领域，如数据挖掘，机器学习等等。 </p>
+      </div>
+      <div class="col-12 ">
+        <h3>具体研究如下：</h3><br>
+        <ol style="font-size: 20px;">
+          <li>邻域覆盖学习算法：通过球面投影变换将神经网络的最优设计问题转换为某种最优覆盖问题；</li><br>
+          <li>覆盖聚类算法：采用覆盖的概念将比较集中的样本聚合在一起，从而发现隐含在样本集中的类；</li><br>
+          <li>核覆盖算法：将SVM中的核函数法与构造性学习的覆盖算法相融合，使得运算速度更快、精度更高、稳健型更强；</li><br>
+          <li>改进的流形学习方法：引用邻域覆盖思想，从计算上用有限样本集描述流形结构，从而这组有限数据点集能够覆盖嵌套流形的支撑域，不致丢失结构信息，同时尽可能的少地保持存储所需的码表。</li><br>
+          <li>仿生/拓扑模式识别：确认了特征空间中同类样本的连续性，以一类样本在特征空间中的分布的最佳覆盖作为目标</li>
+        </ol><br>
+        <p class="lead" style="font-weight: bold;font-size: 20px;">
+          &nbsp;&nbsp;&nbsp;&nbsp;由此可见，覆盖思想在机器学习领域已经得到了广泛的应用，
+          覆盖思想主要是把同类问题进行覆盖，从而把不同类问题分割开来。因此通过对同类样本进行学习，能够得到更好的学习能力。
+          在对多类问题进行拟合的时候，可以利用李群特殊的代数几何结构，最大程度的保持问题空间的不变性。</p>
+      </div>
+    </div>
+    </div>
+    <section id="code" class="bg-gray">
+      <div class="container">
+        <div class="container text-center">
+          <h2>最新进展</h2><br><br>
+          <div class="row">
+            <p class="lead col-12 " style="font-size:20px">
+              现已有学者提出了李群覆盖学习算法，包括单连通覆盖学习算法和多连通覆盖学习算法，并且已经将其引入到药物分子设计领域，而且在构效关系模型和分子对接模型等具体应用中取得了令人满意的结果。 </p>
+          </div>
+        </div><br><br>
+        <div class="row d-flex align-items-center">
+          <div class="item col-lg-6 order-1 order-lg-1">
+            <h4 style="text-align: center;">多连通李群覆盖学习算法在图像分类上的应用-严晨</h4><br>
+            <p style="font-size:20px">
+              &nbsp;&nbsp;&nbsp;&nbsp;根据李群的连通性质，将具有不同类别信息的研究对象映射到多连通李群空间，并结合覆盖的思想，提出了多连通李群覆盖学习算法(MCLGC-LA)，
+              并应用该算法处理图像的分类问题。<br><br>
+              &nbsp;&nbsp;&nbsp;&nbsp;在两个数据集上进行了实验，结果表明多连通覆盖算法比经典李群上的均值算法(Lie-Mean)以及改进后的 Lie-Fisher
+              算法具有更优的分类效果，而且算法在处理手写体 MNIST 数据集时还具有较好的稳定性。<br><br>
+            </p>
+          </div>
+          <!-- </div>
+        <div class="item d-flex align-items-center"> -->
+          <div class="text col-lg-6 order-2 order-lg-1">
+            <h4 style="text-align: center;">多李群覆盖学习优化算法-吴鲁辉</h4><br>
+            <p style="font-size:20px">
+              &nbsp;&nbsp;&nbsp;&nbsp;从目标李群空间的性质出发，提出了一种新的方法来减少覆盖学习中的道路交叉问题。从宏观上看，由于目标李群空间上的样本更加集中，减少了道路交叉情况，同时集中使得样本的拒识现象的判别更加有效。<br><br>
+              &nbsp;&nbsp;&nbsp;&nbsp;对于训练而言，如何得到更好的描述图像的特征是关键。通过同态映射将原始李群映射为目标李群，
+              使得目标李群空间中的样本具有一定的集中性，从而减少道路交叉问题。<br><br>
+            </p>
+          </div>
+        </div>
+      </div>
+      </div>
+    </section>
+
+    <section id="extra-features" class="browser">
+      <div class="container text-center">
+        <header>
+          <h2>存在问题</h2><br><br>
+          <div class="row">
+            <p class="lead col-12 " style="font-size:20px">
+              鉴于学习问题本身的复杂性，覆盖学习算法还存在进一步改进和发展的地方，例如：
+            </p>
+          </div>
+        </header>
+
+        <div class="grid row">
+          <div class="item col-lg-6">
+            <!-- <div class="icon"><i class="icon-diploma"></i></div> -->
+            <h3 class="h4">1. 覆盖模型的选择问题。</h3>
+            <p style="font-size:20px">
+              针对具体问题，需要选择特定的覆盖模型来模拟样本的学习过程才能最优化覆盖效果。然而由于问题的复杂性和多样性，目前还没有规范的指导依据给出选择方案，大部分情况还需要人的经验来指导。
+            </p>
+          </div>
+          <div class="item col-lg-6">
+            <!-- <div class="icon"><i class="icon-folder-1"></i></div> -->
+            <h3 class="h4">2. 样本属性的特征优化问题。</h3>
+            <p style="font-size:20px">
+              覆盖学习对样本特征提取的要求较高，如果提取的特征较少且不具有代表性，或者提取的特征含有噪声较多，都会严重影响训练得到的覆盖模型的效果，特征较少将造成更多样本点被误判，特征噪声较多会使得被拒识的样本点增多。
+              然而，现实研究的对象往往具有较高的复杂性和不确定性，高效处理数据的要求迫使很多提取的样本特征是不完整和不准确的，如何保证覆盖学习的识别性能是有待于进一步研究的问题。
+            </p>
+          </div>
+          <br />
+          <div class="item col-lg-6">
+            <!-- <div class="icon"><i class="icon-gears"></i></div> -->
+            <h3 class="h4">3. 覆盖个数的选择和优化问题</h3>
+            <p style="font-size:20px">
+              研究发现，训练得到的覆盖个数越少，机器学习的泛化能力越强，但识别精度可能有限；
+              覆盖个数越多，覆盖网络对各类别样本特例也会考虑，识别精度会增加，但往往会造成过拟合问题，使得泛化能力降低。
+              如何平衡识别精度和泛化能力之间的关系，需要进一步探讨。
+            </p>
+          </div>
+          <div class="item col-lg-6">
+            <!-- <div class="icon"><i class="icon-management"></i></div> -->
+            <h3 class="h4">4. 动态数据的学习问题</h3>
+            <p style="font-size:20px">
+              虽然已有研究者给出了覆盖学习的增量学习方法，但由于所研究数据量的急剧扩大，这些方法不可避免会暴露其局限性，
+              因此需要进一步研究出对数据动态更新较快的新的增量覆盖算法。
+            </p>
+          </div>
+        </div>
+      </div>
+      <!-- </section>
+    <section id="testimonials" class="bg-gray">
+      <div class="container">
+        <header class="text-center no-margin-bottom">
+          <h2>Test Data</h2>
+          <p class="lead">
+            There are many variations of passages of Lorem Ipsum available, but
+            the majority have
+          </p>
+        </header>
+        <div class="owl-carousel owl-theme testimonials-slider">
+          <div class="item-holder">
+            <div class="item">
+              <div class="text">
+                <p>
+                  Lorem Ipsum is simply dummy text of the printing and
+                  typesetting industry. Lorem Ipsum has been the industry's
+                  standard dummy text ever
+                </p>
+                <strong class="name">Jessica Watson</strong>
+              </div>
+            </div>
+          </div>
+          <div class="item-holder">
+            <div class="item">
+              <div class="text">
+                <p>
+                  Lorem Ipsum is simply dummy text of the printing and
+                  typesetting industry. Lorem Ipsum has been the industry's
+                  standard dummy text ever
+                </p>
+                <strong class="name">Sarrah Wood</strong>
+              </div>
+            </div>
+          </div>
+          <div class="item-holder">
+            <div class="item">
+              <div class="text">
+                <p>
+                  Lorem Ipsum is simply dummy text of the printing and
+                  typesetting industry. Lorem Ipsum has been the industry's
+                  standard dummy text ever
+                </p>
+                <strong class="name">Jessica Watson</strong>
+              </div>
+            </div>
+          </div>
+          <div class="item-holder">
+            <div class="item">
+              <div class="text">
+                <p>
+                  Lorem Ipsum is simply dummy text of the printing and
+                  typesetting industry. Lorem Ipsum has been the industry's
+                  standard dummy text ever
+                </p>
+                <strong class="name">Sarrah Wood</strong>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section id="about-us1" class="about-us1">
+      <div class="container"></div>
+    </section> -->
+
+      <!-- <section id="about-us" class="about-us">
+      <div id="scrollTop">
+        <div class="d-flex align-items-center justify-content-end">
+          <i class="fa fa-long-arrow-up"></i>To Top
+        </div>
+      </div>
+
+      <footer class="main-footer">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-3 col-md-6">
+              <a href="#" class="brand">contact us</a>
+              <ul class="contact-info list-unstyled">
+                <li><font size="4">e-mail : 000000@qq.com</font></li>
+                <li><font size="4">tel ： 123 456 789</font></li>
+              </ul>
+            </div>
+            <div class="col-lg-3 col-md-6">
+              <h5>Selected Cases</h5>
+              <ul class="links list-unstyled">
+                <li><a href="#">Guess Conntect</a></li>
+                <li><a href="#">Postly</a></li>
+                <li><a href="#">Iris Vor Arnim</a></li>
+                <li><a href="#">Yapital</a></li>
+              </ul>
+            </div>
+            <div class="col-lg-3 col-md-6">
+              <h5>Selected Cases</h5>
+              <ul class="links list-unstyled">
+                <li><a href="#">Guess Conntect</a></li>
+                <li><a href="#">Postly</a></li>
+                <li><a href="#">Iris Vor Arnim</a></li>
+                <li><a href="#">Yapital</a></li>
+              </ul>
+            </div>
+            <div class="col-lg-3 col-md-6">
+              <h5>Selected Cases</h5>
+              <ul class="links list-unstyled">
+                <li><a href="#">Guess Conntect</a></li>
+                <li><a href="#">Postly</a></li>
+                <li><a href="#">Iris Vor Arnim</a></li>
+                <li><a href="#">Yapital</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </footer>
+
+      <div class="container">
+        <div class="row d-flex align-items-center"></div>
+      </div>
+    </section> -->
+
+      <!-- Javascript files-->
+      <script src="js/jquery-3.2.1.min.js"></script>
+      <script src="js/popper.min.js"></script>
+      <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+      <script src="vendor/jquery.cookie/jquery.cookie.js"></script>
+      <script src="vendor/owl.carousel/owl.carousel.min.js"></script>
+      <script src="js/front.js"></script>
+</body>
+
+</html>
