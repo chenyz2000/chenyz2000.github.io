@@ -79,12 +79,12 @@
 
 
 
-<meta name="description" content="Spring Boot+Vue传统的Java Web开发中，前端使用JSP开发，后端使用Java语言开发 JSP不是后端独立完成的，是由前端开发HTML，再由后端转成JSP 前后端开发的内容互相影响，互不理解 前后端耦合高，开发效率低">
+<meta name="description" content="浏览器作为客户端，向服务器请求获得一段字符串（即HTML），之后经过浏览器的规则识别进行渲染 Spring Boot+Vue 传统的Java Web开发中，前端使用JSP开发，后端使用Java语言开发 JSP不是后端独立完成的，是由前端开发HTML，再由后端转成JSP 前后端开发的内容互相影响，互不理解 前后端耦合高，开发效率低">
 <meta property="og:type" content="article">
 <meta property="og:title" content="前后端分离">
 <meta property="og:url" content="https://chenyz2000.github.io/Blog/Front%20End/%E5%89%8D%E5%90%8E%E7%AB%AF%E5%88%86%E7%A6%BB/index.html">
 <meta property="og:site_name" content="CYZ&#39;s Blog">
-<meta property="og:description" content="Spring Boot+Vue传统的Java Web开发中，前端使用JSP开发，后端使用Java语言开发 JSP不是后端独立完成的，是由前端开发HTML，再由后端转成JSP 前后端开发的内容互相影响，互不理解 前后端耦合高，开发效率低">
+<meta property="og:description" content="浏览器作为客户端，向服务器请求获得一段字符串（即HTML），之后经过浏览器的规则识别进行渲染 Spring Boot+Vue 传统的Java Web开发中，前端使用JSP开发，后端使用Java语言开发 JSP不是后端独立完成的，是由前端开发HTML，再由后端转成JSP 前后端开发的内容互相影响，互不理解 前后端耦合高，开发效率低">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://chenyz2000.github.io/Blog/images/image-20200809173332672.png">
 <meta property="og:image" content="https://chenyz2000.github.io/Blog/images/image-20200809175156936.png">
@@ -371,44 +371,44 @@
       
 
       
-        <h2 id="Spring-Boot-Vue"><a href="#Spring-Boot-Vue" class="headerlink" title="Spring Boot+Vue"></a>Spring Boot+Vue</h2><p>传统的Java Web开发中，前端使用JSP开发，后端使用Java语言开发</p>
+        <p>浏览器作为客户端，向服务器请求获得一段字符串（即HTML），之后经过浏览器的规则识别进行渲染</p>
+<h2 id="Spring-Boot-Vue">Spring Boot+Vue</h2>
+<p>传统的Java Web开发中，前端使用JSP开发，后端使用Java语言开发</p>
 <p>JSP不是后端独立完成的，是由前端开发HTML，再由后端转成JSP</p>
 <p>前后端开发的内容互相影响，互不理解</p>
 <p>前后端耦合高，开发效率低</p>
 <a id="more"></a>
-
 <br />
-
 <p>但是随着浏览器端展现和交互的要求越来越高，以及浏览器近些年性能和标准长足的发展，服务器端由JSP产生简单的HTML和CSS/JS已经无法满足需要。</p>
 <p>所以采取前后端分离，服务器端不再负责任何展现和交付的工作，这些工作完全由前端独立完成。服务器端只通过接口给前端提供数据服务</p>
 <p>前端通过Ajax请求访问后端的数据接口，将model展示到View中</p>
 <p>这要求前后端商量好接口文档（url、参数、数据类型），之后就可以独立开发</p>
 <p>前端使用假数据测试</p>
 <br />
-
 <p>传统开发：单体式应用。客户端通过访问服务端应用，服务端中的JSP和Java Server（无论是Handler、sevlet也好，总之是Controller层）互调，JSP请求Controller里的数据，Controller将数据解析到JSP里，最后拼接起来之后返回给客户端</p>
 <img src="..\..\images\image-20200809173332672.png">
-
 <p>前后端分离：单体应用分为前端和后端两个应用。客户端访问前端应用端口，前端应用访问后端应用端口，两者不同端口。前端应用里是html、css、js等代码，前端通过Ajax调用基于restful结构的后端数据接口，后端应用里是Java Server，Java Server响应前端给前端json数据，前端再把数据解析到页面中</p>
 <img src="..\..\images\image-20200809175156936.png">
-
 <br />
-
-<h4 id="Vue开发"><a href="#Vue开发" class="headerlink" title="Vue开发"></a>Vue开发</h4><p>vue开发，命令行创建vue项目，在idea中下载vue插件之后可以用idea打开，并编译项目，可以运行因为其中内嵌了一个服务器，运行命令npm run server</p>
-<p>vue应用只有一个主窗口，src/app.vue是主窗口，之后的操作都是在其中进行动态更新组件。<br>组件放在src/views/中（当然放在component也可以，只要之后能够成功引入），通过路由的映射将app.vue中的名称和资源关联，路由放在src/router/中，无论浏览器访问的是什么url，主窗口并不改变，改变的只是其中的组件</p>
+<h4 id="Vue开发">Vue开发</h4>
+<p>vue开发，命令行创建vue项目，在idea中下载vue插件之后可以用idea打开，并编译项目，可以运行因为其中内嵌了一个服务器，运行命令npm run server</p>
+<p>vue应用只有一个主窗口，src/app.vue是主窗口，之后的操作都是在其中进行动态更新组件。<br>
+组件放在src/views/中（当然放在component也可以，只要之后能够成功引入），通过路由的映射将app.vue中的名称和资源关联，路由放在src/router/中，无论浏览器访问的是什么url，主窗口并不改变，改变的只是其中的组件</p>
 <p>使用vue，改了代码也不需要重新启动项目，可以动态更新页面</p>
 <br />
-
 <p>注解@entity标注实体类，和数据库的表相绑定。其中的属性加上@Id表示主键。实体类的每个对象是表里的一个记录。</p>
-<h4 id="Vue与后端的交互"><a href="#Vue与后端的交互" class="headerlink" title="Vue与后端的交互"></a>Vue与后端的交互</h4><p>前端应用写好，后端应用写好，下一步是让前端应用通过Ajax访问后端端口<br>vue中是通过axios插件实现<br>vue中所有的js代码都要写到script的export default{}中</p>
+<h4 id="Vue与后端的交互">Vue与后端的交互</h4>
+<p>前端应用写好，后端应用写好，下一步是让前端应用通过Ajax访问后端端口<br>
+vue中是通过axios插件实现<br>
+vue中所有的js代码都要写到script的export default{}中</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">default</span>&#123;</span><br><span class="line">    name: <span class="string">"Book"</span>;</span><br><span class="line">    data()&#123;</span><br><span class="line">        <span class="keyword">return</span>&#123;</span><br><span class="line">            msg: <span class="string">""</span>,</span><br><span class="line">            books:[&#123;&#125;,&#123;&#125;]	<span class="comment">//在代码中用插值表达式调用</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    created()&#123;	<span class="comment">//加载对象时调用</span></span><br><span class="line">        <span class="keyword">const</span> _this=<span class="keyword">this</span>;	<span class="comment">//vue对象</span></span><br><span class="line">        axios.get(<span class="string">"url"</span>).then(<span class="function"><span class="keyword">function</span>(<span class="params">resp</span>)</span>&#123;		<span class="comment">//形参resp承接从后端返回的结果</span></span><br><span class="line">            _this.books=resp.data;	<span class="comment">//只需要data信息	//这里的this不是vue对象，是回调</span></span><br><span class="line">            <span class="comment">//修改的是下划线处books的值</span></span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <blockquote>
-<p>会出现问题，跨服务了，需要解决，可在前端可在后端解决。如在Springboot中加一个配置类，实现WebMvcConfigurer接口，重写addCorsMappings方法</p>
+<p>Trouble：可能会出现跨服务的问题</p>
+<p>Solution：可在前端可在后端解决。如在Springboot中加一个配置类，实现WebMvcConfigurer接口，重写addCorsMappings方法</p>
 </blockquote>
 <br />
-
-<h2 id="HTTP"><a href="#HTTP" class="headerlink" title="HTTP"></a>HTTP</h2><p>HTTP，超文本传输协议，基于TCP/IP通信协议来传递数据，用于前端和后端的交互中</p>
+<h2 id="HTTP">HTTP</h2>
+<p>HTTP，超文本传输协议，基于TCP/IP通信协议来传递数据，用于前端和后端的交互中</p>
 <blockquote>
 <p>浏览器的Ajax api，或者iOS/Android的http client，Java的commons-httpclient/okhttp或者是curl，postman之类的工具发出来的请求还能用在后端各个子服务的调用中（即当一种RPC协议使用）</p>
 </blockquote>
@@ -420,12 +420,14 @@
 <li>只要客户端和服务器知道如何处理的数据内容，可以发送任何类型的数据</li>
 <li>对于事务处理没有记忆能力，若后续处理需要先前的信息则必须重传</li>
 </ul>
-<h4 id="消息格式"><a href="#消息格式" class="headerlink" title="消息格式"></a>消息格式</h4><p>请求消息由请求行（request line）、请求头部（header）、空行和请求数据组成</p>
+<h4 id="消息格式">消息格式</h4>
+<p>请求消息由请求行（request line）、请求头部（header）、空行和请求数据组成</p>
 <img src="..\..\images\image-20200803160236920.png">
-
 <p>响应消息由状态行、消息报头、空行和响应正文组成</p>
-<h4 id="请求方法"><a href="#请求方法" class="headerlink" title="请求方法"></a>请求方法</h4><p>有八九种请求方法，其中最常用的是GET和POST，多数网站只支持这两种</p>
-<h6 id="区别"><a href="#区别" class="headerlink" title="区别"></a>区别</h6><ul>
+<h4 id="请求方法">请求方法</h4>
+<p>有八九种请求方法，其中最常用的是GET和POST，多数网站只支持这两种</p>
+<h6 id="区别">区别</h6>
+<ul>
 <li>GET后退按钮/刷新无害，POST数据会被重新提交（浏览器应该告知用户数据会被重新提交）。</li>
 <li>与 POST 相比，GET 的安全性较差，因为所发送的数据是 URL 的一部分。在发送密码或其他敏感信息时绝不要使用 GET ，POST 比 GET 更安全，因为参数不会被保存在浏览器历史或 web 服务器日志中。</li>
 <li>GET的参数在 URL 中对所有人都是可见的、会保留在历史中。POST的数据不会显示在 URL 中、不会保留在历史中。</li>
@@ -433,11 +435,13 @@
 <li>GET对数据长度有限制，当发送数据时，GET 方法向 URL 添加数据；URL 的长度是受限制的（URL 的最大长度是 2048 个字符）。POST无限制。</li>
 <li>GET只允许 ASCII 字符。POST没有限制，也允许二进制数据。</li>
 </ul>
-<h6 id="适用情景"><a href="#适用情景" class="headerlink" title="适用情景"></a>适用情景</h6><p>get用来获取html、css、图片等资源，post用来提交form表单，并得到一个结果的网页</p>
+<h6 id="适用情景">适用情景</h6>
+<p>get用来获取html、css、图片等资源，post用来提交form表单，并得到一个结果的网页</p>
 <p>查找时使用get，增添、修改（相当于删除再添加）服务器的文件或数据时使用post，删除时有说用get的有说用post的</p>
 <p>向服务器发送大量数据时使用post</p>
 <p>get更简单也更快，并且在大部分情况下可以使用</p>
-<h4 id="编码类型"><a href="#编码类型" class="headerlink" title="编码类型"></a>编码类型</h4><ul>
+<h4 id="编码类型">编码类型</h4>
+<ul>
 <li>text/xxx文本相关的格式，有html、plain、xml</li>
 <li>application/xxx媒体相关格式，有html+xml即XHTML格式、xml、atom+xml、json、pdf、msword即Word文档格式、octet-stream即二进制流数据（如常见的文件下载）、<strong>x-www-form-urlencoded</strong>即form表单默认编码</li>
 <li>key-value格式</li>
@@ -445,9 +449,11 @@
 <li>image/xxx图片相关格式，有gif、jpeg、png</li>
 </ul>
 <br />
-
-<h2 id="前后端数据交互"><a href="#前后端数据交互" class="headerlink" title="前后端数据交互"></a>前后端数据交互</h2><p>前后端数据交互：表单，Ajax</p>
-<h3 id="表单"><a href="#表单" class="headerlink" title="表单"></a>表单</h3><h4 id="提交数据"><a href="#提交数据" class="headerlink" title="提交数据"></a>提交数据</h4><p>表单用post/get方式提交</p>
+<h2 id="前后端数据交互">前后端数据交互</h2>
+<p>前后端数据交互：表单，Ajax</p>
+<h3 id="表单">表单</h3>
+<h4 id="提交数据">提交数据</h4>
+<p>表单用post/get方式提交</p>
 <p>get是将键值对<strong>拼接到url的后面</strong>，即请求数据直接放在url中，通过访问或跳转，向服务器发送url请求（地址栏、超链接访问都属于get提交方式  ）</p>
 <p>post是参数直接发送给后台，数据放在<strong>请求体body</strong>（或称HttpEntity，主体entity body）中，不是放在url中</p>
 <blockquote>
@@ -455,15 +461,19 @@
 <p>对于<strong>Url类请求</strong>，客户端是不能通过body写出数据的，服务端拿到的<strong>body是空的</strong>。</p>
 <p>对于<strong>Body类请求</strong>，客户端通过body写进数据，服务端通过body接收数据。根据不同的enctype，数据可由@RequestBody或@RequestParam接收，但@RequestParam也是通过body接收。</p>
 </blockquote>
-<h4 id="接收数据"><a href="#接收数据" class="headerlink" title="接收数据"></a><a href="https://blog.csdn.net/qfikh/article/details/88553603" target="_blank" rel="noopener">接收数据</a></h4><p>get方法接收数据：</p>
+<h4 id="接收数据"><a href="https://blog.csdn.net/qfikh/article/details/88553603" target="_blank" rel="noopener">接收数据</a></h4>
+<p>get方法接收数据：</p>
 <ul>
-<li><p><strong>HttpServletRequest</strong></p>
+<li>
+<p><strong>HttpServletRequest</strong></p>
 <p>在方法的参数里加入HttpServletRequest request，然后request.getParameter(“name”)就可以获得value</p>
 </li>
-<li><p><strong>直接接收</strong></p>
+<li>
+<p><strong>直接接收</strong></p>
 <p>此时要求方法的参数名称要跟name名称一致；或者是用对象接收，传入对象对应的属性</p>
 </li>
-<li><p><strong>@RequestParam(“name”)</strong></p>
+<li>
+<p><strong>@RequestParam(“name”)</strong></p>
 <p>注解方法的参数，将值传到对应name标注的参数</p>
 </li>
 </ul>
@@ -472,17 +482,21 @@
 </blockquote>
 <p>post方法接收数据：</p>
 <ul>
-<li><p><strong>HttpServletRequest</strong></p>
+<li>
+<p><strong>HttpServletRequest</strong></p>
 <p>同get方法</p>
 </li>
-<li><p><strong>@RequestBody</strong>无参，注解方法的参数</p>
-<p>编码类型为<strong>application/json或application/xml</strong>时，<br>必须使用<strong>@RequestBody</strong>处理。</p>
+<li>
+<p><strong>@RequestBody</strong>无参，注解方法的参数</p>
+<p>编码类型为<strong>application/json或application/xml</strong>时，<br>
+必须使用**@RequestBody**处理。</p>
 <p>一次请求只能有一个Body，将body中的内容转为一个整体对象。请求体中的数据以json等格式传递（貌似没有简单的k-v格式），并要求接收数据的、被@RequestBody修饰的参数为String、Map、JSONObject或JavaBean数据类型。为Map时将内容绑定到单个K-V Map，内容拆分为其中的多个元素；为JavaBean时将内容绑定到单个对象中，需要保证内容的key和JavaBean的属性对应。</p>
 <p>由于get请求没有body所以只能用于post方式，所以@RequestBody不能用于get方式。</p>
 <p>注意，<strong>可以与url后面的参数一起用</strong>，即@RequestBody与@RequestParam同时使用，前者获取请求体的数据，后者获取url的数据</p>
 </li>
-<li><p><strong>@RequestParam(“name”)</strong>                        <em>@ModelAttribute也可以处理</em></p>
-<p>编码类型为<strong>application/x-www-form-urlencoded</strong>（form的默认类型）或<strong>multipart/form-data</strong>时，必须使用<strong>@RequestParam(“name”)</strong>处理，客户端将k-v对数据包装到body中。    </p>
+<li>
+<p><strong>@RequestParam(“name”)</strong>						<em>@ModelAttribute也可以处理</em></p>
+<p>编码类型为<strong>application/x-www-form-urlencoded</strong>（form的默认类型）或<strong>multipart/form-data</strong>时，必须使用**@RequestParam(“name”)**处理，客户端将k-v对数据包装到body中。</p>
 <blockquote>
 <p>这是比较统一保守的规则，某些地方可能会支持部分特殊特性</p>
 </blockquote>
@@ -493,17 +507,19 @@
 <p>@RequestParam(“name”)实质是将Request.getParameter() 中的K-V Map利用Spring的转化机制ConversionService配置，转化成参数接收对象或字段。get方式中query String的值，和post方式中body data的值都会被Servlet接受到并转化到Request.getParameter()参数集中，所以@RequestParam都可以获取的到。</p>
 </blockquote>
 <br />
-
-<p>​        有一个有趣的现象，如果Content-Type=mutipart/form-data，Body中加入参数和URL后面拼接参数一起做Post请求，都可以被加载到Param中，如果是同名的，只取用form-data中的。<br>​        如果Content-Type=application/x-www-form-urlencoded和URL拼接的一起，如果是String类型，则两个值会被拼接，其他类型取的是URL拼接的参数。</p>
+<p>​		有一个有趣的现象，如果Content-Type=mutipart/form-data，Body中加入参数和URL后面拼接参数一起做Post请求，都可以被加载到Param中，如果是同名的，只取用form-data中的。<br>
+​		如果Content-Type=application/x-www-form-urlencoded和URL拼接的一起，如果是String类型，则两个值会被拼接，其他类型取的是URL拼接的参数。</p>
 <br />
-
-<h2 id="Todo"><a href="#Todo" class="headerlink" title="Todo"></a>Todo</h2><ul>
-<li><input disabled="" type="checkbox"> form里的enctype，请求头的ContentType</li>
-</ul>
+<h2 id="Todo">Todo</h2>
 <ul>
-<li><input disabled="" type="checkbox"> <p>@ModelAttribute</p>
+<li>
+<p>[ ] form里的enctype，请求头的ContentType</p>
 </li>
-<li><input disabled="" type="checkbox"> <p>python里的request，axios里的请求</p>
+<li>
+<p>[ ] @ModelAttribute</p>
+</li>
+<li>
+<p>[ ] python里的request，axios里的请求</p>
 <p><a href="https://www.cnblogs.com/youguanxinqing/p/9497000.html" target="_blank" rel="noopener">python爬虫</a></p>
 </li>
 </ul>
@@ -561,7 +577,7 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/Blog/nec/Maven/" rel="next" title="Maven">
+              <a href="/Blog/Other/Maven/" rel="next" title="Maven">
                 <i class="fa fa-chevron-left"></i> Maven
               </a>
             
@@ -652,7 +668,7 @@
             
               <div class="site-state-item site-state-posts">
                 <a href="/Blog/archives">
-                  <span class="site-state-item-count">44</span>
+                  <span class="site-state-item-count">52</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -664,7 +680,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/Blog/categories/index.html">
-                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-count">8</span>
                   <span class="site-state-item-name">categories</span>
                 </a>
               </div>
@@ -675,7 +691,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/Blog/tags/index.html">
-                  <span class="site-state-item-count">53</span>
+                  <span class="site-state-item-count">60</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>
@@ -751,7 +767,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2021</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>

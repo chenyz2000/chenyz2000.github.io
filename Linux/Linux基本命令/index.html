@@ -79,12 +79,12 @@
 
 
 
-<meta name="description" content="命令大全 命令格式格式：命令 -选项 参数 多个选项时，可以写在一起 -调用简化选项，–调用完整选项  清屏命令ctrl+L或clear 终止命令ctrl+C">
+<meta name="description" content="命令大全 命令格式 格式：命令 -选项 参数 多个选项时，可以写在一起 -调用简化选项，–调用完整选项  清屏命令ctrl+L或clear 终止命令ctrl+C">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Linux基本命令">
 <meta property="og:url" content="https://chenyz2000.github.io/Blog/Linux/Linux%E5%9F%BA%E6%9C%AC%E5%91%BD%E4%BB%A4/index.html">
 <meta property="og:site_name" content="CYZ&#39;s Blog">
-<meta property="og:description" content="命令大全 命令格式格式：命令 -选项 参数 多个选项时，可以写在一起 -调用简化选项，–调用完整选项  清屏命令ctrl+L或clear 终止命令ctrl+C">
+<meta property="og:description" content="命令大全 命令格式 格式：命令 -选项 参数 多个选项时，可以写在一起 -调用简化选项，–调用完整选项  清屏命令ctrl+L或clear 终止命令ctrl+C">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2020-02-21T16:00:00.000Z">
 <meta property="article:modified_time" content="2020-07-29T07:51:00.000Z">
@@ -365,21 +365,24 @@
 
       
         <p><a href="https://www.runoob.com/linux/linux-command-manual.html" target="_blank" rel="noopener">命令大全</a></p>
-<h2 id="命令格式"><a href="#命令格式" class="headerlink" title="命令格式"></a>命令格式</h2><p>格式：命令 -选项 参数</p>
+<h2 id="命令格式">命令格式</h2>
+<p>格式：命令 -选项 参数</p>
 <p>多个选项时，可以写在一起</p>
 <p>-调用简化选项，–调用完整选项</p>
 <hr>
 <p>清屏命令ctrl+L或clear</p>
 <p>终止命令ctrl+C</p>
 <a id="more"></a>
-
 <br />
-
-<h2 id="目录处理"><a href="#目录处理" class="headerlink" title="目录处理"></a>目录处理</h2><h4 id="ls"><a href="#ls" class="headerlink" title="ls"></a>ls</h4><p>list</p>
+<h2 id="目录处理">目录处理</h2>
+<h4 id="ls">ls</h4>
+<p>list</p>
 <ul>
-<li><p>-a（–all）显示全部文件，包括.开头的隐藏文件</p>
+<li>
+<p>-a（–all）显示全部文件，包括.开头的隐藏文件</p>
 </li>
-<li><p>-l显示文件具体信息</p>
+<li>
+<p>-l显示文件具体信息</p>
 <blockquote>
 <p>信息分别为文件类型和权限，文件计数，所有者，所属组，字节数，修改时间（linux中没有创建时间这个概念），文件名</p>
 <p>其中文件类型和权限：</p>
@@ -389,27 +392,35 @@
 <p>文件的默认所有者为创建用户，所属组为该用户的缺省组</p>
 </blockquote>
 </li>
-<li><p>-h人性化显示文件大小</p>
+<li>
+<p>-h人性化显示文件大小</p>
 </li>
-<li><p>-d查看目录而不是目录内部</p>
+<li>
+<p>-d查看目录而不是目录内部</p>
 </li>
-<li><p>-i查看文件i结点</p>
+<li>
+<p>-i查看文件i结点</p>
 </li>
 </ul>
-<h4 id="mkdir"><a href="#mkdir" class="headerlink" title="mkdir"></a>mkdir</h4><p>make directory</p>
+<h4 id="mkdir">mkdir</h4>
+<p>make directory</p>
 <p>可以相对路径可以绝对路径，只要路径最后一层是要新建的目录</p>
 <ul>
 <li>只能创建一层，想递归创建需要-p</li>
 </ul>
-<h4 id="cd"><a href="#cd" class="headerlink" title="cd"></a>cd</h4><p>change directory，是shell内置命令</p>
+<h4 id="cd">cd</h4>
+<p>change directory，是shell内置命令</p>
 <blockquote>
 <p>基本上命令都在/bin中，除了cd</p>
 </blockquote>
-<p>.表示当前目录    ..表示上一级（linux里面cd要空格，dos不需要）</p>
-<h4 id="pwd"><a href="#pwd" class="headerlink" title="pwd"></a>pwd</h4><p>print working directory</p>
-<h4 id="rmdir"><a href="#rmdir" class="headerlink" title="rmdir"></a>rmdir</h4><p>remove empty directory</p>
+<p>.表示当前目录	…表示上一级（linux里面cd要空格，dos不需要）</p>
+<h4 id="pwd">pwd</h4>
+<p>print working directory</p>
+<h4 id="rmdir">rmdir</h4>
+<p>remove empty directory</p>
 <p>只能删除空目录</p>
-<h4 id="cp"><a href="#cp" class="headerlink" title="cp"></a>cp</h4><p>copy拷贝文件，复制和改名</p>
+<h4 id="cp">cp</h4>
+<p>copy拷贝文件，复制和改名</p>
 <p><code>cp [-rp] 源文件或目录 目标目录</code></p>
 <p>原文件或目录可以是多个，目标目录只有一个</p>
 <p>目标目录不存在的话，复制并改名（相当于创建目标目录）</p>
@@ -417,69 +428,83 @@
 <li>-r复制目录</li>
 <li>拷贝过去的文件，修改时间会改变，-p保留文件属性防止变化</li>
 </ul>
-<h4 id="mv"><a href="#mv" class="headerlink" title="mv"></a>mv</h4><p>move，剪切和改名，类似cp一样</p>
+<h4 id="mv">mv</h4>
+<p>move，剪切和改名，类似cp一样</p>
 <p>只改名就等于在同一个文件中移动并改名</p>
-<h4 id="rm"><a href="#rm" class="headerlink" title="rm"></a>rm</h4><p>remove删除文件</p>
+<h4 id="rm">rm</h4>
+<p>remove删除文件</p>
 <ul>
 <li>-r（–recursive）可对目录操作</li>
 <li>-f（–force）强制执行，不询问是否删除</li>
 <li>-i询问确认</li>
 </ul>
 <br />
-
-<h2 id="文件处理"><a href="#文件处理" class="headerlink" title="文件处理"></a>文件处理</h2><h4 id="touch"><a href="#touch" class="headerlink" title="touch"></a>touch</h4><p>若文件不存在则创建空文件，若文件存在则修改文件访问时间</p>
+<h2 id="文件处理">文件处理</h2>
+<h4 id="touch">touch</h4>
+<p>若文件不存在则创建空文件，若文件存在则修改文件访问时间</p>
 <p>和mkdir类似，可以相对路径或绝对路径创建，只要路径最后一层是要新建的文件</p>
 <p>可以创建多个文件</p>
 <p>linux文件名和windows相比，可以包含一些标点，但不建议包含空格（含空格的文件名需要用双引号括住）</p>
-<h4 id="cat"><a href="#cat" class="headerlink" title="cat"></a>cat</h4><p>浏览文件内容</p>
+<h4 id="cat">cat</h4>
+<p>浏览文件内容</p>
 <ul>
 <li>-n显示行号</li>
 </ul>
-<h4 id="tac"><a href="#tac" class="headerlink" title="tac"></a>tac</h4><p>倒着浏览文件内容，没有-n选项</p>
-<h4 id="more"><a href="#more" class="headerlink" title="more"></a>more</h4><p>分页显示文件内容，空格键或f翻页，enter键换行，q键退出</p>
-<h4 id="less"><a href="#less" class="headerlink" title="less"></a>less</h4><p>包含more的功能，且可向上翻页，可搜索</p>
+<h4 id="tac">tac</h4>
+<p>倒着浏览文件内容，没有-n选项</p>
+<h4 id="more">more</h4>
+<p>分页显示文件内容，空格键或f翻页，enter键换行，q键退出</p>
+<h4 id="less">less</h4>
+<p>包含more的功能，且可向上翻页，可搜索</p>
 <p>上箭头一行一行，pageup一页一页</p>
 <p>显示文件内容时，/加搜索内容可向下查找，？可向上查找，n查看上/下一个</p>
 <ul>
-<li><input disabled="" type="checkbox"> less不能读二进制文件？</li>
+<li>[ ] less不能读二进制文件？</li>
 </ul>
-<h4 id="head"><a href="#head" class="headerlink" title="head"></a>head</h4><p>只看文件前几行</p>
+<h4 id="head">head</h4>
+<p>只看文件前几行</p>
 <p>示例<code>head -n 20 /etc/services</code></p>
 <ul>
 <li>-n指定行数，不加-n默认十行</li>
 </ul>
-<h4 id="tail"><a href="#tail" class="headerlink" title="tail"></a>tail</h4><p>查看文件末尾几行，类似head</p>
+<h4 id="tail">tail</h4>
+<p>查看文件末尾几行，类似head</p>
 <ul>
 <li>-f动态显示，不回到命令行，多用于监控日志</li>
 </ul>
 <br />
-
-<h2 id="链接处理"><a href="#链接处理" class="headerlink" title="链接处理"></a>链接处理</h2><blockquote>
+<h2 id="链接处理">链接处理</h2>
+<blockquote>
 <p>软链接文件权限不可改，对全部用户都可读可写可运行，和源文件权限无关。软链接相当于win中的快捷方式，属性中能看到它指向的源文件。软链接也可以有它的软链接。</p>
 <p>硬链接像是cp -p，但是两个文件可以同步更新。文件id值和源文件一样（同块内存映射多个文件）。</p>
 <p>软链接和硬链接的区别：源文件删除后，软链接提示找不到文件，硬链接依然存在；硬链接不能跨分区，软链接可以；硬链接不可以针对目录，软链接可以。</p>
 </blockquote>
-<h4 id="ln"><a href="#ln" class="headerlink" title="ln"></a>ln</h4><p>link</p>
+<h4 id="ln">ln</h4>
+<p>link</p>
 <p><code>ln -s 源文件 新文件</code></p>
 <ul>
 <li>含-s为soft软链接，不含则为hard硬链接</li>
 </ul>
 <br />
-
-<h2 id="权限管理"><a href="#权限管理" class="headerlink" title="权限管理"></a>权限管理</h2><blockquote>
+<h2 id="权限管理">权限管理</h2>
+<blockquote>
 <p>文件权限只可由文件所有者和管理员更改</p>
 </blockquote>
-<h4 id="chmod"><a href="#chmod" class="headerlink" title="chmod"></a>chmod</h4><p>change mode</p>
+<h4 id="chmod">chmod</h4>
+<p>change mode</p>
 <p><code>chmod [ugoa +-= rwx，逗号分隔] 文件或目录</code></p>
 <p><code>chmod 3个数字 文件或目录</code>，其中每个数字是每组rwx对应的二进制的十进制值，如rwxrw-r–对应764</p>
 <ul>
 <li>-R递归修改，要大写</li>
 </ul>
 <p>修改软链接权限时，修改的是源文件</p>
-<h4 id="chown"><a href="#chown" class="headerlink" title="chown"></a>chown</h4><p>change owner更改所有者，/bin/chown，但只有root可以操作</p>
+<h4 id="chown">chown</h4>
+<p>change owner更改所有者，/bin/chown，但只有root可以操作</p>
 <p><code>chown 用户 文件</code></p>
-<h4 id="chgrp"><a href="#chgrp" class="headerlink" title="chgrp"></a>chgrp</h4><p>change group更改所属组，和chown类似</p>
-<h4 id="umask"><a href="#umask" class="headerlink" title="umask"></a>umask</h4><p>user file-creation mask，创建文件时的缺省权限掩码（ugo没有哪些权限），shell内置命令</p>
+<h4 id="chgrp">chgrp</h4>
+<p>change group更改所属组，和chown类似</p>
+<h4 id="umask">umask</h4>
+<p>user file-creation mask，创建文件时的缺省权限掩码（ugo没有哪些权限），shell内置命令</p>
 <p><code>umask [-S] [权限掩码]</code></p>
 <blockquote>
 <p>ugo默认都没有x权限</p>
@@ -489,78 +514,103 @@
 </ul>
 <p><em>目录的权限与umask显示一致？？啥意思</em></p>
 <br />
-
-<h2 id="文件搜索命令"><a href="#文件搜索命令" class="headerlink" title="文件搜索命令"></a>文件搜索命令</h2><h4 id="find"><a href="#find" class="headerlink" title="find"></a>find</h4><p><code>find 目录 [选项 匹配条件] [-a/-o 选项 匹配条件]</code></p>
+<h2 id="文件搜索命令">文件搜索命令</h2>
+<h4 id="find">find</h4>
+<p><code>find 目录 [选项 匹配条件] [-a/-o 选项 匹配条件]</code></p>
 <ul>
-<li><p>-name根据文件名搜索（精准搜索），-iname不区分大小写</p>
+<li>
+<p>-name根据文件名搜索（精准搜索），-iname不区分大小写</p>
 <p>*匹配任意个字符，？匹配单个字符</p>
 </li>
-<li><p>-size文件大小，条件为多少数据块（0.5kb），数字前可加+-表示大于小于</p>
+<li>
+<p>-size文件大小，条件为多少数据块（0.5kb），数字前可加±表示大于小于</p>
 </li>
-<li><p>-type根据文件类型查找，匹配条件f表示文件，d表示目录，l表示软链接文件</p>
+<li>
+<p>-type根据文件类型查找，匹配条件f表示文件，d表示目录，l表示软链接文件</p>
 </li>
-<li><p>-amin访问时间，-cmin文件属性改变时间，-mmin文件内容改变时间，匹配条件为多少分钟，数字前可加+-表示超过多久之前、多久之内</p>
+<li>
+<p>-amin访问时间，-cmin文件属性改变时间，-mmin文件内容改变时间，匹配条件为多少分钟，数字前可加±表示超过多久之前、多久之内</p>
 </li>
-<li><p>-user根据所有者，-group根据所属组</p>
+<li>
+<p>-user根据所有者，-group根据所属组</p>
 </li>
-<li><p>-inum根据文件i结点</p>
+<li>
+<p>-inum根据文件i结点</p>
 </li>
 </ul>
 <p>-a表示and，-o表示or</p>
 <p>后面还可跟<code>-exec 命令 {} \;</code>或<code>-ok 命令 {} \;</code>对找到的结果进行某个命令的操作，区别是-ok有询问-exec没有，命令可以是如显示详细信息或删除</p>
-<h4 id="locate"><a href="#locate" class="headerlink" title="locate"></a>locate</h4><p>/usr/bin/locate</p>
+<h4 id="locate">locate</h4>
+<p>/usr/bin/locate</p>
 <ul>
 <li>-i不区分大小写</li>
 </ul>
 <p>系统建立文件资料库/var/lib/mlocate/mlocate.db，在其中进行搜索，对系统资源消耗较少，类似win中的everything</p>
 <p>可以通过<code>updatedb</code>更新资料库</p>
 <p>资料库只收录部分内容，如/tmp不在收录范围内</p>
-<h4 id="which"><a href="#which" class="headerlink" title="which"></a>which</h4><p>/usr/bin/which</p>
+<h4 id="which">which</h4>
+<p>/usr/bin/which</p>
 <p>搜索命令所在目录和alias别名</p>
-<h4 id="whereis"><a href="#whereis" class="headerlink" title="whereis"></a>whereis</h4><p>/usr/bin/which</p>
+<h4 id="whereis">whereis</h4>
+<p>/usr/bin/which</p>
 <p>搜索命令或配置文件所在目录和帮助文档路径</p>
-<h4 id="grep"><a href="#grep" class="headerlink" title="grep"></a>grep</h4><p>显示文件内字符串所在的行数</p>
+<h4 id="grep">grep</h4>
+<p>显示文件内字符串所在的行数</p>
 <p><code>grep -iv 字符串 文件</code></p>
 <ul>
 <li>-i不区分大小写</li>
 <li>-v排除指定字符串所在行</li>
 </ul>
 <br />
-
-<h2 id="帮助命令"><a href="#帮助命令" class="headerlink" title="帮助命令"></a>帮助命令</h2><h4 id="man"><a href="#man" class="headerlink" title="man"></a>man</h4><p>manual，/usr/bin/man</p>
+<h2 id="帮助命令">帮助命令</h2>
+<h4 id="man">man</h4>
+<p>manual，/usr/bin/man</p>
 <p><code>man 命令或配置文件（名称不是路径）</code></p>
 <p>浏览模式和more一样，还带有less的搜索功能</p>
 <p>当有命令与配置文件重名时，优先查看命令的帮助文档（1&lt;5）</p>
 <p>如果想看配置文件的帮助，可以man 5 passwd</p>
-<h4 id="whatis"><a href="#whatis" class="headerlink" title="whatis"></a>whatis</h4><p>查询命令的简短信息，即名字的含义，后面跟命令的名称</p>
-<h4 id="apropos"><a href="#apropos" class="headerlink" title="apropos"></a>apropos</h4><p>查询配置文件的简短信息，类似whatis</p>
-<h4 id="–help选项"><a href="#–help选项" class="headerlink" title="–help选项"></a>–help选项</h4><p>列出命令的选项</p>
-<h4 id="help"><a href="#help" class="headerlink" title="help"></a>help</h4><p>查看shell内置命令的帮助信息</p>
+<h4 id="whatis">whatis</h4>
+<p>查询命令的简短信息，即名字的含义，后面跟命令的名称</p>
+<h4 id="apropos">apropos</h4>
+<p>查询配置文件的简短信息，类似whatis</p>
+<h4 id="–help选项">–help选项</h4>
+<p>列出命令的选项</p>
+<h4 id="help">help</h4>
+<p>查看shell内置命令的帮助信息</p>
 <br />
-
-<h2 id="用户管理命令"><a href="#用户管理命令" class="headerlink" title="用户管理命令"></a>用户管理命令</h2><h4 id="useradd"><a href="#useradd" class="headerlink" title="useradd"></a>useradd</h4><p>/usr/sbin/useradd，只有管理员可以操作</p>
-<h4 id="passwd"><a href="#passwd" class="headerlink" title="passwd"></a>passwd</h4><p>管理员可以设置简单密码，普通用户不可以</p>
+<h2 id="用户管理命令">用户管理命令</h2>
+<h4 id="useradd">useradd</h4>
+<p>/usr/sbin/useradd，只有管理员可以操作</p>
+<h4 id="passwd">passwd</h4>
+<p>管理员可以设置简单密码，普通用户不可以</p>
 <p>管理员可以改任何人的密码，普通用户只可以改自己的密码</p>
-<h4 id="who"><a href="#who" class="headerlink" title="who"></a>who</h4><p>查看当前用户</p>
+<h4 id="who">who</h4>
+<p>查看当前用户</p>
 <p>tty表示本地登录，pts表示远程登录</p>
-<h4 id="w"><a href="#w" class="headerlink" title="w"></a>w</h4><p>第一行显示信息和命令uptime结果一致：当前时间，系统运行时间，用户数量，系统1分钟、5分钟、15分钟平均负载</p>
+<h4 id="w">w</h4>
+<p>第一行显示信息和命令uptime结果一致：当前时间，系统运行时间，用户数量，系统1分钟、5分钟、15分钟平均负载</p>
 <p>下面的用户信息除了who的结果外，还有idle用户无操作时间，JCPU累计占用cpu时间，PCPU当前命令占用cpu时间，what当前操作</p>
 <br />
-
-<h2 id="压缩解压命令"><a href="#压缩解压命令" class="headerlink" title="压缩解压命令"></a>压缩解压命令</h2><blockquote>
+<h2 id="压缩解压命令">压缩解压命令</h2>
+<blockquote>
 <p>Linux的压缩格式win基本支持，但rar为linux不支持，zip为二者都支持</p>
 </blockquote>
-<h4 id="gzip"><a href="#gzip" class="headerlink" title="gzip"></a>gzip</h4><p>GNU zip</p>
+<h4 id="gzip">gzip</h4>
+<p>GNU zip</p>
 <p>后面直接加文件名，产生压缩文件，不保留源文件</p>
 <p>不能处理目录</p>
-<h4 id="gunzip"><a href="#gunzip" class="headerlink" title="gunzip"></a>gunzip</h4><p>GNU unzip</p>
+<h4 id="gunzip">gunzip</h4>
+<p>GNU unzip</p>
 <p>解压缩，和gzip对用</p>
 <p>等同于gzip -d</p>
-<h4 id="bzip2"><a href="#bzip2" class="headerlink" title="bzip2"></a>bzip2</h4><p>/usr/bin/bzip2</p>
+<h4 id="bzip2">bzip2</h4>
+<p>/usr/bin/bzip2</p>
 <p>gzip的升级版本，压缩比胜过gzip，且多了-k选项可以保留源文件</p>
 <p>生成.bz2文件</p>
-<h4 id="bunzip2"><a href="#bunzip2" class="headerlink" title="bunzip2"></a>bunzip2</h4><p>同理，且有-k选项保留压缩文件，同理等于bzip2 -d</p>
-<h4 id="tar"><a href="#tar" class="headerlink" title="tar"></a>tar</h4><p>压缩<code>tar [-cvzjf] [压缩后文件名] [目录]</code></p>
+<h4 id="bunzip2">bunzip2</h4>
+<p>同理，且有-k选项保留压缩文件，同理等于bzip2 -d</p>
+<h4 id="tar">tar</h4>
+<p>压缩<code>tar [-cvzjf] [压缩后文件名] [目录]</code></p>
 <p>压缩后文件只能为一个</p>
 <ul>
 <li>-c打包</li>
@@ -574,74 +624,93 @@
 <li>-c对应变成-x，其他选项一样</li>
 </ul>
 <p>z和j压缩解压的格式需要对应，不能混用</p>
-<h4 id="zip"><a href="#zip" class="headerlink" title="zip"></a>zip</h4><p>/usr/bin/zip</p>
+<h4 id="zip">zip</h4>
+<p>/usr/bin/zip</p>
 <p><code>zip [-r] [压缩后文件名] [文件或目录]</code></p>
 <ul>
 <li>-r压缩目录</li>
 </ul>
 <p>会保留源文件</p>
-<h4 id="unzip"><a href="#unzip" class="headerlink" title="unzip"></a>unzip</h4><p>/usr/bin/unzip</p>
+<h4 id="unzip">unzip</h4>
+<p>/usr/bin/unzip</p>
 <p><code>unzip [文件名]</code></p>
 <br />
-
-<h2 id="网络命令"><a href="#网络命令" class="headerlink" title="网络命令"></a>网络命令</h2><h4 id="write"><a href="#write" class="headerlink" title="write"></a>write</h4><p>/usr/bin/write</p>
+<h2 id="网络命令">网络命令</h2>
+<h4 id="write">write</h4>
+<p>/usr/bin/write</p>
 <p><code>write 用户名</code></p>
 <p>给登录服务器的用户发消息，ctrl+d保存并结束输入状态</p>
-<h4 id="wall"><a href="#wall" class="headerlink" title="wall"></a>wall</h4><p>write all，/usr/bin/wall</p>
+<h4 id="wall">wall</h4>
+<p>write all，/usr/bin/wall</p>
 <p><code>wall 消息</code></p>
 <p>给在线的所有用户发送广播消息，包括自己</p>
-<h4 id="mail"><a href="#mail" class="headerlink" title="mail"></a>mail</h4><p>同write，但可以发送给不在线的用户</p>
+<h4 id="mail">mail</h4>
+<p>同write，但可以发送给不在线的用户</p>
 <p>只写mail可以查看自己收到的邮件</p>
-<h4 id="ping"><a href="#ping" class="headerlink" title="ping"></a>ping</h4><p><code>ping [-c num] ip地址</code></p>
+<h4 id="ping">ping</h4>
+<p><code>ping [-c num] ip地址</code></p>
 <ul>
 <li>-c指定发送次数</li>
 </ul>
-<h4 id="ifconfig"><a href="#ifconfig" class="headerlink" title="ifconfig"></a>ifconfig</h4><p>interface configure，/sbin/ifconfig</p>
+<h4 id="ifconfig">ifconfig</h4>
+<p>interface configure，/sbin/ifconfig</p>
 <p><code>ifconfig 网卡名称 ip地址</code></p>
 <p>查看和设置网卡信息</p>
 <blockquote>
 <p>网卡信息：link encap网络类型，一般为以太网；HWadder，网卡硬件地址，即Mac地址；iner addr当前ip地址；bcast当前网络地址；Mask子网掩码；inet6 addr是ipv6的地址信息；RX packets数据包接收量，TX packets发送量；RX bytes数据包接收大小，TX packets发送大小；base address网卡在内存中的物理地址</p>
 </blockquote>
-<h4 id="last"><a href="#last" class="headerlink" title="last"></a>last</h4><p>显示计算机用户的所有登录信息，也能显示重启记录</p>
-<h4 id="lastlog"><a href="#lastlog" class="headerlink" title="lastlog"></a>lastlog</h4><p>每个用户最后登录的信息</p>
+<h4 id="last">last</h4>
+<p>显示计算机用户的所有登录信息，也能显示重启记录</p>
+<h4 id="lastlog">lastlog</h4>
+<p>每个用户最后登录的信息</p>
 <ul>
 <li>-u加用户uid只查看某个用户</li>
 </ul>
-<h4 id="traceroute"><a href="#traceroute" class="headerlink" title="traceroute"></a>traceroute</h4><p>显示数据包到主机间的路径</p>
-<h4 id="netstat"><a href="#netstat" class="headerlink" title="netstat"></a>netstat</h4><p>查询网络状态</p>
+<h4 id="traceroute">traceroute</h4>
+<p>显示数据包到主机间的路径</p>
+<h4 id="netstat">netstat</h4>
+<p>查询网络状态</p>
 <ul>
-<li><p>-t，-u分别表示TCP协议，UDP协议</p>
+<li>
+<p>-t，-u分别表示TCP协议，UDP协议</p>
 <blockquote>
 <p>传输协议：tcp面向连接更稳定安全（http属于tcp），udp不监听更快速</p>
 </blockquote>
 </li>
-<li><p>-l查看监听，-r查看路由</p>
+<li>
+<p>-l查看监听，-r查看路由</p>
 </li>
-<li><p>-n以IP地址和端口号显示，而不是以域名显示，减少了解析时间</p>
+<li>
+<p>-n以IP地址和端口号显示，而不是以域名显示，减少了解析时间</p>
 </li>
-<li><p>-a所有</p>
+<li>
+<p>-a所有</p>
 </li>
 </ul>
 <p>常见用法有：</p>
 <p>-tlun查看本机已开启（正在监听）的服务端口，主要目的是看端口号</p>
 <p>-an查看本机所有的网络连接（正在监听的服务+已连接的服务+系统程序）</p>
 <p>-rn查看本机路由，结果的gateway中显示了网关</p>
-<h4 id="setup"><a href="#setup" class="headerlink" title="setup"></a>setup</h4><p>/usr/bin/setup，需要root权限</p>
+<h4 id="setup">setup</h4>
+<p>/usr/bin/setup，需要root权限</p>
 <p>配置网络，永久生效，是Redhat开发的管理工具集合</p>
 <p>DHCP的方框中打星号，相当于自动获取ip，但是需要当前网络环境有DHCPserver服务</p>
 <p>配置后需要service network restart</p>
 <br />
-
-<h2 id="挂载命令"><a href="#挂载命令" class="headerlink" title="挂载命令"></a>挂载命令</h2><h4 id="mount"><a href="#mount" class="headerlink" title="mount"></a>mount</h4><p>挂载命令，linux可以自动挂载硬盘，但移动设备需要手动挂载</p>
+<h2 id="挂载命令">挂载命令</h2>
+<h4 id="mount">mount</h4>
+<p>挂载命令，linux可以自动挂载硬盘，但移动设备需要手动挂载</p>
 <p><code>mount [-t 文件系统] 设备文件名 挂载点</code></p>
 <p>光盘的文件系统是iso9660，不写也行</p>
 <p>设备文件名默认/dev/sr0</p>
 <p>创建一个空目录作为挂载点，一般在/mnt下</p>
-<h4 id="umount"><a href="#umount" class="headerlink" title="umount"></a>umount</h4><p><code>umount 设备文件名或挂载点（写一个就行）</code></p>
+<h4 id="umount">umount</h4>
+<p><code>umount 设备文件名或挂载点（写一个就行）</code></p>
 <p>当前路径在挂载点内部时不能使用命令</p>
 <br />
-
-<h2 id="关机重启命令"><a href="#关机重启命令" class="headerlink" title="关机重启命令"></a>关机重启命令</h2><h4 id="shutdown"><a href="#shutdown" class="headerlink" title="shutdown"></a>shutdown</h4><p><code>shutdown 选项 时间</code></p>
+<h2 id="关机重启命令">关机重启命令</h2>
+<h4 id="shutdown">shutdown</h4>
+<p><code>shutdown 选项 时间</code></p>
 <ul>
 <li>-h表示关机</li>
 <li>-r表示重启</li>
@@ -649,7 +718,8 @@
 </ul>
 <p>时间可以为几点几分</p>
 <p>shutdown是最早的可以安全关机的命令，建议使用</p>
-<h4 id="其他关机命令"><a href="#其他关机命令" class="headerlink" title="其他关机命令"></a>其他关机命令</h4><p>halt</p>
+<h4 id="其他关机命令">其他关机命令</h4>
+<p>halt</p>
 <p>poweroff</p>
 <p>init 0</p>
 <blockquote>
@@ -658,9 +728,11 @@
 <p>配置文件为/etc/inittab，但centos7以上不支持在配置文件修改了</p>
 <p>命令<code>runlevel</code>，显示之前级别和当前级别</p>
 </blockquote>
-<h4 id="其他重启命令"><a href="#其他重启命令" class="headerlink" title="其他重启命令"></a>其他重启命令</h4><p>reboot</p>
+<h4 id="其他重启命令">其他重启命令</h4>
+<p>reboot</p>
 <p>init 6</p>
-<h4 id="logout"><a href="#logout" class="headerlink" title="logout"></a>logout</h4><p>logout</p>
+<h4 id="logout">logout</h4>
+<p>logout</p>
 
       
     </div>
@@ -709,7 +781,7 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/Blog/nec/C++%E6%B3%A8%E6%84%8F%E7%82%B9/" rel="next" title="C++注意点">
+              <a href="/Blog/Other/C++%E6%B3%A8%E6%84%8F%E7%82%B9/" rel="next" title="C++注意点">
                 <i class="fa fa-chevron-left"></i> C++注意点
               </a>
             
@@ -719,7 +791,7 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/Blog/nec/MySQL%E5%91%BD%E4%BB%A4%E8%A1%8C/" rel="prev" title="MySQL">
+              <a href="/Blog/Other/MySQL%E5%91%BD%E4%BB%A4%E8%A1%8C/" rel="prev" title="MySQL">
                 MySQL <i class="fa fa-chevron-right"></i>
               </a>
             
@@ -800,7 +872,7 @@
             
               <div class="site-state-item site-state-posts">
                 <a href="/Blog/archives">
-                  <span class="site-state-item-count">44</span>
+                  <span class="site-state-item-count">52</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -812,7 +884,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/Blog/categories/index.html">
-                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-count">8</span>
                   <span class="site-state-item-name">categories</span>
                 </a>
               </div>
@@ -823,7 +895,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/Blog/tags/index.html">
-                  <span class="site-state-item-count">53</span>
+                  <span class="site-state-item-count">60</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>
@@ -899,7 +971,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2021</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>

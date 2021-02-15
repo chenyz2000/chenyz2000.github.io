@@ -79,12 +79,12 @@
 
 
 
-<meta name="description" content="服务端只需要JDK就可以开发 只要在类上使用@WebService注解，以及在方法上使用@WebMethod注解，就可以认为是一个WebService">
+<meta name="description" content="服务端 只需要JDK就可以开发 只要在类上使用@WebService注解，以及在方法上使用@WebMethod注解，就可以认为是一个WebService">
 <meta property="og:type" content="article">
 <meta property="og:title" content="WebService">
 <meta property="og:url" content="https://chenyz2000.github.io/Blog/Java%20Web/WebService/index.html">
 <meta property="og:site_name" content="CYZ&#39;s Blog">
-<meta property="og:description" content="服务端只需要JDK就可以开发 只要在类上使用@WebService注解，以及在方法上使用@WebMethod注解，就可以认为是一个WebService">
+<meta property="og:description" content="服务端 只需要JDK就可以开发 只要在类上使用@WebService注解，以及在方法上使用@WebMethod注解，就可以认为是一个WebService">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2020-06-16T09:00:00.000Z">
 <meta property="article:modified_time" content="2020-06-15T16:00:00.000Z">
@@ -365,17 +365,16 @@
       
 
       
-        <h2 id="服务端"><a href="#服务端" class="headerlink" title="服务端"></a>服务端</h2><p>只需要JDK就可以开发</p>
+        <h2 id="服务端">服务端</h2>
+<p>只需要JDK就可以开发</p>
 <p>只要在类上使用@WebService注解，以及在方法上使用@WebMethod注解，就可以认为是一个WebService</p>
 <a id="more"></a>
-
 <p>服务接口：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> server;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">HelloWorldWS</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">sayHello</span><span class="params">(String name)</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>服务类：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> server;</span><br><span class="line"> </span><br><span class="line"><span class="keyword">import</span> javax.jws.WebMethod;</span><br><span class="line"><span class="keyword">import</span> javax.jws.WebService;</span><br><span class="line"></span><br><span class="line"><span class="meta">@WebService</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">HelloWorldImpl</span> <span class="keyword">implements</span>  <span class="title">HelloWorldWS</span> </span>&#123;</span><br><span class="line">    <span class="meta">@WebMethod</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">sayHello</span><span class="params">(String name)</span> </span>&#123;</span><br><span class="line">        String str=<span class="string">"欢迎你："</span>+name;</span><br><span class="line">        System.out.println(str);</span><br><span class="line">        <span class="keyword">return</span> str;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>发布服务：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> server;</span><br><span class="line"> </span><br><span class="line"><span class="keyword">import</span> javax.xml.ws.Endpoint;</span><br><span class="line"> </span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Publish</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String args[])</span></span>&#123;</span><br><span class="line">        Object implementor = <span class="keyword">new</span> HelloWorldImpl();</span><br><span class="line">        String address = <span class="string">"http://localhost:9999/HelloWorld"</span>;     <span class="comment">//发布到的地址</span></span><br><span class="line">        Endpoint.publish(address, implementor);		<span class="comment">//发布</span></span><br><span class="line">        System.out.println(<span class="string">"发布成功"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <p>运行服务端，就可以在<code>http://localhost:9999/HelloWorld?wsdl</code>访问到这个描述这个服务的wsdl文件了</p>
 
       
@@ -437,7 +436,7 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/Blog/nec/Hexo/" rel="prev" title="Hexo">
+              <a href="/Blog/Other/Hexo/" rel="prev" title="Hexo">
                 Hexo <i class="fa fa-chevron-right"></i>
               </a>
             
@@ -518,7 +517,7 @@
             
               <div class="site-state-item site-state-posts">
                 <a href="/Blog/archives">
-                  <span class="site-state-item-count">44</span>
+                  <span class="site-state-item-count">52</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -530,7 +529,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/Blog/categories/index.html">
-                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-count">8</span>
                   <span class="site-state-item-name">categories</span>
                 </a>
               </div>
@@ -541,7 +540,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/Blog/tags/index.html">
-                  <span class="site-state-item-count">53</span>
+                  <span class="site-state-item-count">60</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>
@@ -617,7 +616,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2021</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>

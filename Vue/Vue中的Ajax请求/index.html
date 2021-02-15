@@ -79,12 +79,12 @@
 
 
 
-<meta name="description" content="axios（建议使用）网络请求库，类似$.ajax一样都是Ajax技术的具体实现 axios写在js中，结合Vue一起使用 CDN导包：&lt;script src&#x3D;&quot;https:&#x2F;&#x2F;unpkg.com&#x2F;axios&#x2F;dist&#x2F;axios.min.js&quot;&gt;&lt;&#x2F;script&gt; axios.get()和post1axios.get(url?查询字符串).then(f">
+<meta name="description" content="axios（建议使用） 网络请求库，类似$.ajax一样都是Ajax技术的具体实现 axios写在js中，结合Vue一起使用 CDN导包：&lt;script src&#x3D;&quot;https:&#x2F;&#x2F;unpkg.com&#x2F;axios&#x2F;dist&#x2F;axios.min.js&quot;&gt;&lt;&#x2F;script&gt; axios.get()和post 1axios.get(url?查询字符串).then">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Vue中的Ajax请求">
 <meta property="og:url" content="https://chenyz2000.github.io/Blog/Vue/Vue%E4%B8%AD%E7%9A%84Ajax%E8%AF%B7%E6%B1%82/index.html">
 <meta property="og:site_name" content="CYZ&#39;s Blog">
-<meta property="og:description" content="axios（建议使用）网络请求库，类似$.ajax一样都是Ajax技术的具体实现 axios写在js中，结合Vue一起使用 CDN导包：&lt;script src&#x3D;&quot;https:&#x2F;&#x2F;unpkg.com&#x2F;axios&#x2F;dist&#x2F;axios.min.js&quot;&gt;&lt;&#x2F;script&gt; axios.get()和post1axios.get(url?查询字符串).then(f">
+<meta property="og:description" content="axios（建议使用） 网络请求库，类似$.ajax一样都是Ajax技术的具体实现 axios写在js中，结合Vue一起使用 CDN导包：&lt;script src&#x3D;&quot;https:&#x2F;&#x2F;unpkg.com&#x2F;axios&#x2F;dist&#x2F;axios.min.js&quot;&gt;&lt;&#x2F;script&gt; axios.get()和post 1axios.get(url?查询字符串).then">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2020-08-21T07:41:00.000Z">
 <meta property="article:modified_time" content="2020-08-21T07:41:00.000Z">
@@ -366,13 +366,13 @@
       
 
       
-        <h2 id="axios（建议使用）"><a href="#axios（建议使用）" class="headerlink" title="axios（建议使用）"></a>axios（建议使用）</h2><p>网络请求库，类似$.ajax一样都是Ajax技术的具体实现</p>
+        <h2 id="axios（建议使用）">axios（建议使用）</h2>
+<p>网络请求库，类似$.ajax一样都是Ajax技术的具体实现</p>
 <p>axios写在js中，结合Vue一起使用</p>
 <p>CDN导包：<code>&lt;script src=&quot;https://unpkg.com/axios/dist/axios.min.js&quot;&gt;&lt;/script&gt;</code></p>
-<h4 id="axios-get-和post"><a href="#axios-get-和post" class="headerlink" title="axios.get()和post"></a>axios.get()和post</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">axios.get(url?查询字符串).then(<span class="function"><span class="keyword">function</span>(<span class="params">response</span>)</span>&#123;&#125;).catch(<span class="function"><span class="keyword">function</span>(<span class="params">err</span>)</span>&#123;&#125;)</span><br></pre></td></tr></table></figure>
-
+<h4 id="axios-get-和post">axios.get()和post</h4>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">axios.get(url?查询字符串).then(<span class="function"><span class="keyword">function</span>(<span class="params">response</span>)</span>&#123;&#125;).catch(<span class="function"><span class="keyword">function</span>(<span class="params">err</span>)</span>&#123;&#125;)</span><br></pre></td></tr></table></figure>
 <a id="more"></a>
-
 <p>看到.then()就知道它是基于Promise的，.then()两个参数成功回调、失败回调，其中第一个参数成功回调不可省略</p>
 <p>then方法内部传递的回调函数会在<strong>请求响应完成</strong>的时候触发</p>
 <p>这两个回调函数的形参可以自动获取信息，response是服务器的<strong>响应内容</strong>，err是<strong>错误信息</strong></p>
@@ -380,38 +380,38 @@
 <p>其实是还有一种写法是<code>axios.get().then(function(response){}, function(err){})</code>，即then方法的第二个参数也是一个回调函数，它在响应失败时触发。这种写法和then-catch的区别是，catch不仅可以捕捉响应失败、也可以捕捉响应成功的操作中的逻辑错误，所以建议使用then-catch。</p>
 </blockquote>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">axios.post(url, 查询json对象).then(<span class="function"><span class="keyword">function</span>(<span class="params">response</span>)</span>&#123;&#125;).catch(<span class="function"><span class="keyword">function</span>(<span class="params">err</span>)</span>&#123;&#125;)</span><br></pre></td></tr></table></figure>
-
 <p>其中查询参数对象可写作<code>{k1:v1, k2:v2}</code></p>
 <blockquote>
 <p>其他还有axios.request，head，delete，put等</p>
 </blockquote>
-<h4 id="与Vue配合"><a href="#与Vue配合" class="headerlink" title="与Vue配合"></a>与Vue配合</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">	new Vue()&#123;</span><br><span class="line">        el:&quot;#abc&quot;,</span><br><span class="line">        data:&#123;</span><br><span class="line">            msg:&quot;hello&quot;</span><br><span class="line">        &#125;,</span><br><span class="line">        methods:&#123;</span><br><span class="line">            getMsg:function()&#123;</span><br><span class="line">                var _this &#x3D; this;</span><br><span class="line">                axios.get(&quot;url&quot;).then(function(response)&#123;</span><br><span class="line">                    _this.msg &#x3D; response.data;</span><br><span class="line">                &#125;,function(err)&#123;&#125;)</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&lt;&#x2F;script&gt;</span><br></pre></td></tr></table></figure>
-
+<h4 id="与Vue配合">与Vue配合</h4>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">	new Vue()&#123;</span><br><span class="line">        el:&quot;#abc&quot;,</span><br><span class="line">        data:&#123;</span><br><span class="line">            msg:&quot;hello&quot;</span><br><span class="line">        &#125;,</span><br><span class="line">        methods:&#123;</span><br><span class="line">            getMsg:function()&#123;</span><br><span class="line">                var _this &#x3D; this;</span><br><span class="line">                axios.get(&quot;url&quot;).then(function(response)&#123;</span><br><span class="line">                    _this.msg &#x3D; response.data;</span><br><span class="line">                &#125;,function(err)&#123;&#125;)</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&lt;&#x2F;script&gt;</span><br></pre></td></tr></table></figure>
 <p>axios写在Vue实例的methods中，通过调用方法进行对data的改变</p>
 <p>注意，若在then方法参数的函数内使用this，它指代的不是外面的Vue实例</p>
 <br />
-
-<h2 id="Vue-resource"><a href="#Vue-resource" class="headerlink" title="Vue-resource"></a>Vue-resource</h2><p>（已经停止更新，不建议使用）</p>
+<h2 id="Vue-resource">Vue-resource</h2>
+<p>（已经停止更新，不建议使用）</p>
 <p>是Vue的第三方包插件，依赖于Vue，要向Vue中注册$http，所以要先导入Vue再导入Vue-resource</p>
 <p>CDN导包：<code>&lt;script src=&quot;https://cdn.staticfile.org/vue-resource/1.5.1/vue-resource.min.js&quot;&gt;&lt;/script&gt;</code></p>
 <p>使用方式为</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">new</span> Vue(&#123;</span><br><span class="line">    methods:&#123;</span><br><span class="line">        Func: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">            <span class="keyword">this</span>.$http.get(<span class="string">"url"</span>).then(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;,<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-
 <p>若为post，为</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">this</span>.$http.post(<span class="string">"url"</span>, &#123;&#125;, &#123;<span class="attr">emulateJSON</span>:<span class="literal">true</span>&#125;).then(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;,<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;);</span><br></pre></td></tr></table></figure>
-
 <p>第二个参数是body对象，第三个参数是请求的选项对象（手动发起的post请求没有格式需要设置格式）</p>
-<h4 id="Vue-resource配置接口根域名"><a href="#Vue-resource配置接口根域名" class="headerlink" title="Vue-resource配置接口根域名"></a>Vue-resource配置接口根域名</h4><ul>
-<li><p>全局</p>
+<h4 id="Vue-resource配置接口根域名">Vue-resource配置接口根域名</h4>
+<ul>
+<li>
+<p>全局</p>
 <p>在script中写<code>Vue.http.options.root=&quot;根域名&quot;</code></p>
 <p>且this.$http.get()请求里的url必须前面<strong>不带斜线/</strong></p>
 </li>
-<li><p>私有</p>
+<li>
+<p>私有</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">new</span> Vue(&#123;</span><br><span class="line">    http:&#123;</span><br><span class="line">        root:<span class="string">"根域名"</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-
 </li>
 </ul>
-<h4 id="全局配置emulateJSON"><a href="#全局配置emulateJSON" class="headerlink" title="全局配置emulateJSON"></a>全局配置emulateJSON</h4><p>在script中写<code>Vue.http.options.emulateJSON = true;</code></p>
+<h4 id="全局配置emulateJSON">全局配置emulateJSON</h4>
+<p>在script中写<code>Vue.http.options.emulateJSON = true;</code></p>
 
       
     </div>
@@ -555,7 +555,7 @@
             
               <div class="site-state-item site-state-posts">
                 <a href="/Blog/archives">
-                  <span class="site-state-item-count">44</span>
+                  <span class="site-state-item-count">52</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -567,7 +567,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/Blog/categories/index.html">
-                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-count">8</span>
                   <span class="site-state-item-name">categories</span>
                 </a>
               </div>
@@ -578,7 +578,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/Blog/tags/index.html">
-                  <span class="site-state-item-count">53</span>
+                  <span class="site-state-item-count">60</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>
@@ -654,7 +654,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2021</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>

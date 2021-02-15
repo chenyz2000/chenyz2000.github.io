@@ -79,12 +79,12 @@
 
 
 
-<meta name="description" content="DOM文档对象模型，Document Object Model，一种用于HTML和XML文档的编程接口，将文档作为文档树">
+<meta name="description" content="DOM 文档对象模型，Document Object Model，一种用于HTML和XML文档的编程接口，将文档作为文档树">
 <meta property="og:type" content="article">
 <meta property="og:title" content="DOM">
 <meta property="og:url" content="https://chenyz2000.github.io/Blog/Front%20End/DOM/index.html">
 <meta property="og:site_name" content="CYZ&#39;s Blog">
-<meta property="og:description" content="DOM文档对象模型，Document Object Model，一种用于HTML和XML文档的编程接口，将文档作为文档树">
+<meta property="og:description" content="DOM 文档对象模型，Document Object Model，一种用于HTML和XML文档的编程接口，将文档作为文档树">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2020-07-21T02:46:00.000Z">
 <meta property="article:modified_time" content="2020-07-22T06:52:00.000Z">
@@ -364,57 +364,70 @@
       
 
       
-        <h2 id="DOM"><a href="#DOM" class="headerlink" title="DOM"></a>DOM</h2><p>文档对象模型，Document Object Model，一种用于HTML和XML文档的编程接口，将文档作为文档树</p>
+        <h2 id="DOM">DOM</h2>
+<p>文档对象模型，Document Object Model，一种用于HTML和XML文档的编程接口，将文档作为文档树</p>
 <a id="more"></a>
-
 <br />
-
-<h2 id="查找"><a href="#查找" class="headerlink" title="查找"></a>查找</h2><h4 id="直接查找"><a href="#直接查找" class="headerlink" title="直接查找"></a>直接查找</h4><p>var t = document.getElementById()，根据ID获取一个标签</p>
+<h2 id="查找">查找</h2>
+<h4 id="直接查找">直接查找</h4>
+<p>var t = document.getElementById()，根据ID获取一个标签</p>
 <p>var t = document.getElementsByName()，根据name属性获取标签集合</p>
 <p>var t = document.getElementsByClassName()，根据class属性获取标签集合</p>
 <p>var t = document.getElementsByTagName()，根据标签名获取标签集合</p>
-<h4 id="间接查找"><a href="#间接查找" class="headerlink" title="间接查找"></a>间接查找</h4><h6 id="节点查找"><a href="#节点查找" class="headerlink" title="节点查找"></a>节点查找</h6><p>t.parentNode，父节点</p>
+<h4 id="间接查找">间接查找</h4>
+<h6 id="节点查找">节点查找</h6>
+<p>t.parentNode，父节点</p>
 <p>t.childNodes，所有子节点</p>
 <p>t.firstChild，第一个子节点</p>
 <p>t.lastChild，最后一个子节点</p>
 <p>t.nextSibling，下一个兄弟节点</p>
 <p>t.previousSibling，上一个兄弟节点</p>
-<h6 id="标签元素查找"><a href="#标签元素查找" class="headerlink" title="标签元素查找"></a>标签元素查找</h6><p>t.parentElement，父节点标签元素</p>
+<h6 id="标签元素查找">标签元素查找</h6>
+<p>t.parentElement，父节点标签元素</p>
 <p>t.children，所有子标签元素</p>
 <p>t.firstElementChild，第一个子标签元素</p>
 <p>t.lastElementChild，最后一个子标签元素</p>
 <p>t.nextElementtSibling，下一个兄弟标签元素</p>
 <p>t.previousElementSibling，上一个兄弟标签元素</p>
-<h6 id="区别"><a href="#区别" class="headerlink" title="区别"></a>区别</h6><p>节点比标签元素多了文本内容</p>
+<h6 id="区别">区别</h6>
+<p>节点比标签元素多了文本内容</p>
 <br />
-
-<h2 id="操作"><a href="#操作" class="headerlink" title="操作"></a>操作</h2><h4 id="对内容操作"><a href="#对内容操作" class="headerlink" title="对内容操作"></a>对内容操作</h4><p>t.innerText内部仅文本内容</p>
+<h2 id="操作">操作</h2>
+<h4 id="对内容操作">对内容操作</h4>
+<p>t.innerText内部仅文本内容</p>
 <p>t.innerHTML内部HTML内容（子标签+文本）</p>
 <p>t.value文本框的值</p>
-<h4 id="对属性操作"><a href="#对属性操作" class="headerlink" title="对属性操作"></a>对属性操作</h4><p>t.getAttribute(“属性名”)获得属性值</p>
+<h4 id="对属性操作">对属性操作</h4>
+<p>t.getAttribute(“属性名”)获得属性值</p>
 <p>t.setAttribute(“属性名”, “属性值”)进行修改</p>
 <p>t.removeAttribute(“属性名”)删除</p>
-<h4 id="对class操作"><a href="#对class操作" class="headerlink" title="对class操作"></a>对class操作</h4><p>t.className获取class属性的值，返回字符串</p>
+<h4 id="对class操作">对class操作</h4>
+<p>t.className获取class属性的值，返回字符串</p>
 <p>t.classList获取class属性的值，返回列表</p>
 <p>t.classList.add()</p>
 <p>t.classList.remove()</p>
-<h4 id="对样式操作"><a href="#对样式操作" class="headerlink" title="对样式操作"></a>对样式操作</h4><p>t.style.color=”red”</p>
-<h4 id="标签的创建与添加"><a href="#标签的创建与添加" class="headerlink" title="标签的创建与添加"></a>标签的创建与添加</h4><p>优先使用对象形式</p>
-<h6 id="对象形式"><a href="#对象形式" class="headerlink" title="对象形式"></a>对象形式</h6><p>var tag = document.createElemnt(“a”)创建</p>
+<h4 id="对样式操作">对样式操作</h4>
+<p>t.style.color=“red”</p>
+<h4 id="标签的创建与添加">标签的创建与添加</h4>
+<p>优先使用对象形式</p>
+<h6 id="对象形式">对象形式</h6>
+<p>var tag = document.createElemnt(“a”)创建</p>
 <p>再对该对象的属性进行修改，注意一些含连接符的attribute变成了大写的property，如font-size变成fontSize</p>
 <p>获取添加tag进入的对象obj</p>
 <p>obj.appendChild(tag)，默认是追加在最后</p>
 <p>obj.insertBefore(tag, obj.children[0])</p>
 <p>obj.insertAdjacentElement(“beforeEnd”, tag)</p>
-<h6 id="字符串形式"><a href="#字符串形式" class="headerlink" title="字符串形式"></a>字符串形式</h6><p>var tag=”&lt;a&gt;abc&lt;/a&gt;”</p>
+<h6 id="字符串形式">字符串形式</h6>
+<p>var tag=“&lt;a&gt;abc&lt;/a&gt;”</p>
 <p>获取添加tag进入的对象obj</p>
 <p>obj.insertAdjacentHTML(“…”, tag)保留标签</p>
 <p>obj.insertAdjacentText(“…”, tag)添加纯文本</p>
 <blockquote>
-<p>第一个参数只有四个值”beforeBegin””afterBegin””beforeEnd””afterEnd”</p>
+<p>第一个参数只有四个值&quot;beforeBegin&quot;“afterBegin”“beforeEnd”“afterEnd”</p>
 <p>Begin和End指的分别是obj的开始标签和结束标签</p>
 </blockquote>
-<h4 id="位置操作"><a href="#位置操作" class="headerlink" title="位置操作"></a>位置操作</h4><p>clientHeight，可见区域height + padding高度</p>
+<h4 id="位置操作">位置操作</h4>
+<p>clientHeight，可见区域height + padding高度</p>
 <p>clientTop，可见区域border高度</p>
 <p>offsetHeight，可见区域height + padding + border高度</p>
 <p>offsetTop，距离祖先标签中最近的定位标签的高度</p>
@@ -422,40 +435,46 @@
 <p>scrollTop，滚动条滚动了多少</p>
 <p>body和文本框都可以有滚动条，document.body.scrollTop=0可以让页面返回顶部</p>
 <p>在文本框中，若文本超过文本框大小，部分可见，可见的部分是可见高度，全文是全文高度</p>
-<h4 id="提交表单"><a href="#提交表单" class="headerlink" title="提交表单"></a>提交表单</h4><p>不用submit按钮，用对象form对象的submit()</p>
-<h4 id="当前页面"><a href="#当前页面" class="headerlink" title="当前页面"></a>当前页面</h4><p>location.href()获取或修改当前网址</p>
+<h4 id="提交表单">提交表单</h4>
+<p>不用submit按钮，用对象form对象的submit()</p>
+<h4 id="当前页面">当前页面</h4>
+<p>location.href()获取或修改当前网址</p>
 <p>location.reload()重新加载</p>
-<h4 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h4><p>console.log()</p>
+<h4 id="其他">其他</h4>
+<p>console.log()</p>
 <p>alert()</p>
 <p>confirm()，给出确定和取消两个按钮，这个函数有返回值true/false用于分辨</p>
 <br />
-
-<h2 id="定时器"><a href="#定时器" class="headerlink" title="定时器"></a>定时器</h2><p>setInterval(“代码语句”或匿名函数,1000)，设置多次定时器</p>
+<h2 id="定时器">定时器</h2>
+<p>setInterval(&quot;代码语句&quot;或匿名函数,1000)，设置多次定时器</p>
 <p>clearInterval(setInterval返回的特征值)，删除多次定时器</p>
 <p>setTimeout()，设置单次定时器</p>
 <p>clearTimeout()，删除单次定时器</p>
 <br />
-
-<h2 id="绑定事件"><a href="#绑定事件" class="headerlink" title="绑定事件"></a>绑定事件</h2><h4 id="事件"><a href="#事件" class="headerlink" title="事件"></a>事件</h4><p>onfocus，获取焦点</p>
+<h2 id="绑定事件">绑定事件</h2>
+<h4 id="事件">事件</h4>
+<p>onfocus，获取焦点</p>
 <p>onblur，丢失焦点</p>
 <p>onclick，单击</p>
 <p>ondblclick，双击</p>
 <p>onscroll，滚动</p>
 <p>onchange，内容改变</p>
 <p>onkeypress，按下并松开键盘</p>
-<h4 id="格式"><a href="#格式" class="headerlink" title="格式"></a>格式</h4><p>在标签的属性里写onfocus=”Focus()”并在script中写Focus()函数的代码（字符串里除了函数也可以写一句JS代码），或在JS脚本里写window.onkeypress=function(){}</p>
-<h4 id="特殊参数"><a href="#特殊参数" class="headerlink" title="特殊参数"></a>特殊参数</h4><p>实参this表示当前标签</p>
+<h4 id="格式">格式</h4>
+<p>在标签的属性里写onfocus=&quot;Focus()&quot;并在script中写Focus()函数的代码（字符串里除了函数也可以写一句JS代码），或在JS脚本里写window.onkeypress=function(){}</p>
+<h4 id="特殊参数">特殊参数</h4>
+<p>实参this表示当前标签</p>
 <p>实参event表示事件对象</p>
-<h4 id="默认事件"><a href="#默认事件" class="headerlink" title="默认事件"></a>默认事件</h4><p>先执行自定义，再执行默认事件：a、form的submit</p>
+<h4 id="默认事件">默认事件</h4>
+<p>先执行自定义，再执行默认事件：a、form的submit</p>
 <p>先执行默认事件，再执行自定义：checkbox</p>
-<h4 id="事件链"><a href="#事件链" class="headerlink" title="事件链"></a>事件链</h4><p>若有多个事件，改写onclick=”return Func()”，当onclick事件的返回值为false，则阻止后面的事件发生</p>
+<h4 id="事件链">事件链</h4>
+<p>若有多个事件，改写onclick=“return Func()”，当onclick事件的返回值为false，则阻止后面的事件发生</p>
 <p>此功能适用于表单信息的验证</p>
 <br />
-
 <hr>
 <p>示例：点赞特效</p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">style</span>=<span class="string">"position:relative;padding:50px"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">a</span> <span class="attr">onclick</span>=<span class="string">"Favor(this);"</span>&gt;</span>赞<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="actionscript">    <span class="function"><span class="keyword">function</span> <span class="title">Favor</span><span class="params">(ths)</span></span>&#123;</span></span><br><span class="line"><span class="actionscript">        <span class="keyword">var</span> top=<span class="number">100</span>;</span></span><br><span class="line"><span class="actionscript">        <span class="keyword">var</span> left=<span class="number">110</span>;</span></span><br><span class="line"><span class="actionscript">        <span class="keyword">var</span> opacity=<span class="number">1</span>;</span></span><br><span class="line"><span class="actionscript">        <span class="keyword">var</span> fontSize=<span class="number">18</span>;</span></span><br><span class="line"></span><br><span class="line"><span class="javascript">        <span class="keyword">var</span> tag = <span class="built_in">document</span>.createElement(<span class="string">"span"</span>);</span></span><br><span class="line"><span class="actionscript">        tag.innerText = <span class="string">"+1"</span>;</span></span><br><span class="line"><span class="actionscript">        tag.style.position = <span class="string">"absolute"</span>;</span></span><br><span class="line"><span class="actionscript">        tag.style.top = top+<span class="string">"px"</span>;</span></span><br><span class="line"><span class="actionscript">        tag.style.left = left+<span class="string">"px"</span>;</span></span><br><span class="line">        tag.style.opaity = opacity;</span><br><span class="line"><span class="actionscript">        tag.style.fontSize = fontSize+<span class="string">"px"</span>;</span></span><br><span class="line">        ths.parentElement.appendChild(tag);</span><br><span class="line"></span><br><span class="line"><span class="actionscript">        <span class="keyword">var</span> interval = setInterval(<span class="function"><span class="keyword">function</span><span class="params">()</span></span>&#123;</span></span><br><span class="line">            top-=10;</span><br><span class="line">            left+=10;</span><br><span class="line">            fontSize+=5;</span><br><span class="line">            opacity-=0.1;</span><br><span class="line"></span><br><span class="line"><span class="actionscript">            tag.style.top = top+<span class="string">"px"</span>;</span></span><br><span class="line"><span class="actionscript">            tag.style.left = left+<span class="string">"px"</span>;</span></span><br><span class="line">            tag.style.opacity = opacity;</span><br><span class="line"><span class="actionscript">            tag.style.fontSize = fontSize+<span class="string">"px"</span>;</span></span><br><span class="line">            if(opacity&lt;=0)&#123;</span><br><span class="line">                clearInterval(interval);</span><br><span class="line">                ths.parentElement.removeChild(tag);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;,50);</span><br><span class="line">    &#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
 
       
     </div>
@@ -595,7 +614,7 @@
             
               <div class="site-state-item site-state-posts">
                 <a href="/Blog/archives">
-                  <span class="site-state-item-count">44</span>
+                  <span class="site-state-item-count">52</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -607,7 +626,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/Blog/categories/index.html">
-                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-count">8</span>
                   <span class="site-state-item-name">categories</span>
                 </a>
               </div>
@@ -618,7 +637,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/Blog/tags/index.html">
-                  <span class="site-state-item-count">53</span>
+                  <span class="site-state-item-count">60</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>
@@ -694,7 +713,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2021</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>

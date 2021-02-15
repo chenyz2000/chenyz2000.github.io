@@ -79,12 +79,12 @@
 
 
 
-<meta name="description" content="应用服务器应用服务器是WEB服务器上的一个服务 它让用户可以通过ip加端口访问放在应用服务器里的Java程序 Servlet容器除了Tomcat以外，还有Jetty和Undertow">
+<meta name="description" content="应用服务器 应用服务器是WEB服务器上的一个服务 它让用户可以通过ip加端口访问放在应用服务器里的Java程序 Servlet容器除了Tomcat以外，还有Jetty和Undertow">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Tomcat">
 <meta property="og:url" content="https://chenyz2000.github.io/Blog/Java%20Web/Tomcat/index.html">
 <meta property="og:site_name" content="CYZ&#39;s Blog">
-<meta property="og:description" content="应用服务器应用服务器是WEB服务器上的一个服务 它让用户可以通过ip加端口访问放在应用服务器里的Java程序 Servlet容器除了Tomcat以外，还有Jetty和Undertow">
+<meta property="og:description" content="应用服务器 应用服务器是WEB服务器上的一个服务 它让用户可以通过ip加端口访问放在应用服务器里的Java程序 Servlet容器除了Tomcat以外，还有Jetty和Undertow">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2020-05-28T12:29:00.000Z">
 <meta property="article:modified_time" content="2020-05-27T16:00:00.000Z">
@@ -365,85 +365,103 @@
       
 
       
-        <h2 id="应用服务器"><a href="#应用服务器" class="headerlink" title="应用服务器"></a>应用服务器</h2><p>应用服务器是WEB服务器上的一个服务</p>
+        <h2 id="应用服务器">应用服务器</h2>
+<p>应用服务器是WEB服务器上的一个服务</p>
 <p>它让用户可以通过ip加端口访问放在应用服务器里的Java程序</p>
 <p>Servlet容器除了Tomcat以外，还有Jetty和Undertow</p>
 <a id="more"></a>
-
-<h2 id="Tomcat目录"><a href="#Tomcat目录" class="headerlink" title="Tomcat目录"></a>Tomcat目录</h2><ul>
-<li>bin中放可执行文件，startup.dat和shutdown.bat开启和关闭（Linux中是.sh后缀）  </li>
-<li>conf中放配置文件，server.xml，可以在里面改端口号  </li>
-<li>lib中放tomcat全局依赖的jar包  </li>
-<li>webapps中放项目文件夹，文件夹内需要有web-inf文件夹，其中要有web.xml、classes文件夹和lib文件夹（项目单独的class文件和jar包）  </li>
-<li>log放日志文件  </li>
-<li>temp放临时文件  </li>
-<li>work放JSP翻译成的Java和class文件  </li>
+<h2 id="Tomcat目录">Tomcat目录</h2>
+<ul>
+<li>bin：可执行文件，startup.dat和shutdown.bat开启和关闭（Linux中是.sh后缀）</li>
+<li>conf：配置文件，server.xml，可以在里面改端口号</li>
+<li>lib：存放库文件，即tomcat全局依赖的jar包</li>
+<li>webapps：项目文件夹，在此目录部署要运行的应用<br>
+文件夹内需要有web-inf文件夹，其中要有web.xml、classes文件夹和lib文件夹（项目单独的class文件和jar包）</li>
+<li>log：运行产生的日志文件</li>
+<li>temp：运行产生的临时文件</li>
+<li>work：运行产生的class文件（由JSP翻译成）</li>
 </ul>
-<h2 id="配置Tomcat"><a href="#配置Tomcat" class="headerlink" title="配置Tomcat"></a>配置Tomcat</h2><p><strong>Tomcat基于Java，需要先配置Java</strong>，必须先配置Java_Home</p>
+<h2 id="配置Tomcat">配置Tomcat</h2>
+<p><strong>Tomcat基于Java，需要先配置Java</strong>，必须先配置Java_Home</p>
 <p>再配置Catalina_Home，地址选择Tomcat目录</p>
 <p>然后就可以用startup.dat启动了</p>
-<p>如果端口号冲突（默认8080），可以在server.xml中修改  </p>
+<p>如果端口号冲突（默认8080），可以在server.xml中修改</p>
 <blockquote>
 <p>端口号若改为80即为http默认端口号，网址中可以省略端口号</p>
 </blockquote>
 <p>之后就可以访问了</p>
-<h2 id="访问Tomcat"><a href="#访问Tomcat" class="headerlink" title="访问Tomcat"></a>访问Tomcat</h2><p>可以<code>localhost:8080/</code>在本地访问</p>
+<h2 id="访问Tomcat">访问Tomcat</h2>
+<p>可以<code>localhost:8080/</code>在本地访问</p>
 <p>默认访问webapps下的root项目</p>
 <p>如果想访问其他项目，可以<code>localhost:8080/examples</code></p>
-<p>可以指定访问的页面，如<code>localhost:8080/examples/index.jsp</code> </p>
+<p>可以指定访问的页面，如<code>localhost:8080/examples/index.jsp</code></p>
 <p>root项目的项目名可以省略</p>
 <p>或者页面省略时，根据项目文件夹下的web-inf/web.xml中的welcome-file-list段，按顺序访问页面</p>
 <blockquote>
 <p>状态码：404资源不存在，403权限不足，3xx页面重定向，500服务器内部错误（代码写错）</p>
 </blockquote>
-<h2 id="虚拟路径"><a href="#虚拟路径" class="headerlink" title="虚拟路径"></a>虚拟路径</h2><p>在server.xml中的host段配置</p>
-<p>由属性appBase指定，默认是”webapps”</p>
+<h2 id="虚拟路径">虚拟路径</h2>
+<p>在server.xml中的host段配置</p>
+<p>由属性appBase指定，默认是&quot;webapps&quot;</p>
 <p>属性<code>name=&quot;localhost&quot;  appBase=&quot;webapps&quot;</code>指本地的虚拟路径在webapps</p>
-<h4 id="配置其他虚拟路径"><a href="#配置其他虚拟路径" class="headerlink" title="配置其他虚拟路径"></a>配置其他虚拟路径</h4><h6 id="方式一（需要重启Tomcat）"><a href="#方式一（需要重启Tomcat）" class="headerlink" title="方式一（需要重启Tomcat）"></a>方式一（需要重启Tomcat）</h6><p>在host段里加入  <code>&lt;Context  docBase=&quot;  &quot;  path=&quot;  &quot;  /&gt;</code>，区分大小写</p>
+<h4 id="配置其他虚拟路径">配置其他虚拟路径</h4>
+<h6 id="方式一（需要重启Tomcat）">方式一（需要重启Tomcat）</h6>
+<p>在host段里加入  <code>&lt;Context  docBase=&quot;  &quot;  path=&quot;  &quot;  /&gt;</code>，区分大小写</p>
 <p>docBace是实际路径，path是虚拟路径</p>
 <p>二者都可使用绝对路径或相对于appBase的相对路径</p>
 <p>表示访问path时实际去访问docBace</p>
 <ul>
-<li>例如：path为<code>/examples</code>，docbase为<code>C:/examples</code>，浏览器访问<code>localhost:8080/examples</code>时，自动访问<code>C:/examples</code>文件夹 <strong>（name+path =&gt; docBase）</strong> </li>
+<li>例如：path为<code>/examples</code>，docbase为<code>C:/examples</code>，浏览器访问<code>localhost:8080/examples</code>时，自动访问<code>C:/examples</code>文件夹 <strong>（name+path =&gt; docBase）</strong></li>
 </ul>
-<h6 id="方式二（不需要重启）"><a href="#方式二（不需要重启）" class="headerlink" title="方式二（不需要重启）"></a>方式二（不需要重启）</h6><p><code>/conf/Catalina/localhost</code>下创建xml文件，文件名为项目名</p>
+<h6 id="方式二（不需要重启）">方式二（不需要重启）</h6>
+<p><code>/conf/Catalina/localhost</code>下创建xml文件，文件名为项目名</p>
 <p>文件中写<code>&lt;Context  docBase=&quot;  &quot;  path=&quot;  &quot;  /&gt;</code>，和方式一相同的语句</p>
-<h2 id="虚拟主机"><a href="#虚拟主机" class="headerlink" title="虚拟主机"></a>虚拟主机</h2><p>通过域名访问服务器时，先经过域名解析器解析成ip地址</p>
-<p>先在本地根据host解析，解析不到再去联网解析  </p>
-<h4 id="通过网页访问本机"><a href="#通过网页访问本机" class="headerlink" title="通过网页访问本机"></a>通过网页访问本机</h4><p>配置sever.xml，在engine段添加host</p>
+<h2 id="虚拟主机">虚拟主机</h2>
+<p>通过域名访问服务器时，先经过域名解析器解析成ip地址</p>
+<p>先在本地根据host解析，解析不到再去联网解析</p>
+<h4 id="通过网页访问本机">通过网页访问本机</h4>
+<p>配置sever.xml，在engine段添加host</p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">Host</span> <span class="attr">appBase</span>=<span class="string">webapps的实际路径</span>  <span class="attr">name</span>=<span class="string">虚拟主机的主机名、域名</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">Context</span> <span class="attr">docBase</span>=<span class="string">实际路径</span>  <span class="attr">path</span>=<span class="string">虚拟路径</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">Host</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <p>engine段属性defaultHost设置为name之一</p>
 <p>在<code>C:/windows/System32/drivers/etc/hosts</code>文件中加入解析</p>
-<h4 id="流程"><a href="#流程" class="headerlink" title="流程"></a>流程</h4><ol>
+<h4 id="流程">流程</h4>
+<ol>
 <li>输入网址</li>
 <li>host找映射关系</li>
 <li>server.xml找engine的defaulthost</li>
 <li>通过path映射到docBase</li>
 </ol>
-<h2 id="在idea中运行Tomcat"><a href="#在idea中运行Tomcat" class="headerlink" title="在idea中运行Tomcat"></a>在idea中运行Tomcat</h2><p>新建项目-&gt;JavaEE-&gt;web application-&gt;next-&gt; finish </p>
-<h4 id="IDEA配置Tomcat插件："><a href="#IDEA配置Tomcat插件：" class="headerlink" title="IDEA配置Tomcat插件："></a>IDEA配置Tomcat插件：</h4><ol>
-<li>运行，编辑配置，+，tomcat server，本地，应用程序服务器配置为tomcat的安装目录  </li>
-<li>部署，+，工件，编辑工件，+，directory content，路径选择为webapps  <blockquote>
+<h2 id="在idea中运行Tomcat">在idea中运行Tomcat</h2>
+<p>新建项目-&gt;JavaEE-&gt;web application-&gt;next-&gt; finish</p>
+<h4 id="IDEA配置Tomcat插件：">IDEA配置Tomcat插件：</h4>
+<ol>
+<li>运行，编辑配置，+，tomcat server，本地，应用程序服务器配置为tomcat的安装目录</li>
+<li>部署，+，artifact，编辑artifact，+，directory content，路径选择为webapps</li>
+<li>当artiface为war exploded形式时，设置tomcat server的on update action为update classes and resources，点击下方面板的刷新按钮可以热部署</li>
+</ol>
+<blockquote>
 <p>war包就是将当前项目打包映射到tomcat</p>
 </blockquote>
-</li>
-</ol>
 <p>lib中有jdk和tomcat</p>
 <p>tomcat中用到servlet-api.jar和jsp-api.jar,也可以手动添加到buildpath</p>
-<p>servlet的api使servlet转为JSP<br>src中放java程序，web中放前端页面，out中放打包的war包  </p>
-<h4 id="WEB-INF"><a href="#WEB-INF" class="headerlink" title="WEB-INF"></a>WEB-INF</h4><p>客户端（浏览器）访问out中的打包文件时</p>
+<p>servlet的api使servlet转为JSP<br>
+src中放java程序，web中放前端页面，out中放打包的war包</p>
+<h4 id="WEB-INF">WEB-INF</h4>
+<p>客户端（浏览器）访问out中的打包文件时</p>
 <p>可以访问web中的文件</p>
 <p>但权限不够无法直接访问web/WEB-INF中的文件，只能通过请求转发来访问</p>
 <p>src打包后也在WEB-INF中，不能访问</p>
-<p>=&gt;不能直接访问servlet文件  </p>
+<p>=&gt;不能直接访问servlet文件</p>
 <blockquote>
 <p>跳转包括请求转发和重定向（重定向不可以访问web-inf）</p>
 </blockquote>
 <p>设置请求访问</p>
-<h4 id="方式一"><a href="#方式一" class="headerlink" title="方式一"></a>方式一</h4><p>基于xml文件的映射：</p>
+<h4 id="方式一">方式一</h4>
+<p>基于xml文件的映射：</p>
 <p>将java文件的路径映射为单词，在web.xml中加入</p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">servlet</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">servlet-name</span>&gt;</span>自定义的名字<span class="tag">&lt;/<span class="name">servlet-name</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">servlet-class</span>&gt;</span>java转成的class的路径<span class="tag">&lt;/<span class="name">servlet-class</span>&gt;</span></span><br><span class="line">    </span><br><span class="line">    <span class="tag">&lt;<span class="name">servlet-mapping</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">servlet-name</span>&gt;</span>上面定义的名字<span class="tag">&lt;/<span class="name">servlet-name</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">url-pattern</span>&gt;</span>url相对路径<span class="tag">&lt;/<span class="name">url-pattern</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">servlet-mapping</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">servlet</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<h4 id="方式二-更简洁"><a href="#方式二-更简洁" class="headerlink" title="方式二(更简洁)"></a>方式二(更简洁)</h4><p>基于注解的方式：</p>
+<h4 id="方式二-更简洁">方式二(更简洁)</h4>
+<p>基于注解的方式：</p>
 <p>在实现Servlet的类前加上<code>@WebServlet(&quot;url相对路径&quot;)</code></p>
 
       
@@ -586,7 +604,7 @@
             
               <div class="site-state-item site-state-posts">
                 <a href="/Blog/archives">
-                  <span class="site-state-item-count">44</span>
+                  <span class="site-state-item-count">52</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -598,7 +616,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/Blog/categories/index.html">
-                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-count">8</span>
                   <span class="site-state-item-name">categories</span>
                 </a>
               </div>
@@ -609,7 +627,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/Blog/tags/index.html">
-                  <span class="site-state-item-count">53</span>
+                  <span class="site-state-item-count">60</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>
@@ -685,7 +703,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2021</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>

@@ -79,15 +79,15 @@
 
 
 
-<meta name="description" content="动态网页相比静态的区别：随时间、地点、用户操作改变 JSPJSP是服务器端（Tomcat服务器）脚本语言，动态网页需要使用 JSP就是在HTML中嵌套Java代码 HTML中写的内容直接显示在页面 而JSP翻译成Java，最后以class文件执行">
+<meta name="description" content="JSP Java Server Pages JSP执行流程 第一次访问  客户端提交请求 tomcat服务端（JSP引擎）将JSP翻译成Java源文件（即Servlet），从tomcat&#x2F;work中找Java文件能找到包含Servlet的_jspInit、 _jspService方法和out.write()的 并将其编译为.class文件，执行.class文件返回结果  第二次访问  直接访问cl">
 <meta property="og:type" content="article">
 <meta property="og:title" content="JSP">
 <meta property="og:url" content="https://chenyz2000.github.io/Blog/Java%20Web/JSP/index.html">
 <meta property="og:site_name" content="CYZ&#39;s Blog">
-<meta property="og:description" content="动态网页相比静态的区别：随时间、地点、用户操作改变 JSPJSP是服务器端（Tomcat服务器）脚本语言，动态网页需要使用 JSP就是在HTML中嵌套Java代码 HTML中写的内容直接显示在页面 而JSP翻译成Java，最后以class文件执行">
+<meta property="og:description" content="JSP Java Server Pages JSP执行流程 第一次访问  客户端提交请求 tomcat服务端（JSP引擎）将JSP翻译成Java源文件（即Servlet），从tomcat&#x2F;work中找Java文件能找到包含Servlet的_jspInit、 _jspService方法和out.write()的 并将其编译为.class文件，执行.class文件返回结果  第二次访问  直接访问cl">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2020-05-29T04:23:00.000Z">
-<meta property="article:modified_time" content="2020-05-28T16:00:00.000Z">
+<meta property="article:modified_time" content="2020-11-22T16:00:00.000Z">
 <meta property="article:author" content="Chen Yanzhi">
 <meta property="article:tag" content="JSP">
 <meta name="twitter:card" content="summary">
@@ -308,8 +308,8 @@
               
                 <span class="post-meta-item-text">Post modified&#58;</span>
               
-              <time title="Post modified" itemprop="dateModified" datetime="2020-05-29T00:00:00+08:00">
-                2020-05-29
+              <time title="Post modified" itemprop="dateModified" datetime="2020-11-23T00:00:00+08:00">
+                2020-11-23
               </time>
             
           </span>
@@ -364,90 +364,138 @@
       
 
       
-        <p>动态网页相比静态的区别：随时间、地点、用户操作改变</p>
-<h2 id="JSP"><a href="#JSP" class="headerlink" title="JSP"></a>JSP</h2><p>JSP是服务器端（Tomcat服务器）脚本语言，动态网页需要使用</p>
-<p>JSP就是在HTML中嵌套Java代码</p>
-<p>HTML中写的内容直接显示在页面</p>
-<p>而JSP翻译成Java，最后以class文件执行</p>
-<a id="more"></a>
-
-<h2 id="index-jsp"><a href="#index-jsp" class="headerlink" title="index.jsp"></a>index.jsp</h2><p>基本格式</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">title</span>&gt;</span>my jsp peoject<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">        hello...</span><br><span class="line">        <span class="tag">&lt;<span class="name">%</span></span></span><br><span class="line"><span class="tag">            其中放<span class="attr">jsp</span>脚本，即<span class="attr">Java</span>代码</span></span><br><span class="line"><span class="tag">        %&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="JSP执行流程"><a href="#JSP执行流程" class="headerlink" title="JSP执行流程"></a>JSP执行流程</h2><h4 id="第一次访问"><a href="#第一次访问" class="headerlink" title="第一次访问"></a>第一次访问</h4><ol>
+        <h2 id="JSP">JSP</h2>
+<p>Java Server Pages</p>
+<h2 id="JSP执行流程">JSP执行流程</h2>
+<p>第一次访问</p>
+<ol>
 <li>客户端提交请求</li>
-<li>tomcat服务端将JSP翻译成Java</li>
-<li>编译成class文件</li>
+<li>tomcat服务端（JSP引擎）将JSP翻译成Java源文件（即Servlet），从tomcat/work中找Java文件能找到包含Servlet的_jspInit、 _jspService方法和out.write()的</li>
+<li>并将其编译为.class文件，执行.class文件返回结果</li>
 </ol>
-<blockquote>
-<p>此处的Java文件准确来说是servlet文件</p>
-<p>Jsp和servlet可以相互转化，JSP比较简略</p>
-<p>早期没有JSP时，就用Java中的servlet类</p>
-</blockquote>
-<h4 id="第二次访问"><a href="#第二次访问" class="headerlink" title="第二次访问"></a>第二次访问</h4><ol>
-<li><p>直接访问class文件</p>
-</li>
-<li><p>若服务端代码修改，则按第一次访问进行</p>
-</li>
+<p>第二次访问</p>
+<ol>
+<li>直接访问class文件</li>
+<li>若服务端代码修改，则按第一次访问进行</li>
 </ol>
-<h2 id="统一编码"><a href="#统一编码" class="headerlink" title="统一编码"></a>统一编码</h2><ul>
-<li>jsp翻译到Java的编码：.jsp文件中的contentType和pageEconding属性  </li>
-<li>浏览器读取时的编码：.jsp文件中的content属性  </li>
-<li>文本文件的编码<br>一般都用utf-8</li>
+<a id="more"></a>
+<h2 id="统一编码">统一编码</h2>
+<ul>
+<li>jsp翻译到Java的编码：.jsp文件中的contentType和pageEconding属性</li>
+<li>浏览器读取时的编码：.jsp文件中的content属性</li>
+<li>文本文件的编码<br>
+一般都用utf-8</li>
 </ul>
 <hr>
 <p>Java运行Tomcat时，会复制一份配置文件</p>
 <p>将web工程以包的形式上传到服务器，而不是部署到webapps中</p>
-<h2 id="JSP的页面元素"><a href="#JSP的页面元素" class="headerlink" title="JSP的页面元素"></a>JSP的页面元素</h2><h4 id="脚本Scriptlet"><a href="#脚本Scriptlet" class="headerlink" title="脚本Scriptlet"></a>脚本Scriptlet</h4><p>脚本转为HTML源代码body中的内容</p>
+<h2 id="JSP语法">JSP语法</h2>
+<h4 id="基本格式">基本格式</h4>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;%@ page language=<span class="string">"java"</span> contentType=<span class="string">"text/html; charset=UTF-8"</span> %&gt;</span><br><span class="line"></span><br><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;div&gt;123&lt;/div&gt;</span><br><span class="line">    &lt;%</span><br><span class="line">       其中放jsp脚本，即Java代码</span><br><span class="line">    %&gt;</span><br><span class="line">&lt;/body&gt;</span><br></pre></td></tr></table></figure>
+<h4 id="指令">指令</h4>
 <ul>
-<li><code>&lt;%  局部变量，常规Java语句  %&gt;</code>   </li>
-<li><code>&lt;%!  全局变量、定义方法  %&gt;</code>，可以被其他段的语句调用</li>
-<li><code>&lt;%=  输出的字符串  %&gt;</code>，相当于<code>&lt;%  out.print(字符串)  %&gt;</code>  <blockquote>
-<p>多段脚本按照在整个JSP文件中的顺序进行，可以互相调用  </p>
-</blockquote>
+<li><code>&lt;%@ page attr:&quot;val&quot; %&gt;</code>，定义整个JSP页面的相关属性，其中attr有
+<ul>
+<li>language，指定JSP页面编写的脚本语言，一般为&quot;Java&quot;</li>
+<li>import，导入的类，如<code>import=&quot;java.util.*,java.sql.*&quot;</code></li>
+<li>pageEncoding，为JSP文件编码</li>
+<li>contentType，为浏览器解析编码</li>
+</ul>
+</li>
+<li><code>&lt;%@ include attr:&quot;val&quot; %&gt;</code>，重用代码
+<ul>
+<li>只有file一个属性，类似于c中的include，相当于直接把代码拷贝进来</li>
+</ul>
+</li>
+<li><code>&lt;%@ taglib attr:&quot;val&quot;%&gt;</code>，需要JSLT的核心库进行配置
+<ul>
+<li>uri</li>
+</ul>
 </li>
 </ul>
+<h4 id="脚本Scriptlet">脚本Scriptlet</h4>
+<p>脚本转为HTML源代码body中的内容</p>
+<ul>
+<li><code>&lt;%  局部变量，常规Java语句  %&gt;</code></li>
+<li><code>&lt;%!  全局变量、定义方法  %&gt;</code>，可以被其他段的语句调用</li>
+<li><code>&lt;%=  输出的字符串或值  %&gt;</code>，相当于<code>&lt;%  out.print(字符串)  %&gt;</code></li>
+</ul>
+<blockquote>
+<p>多段脚本按照在整个JSP文件中的顺序进行，可以互相调用</p>
+</blockquote>
 <blockquote>
 <p>在JSP脚本中println也不换行，换行需要&lt;br&gt;</p>
 <p>可以解析字符串中的HTML代码</p>
 </blockquote>
-<h4 id="指令"><a href="#指令" class="headerlink" title="指令"></a>指令</h4><ul>
-<li><code>&lt;%@ page  属性：值 %&gt;</code>，其中属性有<ul>
-<li>language指定JSP页面编写的脚本语言，一般为”Java”</li>
-<li>import导入的类</li>
-<li>pageEncoding为JSP文件编码</li>
-<li>contentType为浏览器解析编码</li>
-</ul>
-</li>
-<li><code>&lt;%@ include %&gt;</code></li>
-<li><code>&lt;%@ taglib %&gt;</code></li>
-</ul>
-<h4 id="注释"><a href="#注释" class="headerlink" title="注释"></a>注释</h4><ul>
+<h4 id="注释">注释</h4>
+<ul>
 <li>HTML注释：<code>&lt;!--  --&gt;</code>，可以在源代码中看到</li>
 <li>Java注释</li>
 <li>JSP注释：<code>&lt;%--  --%&gt;</code></li>
 </ul>
 <p>一般而言，修改配置文件需要重启Tomcat，修改页面文件不需要重启</p>
-<h2 id="JSP九大内置对象"><a href="#JSP九大内置对象" class="headerlink" title="JSP九大内置对象"></a>JSP九大内置对象</h2><p>自带的，不需要new也能使用的对象  </p>
+<h2 id="JSP九大内置对象">JSP九大内置对象</h2>
+<p>自带的，不需要new也能使用的对象</p>
 <ul>
-<li><p>out：输出对象，向客户端（网页页面）输出（System.out是打印到控制台）  </p>
+<li>
+<p>out：向网页页面输出</p>
 </li>
-<li><p>request：请求对象，客户端向服务端的请求  </p>
+<li>
+<p>request：网页向服务端的请求信息</p>
+<p>response：服务器向网页的响应信息</p>
 </li>
-<li><p>page, pageContext, request, response, session, application, config, exception</p>
-<h4 id="request对象常见方法"><a href="#request对象常见方法" class="headerlink" title="request对象常见方法"></a>request对象常见方法</h4></li>
-<li><p>String getParameter(String key)根据input标签的name属性，返回value属性的值</p>
+<li>
+<p>session：表示会话，保存用户的信息</p>
+<p>application：所有用户的共享信息</p>
 </li>
-<li><p>String[] getParameterValues(String key)返回数组</p>
+<li>
+<p>pageContext：表示当前JSP页面的运行环境</p>
 </li>
-<li><p>void setCharacterEncoding(“utf-8”)设置请求时的编码（Tomcat7以前默认为ISO8859-1，Tomcat8以后为utf-8）</p>
-</li>
-<li><p>getRequestDispacher(“跳转向的页面”).forward()请求转发</p>
-</li>
-<li><p>getServletContext()</p>
+<li>
+<p>page, config, exception</p>
 </li>
 </ul>
-<h2 id="request注册"><a href="#request注册" class="headerlink" title="request注册"></a>request注册</h2><p>register.jsp和show.jsp</p>
+<h4 id="request">request</h4>
+<ul>
+<li>
+<p>.getParameter(name)，根据表单的name获取value</p>
+<p>.getParameterValues(name)，返回数组</p>
+</li>
+<li>
+<p>.setCharacterEncoding(“utf-8”)，设置请求时的编码</p>
+<p>（Tomcat7以前默认为ISO8859-1，Tomcat8以后为utf-8）</p>
+</li>
+<li>
+<p>.getRequestDispacher(“跳转向的页面”).forward()，请求转发</p>
+</li>
+<li>
+<p>.getServletContext()</p>
+</li>
+</ul>
+<h4 id="response">response</h4>
+<ul>
+<li>.sendRedirect(“url”)，重新定位到页面</li>
+<li>.setHeader(attr,value)</li>
+<li>.addCookie(Cookie c)</li>
+</ul>
+<h4 id="session">session</h4>
+<ul>
+<li>.getAttribute(“name”)，返回对象</li>
+<li>.setAttribute(“name”, Object value)</li>
+</ul>
+<h4 id="application">application</h4>
+<ul>
+<li></li>
+</ul>
+<h4 id="pageContext">pageContext</h4>
+<ul>
+<li>.getOut()和.getRequest()等等，可以获得当前页面的其他八个对象</li>
+<li>.</li>
+</ul>
+<h4 id="cookie">cookie</h4>
+<p>存储在用户浏览器上的数据，用来辨别用户身份</p>
+<h2 id="request注册">request注册</h2>
+<p>register.jsp和show.jsp</p>
 <p>在register.jsp中的form表单属性写<code>action=&quot;show.jsp&quot;</code></p>
 
       
@@ -588,7 +636,7 @@
             
               <div class="site-state-item site-state-posts">
                 <a href="/Blog/archives">
-                  <span class="site-state-item-count">44</span>
+                  <span class="site-state-item-count">52</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -600,7 +648,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/Blog/categories/index.html">
-                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-count">8</span>
                   <span class="site-state-item-name">categories</span>
                 </a>
               </div>
@@ -611,7 +659,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/Blog/tags/index.html">
-                  <span class="site-state-item-count">53</span>
+                  <span class="site-state-item-count">60</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>
@@ -660,7 +708,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#JSP"><span class="nav-text">JSP</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#index-jsp"><span class="nav-text">index.jsp</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#JSP执行流程"><span class="nav-text">JSP执行流程</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#第一次访问"><span class="nav-text">第一次访问</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#第二次访问"><span class="nav-text">第二次访问</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#统一编码"><span class="nav-text">统一编码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#JSP的页面元素"><span class="nav-text">JSP的页面元素</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#脚本Scriptlet"><span class="nav-text">脚本Scriptlet</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#指令"><span class="nav-text">指令</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#注释"><span class="nav-text">注释</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#JSP九大内置对象"><span class="nav-text">JSP九大内置对象</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#request对象常见方法"><span class="nav-text">request对象常见方法</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#request注册"><span class="nav-text">request注册</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#JSP"><span class="nav-text">JSP</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#JSP执行流程"><span class="nav-text">JSP执行流程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#统一编码"><span class="nav-text">统一编码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#JSP语法"><span class="nav-text">JSP语法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#基本格式"><span class="nav-text">基本格式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#指令"><span class="nav-text">指令</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#脚本Scriptlet"><span class="nav-text">脚本Scriptlet</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#注释"><span class="nav-text">注释</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#JSP九大内置对象"><span class="nav-text">JSP九大内置对象</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#request"><span class="nav-text">request</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#response"><span class="nav-text">response</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#session"><span class="nav-text">session</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#application"><span class="nav-text">application</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#pageContext"><span class="nav-text">pageContext</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#cookie"><span class="nav-text">cookie</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#request注册"><span class="nav-text">request注册</span></a></li></ol></div>
             
 
           </div>
@@ -687,7 +735,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2021</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
