@@ -86,14 +86,14 @@
 <meta property="og:site_name" content="CYZ&#39;s Blog">
 <meta property="og:description" content="数据类型 0加在整数前表示八进制数字 auto定义变量，根据初始化的值推断 static修饰局部变量可以保持其值，修饰全局变量可以使其作用域限制在声明它的文件里 extern修饰全局变量使之对整个程序可见">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://chenyz2000.github.io/Blog/images/clipboard.png">
-<meta property="og:image" content="https://chenyz2000.github.io/Blog/images/clipboard-1594991649383.png">
+<meta property="og:image" content="https://chenyz2000.github.io/Blog/Other/C++%E6%B3%A8%E6%84%8F%E7%82%B9/images/clipboard.png">
+<meta property="og:image" content="https://chenyz2000.github.io/Blog/Other/C++%E6%B3%A8%E6%84%8F%E7%82%B9/images/clipboard-1594991649383.png">
 <meta property="article:published_time" content="2020-01-12T16:00:00.000Z">
 <meta property="article:modified_time" content="2020-01-12T16:00:00.000Z">
 <meta property="article:author" content="Chen Yanzhi">
 <meta property="article:tag" content="C++">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://chenyz2000.github.io/Blog/images/clipboard.png">
+<meta name="twitter:image" content="https://chenyz2000.github.io/Blog/Other/C++%E6%B3%A8%E6%84%8F%E7%82%B9/images/clipboard.png">
 
 
 
@@ -373,7 +373,6 @@
 <p>static修饰局部变量可以保持其值，修饰全局变量可以使其作用域限制在声明它的文件里</p>
 <p>extern修饰全局变量使之对整个程序可见</p>
 <a id="more"></a>
-<br />
 <h2 id="函数传参">函数传参</h2>
 <ul>
 <li>
@@ -386,17 +385,14 @@
 <p>**C++**提供了传递变量的引用。形参是引用变量，和实参是一个变量，调用函数时，形参(引用变量)指向实参变量单元。这种通过形参引用可以改变实参的值。</p>
 </li>
 </ul>
-<img src="..\..\images\clipboard.png" alt="clipboard.png" style="zoom: 100%;" />
-<br />
+<img src="images/clipboard.png" alt="clipboard.png" style="zoom: 100%;" />
 <h2 id="指针">指针</h2>
 <p>int * ptr[3]相当于int *(ptr[3])，是指针的数组</p>
 <p>int (*ptr)[3]是指向数组的指针</p>
 <p>如const char *names[MAX] = { “Zara”, “Hina”, “Nuha”,  “Sara”};指针数组，存储的是各个字符串数组的首地址，cout时输出字符串</p>
-<br />
 <p>指向结构的指针struct Books *struct_pointer;</p>
 <p>指针访问结构的成员，必须使用 -&gt; 运算符struct_pointer-&gt;title;</p>
 <p>通过对象访问结构的成员时使用点运算符，通过指针访问结构的成员时使用箭头运算符。</p>
-<br />
 <h2 id="类与结构体">类与结构体</h2>
 <p>类与结构体在 C++ 中只有以下几点区别，除此这外无任何区别。</p>
 <ul>
@@ -410,14 +406,12 @@
 <p>class 可以定义模板，而 struct 不可以。</p>
 </li>
 </ul>
-<br />
 <h2 id="sort比较函数">sort比较函数</h2>
 <p>sort比较函数要求：必须返回布尔值，而且有两个参数（可以是不同类型的），它们要么是迭代器解引用后得到的类型，要么是迭代器解引用后可以隐式转换成的类型。包括 lambda 表达式，如</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sort(s, s+<span class="number">5</span>,[](**<span class="keyword">const</span>** <span class="built_in">string</span>&amp; s1, **<span class="keyword">const</span>** <span class="built_in">string</span>&amp; s2) &#123; **<span class="keyword">return</span>** s1.back()&gt; s2.back();&#125;);</span><br></pre></td></tr></table></figure>
-<br />
 <p>c++11提供了lambda表达式</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[](<span class="keyword">int</span> x, <span class="keyword">int</span> y) -&gt; <span class="keyword">int</span> &#123; <span class="keyword">int</span> z = x + y; <span class="keyword">return</span> z + x; &#125;</span><br></pre></td></tr></table></figure>
-<img src="..\..\images\clipboard-1594991649383.png" alt="clipboard-1594991649383.png" style="zoom: 100%;" />
+<img src="images/clipboard-1594991649383.png" alt="clipboard-1594991649383.png" style="zoom: 100%;" />
       
     </div>
     
@@ -552,7 +546,7 @@
             
               <div class="site-state-item site-state-posts">
                 <a href="/Blog/archives">
-                  <span class="site-state-item-count">53</span>
+                  <span class="site-state-item-count">54</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -575,7 +569,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/Blog/tags/index.html">
-                  <span class="site-state-item-count">67</span>
+                  <span class="site-state-item-count">68</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>

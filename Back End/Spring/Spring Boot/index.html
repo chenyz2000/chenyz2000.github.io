@@ -374,7 +374,6 @@
 <p>原本开发Web项目需要：配置maven依赖，配置web.xml加载Spring，配置数据库连接配置Spring事务，配置加载配置文件的读取开启注解，配置日志文件，…，部署Tomcat进行调试</p>
 <p>而使用Spring Boot<strong>创建即可使用</strong>：建立一个Spring Boot工程，配置maven依赖，接可以直接启动</p>
 <p>springBoot用于开发微服务中的一个个服务，springcloud用于管理springboot开发的多个服务</p>
-<br />
 <h2 id="创建项目">创建项目</h2>
 <h4 id="通过maven项目构建">通过maven项目构建</h4>
 <ol>
@@ -432,7 +431,6 @@
 <p>jar包的application.yml 会被项目的覆盖，导致找不到原有的配置</p>
 <p>因为启动器会读取当前及包所在的下的文件，编译之后，Java不算一个文件</p>
 </blockquote>
-<br />
 <h2 id="POM文件">POM文件</h2>
 <h4 id="父项目">父项目</h4>
 <p>Ctrl+点击<code>spring-boot-starter-parent</code>，看到其pom文件</p>
@@ -441,7 +439,6 @@
 <p>其中<code>&lt;properties&gt;</code>定义了SpringBoot的各个依赖</p>
 <p><code>spring-boot-dependencies</code>为Spring Boot的版本仲裁中心</p>
 <p>在dependencies中已规定的依赖已有默认版本，导入项目中时可以不写版本</p>
-<br />
 <h2 id="Spring-Boot-Starter自动配置依赖模块">Spring-Boot-Starter自动配置依赖模块</h2>
 <p><a href="http://c.biancheng.net/view/4638.html" target="_blank" rel="noopener">参考</a></p>
 <p>Spring-boot-starter指Spring Boot场景启动器</p>
@@ -465,7 +462,6 @@
 <h4 id="AOP——aop">AOP——aop</h4>
 <p>Java平台上的 AOP 方案基本上已经以 SpringAOP 结合 AspectJ 的方式稳固下来</p>
 <p>其自动配置行为由两部分内容组成：位于 spring-boot-autoconfigure的AopAutoConfiguration 提供 @Configuration 配置类和相应的配置项；spring-boot-starter-aop 模块自身提供了针对 spring-aop、aspectjrt 和 aspectjweaver 的依赖。</p>
-<br />
 <h2 id="主程序类">主程序类</h2>
 <p><strong>@SpringBootApplication</strong>注解表示SpringBoot的主配置类，SpringBoot应该运行这个类的main方法来启动SpringBoot应用。使用这个注解能实现自动扫描包和自动配置默认配置的功能。</p>
 <p>@SpringBootApplication 是一个“三体”结构</p>
@@ -502,7 +498,6 @@
 <p>@ComponentScan 的功能其实就是标注需要自动扫描并加载符合条件的组件或 bean 定义，最终将这些 bean 定义加载到容器中。加载 bean 定义到 Spring 的 IoC 容器，我们可以手工单个注册，不一定非要通过批量的自动扫描完成，所以说 @ComponentScan 是可有可无的。</p>
 </li>
 </ul>
-<br />
 <h2 id="注解">注解</h2>
 <p>@Component是通用注解，@Controller、@Service、@Repository是它的拓展，都是spring注解，注解后可以被spring框架所扫描并注入到spring容器来进行管理</p>
 <h4 id="控制层">控制层</h4>
@@ -526,7 +521,6 @@
 <p>@PropertySource()读取指定的properties、yml配置文件，可以指定多个，和ConfigurationProperties啥的一起用</p>
 <p>@ImportResource(locations={})读取xml配置文件（因为springboot默认不读取xml配置）</p>
 <p>推荐方式：全注解。@Configuration标注配置类，相当于配置文件；@bean标注方法，将方法的返回值添加到IoC容器中，方法名即为默认的id</p>
-<br />
 <h2 id="整合Mysql">整合Mysql</h2>
 <blockquote>
 <p>在整合其他技术时，需要先安装对应的环境，整合只是使Spring Boot能调用它罢了</p>
@@ -544,7 +538,6 @@
 <li>连接mysql出现timezone错误。在jdbc的url后加上<code>?serverTimezone=UTC</code></li>
 </ul>
 </blockquote>
-<br />
 <h2 id="Trouble-2">Trouble</h2>
 <p>不能找到SpringBootApplication注解中的proxyBeanMethods类，或者是不能找到LogMessage类</p>
 <p>原因是<strong>导入的jar包版本不对</strong>，如2.1.3包含这些类但2.3.2中不包含</p>
@@ -694,7 +687,7 @@
             
               <div class="site-state-item site-state-posts">
                 <a href="/Blog/archives">
-                  <span class="site-state-item-count">53</span>
+                  <span class="site-state-item-count">54</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -717,7 +710,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/Blog/tags/index.html">
-                  <span class="site-state-item-count">67</span>
+                  <span class="site-state-item-count">68</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>

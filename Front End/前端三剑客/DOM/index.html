@@ -367,7 +367,6 @@
         <h2 id="DOM">DOM</h2>
 <p>文档对象模型，Document Object Model，一种用于HTML和XML文档的编程接口，将文档作为文档树</p>
 <a id="more"></a>
-<br />
 <h2 id="查找">查找</h2>
 <h4 id="直接查找">直接查找</h4>
 <p>var t = document.getElementById()，根据ID获取一个标签</p>
@@ -391,7 +390,6 @@
 <p>t.previousElementSibling，上一个兄弟标签元素</p>
 <h6 id="区别">区别</h6>
 <p>节点比标签元素多了文本内容</p>
-<br />
 <h2 id="操作">操作</h2>
 <h4 id="对内容操作">对内容操作</h4>
 <p>t.innerText内部仅文本内容</p>
@@ -444,13 +442,11 @@
 <p>console.log()</p>
 <p>alert()</p>
 <p>confirm()，给出确定和取消两个按钮，这个函数有返回值true/false用于分辨</p>
-<br />
 <h2 id="定时器">定时器</h2>
 <p>var inter = setInterval(&quot;代码语句&quot;或匿名函数,1000)，设置多次定时器</p>
 <p>clearInterval(inter)，删除多次定时器</p>
 <p>setTimeout()，设置单次定时器</p>
 <p>clearTimeout()，删除单次定时器</p>
-<br />
 <h2 id="绑定事件">绑定事件</h2>
 <h4 id="事件">事件</h4>
 <p>onfocus，获取焦点</p>
@@ -471,7 +467,6 @@
 <h4 id="事件链">事件链</h4>
 <p>若有多个事件，改写onclick=“return Func()”，当onclick事件的返回值为false，则阻止后面的事件发生</p>
 <p>此功能适用于表单信息的验证</p>
-<br />
 <hr>
 <p>示例：点赞特效</p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">style</span>=<span class="string">"position:relative;padding:50px"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">a</span> <span class="attr">onclick</span>=<span class="string">"Favor(this);"</span>&gt;</span>赞<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="actionscript">    <span class="function"><span class="keyword">function</span> <span class="title">Favor</span><span class="params">(ths)</span></span>&#123;</span></span><br><span class="line"><span class="actionscript">        <span class="keyword">var</span> top=<span class="number">100</span>;</span></span><br><span class="line"><span class="actionscript">        <span class="keyword">var</span> left=<span class="number">110</span>;</span></span><br><span class="line"><span class="actionscript">        <span class="keyword">var</span> opacity=<span class="number">1</span>;</span></span><br><span class="line"><span class="actionscript">        <span class="keyword">var</span> fontSize=<span class="number">18</span>;</span></span><br><span class="line"></span><br><span class="line"><span class="javascript">        <span class="keyword">var</span> tag = <span class="built_in">document</span>.createElement(<span class="string">"span"</span>);</span></span><br><span class="line"><span class="actionscript">        tag.innerText = <span class="string">"+1"</span>;</span></span><br><span class="line"><span class="actionscript">        tag.style.position = <span class="string">"absolute"</span>;</span></span><br><span class="line"><span class="actionscript">        tag.style.top = top+<span class="string">"px"</span>;</span></span><br><span class="line"><span class="actionscript">        tag.style.left = left+<span class="string">"px"</span>;</span></span><br><span class="line">        tag.style.opaity = opacity;</span><br><span class="line"><span class="actionscript">        tag.style.fontSize = fontSize+<span class="string">"px"</span>;</span></span><br><span class="line">        ths.parentElement.appendChild(tag);</span><br><span class="line"></span><br><span class="line"><span class="actionscript">        <span class="keyword">var</span> interval = setInterval(<span class="function"><span class="keyword">function</span><span class="params">()</span></span>&#123;</span></span><br><span class="line">            top-=10;</span><br><span class="line">            left+=10;</span><br><span class="line">            fontSize+=5;</span><br><span class="line">            opacity-=0.1;</span><br><span class="line"></span><br><span class="line"><span class="actionscript">            tag.style.top = top+<span class="string">"px"</span>;</span></span><br><span class="line"><span class="actionscript">            tag.style.left = left+<span class="string">"px"</span>;</span></span><br><span class="line">            tag.style.opacity = opacity;</span><br><span class="line"><span class="actionscript">            tag.style.fontSize = fontSize+<span class="string">"px"</span>;</span></span><br><span class="line">            if(opacity&lt;=0)&#123;</span><br><span class="line">                clearInterval(interval);</span><br><span class="line">                ths.parentElement.removeChild(tag);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;,50);</span><br><span class="line">    &#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
@@ -614,7 +609,7 @@
             
               <div class="site-state-item site-state-posts">
                 <a href="/Blog/archives">
-                  <span class="site-state-item-count">53</span>
+                  <span class="site-state-item-count">54</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -637,7 +632,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/Blog/tags/index.html">
-                  <span class="site-state-item-count">67</span>
+                  <span class="site-state-item-count">68</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>

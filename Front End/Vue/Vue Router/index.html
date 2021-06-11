@@ -79,12 +79,12 @@
 
 
 
-<meta name="description" content="路由 后端路由：把URL地址对应到服务器上的资源，这个对应关系就叫路由 前端路由：只涉及到前端页面的跳转，不发送到后台服务器。单页面程序主要借助hash实现（URL中第一个#后面的内容）不同组件之间的切换，特点是http请求中不会包含hash的内容。通过hash切换前端页面的方式叫做前端路由 URL中的hash  安装Vue-router 先引入Vue包再引入Vue-router包，因为Vue-r">
+<meta name="description" content="路由 后端路由：把URL地址对应到服务器上的资源，这个对应关系就叫路由 前端路由：只涉及到前端页面的跳转，不发送到后台服务器。单页面程序主要借助hash实现（URL中第一个#后面的内容）不同组件之间的切换，特点是http请求中不会包含hash的内容。通过hash切换前端页面的方式叫做前端路由 URL中的hash 安装Vue-router 先引入Vue包再引入Vue-router包，因为Vue-ro">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Vue Router">
 <meta property="og:url" content="https://chenyz2000.github.io/Blog/Front%20End/Vue/Vue%20Router/index.html">
 <meta property="og:site_name" content="CYZ&#39;s Blog">
-<meta property="og:description" content="路由 后端路由：把URL地址对应到服务器上的资源，这个对应关系就叫路由 前端路由：只涉及到前端页面的跳转，不发送到后台服务器。单页面程序主要借助hash实现（URL中第一个#后面的内容）不同组件之间的切换，特点是http请求中不会包含hash的内容。通过hash切换前端页面的方式叫做前端路由 URL中的hash  安装Vue-router 先引入Vue包再引入Vue-router包，因为Vue-r">
+<meta property="og:description" content="路由 后端路由：把URL地址对应到服务器上的资源，这个对应关系就叫路由 前端路由：只涉及到前端页面的跳转，不发送到后台服务器。单页面程序主要借助hash实现（URL中第一个#后面的内容）不同组件之间的切换，特点是http请求中不会包含hash的内容。通过hash切换前端页面的方式叫做前端路由 URL中的hash 安装Vue-router 先引入Vue包再引入Vue-router包，因为Vue-ro">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2020-08-24T06:15:00.000Z">
 <meta property="article:modified_time" content="2020-08-25T07:11:00.000Z">
@@ -368,13 +368,11 @@
 <p>后端路由：把URL地址对应到服务器上的资源，这个对应关系就叫路由</p>
 <p>前端路由：只涉及到前端页面的跳转，不发送到后台服务器。单页面程序主要借助hash实现（URL中第一个#后面的内容）不同组件之间的切换，特点是http请求中不会包含hash的内容。通过hash切换前端页面的方式叫做前端路由</p>
 <p><a href="https://www.cnblogs.com/joyho/articles/4430148.html" target="_blank" rel="noopener">URL中的hash</a></p>
-<br />
 <h2 id="安装Vue-router">安装Vue-router</h2>
 <p>先引入Vue包再引入Vue-router包，因为Vue-router要向Vue中注册一些属性</p>
 <p>导入CDN<code>&lt;script src=&quot;https://unpkg.com/vue-router/dist/vue-router.js&quot;&gt;&lt;/script&gt;</code></p>
 <p>或npm安装，模块化开发（如webpack）时，需要手动安装，用<code>Vue.use()</code>注册</p>
 <a id="more"></a>
-<br />
 <h2 id="使用">使用</h2>
 <ul>
 <li>
@@ -398,7 +396,6 @@
 <p>当URL改变后，触发路由的监听事件，如果有匹配到的规则，则展示对应组件到router-view**标签所在的位置</p>
 </li>
 </ul>
-<br />
 <h2 id="一个URL中有多个组件">一个URL中有多个组件</h2>
 <p>使用path-component时，每个URL地址只能对应最多一个组件，若页面中有多个router-view，则组件会在每个router-view里面显示同样的一份</p>
 <p>当把component换成<strong>components</strong>时，可以表示一个URL地址对应多个组件</p>
@@ -406,7 +403,6 @@
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    path:<span class="string">"/"</span>, </span><br><span class="line">    componets:&#123;</span><br><span class="line">        <span class="keyword">default</span>: comp,		<span class="comment">//默认组件</span></span><br><span class="line">        key1: comp1，</span><br><span class="line">        key2: comp2</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>然后在页面放置容器的时候</p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">router-view</span>&gt;</span><span class="tag">&lt;/<span class="name">router-view</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">router-view</span> <span class="attr">name</span>=<span class="string">"key1"</span>&gt;</span><span class="tag">&lt;/<span class="name">router-view</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">router-view</span> <span class="attr">name</span>=<span class="string">"key2"</span>&gt;</span><span class="tag">&lt;/<span class="name">router-view</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<br />
 <h2 id="路由的嵌套">路由的嵌套</h2>
 <p>子组件的路由链接应以父组件的路由链接为前缀，但是不能在父路由的同级定义子路由</p>
 <p>要给路由设置子路由，需要在routes数组的对象中加<strong>children属性</strong></p>
@@ -416,7 +412,6 @@
 <blockquote>
 <p>若children中path改为&quot;/login&quot;，父子路由关系不变，访问子路由时父子路由都会展现，但是子路由访问地址变为了<code>#/login</code></p>
 </blockquote>
-<br />
 <h2 id="router-link导航标签">router-link导航标签</h2>
 <p>访问URL可以通过手动输入，也可以通过a标签跳转到路由链接，要求<code>href=&quot;#/login&quot;</code></p>
 <p>但是在Vue Router中提供了router-link导航标签</p>
@@ -424,7 +419,6 @@
 <p>属性<strong>to</strong>中写目标路由的连接，其中不需要写#了</p>
 <p>属性<strong>tag</strong>，默认值为&quot;a&quot;，用来设置渲染到页面的标签种类，不过无论何种标签都有点击事件</p>
 <p>属性<strong>active-class</strong>，默认值为&quot;router-link-active&quot;，作用是设置路由选中时，导航标签添加的CSS样式类。若想改变导航标签选中样式（如高亮），可以编辑<code>.router-link-active</code>样式，或在路由构造函数VueRouter中用<code>linkActiveClass</code>属性来全局配置默认使用的CSS类</p>
-<br />
 <h2 id="传递路由参数">传递路由参数</h2>
 <p>可以用组件的**$route**对象获取路由URL中传递的参数</p>
 <p>$route对象有多个属性，其中fullpath表示全路径（包含参数），path表示路径（不含参数），query和params表示参数对象</p>
@@ -573,7 +567,7 @@
             
               <div class="site-state-item site-state-posts">
                 <a href="/Blog/archives">
-                  <span class="site-state-item-count">53</span>
+                  <span class="site-state-item-count">54</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -596,7 +590,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/Blog/tags/index.html">
-                  <span class="site-state-item-count">67</span>
+                  <span class="site-state-item-count">68</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>

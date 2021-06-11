@@ -375,7 +375,6 @@
 <p>Dom对象转为jQuery对象：$(obj)</p>
 <p>jQuery对象转为Dom对象：$(…)[0]</p>
 <p>jQuery对象可以赋给var定义的变量，建议变量名以$开头以示区分</p>
-<br />
 <p>使用时查看<a href="https://jquery.cuishifeng.cn/" target="_blank" rel="noopener">文档</a></p>
 <h2 id="选择">选择</h2>
 <h4 id="选择器">选择器</h4>
@@ -423,7 +422,6 @@
 <p>​			parent()父标签，parents()祖先</p>
 </li>
 </ul>
-<br />
 <h2 id="操作">操作</h2>
 <p>jQuery对选择到的所有标签可以统一进行处理，不需要像在Dom中循环</p>
 <p>根据参数不同，各个函数可以获得或设置属性的值</p>
@@ -477,7 +475,6 @@
 <p>若操作为自定函数，$(“…”).each(function(){})，函数可用实参i表示索引，函数体中可用$(this)表示当前对象</p>
 <p>若在函数体内写return，只会return循环的当前次，后面的循环还继续，函数体中的return相当于each循环中的continue</p>
 <p>若在函数体内写return false，则该次循环之后的循环都会被终止，相当于each循环中的break</p>
-<br />
 <h2 id="事件">事件</h2>
 <p>建议使用jQuery对象绑定事件，而不是在Dom对象属性中写onclick=“”</p>
 <p>格式：$(“…”).click(function(){})，等价于$(“…”).bind(“click”,function(){})</p>
@@ -497,7 +494,6 @@
 </ul>
 <h4 id="事件链">事件链</h4>
 <p>jQuery只要在函数体中加return false，则可以阻止后面的事件执行</p>
-<br />
 <h2 id="扩展方法">扩展方法</h2>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//扩展jQuery方法</span></span><br><span class="line">$.extend(&#123;</span><br><span class="line">    Func1:<span class="function"><span class="keyword">function</span>(<span class="params">arg</span>)</span>&#123;</span><br><span class="line">        ...</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br><span class="line">$.Func1();</span><br><span class="line"></span><br><span class="line"><span class="comment">//扩展选择器对象的方法</span></span><br><span class="line">$.fn.extend(&#123;</span><br><span class="line">    Func2:<span class="function"><span class="keyword">function</span>(<span class="params">arg</span>)</span>&#123;</span><br><span class="line">        ...</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br><span class="line">$.(<span class="string">"selector"</span>).Func2();</span><br></pre></td></tr></table></figure>
 <p>为了方法不冲突，很多包都用(function(jq){   })($);自执行函数将方法包裹起来，并传入jQuery作为参数</p>
@@ -645,7 +641,7 @@
             
               <div class="site-state-item site-state-posts">
                 <a href="/Blog/archives">
-                  <span class="site-state-item-count">53</span>
+                  <span class="site-state-item-count">54</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -668,7 +664,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/Blog/tags/index.html">
-                  <span class="site-state-item-count">67</span>
+                  <span class="site-state-item-count">68</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>

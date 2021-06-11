@@ -86,16 +86,16 @@
 <meta property="og:site_name" content="CYZ&#39;s Blog">
 <meta property="og:description" content="版本控制   管理版本，随时回退到任何时刻   协同开发，自动合并代码">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://chenyz2000.github.io/Blog/images/capture_stepup1_4_3.png">
-<meta property="og:image" content="https://chenyz2000.github.io/Blog/images/capture_stepup1_4_4.png">
-<meta property="og:image" content="https://chenyz2000.github.io/Blog/images/capture_stepup1_4_7.png">
+<meta property="og:image" content="https://chenyz2000.github.io/Blog/Tools/Git%E4%B8%8EGitHub/images/capture_stepup1_4_3.png">
+<meta property="og:image" content="https://chenyz2000.github.io/Blog/Tools/Git%E4%B8%8EGitHub/images/capture_stepup1_4_4.png">
+<meta property="og:image" content="https://chenyz2000.github.io/Blog/Tools/Git%E4%B8%8EGitHub/images/capture_stepup1_4_7.png">
 <meta property="article:published_time" content="2020-07-13T08:06:00.000Z">
 <meta property="article:modified_time" content="2020-07-12T16:00:00.000Z">
 <meta property="article:author" content="Chen Yanzhi">
 <meta property="article:tag" content="GitHub">
 <meta property="article:tag" content="Git">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://chenyz2000.github.io/Blog/images/capture_stepup1_4_3.png">
+<meta name="twitter:image" content="https://chenyz2000.github.io/Blog/Tools/Git%E4%B8%8EGitHub/images/capture_stepup1_4_3.png">
 
 
 
@@ -379,7 +379,6 @@
 </li>
 </ul>
 <a id="more"></a>
-<br />
 <h2 id="Git">Git</h2>
 <p><a href="https://www.w3cschool.cn/git/git-tutorial.html" target="_blank" rel="noopener">参考1</a>，<a href="https://backlog.com/git-tutorial/cn/stepup/stepup1_1.html" target="_blank" rel="noopener">参考2</a></p>
 <h4 id="文件四个状态">文件四个状态</h4>
@@ -387,24 +386,20 @@
 <p>add后成staged</p>
 <p>commit后成unmodified</p>
 <p>有提交记录的文件修改后成modified</p>
-<br />
 <h4 id="基本快照">基本快照</h4>
 <p>git status查看当前仓库的状态信息，红色是未暂存，绿色是已暂存</p>
 <p>暂存的文件修改后，状态会变成红色</p>
 <p>git diff能查看已写入暂存和又改动却未写入暂存的区别</p>
 <p>git reset可以取消暂存</p>
 <p>commit只提交已暂存的文件</p>
-<br />
 <h4 id="提交历史">提交历史</h4>
 <p>git log</p>
 <p>–oneline参数显示简洁版本，–graph显示分支与合并</p>
 <p>查看每个commit的哈希值、提交者、时间、信息</p>
 <p>哈希值很长，但是只要前七位就能锁定</p>
-<br />
 <p>版本回退，<code>git reset commitID</code>，该版本之后的版本不保留在当前版本控制中</p>
 <p>有参数–hard不保留所有变更，–soft保留变更且变更内容处于staged状态，–mixed保留变更且变更内容处于modified状态</p>
 <p>不过之后的版本也能通过git reflog查到所有commit的七位commitID</p>
-<br />
 <h4 id="分支管理">分支管理</h4>
 <h6 id="创建分支">创建分支</h6>
 <p>git branch (name)	或	git checkout -b (name) [template]</p>
@@ -422,16 +417,15 @@
 <h6 id="合并分支">合并分支</h6>
 <p>合并的是commit的变更，不是对两个内容进行合并</p>
 <p>原有分支如图</p>
-<img src="..\..\images\capture_stepup1_4_3.png" alt="capture_stepup1_4_3.png" />
+<img src="images/capture_stepup1_4_3.png" alt="capture_stepup1_4_3.png" />
 <p>git merge (name)</p>
 <p>将另一分支的不同的commit合并到当前分支</p>
 <p>保留被合并分支的记录</p>
-<img src="..\..\images\capture_stepup1_4_4.png" alt="capture_stepup1_4_4.png" />
+<img src="images/capture_stepup1_4_4.png" alt="capture_stepup1_4_4.png" />
 <p>git rebase</p>
 <p>变基，枚举变更的commit，continue依次变基</p>
 <p>不保留被合并分支的记录</p>
-<img src="..\..\images\capture_stepup1_4_7.png" alt="capture_stepup1_4_7.png" />
-<br />
+<img src="images/capture_stepup1_4_7.png" alt="capture_stepup1_4_7.png" />
 <h4 id="远程仓库">远程仓库</h4>
 <h6 id="添加删除远程仓库">添加删除远程仓库</h6>
 <p>git remote add (name) (url)</p>
@@ -447,7 +441,6 @@
 <p>切换时遇到The following untracked working tree files would be overwritten by checkout</p>
 <p>解决方法一：git rm –cached</p>
 <p>解决方法二：git clean -d -fx</p>
-<br />
 <h2 id="GitHub">GitHub</h2>
 <h4 id="Folk与Pull-Request">Folk与Pull Request</h4>
 <p>与Clone不同，Folk将别人的仓库复制一份到自己的账号，并与原本的仓库有所联系</p>
@@ -601,7 +594,7 @@
             
               <div class="site-state-item site-state-posts">
                 <a href="/Blog/archives">
-                  <span class="site-state-item-count">53</span>
+                  <span class="site-state-item-count">54</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -624,7 +617,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/Blog/tags/index.html">
-                  <span class="site-state-item-count">67</span>
+                  <span class="site-state-item-count">68</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>

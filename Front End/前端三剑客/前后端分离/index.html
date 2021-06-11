@@ -86,9 +86,9 @@
 <meta property="og:site_name" content="CYZ&#39;s Blog">
 <meta property="og:description" content="浏览器作为客户端，向服务器请求获得一段字符串（即HTML），之后经过浏览器的规则识别进行渲染 Spring Boot+Vue 传统的Java Web开发中，前端使用JSP开发，后端使用Java语言开发 JSP不是后端独立完成的，是由前端开发HTML，再由后端转成JSP 前后端开发的内容互相影响，互不理解 前后端耦合高，开发效率低">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://chenyz2000.github.io/Blog/Front%20End/images/image-20200809173332672.png">
-<meta property="og:image" content="https://chenyz2000.github.io/Blog/Front%20End/images/image-20200809175156936.png">
-<meta property="og:image" content="https://chenyz2000.github.io/Blog/Front%20End/images/image-20200803160236920.png">
+<meta property="og:image" content="https://chenyz2000.github.io/Blog/Front%20End/%E5%89%8D%E7%AB%AF%E4%B8%89%E5%89%91%E5%AE%A2/%E5%89%8D%E5%90%8E%E7%AB%AF%E5%88%86%E7%A6%BB/images/image-20200809173332672.png">
+<meta property="og:image" content="https://chenyz2000.github.io/Blog/Front%20End/%E5%89%8D%E7%AB%AF%E4%B8%89%E5%89%91%E5%AE%A2/%E5%89%8D%E5%90%8E%E7%AB%AF%E5%88%86%E7%A6%BB/images/image-20200809175156936.png">
+<meta property="og:image" content="https://chenyz2000.github.io/Blog/Front%20End/%E5%89%8D%E7%AB%AF%E4%B8%89%E5%89%91%E5%AE%A2/%E5%89%8D%E5%90%8E%E7%AB%AF%E5%88%86%E7%A6%BB/images/image-20200803160236920.png">
 <meta property="article:published_time" content="2020-07-29T16:00:00.000Z">
 <meta property="article:modified_time" content="2020-08-04T09:30:00.000Z">
 <meta property="article:author" content="Chen Yanzhi">
@@ -97,7 +97,7 @@
 <meta property="article:tag" content="Http">
 <meta property="article:tag" content="Form表单">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://chenyz2000.github.io/Blog/Front%20End/images/image-20200809173332672.png">
+<meta name="twitter:image" content="https://chenyz2000.github.io/Blog/Front%20End/%E5%89%8D%E7%AB%AF%E4%B8%89%E5%89%91%E5%AE%A2/%E5%89%8D%E5%90%8E%E7%AB%AF%E5%88%86%E7%A6%BB/images/image-20200809173332672.png">
 
 
 
@@ -378,24 +378,20 @@
 <p>前后端开发的内容互相影响，互不理解</p>
 <p>前后端耦合高，开发效率低</p>
 <a id="more"></a>
-<br />
 <p>但是随着浏览器端展现和交互的要求越来越高，以及浏览器近些年性能和标准长足的发展，服务器端由JSP产生简单的HTML和CSS/JS已经无法满足需要。</p>
 <p>所以采取前后端分离，服务器端不再负责任何展现和交付的工作，这些工作完全由前端独立完成。服务器端只通过接口给前端提供数据服务</p>
 <p>前端通过Ajax请求访问后端的数据接口，将model展示到View中</p>
 <p>这要求前后端商量好接口文档（url、参数、数据类型），之后就可以独立开发</p>
 <p>前端使用假数据测试</p>
-<br />
 <p>传统开发：单体式应用。客户端通过访问服务端应用，服务端中的JSP和Java Server（无论是Handler、sevlet也好，总之是Controller层）互调，JSP请求Controller里的数据，Controller将数据解析到JSP里，最后拼接起来之后返回给客户端</p>
-<img src="..\..\images\image-20200809173332672.png">
+<img src="images/image-20200809173332672.png">
 <p>前后端分离：单体应用分为前端和后端两个应用。客户端访问前端应用端口，前端应用访问后端应用端口，两者不同端口。前端应用里是html、css、js等代码，前端通过Ajax调用基于restful结构的后端数据接口，后端应用里是Java Server，Java Server响应前端给前端json数据，前端再把数据解析到页面中</p>
-<img src="..\..\images\image-20200809175156936.png">
-<br />
+<img src="images/image-20200809175156936.png">
 <h4 id="Vue开发">Vue开发</h4>
 <p>vue开发，命令行创建vue项目，在idea中下载vue插件之后可以用idea打开，并编译项目，可以运行因为其中内嵌了一个服务器，运行命令npm run server</p>
 <p>vue应用只有一个主窗口，src/app.vue是主窗口，之后的操作都是在其中进行动态更新组件。<br>
 组件放在src/views/中（当然放在component也可以，只要之后能够成功引入），通过路由的映射将app.vue中的名称和资源关联，路由放在src/router/中，无论浏览器访问的是什么url，主窗口并不改变，改变的只是其中的组件</p>
 <p>使用vue，改了代码也不需要重新启动项目，可以动态更新页面</p>
-<br />
 <p>注解@entity标注实体类，和数据库的表相绑定。其中的属性加上@Id表示主键。实体类的每个对象是表里的一个记录。</p>
 <h4 id="Vue与后端的交互">Vue与后端的交互</h4>
 <p>前端应用写好，后端应用写好，下一步是让前端应用通过Ajax访问后端端口<br>
@@ -406,7 +402,6 @@ vue中所有的js代码都要写到script的export default{}中</p>
 <p>Trouble：可能会出现跨服务的问题</p>
 <p>Solution：可在前端可在后端解决。如在Springboot中加一个配置类，实现WebMvcConfigurer接口，重写addCorsMappings方法</p>
 </blockquote>
-<br />
 <h2 id="HTTP">HTTP</h2>
 <p>HTTP，超文本传输协议，基于TCP/IP通信协议来传递数据，用于前端和后端的交互中</p>
 <blockquote>
@@ -422,7 +417,7 @@ vue中所有的js代码都要写到script的export default{}中</p>
 </ul>
 <h4 id="消息格式">消息格式</h4>
 <p>请求消息由请求行（request line）、请求头部（header）、空行和请求数据组成</p>
-<img src="..\..\images\image-20200803160236920.png">
+<img src="images/image-20200803160236920.png">
 <p>响应消息由状态行、消息报头、空行和响应正文组成</p>
 <h4 id="请求方法">请求方法</h4>
 <p>有八九种请求方法，其中最常用的是GET和POST，多数网站只支持这两种</p>
@@ -448,7 +443,6 @@ vue中所有的js代码都要写到script的export default{}中</p>
 <li>multipart/form-data即二进制流，文件上传</li>
 <li>image/xxx图片相关格式，有gif、jpeg、png</li>
 </ul>
-<br />
 <h2 id="前后端数据交互">前后端数据交互</h2>
 <p>前后端数据交互：表单，Ajax</p>
 <h3 id="表单">表单</h3>
@@ -506,10 +500,8 @@ vue中所有的js代码都要写到script的export default{}中</p>
 <blockquote>
 <p>@RequestParam(“name”)实质是将Request.getParameter() 中的K-V Map利用Spring的转化机制ConversionService配置，转化成参数接收对象或字段。get方式中query String的值，和post方式中body data的值都会被Servlet接受到并转化到Request.getParameter()参数集中，所以@RequestParam都可以获取的到。</p>
 </blockquote>
-<br />
 <p>​		有一个有趣的现象，如果Content-Type=mutipart/form-data，Body中加入参数和URL后面拼接参数一起做Post请求，都可以被加载到Param中，如果是同名的，只取用form-data中的。<br>
 ​		如果Content-Type=application/x-www-form-urlencoded和URL拼接的一起，如果是String类型，则两个值会被拼接，其他类型取的是URL拼接的参数。</p>
-<br />
 <h2 id="Todo">Todo</h2>
 <ul>
 <li>
@@ -668,7 +660,7 @@ vue中所有的js代码都要写到script的export default{}中</p>
             
               <div class="site-state-item site-state-posts">
                 <a href="/Blog/archives">
-                  <span class="site-state-item-count">53</span>
+                  <span class="site-state-item-count">54</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -691,7 +683,7 @@ vue中所有的js代码都要写到script的export default{}中</p>
               
               <div class="site-state-item site-state-tags">
                 <a href="/Blog/tags/index.html">
-                  <span class="site-state-item-count">67</span>
+                  <span class="site-state-item-count">68</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>

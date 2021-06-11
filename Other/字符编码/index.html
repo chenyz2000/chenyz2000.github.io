@@ -79,21 +79,18 @@
 
 
 
-<meta name="description" content="编码方案   ASCII编码——0~127   扩展编码（加字节，ASCII的超集）   西欧语言：ISO 8859(1-15)——0~255   中文：  GB2312——0xA1A1~0xFEFE，双字节表示 GBK GB18030  (GB2312+Big5⊆GBK⊆GB18030)   繁体中文：Big5   日文：Shift_JIS     Unicode编码  UTF-8:兼容ASCI">
+<meta name="description" content="计算机中的字符编码 步骤  确定包含哪些字符 进行数学编号 映射为二进制，确定逻辑编号 通过编码方案，确定物理存储编码  编码字符集和编码方案   编码字符集：字库表中所有字符和其对应编码的集合（这个编码和计算机无关）   编码方案：（最简单的形式就是直接用字符集编码后的二进制值）    Unicode字符集：0000-FFFF为0号平面，10000-1FFFF为1号平面，…，A0000-AFFF">
 <meta property="og:type" content="article">
 <meta property="og:title" content="字符编码">
 <meta property="og:url" content="https://chenyz2000.github.io/Blog/Other/%E5%AD%97%E7%AC%A6%E7%BC%96%E7%A0%81/index.html">
 <meta property="og:site_name" content="CYZ&#39;s Blog">
-<meta property="og:description" content="编码方案   ASCII编码——0~127   扩展编码（加字节，ASCII的超集）   西欧语言：ISO 8859(1-15)——0~255   中文：  GB2312——0xA1A1~0xFEFE，双字节表示 GBK GB18030  (GB2312+Big5⊆GBK⊆GB18030)   繁体中文：Big5   日文：Shift_JIS     Unicode编码  UTF-8:兼容ASCI">
+<meta property="og:description" content="计算机中的字符编码 步骤  确定包含哪些字符 进行数学编号 映射为二进制，确定逻辑编号 通过编码方案，确定物理存储编码  编码字符集和编码方案   编码字符集：字库表中所有字符和其对应编码的集合（这个编码和计算机无关）   编码方案：（最简单的形式就是直接用字符集编码后的二进制值）    Unicode字符集：0000-FFFF为0号平面，10000-1FFFF为1号平面，…，A0000-AFFF">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://chenyz2000.github.io/Blog/images/image-20200529163153372.png">
-<meta property="og:image" content="https://chenyz2000.github.io/Blog/images/image-20200529163251557.png">
 <meta property="article:published_time" content="2020-05-29T08:29:00.000Z">
 <meta property="article:modified_time" content="2020-05-28T16:00:00.000Z">
 <meta property="article:author" content="Chen Yanzhi">
 <meta property="article:tag" content="编码">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://chenyz2000.github.io/Blog/images/image-20200529163153372.png">
 
 
 
@@ -367,68 +364,95 @@
       
 
       
-        <h2 id="编码方案">编码方案</h2>
+        <h2 id="计算机中的字符编码">计算机中的字符编码</h2>
+<h4 id="步骤">步骤</h4>
+<ol>
+<li>确定包含哪些字符</li>
+<li>进行数学编号</li>
+<li>映射为二进制，确定逻辑编号</li>
+<li>通过编码方案，确定物理存储编码</li>
+</ol>
+<h4 id="编码字符集和编码方案">编码字符集和编码方案</h4>
 <ul>
 <li>
-<p>ASCII编码——0~127</p>
+<p>编码字符集：字库表中所有字符和其对应编码的集合（这个编码和计算机无关）</p>
 </li>
 <li>
-<p>扩展编码（加字节，ASCII的超集）</p>
-<ul>
-<li>
-<p>西欧语言：ISO 8859(1-15)——0~255</p>
+<p>编码方案：（最简单的形式就是直接用字符集编码后的二进制值）</p>
 </li>
-<li>
-<p>中文：</p>
-<ul>
-<li>GB2312——0xA1A1~0xFEFE，双字节表示</li>
-<li>GBK</li>
-<li>GB18030</li>
 </ul>
-<p>(GB2312+Big5⊆GBK⊆GB18030)</p>
+<blockquote>
+<p><strong>Unicode字符集</strong>：0000-FFFF为0号平面，10000-1FFFF为1号平面，…，A0000-AFFFF为10号平面，…，F0000-FFFFF为15号平面，100000-10FFFF为16号平面</p>
+<p><strong>UTF-8编码规则</strong>：1字节 0xxxxxxx，2字节 110xxxxx 10xxxxxx，3字节 1110xxxx 10xxxxxx 10xxxxxx，4字节 11110xxx 10xxxxxx 10xxxxxx 10xxxxxx，5字节 111110xx 10xxxxxx 10xxxxxx 10xxxxxx 10xxxxxx，6字节 1111110x 10xxxxxx 10xxxxxx 10xxxxxx 10xxxxxx 10xxxxxx</p>
+<p>&quot;严&quot;字的Unicode码是100111000100101，UTF-8编码是11100100 10111000 10100101</p>
+</blockquote>
+<a id="more"></a>
+<h2 id="编码字符集">编码字符集</h2>
+<h4 id="ASCII编码字符集——ASCII编码方案">ASCII编码字符集——ASCII编码方案</h4>
+<p>范围0~127，最高位统一为0</p>
+<h4 id="扩展编码字符集">扩展编码字符集</h4>
+<p>加字节，是ASCII的超集</p>
+<ul>
+<li>
+<p>西欧语言：ISO 8859(1-15)，范围0~255</p>
 </li>
 <li>
-<p>繁体中文：Big5</p>
+<p>中文：GB2312+Big5 ⊆ GBK ⊆ GB18030</p>
+<p>其中GB2312范围0xA1A1~0xFEFE，双字节表示——GB2312的编码方案为EUC-CN</p>
+<p>Big5为繁体中文</p>
 </li>
 <li>
 <p>日文：Shift_JIS</p>
 </li>
 </ul>
-</li>
-<li>
-<p>Unicode编码</p>
+<h4 id="Unicode编码字符集">Unicode编码字符集</h4>
+<p>三种编码方案</p>
 <ul>
-<li>UTF-8:兼容ASCII，1-4个字节变长</li>
-<li>UTF-16:2或4个字节变长</li>
-<li>UTF-32:4个字节（32bits）定长</li>
+<li>UTF-8：兼容ASCII，1-4个字节，变长</li>
+<li>UTF-16：2或4个字节，变长</li>
+<li>UTF-32：4个字节，定长</li>
 </ul>
-</li>
-<li>
-<p>ANSI</p>
-<p>windows上非Unicode的默认编码，记事本默认是ANSI存储</p>
-<p>简体中文系统中代表GBK，繁体中文系统中代表Big5，日文系统中代表Shift_JIS</p>
-</li>
-</ul>
-<a id="more"></a>
-<br />
-<h2 id="编码使用">编码使用</h2>
+<blockquote>
+<p>ANSI：windows上非Unicode的默认编码，记事本默认采用ANSI存储。简体中文系统中代表GBK，繁体中文系统中代表Big5，日文系统中代表Shift_JIS</p>
+</blockquote>
+<p><a href="https://blog.csdn.net/u010737354/article/details/52456570" target="_blank" rel="noopener">发展历史</a>：美国人发明ascii，用七位表示英文字符；后来欧洲人发现法语、希伯来语、俄语符号没法表示，所以把ascii码最高一位的1编进来，形成了15套编法，这15套中的128~255都不一样；之后中国人需要表示汉语，所以发明了GB2312表示常用的汉字（65536），有些生僻字不能显示，之后又对GB2312进行了升级；后来，人们发现文件需要全球使用，两边字符集不同，所以发明了万国码Unicode；不过Unicode统一了全世界字符的二进制编码，但没有规定如何存储，所以出现了Unicode的多种存储方式</p>
+<h2 id="中英文字符所占字节数">中英文字符所占字节数</h2>
+<h4 id="英文">英文</h4>
+<p>GB2312、GBK、GB18030：1字节</p>
+<p>ISO-8859-1：1字节</p>
+<p>UTF-8：1字节</p>
+<p>UTF-16：4字节</p>
+<h4 id="中文">中文</h4>
+<p>GB2312、GBK、GB18030：2字节</p>
+<p>UTF-8：3字节</p>
+<p>UTF-16：4字节</p>
+<h2 id="Java中的编码">Java中的编码</h2>
 <p>Java源文件建议用UTF-8，文件操作建议UTF-8</p>
 <p>Java程序内部使用UTF-16（不由程序员控制）</p>
-<br />
-<h2 id="字符集在计算机中的使用">字符集在计算机中的使用</h2>
-<ol>
-<li>确定包含哪些字符</li>
-<li>数学编号</li>
-<li>映射为二进制,确定逻辑编号</li>
-<li>通过编码方案，确定物理存储编码</li>
-</ol>
-<p>字符集：字库表+编码字符集（这个编码和计算机无关）</p>
-<p>编码方案：（最简单的形式就是直接用字符集编码后的二进制值）</p>
-<p>例如：</p>
-<img src="..\..\images\image-20200529163153372.png" alt="image-20200529163153372" style="zoom: 15%;" />
-<img src="..\..\images\image-20200529163251557.png" alt="image-20200529163251557" style="zoom:25%;" />
-<h3 id="中文字符">中文字符</h3>
-<p><a href="https://blog.csdn.net/u010737354/article/details/52456570" target="_blank" rel="noopener">https://blog.csdn.net/u010737354/article/details/52456570</a></p>
+<h2 id="Python中的编码">Python中的编码</h2>
+<h4 id="编解码">编解码</h4>
+<p>文件中采用UTF-8或GBK编码方案，在Python中string采用Unicode码</p>
+<p>UTF-8、GBK到Unicode，即读取文件到程序，使用<strong>解码</strong><code>s.decode(&quot;GBK&quot;)</code></p>
+<p>Unicode到UTF-8、GBK，即输出程序中字符串，使用<strong>编码</strong><code>str.encode(&quot;UTF-8&quot;)</code></p>
+<p>在Python程序中，统一采用Unicode编码进行字符串的裁剪、拼接、正则等操作。所以应该尽早将读取的字符<strong>解码</strong>为Unicode，在最后输出的时候将Unicode<strong>编码</strong>成UTF-8</p>
+<p>Python中的string采用Unicode，而二进制格式bytes采用UTF-8、GBK等编码</p>
+<h4 id="默认编码方式">默认编码方式</h4>
+<p>在程序的第一行写<code>#coding=utf-8</code>(等号两边无空格)，表明本程序中涉及解码编码都要采用utf-8的标准</p>
+<h2 id="修改CMD编码">修改CMD编码</h2>
+<h4 id="暂时">暂时</h4>
+<p>查看编码的命令<code>chcp</code><br>
+修改为UTF-8<code>chcp 65001</code><br>
+修改为GBK<code>chcp 936</code></p>
+<h4 id="永久">永久</h4>
+<p>修改注册表<br>
+在路径<code>HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Command Processor</code>下</p>
+<p>添加一个字符串值，名为<code>autorun</code>，值为<code>chcp 65001</code>，即自动运行命令</p>
+<h2 id="永久修改Vscode的Console编码">永久修改Vscode的Console编码</h2>
+<p>在settings.json中添加键<code>&quot;terminal.integrated.shellArgs.windows&quot;</code></p>
+<p>若默认powershell的话则值为<code>[&quot;-NoExit&quot;,&quot;chcp 65001&quot;]</code>，若为cmd则值为<code>[&quot;/K chcp 65001 &gt;nul&quot;]</code></p>
+<h2 id="Trouble">Trouble</h2>
+<p>cmd一直显示“系统找不到可用的路径”，原来是<code>HKEY_CURRENT_USER\Software\Microsoft\Command Processor</code>下有多余的autorun代码</p>
+<p>powershell的启动运行命令写在<code>C:\Users\&lt;USERNAME&gt;\Documents\WindowsPowerShell\Microsoft.PowerShell_profile.ps1</code>中</p>
 
       
     </div>
@@ -568,7 +592,7 @@
             
               <div class="site-state-item site-state-posts">
                 <a href="/Blog/archives">
-                  <span class="site-state-item-count">53</span>
+                  <span class="site-state-item-count">54</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -591,7 +615,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/Blog/tags/index.html">
-                  <span class="site-state-item-count">67</span>
+                  <span class="site-state-item-count">68</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>
@@ -640,7 +664,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#编码方案"><span class="nav-text">编码方案</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#编码使用"><span class="nav-text">编码使用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#字符集在计算机中的使用"><span class="nav-text">字符集在计算机中的使用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#中文字符"><span class="nav-text">中文字符</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#计算机中的字符编码"><span class="nav-text">计算机中的字符编码</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#步骤"><span class="nav-text">步骤</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#编码字符集和编码方案"><span class="nav-text">编码字符集和编码方案</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#编码字符集"><span class="nav-text">编码字符集</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#ASCII编码字符集——ASCII编码方案"><span class="nav-text">ASCII编码字符集——ASCII编码方案</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#扩展编码字符集"><span class="nav-text">扩展编码字符集</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Unicode编码字符集"><span class="nav-text">Unicode编码字符集</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#中英文字符所占字节数"><span class="nav-text">中英文字符所占字节数</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#英文"><span class="nav-text">英文</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#中文"><span class="nav-text">中文</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Java中的编码"><span class="nav-text">Java中的编码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Python中的编码"><span class="nav-text">Python中的编码</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#编解码"><span class="nav-text">编解码</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#默认编码方式"><span class="nav-text">默认编码方式</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#修改CMD编码"><span class="nav-text">修改CMD编码</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#暂时"><span class="nav-text">暂时</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#永久"><span class="nav-text">永久</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#永久修改Vscode的Console编码"><span class="nav-text">永久修改Vscode的Console编码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Trouble"><span class="nav-text">Trouble</span></a></li></ol></div>
             
 
           </div>
