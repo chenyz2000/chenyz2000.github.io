@@ -1,0 +1,931 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="en">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="jQuery," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="jQuery 类库，封装了Dom和JS，不用担心兼容性的问题 简化原生JS的写法，对Dom进行操控 2.x版本不兼容低版本IE了，使用1.12.x等版本">
+<meta property="og:type" content="article">
+<meta property="og:title" content="jQuery">
+<meta property="og:url" content="https://chenyz2000.github.io/Front%20End/Three-piece/jQuery/index.html">
+<meta property="og:site_name" content="CYZ&#39;s Blog">
+<meta property="og:description" content="jQuery 类库，封装了Dom和JS，不用担心兼容性的问题 简化原生JS的写法，对Dom进行操控 2.x版本不兼容低版本IE了，使用1.12.x等版本">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-07-23T01:32:00.000Z">
+<meta property="article:modified_time" content="2020-07-25T09:42:00.000Z">
+<meta property="article:author" content="Chen Yanzhi">
+<meta property="article:tag" content="jQuery">
+<meta name="twitter:card" content="summary">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"always","offset":12,"b2t":true,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://chenyz2000.github.io/Front End/Three-piece/jQuery/"/>
+
+
+
+
+
+  <title>jQuery | CYZ's Blog</title>
+  
+
+
+
+
+
+
+
+
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">CYZ's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            About
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://chenyz2000.github.io/Front%20End/Three-piece/jQuery/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Chen Yanzhi">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="CYZ's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">jQuery</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-07-23T09:32:00+08:00">
+                2020-07-23
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Post modified&#58;</span>
+              
+              <time title="Post modified" itemprop="dateModified" datetime="2020-07-25T17:42:00+08:00">
+                2020-07-25
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Three-piece/" itemprop="url" rel="index">
+                    <span itemprop="name">Three-piece</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="jQuery">jQuery</h2>
+<p>类库，封装了Dom和JS，不用担心兼容性的问题</p>
+<p>简化原生JS的写法，对Dom进行操控</p>
+<p>2.x版本不兼容低版本IE了，使用1.12.x等版本</p>
+<a id="more"></a>
+<p>通过CDN导入jQuery</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"..."</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">百度：http://libs.baidu.com/jquery/1.10.2/jquery.min.js</span><br><span class="line">新浪：http://lib.sinaapp.com/js/jquery/2.0.2/jquery-2.0.2.min.js</span><br><span class="line">谷歌：http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js</span><br><span class="line">微软：http://ajax.htmlnetcdn.com/ajax/jQuery/jquery-1.10.2.min.js"</span><br></pre></td></tr></table></figure>
+<p><a href="http://jQuery.xxx%E7%AE%80%E5%86%99%E4%B8%BA$.xxx" target="_blank" rel="noopener">jQuery.xxx简写为$.xxx</a></p>
+<p>Dom对象转为jQuery对象：$(obj)</p>
+<p>jQuery对象转为Dom对象：$(…)[0]</p>
+<p>jQuery对象可以赋给var定义的变量，建议变量名以$开头以示区分</p>
+<p>使用时查看<a href="https://jquery.cuishifeng.cn/" target="_blank" rel="noopener">文档</a></p>
+<h2 id="选择">选择</h2>
+<h4 id="选择器">选择器</h4>
+<p>$(“#id”)，ID选择器</p>
+<p>$(“tag”)，标签选择器</p>
+<p>$(“.c1”)，类选择器</p>
+<p>$(“.c1 &gt; .c2”)，层级选择器，&gt;为子元素，空为后代，~为兄弟</p>
+<p>$(“#id1, .c1”)，组合选择器，A或B成立都可以</p>
+<h6 id="选择器内筛选">选择器内筛选</h6>
+<p>写在$(“xxx”)的引号中，xxx的后面，xxx可以为空</p>
+<ul>
+<li>
+<p>:not(:selector)</p>
+</li>
+<li>
+<p>:first第一个，:last最后一个，，:even和:odd</p>
+</li>
+<li>
+<p>:eq(n)第n个标签，:gt(n)序号大于n，:lt(n)序号小于n</p>
+</li>
+<li>
+<p>属性筛选——[attribute=“…”]，可以写多组，以及有不等于、包含字符等选项</p>
+</li>
+<li>
+<p>子元素——:first-child，:nth-child等，是其父标签的第n个孩子</p>
+</li>
+<li>
+<p>针对表单使用——表单类型，:input，:text，:submit，:button等</p>
+<p>​							表单属性，:checked，:selected，:disabled</p>
+<blockquote>
+<p>$(“:text”)和$(“input[type=“text”]”)等价</p>
+</blockquote>
+</li>
+</ul>
+<h4 id="筛选器">筛选器</h4>
+<p>对选择器结果进行的另一层筛选</p>
+<p>$(“…”).xxx其中xxx为筛选器</p>
+<ul>
+<li>
+<p>过滤：eq()索引，first()，last()，hasClass()，is(标签类型)</p>
+</li>
+<li>
+<p>查找：children()子标签，find()后代</p>
+<p>​			next()下一个兄弟，prev()，siblings()</p>
+<p>​			parent()父标签，parents()祖先</p>
+</li>
+</ul>
+<h2 id="操作">操作</h2>
+<p>jQuery对选择到的所有标签可以统一进行处理，不需要像在Dom中循环</p>
+<p>根据参数不同，各个函数可以获得或设置属性的值</p>
+<p>一般有两种，无参获取有参设置，或一个key参数获取两个key-value参数设置</p>
+<h4 id="HTML-文本">HTML/文本</h4>
+<ul>
+<li>获取或设置对象内容：html()，text()</li>
+<li>删除：remove()同时删除绑定的事件，detach()不影响绑定的事件</li>
+<li>内部删除：empty()</li>
+<li>内部插入：append()内部最后，prepend()内部最前</li>
+<li>外部插入：after()，before()</li>
+</ul>
+<blockquote>
+<p>clone()返回和原有对象一样的jQuery对象，可以和其他对象一样调用方法，适用于复制一部分标签插入到html中</p>
+</blockquote>
+<h4 id="Attribute属性">Attribute属性</h4>
+<ul>
+<li>属性：attr(“属性名”)获取值，attr(“属性名”, 值)赋值，removeAttr(“属性名”)删除属性；</li>
+</ul>
+<p>prop同理，prop可用在如checkbox的checked属性</p>
+<ul>
+<li>class属性：addClass()，removeClass()，toggleClass()有就移除没有就添加</li>
+<li>value属性：val()获取或设置</li>
+</ul>
+<h4 id="CSS样式">CSS样式</h4>
+<ul>
+<li>
+<p>css样式/style属性：css(“样式名”, “值”)，如DOM中tag.style.fontSize(“18px”)改为$(“…”).css(“fontSize”, “18px”)</p>
+</li>
+<li>
+<p>位置：</p>
+<ul>
+<li>offset()距离窗口（不是可视区域）顶部和左边的距离；position()距离父标签（不是position:relative祖先标签）顶部和左边的距离</li>
+<li>scrollTop()上下滚动条位置；scrollLeft()左右滚动条位置</li>
+</ul>
+</li>
+<li>
+<p>尺寸：</p>
+<ul>
+<li>height()，width()，包括边框</li>
+</ul>
+</li>
+<li>
+<p>innerHeight()，innerWidth()，不包括边框</p>
+<ul>
+<li>outerHeight()，outerWidth()，默认包括边框，参数为false则不包括</li>
+</ul>
+</li>
+</ul>
+<h4 id="each">each</h4>
+<p>若操作为自定函数，$(“…”).each(function(){})，函数可用实参i表示索引，函数体中可用$(this)表示当前对象</p>
+<p>若在函数体内写return，只会return循环的当前次，后面的循环还继续，函数体中的return相当于each循环中的continue</p>
+<p>若在函数体内写return false，则该次循环之后的循环都会被终止，相当于each循环中的break</p>
+<h2 id="事件">事件</h2>
+<p>建议使用jQuery对象绑定事件，而不是在Dom对象属性中写onclick=“”</p>
+<p>格式：$(“…”).click(function(){})，等价于$(“…”).bind(“click”,function(){})</p>
+<p>在函数体中可以使用$(this)指代当前jQuery对象</p>
+<p>方法有click()，</p>
+<h4 id="文档加载完毕，自动执行">文档加载完毕，自动执行</h4>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="built_in">document</span>).ready(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;)</span><br><span class="line">或简写为</span><br><span class="line">$(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;)</span><br></pre></td></tr></table></figure>
+<p>HTML文档树加载完毕（资源可能未加载完）时自动调用函数</p>
+<p>$(document).ready事件可以定义多个方法，每次定影都是向其中追加，而不是覆盖</p>
+<p>适用于为html添加样式、绑定事件等，要注意onclick等DOM事件的函数不能写在它内部，不然作用域不同会找不到函数。</p>
+<p>它的内部绑定的事件只会在文档加载完毕后就加载完毕，不会在之后的html修改后还能绑定，若想要延迟这个加载，可以利用<strong>委托</strong>进行<strong>延迟加载</strong>，当使用时才会进行绑定而不是一开始绑定，$(“”).delegate(“选择器”, “click”, function(){})</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="built_in">window</span>).load(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;)</span><br><span class="line">或js原生写法</span><br><span class="line"><span class="built_in">window</span>.onload=fuction()&#123;&#125;</span><br></pre></td></tr></table></figure>
+<p>在HTML元素和资源都加载完毕时调用函数</p>
+<p>window.onload事件<strong>每次只能保存对一个函数的引用</strong>，它会覆盖掉之前的函数，所以不能再现有行为上添加新的行为。</p>
+<ul>
+<li>[ ] 在script标签顶部写？</li>
+</ul>
+<h4 id="事件链">事件链</h4>
+<p>jQuery只要在函数体中加return false，则可以阻止后面的事件执行</p>
+<h2 id="扩展方法">扩展方法</h2>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//扩展jQuery方法</span></span><br><span class="line">$.extend(&#123;</span><br><span class="line">    Func1:<span class="function"><span class="keyword">function</span>(<span class="params">arg</span>)</span>&#123;</span><br><span class="line">        ...</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br><span class="line">$.Func1();</span><br><span class="line"></span><br><span class="line"><span class="comment">//扩展选择器对象的方法</span></span><br><span class="line">$.fn.extend(&#123;</span><br><span class="line">    Func2:<span class="function"><span class="keyword">function</span>(<span class="params">arg</span>)</span>&#123;</span><br><span class="line">        ...</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br><span class="line">$.(<span class="string">"selector"</span>).Func2();</span><br></pre></td></tr></table></figure>
+<p>为了方法不冲突，很多包都用(function(jq){   })($);自执行函数将方法包裹起来，并传入jQuery作为参数</p>
+<p>其中，$.extend()方法的作用是：</p>
+<p>可以接收一个或多个参数，若接收多个时，是将后面所有对象合并到第一个对象（修改第一个对象并返回）；若接收一个时，则将该对象合并到jQuery对象中</p>
+<p>所以可以用它将方法合并到jQuery中</p>
+<p>所以不使用extend也可以扩展方法</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//扩展jQuery方法</span></span><br><span class="line">$.Func1 = <span class="function"><span class="keyword">function</span>(<span class="params">arg</span>)</span>&#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//扩展选择器对象的方法</span></span><br><span class="line">$.fn.Func2 = <span class="function"><span class="keyword">function</span>(<span class="params">arg</span>)</span>&#123;&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>Post author:</strong>
+    Chen Yanzhi
+  </li>
+  <li class="post-copyright-link">
+    <strong>Post link:</strong>
+    <a href="https://chenyz2000.github.io/Front%20End/Three-piece/jQuery/" title="jQuery">https://chenyz2000.github.io/Front%20End/Three-piece/jQuery/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>Copyright Notice: </strong>
+    All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> unless stating additionally.
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/jQuery/" rel="tag"># jQuery</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/Front%20End/Three-piece/DOM/" rel="next" title="DOM">
+                <i class="fa fa-chevron-left"></i> DOM
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/Front%20End/Vue/Vue%E5%9F%BA%E7%A1%80/" rel="prev" title="Vue基础">
+                Vue基础 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.jpg"
+                alt="Chen Yanzhi" />
+            
+              <p class="site-author-name" itemprop="name">Chen Yanzhi</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+                <a href="/archives">
+                  <span class="site-state-item-count">70</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-name">categories</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">70</span>
+                  <span class="site-state-item-name">tags</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/chenyz2000" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:chenyanzhi_2000@163.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#jQuery"><span class="nav-text">jQuery</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#选择"><span class="nav-text">选择</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#选择器"><span class="nav-text">选择器</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#选择器内筛选"><span class="nav-text">选择器内筛选</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#筛选器"><span class="nav-text">筛选器</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#操作"><span class="nav-text">操作</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#HTML-文本"><span class="nav-text">HTML&#x2F;文本</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Attribute属性"><span class="nav-text">Attribute属性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#CSS样式"><span class="nav-text">CSS样式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#each"><span class="nav-text">each</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#事件"><span class="nav-text">事件</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#文档加载完毕，自动执行"><span class="nav-text">文档加载完毕，自动执行</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#事件链"><span class="nav-text">事件链</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#扩展方法"><span class="nav-text">扩展方法</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Chen Yanzhi</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

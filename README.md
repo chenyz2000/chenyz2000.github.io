@@ -1,6 +1,6 @@
 # Blog
 
-部署于GitHub Pages，博客站点：https://chenyz2000.github.io/Blog/
+部署于GitHub Pages，博客站点：https://chenyz2000.github.io/
 
 使用博客框架：Hexo
 
