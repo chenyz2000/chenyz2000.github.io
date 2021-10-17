@@ -1,0 +1,855 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="en">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="GitHub,Nodejs," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="环境准备 git和Nodejs Nodejs会自带安装npm，并默认将其加入环境变量 hexo 命令npm install -g hexo-cli，可以加--prefix 路径设置安装路径，否则是默认路径 遇到warn警告可以不管 之后把hexo.cmd所在的路径加入环境变量，应该是直接在安装路径中而不是在bin中">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="https://chenyz2000.github.io/CS/Other/Hexo/index.html">
+<meta property="og:site_name" content="CYZ&#39;s Blog">
+<meta property="og:description" content="环境准备 git和Nodejs Nodejs会自带安装npm，并默认将其加入环境变量 hexo 命令npm install -g hexo-cli，可以加--prefix 路径设置安装路径，否则是默认路径 遇到warn警告可以不管 之后把hexo.cmd所在的路径加入环境变量，应该是直接在安装路径中而不是在bin中">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-07-04T12:41:34.000Z">
+<meta property="article:modified_time" content="2020-07-12T16:00:00.000Z">
+<meta property="article:author" content="Chen Yanzhi">
+<meta property="article:tag" content="GitHub">
+<meta property="article:tag" content="Nodejs">
+<meta name="twitter:card" content="summary">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"always","offset":12,"b2t":true,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://chenyz2000.github.io/CS/Other/Hexo/"/>
+
+
+
+
+
+  <title>Hexo | CYZ's Blog</title>
+  
+
+
+
+
+
+
+
+
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">CYZ's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            About
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://chenyz2000.github.io/CS/Other/Hexo/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Chen Yanzhi">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="CYZ's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Hexo</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-07-04T20:41:34+08:00">
+                2020-07-04
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Post modified&#58;</span>
+              
+              <time title="Post modified" itemprop="dateModified" datetime="2020-07-13T00:00:00+08:00">
+                2020-07-13
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Other/" itemprop="url" rel="index">
+                    <span itemprop="name">Other</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="环境准备">环境准备</h2>
+<h4 id="git和Nodejs">git和Nodejs</h4>
+<p>Nodejs会自带安装npm，并默认将其加入环境变量</p>
+<h4 id="hexo">hexo</h4>
+<p>命令<code>npm install -g hexo-cli</code>，可以加<code>--prefix 路径</code>设置安装路径，否则是默认路径</p>
+<p>遇到warn警告可以不管</p>
+<p>之后把hexo.cmd所在的路径加入环境变量，应该是直接在安装路径中而不是在bin中</p>
+<a id="more"></a>
+<h2 id="创建一个hexo博客项目">创建一个hexo博客项目</h2>
+<h4 id="创建博客项目">创建博客项目</h4>
+<p>命令<code>hexo init 本地博客目录</code></p>
+<h4 id="安装依赖文件">安装依赖文件</h4>
+<p>在本地博客目录，命令<code>npm install</code></p>
+<h4 id="新建博文">新建博文</h4>
+<p>在本地博客目录，命令<code>hexo new “test”</code></p>
+<p>会在sources/_post/下生成test.md</p>
+<h4 id="新建页面">新建页面</h4>
+<p>在本地博客目录，命令<code>hexo new page categories</code></p>
+<p>会生成sources/categories/index.md</p>
+<p>typora-root-url: …/…/…<br>
+tags，about等页面同理</p>
+<h2 id="配置">配置</h2>
+<h4 id="托管到github">托管到github</h4>
+<p>修改仓库里的_config.yml</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">deploy:</span><br><span class="line">  type: git</span><br><span class="line">  repository: https:&#x2F;&#x2F;github.com&#x2F;chenyz2000&#x2F;chenyz2000.github.io</span><br><span class="line">  branch: master</span><br></pre></td></tr></table></figure>
+<p>安装部署工具<code>hexo-deployer-git --save</code></p>
+<h4 id="页面配置">页面配置</h4>
+<p>以sources/categories/index.md为例</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">title: categories</span><br><span class="line">date: 2020-07-12 21:36:04</span><br><span class="line">type: categories</span><br></pre></td></tr></table></figure>
+<p>需要补充type这一行</p>
+<p><strong>注意冒号后需要有一个空格</strong></p>
+<h2 id="运行博客">运行博客</h2>
+<h4 id="更新html">更新html</h4>
+<p><strong>每次修改</strong>，都需要在<strong>本地博客目录下</strong>使用如下命令更新html</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hexo clean</span><br><span class="line">hexo generate   #可简写hexo g</span><br></pre></td></tr></table></figure>
+<p>generate是将md解析成html</p>
+<p>生成的html存储在public下</p>
+<h4 id="运行hexo本地服务器">运行hexo本地服务器</h4>
+<p>在本地博客目录，命令<code>hexo server</code>或简写<code>hexo s</code></p>
+<p>之后可以在<code>localhost:4000</code>访问</p>
+<h4 id="将现有html部署到github">将现有html部署到github</h4>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo deploy      <span class="comment">#简写 hexo d</span></span><br></pre></td></tr></table></figure>
+<h1>Temp</h1>
+<p>模仿<a href="https://tru-xu.github.io/2019/05/10/hexo%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%E8%B8%A9%E5%9D%91/" target="_blank" rel="noopener">https://tru-xu.github.io/2019/05/10/hexo%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%E8%B8%A9%E5%9D%91/</a></p>
+<h4 id="设置主题">设置主题</h4>
+<p>将模板主题clone到themes文件夹里</p>
+<p><code>git clone 模板主题url 目标路径</code></p>
+<p>并且修改_config.yml的theme为主题名称</p>
+<h4 id="博客配置">博客配置</h4>
+<p>Trouble：本地server打开主题与github托管的项目主题不一致，github不能正确打开主题。</p>
+<p>Solution：修改本地博客的配置文件，将url改为https://chenyz2000.github.io/</p>
+<p>报错：cannot get /categories/20%。20%是空格，在next的配置文件中，需要把categories等的路径后的空格去掉</p>
+<p>文章的tags:和categories:后一定要加一个空格</p>
+<p>Trouble：报错YAML Syntax Error Bad indentation of a mapping entry。</p>
+<p>Solution：yml配置文件语法有缩进，注意是不是哪里缩进出错</p>
+<p>Trouble：部署时，github部署失败，发送邮件<code>the page build failed for the master branch</code>，邮件中提到Jekyll。</p>
+<p>Solution：这个问题是github自己抽风，大概是页面上存在一些Jekyll不支持的字符，但是我搭建的博客不需要使用Jekyll，解决方法是，在提交github的仓库里，建立名为<code>.nojekyll</code>的空文件，之后重新部署。</p>
+<p>更改永久链接：修改站点配置的permalink，默认值是<code>:year/:month/:day/:title/</code>。</p>
+<p>categories、tags下的index.md中加内容没有效果，只有about中有效果</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>Post author:</strong>
+    Chen Yanzhi
+  </li>
+  <li class="post-copyright-link">
+    <strong>Post link:</strong>
+    <a href="https://chenyz2000.github.io/CS/Other/Hexo/" title="Hexo">https://chenyz2000.github.io/CS/Other/Hexo/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>Copyright Notice: </strong>
+    All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> unless stating additionally.
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/GitHub/" rel="tag"># GitHub</a>
+          
+            <a href="/tags/Nodejs/" rel="tag"># Nodejs</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/CS/Back%20End/Java%20Web/WebService/" rel="next" title="WebService">
+                <i class="fa fa-chevron-left"></i> WebService
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/CS/Back%20End/Java%20Web/J2EE%E6%A1%86%E6%9E%B6%E4%B8%8E%E6%9E%B6%E6%9E%84%E5%88%86%E5%B1%82/" rel="prev" title="J2EE框架与架构分层">
+                J2EE框架与架构分层 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.jpg"
+                alt="Chen Yanzhi" />
+            
+              <p class="site-author-name" itemprop="name">Chen Yanzhi</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+                <a href="/archives">
+                  <span class="site-state-item-count">70</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-name">categories</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">70</span>
+                  <span class="site-state-item-name">tags</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/chenyz2000" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:chenyanzhi_2000@163.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#环境准备"><span class="nav-text">环境准备</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#git和Nodejs"><span class="nav-text">git和Nodejs</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#hexo"><span class="nav-text">hexo</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#创建一个hexo博客项目"><span class="nav-text">创建一个hexo博客项目</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#创建博客项目"><span class="nav-text">创建博客项目</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#安装依赖文件"><span class="nav-text">安装依赖文件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#新建博文"><span class="nav-text">新建博文</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#新建页面"><span class="nav-text">新建页面</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#配置"><span class="nav-text">配置</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#托管到github"><span class="nav-text">托管到github</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#页面配置"><span class="nav-text">页面配置</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#运行博客"><span class="nav-text">运行博客</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#更新html"><span class="nav-text">更新html</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#运行hexo本地服务器"><span class="nav-text">运行hexo本地服务器</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#将现有html部署到github"><span class="nav-text">将现有html部署到github</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#"><span class="nav-text">Temp</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#设置主题"><span class="nav-text">设置主题</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#博客配置"><span class="nav-text">博客配置</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Chen Yanzhi</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

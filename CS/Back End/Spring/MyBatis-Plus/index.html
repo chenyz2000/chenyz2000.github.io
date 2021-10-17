@@ -1,0 +1,890 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="en">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="MyBatis,MyBatis-Plus," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="步骤   不用加MyBatis依赖，改成 12345&lt;dependency&gt;    &lt;groupId&gt;com.baomidou&lt;&#x2F;groupId&gt;    &lt;artifactId&gt;mybatis-plus-boot-starter&lt;&#x2F;artifactId&gt;    &lt;version&gt;3.3.2&lt;&#x2F;version&gt;&amp;lt">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MyBatis-Plus">
+<meta property="og:url" content="https://chenyz2000.github.io/CS/Back%20End/Spring/MyBatis-Plus/index.html">
+<meta property="og:site_name" content="CYZ&#39;s Blog">
+<meta property="og:description" content="步骤   不用加MyBatis依赖，改成 12345&lt;dependency&gt;    &lt;groupId&gt;com.baomidou&lt;&#x2F;groupId&gt;    &lt;artifactId&gt;mybatis-plus-boot-starter&lt;&#x2F;artifactId&gt;    &lt;version&gt;3.3.2&lt;&#x2F;version&gt;&amp;lt">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://chenyz2000.github.io/images/20200810213836.png">
+<meta property="article:published_time" content="2020-08-10T08:06:00.000Z">
+<meta property="article:modified_time" content="2020-08-11T01:31:00.000Z">
+<meta property="article:author" content="Chen Yanzhi">
+<meta property="article:tag" content="MyBatis">
+<meta property="article:tag" content="MyBatis-Plus">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://chenyz2000.github.io/images/20200810213836.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"always","offset":12,"b2t":true,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://chenyz2000.github.io/CS/Back End/Spring/MyBatis-Plus/"/>
+
+
+
+
+
+  <title>MyBatis-Plus | CYZ's Blog</title>
+  
+
+
+
+
+
+
+
+
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">CYZ's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            About
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://chenyz2000.github.io/CS/Back%20End/Spring/MyBatis-Plus/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Chen Yanzhi">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="CYZ's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">MyBatis-Plus</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-08-10T16:06:00+08:00">
+                2020-08-10
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Post modified&#58;</span>
+              
+              <time title="Post modified" itemprop="dateModified" datetime="2020-08-11T09:31:00+08:00">
+                2020-08-11
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Spring/" itemprop="url" rel="index">
+                    <span itemprop="name">Spring</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="步骤">步骤</h2>
+<ul>
+<li>
+<p>不用加MyBatis依赖，改成</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.baomidou<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>mybatis-plus-boot-starter<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>3.3.2<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>其中也包括了分页查询的插件</p>
+</li>
+<li>
+<p>在application.properties中添加配置</p>
+</li>
+<li>
+<p>编写对应数据表的实体类</p>
+</li>
+<li>
+<p>不需要自己再写Mapper接口的方法也不需要写Mapper.xml，只需要<strong>Mapper接口extends BaseMapper&lt;实体类&gt;</strong></p>
+</li>
+<li>
+<p>之后接口对象也是用自动注入</p>
+</li>
+<li>
+<p>mybatis plus只需继承，Dao继承<code>BaseMapper&lt;T&gt;</code>，Service继承<code>IService&lt;T&gt;</code>，Service实现类继承<code>ServiceImpl&lt;DAO,T&gt;</code>并实现Service</p>
+<p>然后在src/main/resource下只需保留一个mybatis放置的xml文件即可，里面什么resultMap都不需要写，一片空白即可。<a href="https://www.cnblogs.com/youcong/p/9010653.html" target="_blank" rel="noopener">https://www.cnblogs.com/youcong/p/9010653.html</a></p>
+</li>
+</ul>
+<a id="more"></a>
+<h2 id="IService，BaseMapper和ServiceImpl">IService，BaseMapper和ServiceImpl</h2>
+<p>Mapper接口继承BaseMapper，通过自动注入获得Mapper接口对象就可以调用Mapper接口的方法，操作数据库。</p>
+<p>我们可以自己写一个业务，包括接口xxxService和实现类xxxServiceImpl。在业务接口中定义save、get等业务方法，然后在实现类中使用Mapper接口对象、调用其方法操作数据库，完成业务。</p>
+<p>就像层次图画的一样</p>
+<img src="/images/20200810213836.png" style="zoom:45%">
+<p>MP中给了我们IService业务接口和其实现ServiceImpl，ServiceImpl实现了IService，并以&lt;M extends BaseMapper&lt; T &gt;, T&gt;为泛型</p>
+<p>xxxController中包含自动注入的xxxService接口变量，其继承IService并有对应的实现类xxxServiceImpl</p>
+<p>IService是通用Service CRUD，属于Service层，是业务逻辑和一些关于数据库处理的操作，但不是直接和数据库打交道，如save()，remove()，get()，返回值是boolean表示是否操作成功</p>
+<p>BaseMapper是通用CRUD，属于Mapper层，是直接跟数据库打交道的，如insert()，delete()，select()，返回值是int表示操作行数</p>
+<p>此外，IService闭BaseMapper多了批量处理的方法</p>
+<h2 id="实体类与数据表的映射">实体类与数据表的映射</h2>
+<p>实体类名与数据表名相同时，属性名与字段名相同时不需要注解，但是不相同时需要用：</p>
+<p>@TableName注解实体类，映射数据表</p>
+<p>@TableId注解属性，映射主键</p>
+<p>@TableField注解属性，映射字段</p>
+<p>它们的属性值见文档<a href="https://mybatis.plus/guide/annotation.html" target="_blank" rel="noopener">https://mybatis.plus/guide/annotation.html</a></p>
+<h2 id="CRUD">CRUD</h2>
+<p>首先自动注入一个接口对象xxxDao</p>
+<h4 id="增删改查">增删改查</h4>
+<p>以下的t为实体类对象</p>
+<p>xxxDao.insert(t);</p>
+<p>xxxDao.updateById(t);		从对象t中找id匹配</p>
+<p>xxxDao.update(t, queryWrapper);	值为null的属性对应的字段不更新</p>
+<p>xxxDao.deleteById(id);		直接根据id匹配</p>
+<p>xxxDao.delete(queryWrapper);</p>
+<p>xxxDao.selectByID(id);</p>
+<p>xxxDao.selectList(queryWrapper);</p>
+<p>详细内容见文档<a href="https://mybatis.plus/guide/crud-interface.html#mapper-crud-%E6%8E%A5%E5%8F%A3" target="_blank" rel="noopener">https://mybatis.plus/guide/crud-interface.html#mapper-crud-接口</a></p>
+<h4 id="条件查询">条件查询</h4>
+<p>方法的参数中有<code>@Param(Constants.WRAPPER) Wrapper&lt;T&gt; queryWrapper</code>，为MP封装的通用查询参数</p>
+<p>构建查询对象</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">QueryWrapper&lt;T&gt; queryWrapper = <span class="keyword">new</span> QueryWrapper&lt;&gt;();</span><br></pre></td></tr></table></figure>
+<p>设置查询条件</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">queryWrapper.eq(<span class="string">"属性"</span>, val);</span><br></pre></td></tr></table></figure>
+<p>ne不等于，lt小于，le小于等于，gt大于，ge大于等于</p>
+<p>还有许多条件，如and、or、like、in等，详见文档<a href="https://mybatis.plus/guide/wrapper.html#abstractwrapper" target="_blank" rel="noopener">https://mybatis.plus/guide/wrapper.html#abstractwrapper</a></p>
+<h4 id="模糊查询">模糊查询</h4>
+<p>queryWapper.like(“属性”, “str”)</p>
+<p>在整个字符串中包含str就算符合条件，相当于SQL语句的<code>like '%str%'</code></p>
+<p>likeLeft是以str结尾，likeRight是以str开头</p>
+<h4 id="分页查询">分页查询</h4>
+<p>首先进行分页插件的配置，以下是Spring boot方式，其他方式见文档https://mybatis.plus/guide/page.html</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="meta">@MapperScan</span>(<span class="string">""</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MybatisPlusConfig</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> PaginationInterceptor <span class="title">paginationInterceptor</span><span class="params">()</span> </span>&#123;		<span class="comment">//分页的拦截器对象</span></span><br><span class="line">        PaginationInterceptor paginationInterceptor = <span class="keyword">new</span> PaginationInterceptor();</span><br><span class="line">        <span class="keyword">return</span> paginationInterceptor;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>查询方法定义<code>IPage&lt;T&gt; selectPage(IPage&lt;T&gt; page, Wrapper&lt;T&gt; queryWrapper);</code></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">IPage&lt;T&gt; setting = <span class="keyword">new</span> Page&lt;&gt;(当前页, 每页条数);		<span class="comment">//构建分页对象</span></span><br><span class="line">IPage&lt;T&gt; page = xxxDao.selectPage(setting, queryWrapper);</span><br><span class="line">page.getTotal();		<span class="comment">//总条数</span></span><br><span class="line">page.getRecords();		<span class="comment">//内容，以List&lt;T&gt;形式返回</span></span><br></pre></td></tr></table></figure>
+<p>当前页默认是1，每页条数默认是10</p>
+<p>注意：分页插件目前仅支持单表查询，同时在MyBatis中不建议使用多表连接查询</p>
+<h2 id="AutoGenerator">AutoGenerator</h2>
+<p>可以快速生成Entity、Mapper、Mapper XML、Service、Controller等各个模块的代码</p>
+<p>与mybatis中的mybatis-generator-core类似</p>
+<p>添加依赖</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.baomidou<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>mybatis-plus-generator<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>3.3.1.tmp<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.apache.velocity<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>velocity-engine-core<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span>		<span class="comment">&lt;!--模板引擎依赖--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>2.2<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>配置全局信息，其他属性上网查</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">GlobalConfig gc = <span class="keyword">new</span> GlobalConfig();</span><br><span class="line">gc.setOutputDir(<span class="string">"xxx/src/main/java"</span>);		<span class="comment">//代码输出的目录</span></span><br><span class="line">gc.setFileOverride(<span class="keyword">false</span>);		<span class="comment">//重新生成文件时是否覆盖</span></span><br><span class="line">gc.setAuthor(<span class="string">"cyz"</span>);</span><br></pre></td></tr></table></figure>
+<p>配置数据源信息</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">DataSourceConfig dsc = <span class="keyword">new</span> DataSourceConfig();</span><br><span class="line">dsc.setUrl(<span class="string">"jdbc:mysql://localhost:3306/ant?useUnicode=true&amp;useSSL=false&amp;characterEncoding=utf8"</span>);</span><br><span class="line">dsc.setDriverName(<span class="string">"com.mysql.jdbc.Driver"</span>);</span><br><span class="line">dsc.setUsername(<span class="string">"root"</span>);</span><br><span class="line">dsc.setPassword(<span class="string">"password"</span>);</span><br></pre></td></tr></table></figure>
+<p>配置包名的信息</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">PackageConfig pc = <span class="keyword">new</span> PackageConfig();</span><br><span class="line">pc.setParent(<span class="string">"com.cyz.test"</span>);		<span class="comment">//父包名</span></span><br><span class="line">pc.setModuleName(<span class="string">"admin"</span>);		<span class="comment">//模块名</span></span><br><span class="line">pc.setEntity(<span class="string">"entity"</span>);		<span class="comment">//entity包名</span></span><br><span class="line">pc.setMapper(<span class="string">"mapper"</span>);		<span class="comment">//mapper包名</span></span><br><span class="line">pc.setService(<span class="string">"service"</span>);		<span class="comment">//service包名</span></span><br><span class="line">pc.setController(<span class="string">"controller"</span>);		<span class="comment">//controller包名</span></span><br></pre></td></tr></table></figure>
+<p>配置数据表映射信息，其他属性上网查</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">StrategyConfig strategy = <span class="keyword">new</span> StrategyConfig();</span><br><span class="line">strategy.setInclude(<span class="string">"数据表名"</span>);		<span class="comment">//指定表名（可以同时操作多个表，使用逗号隔开）</span></span><br><span class="line">strategy.setNaming(NamingStrategy.underline_to_camel);<span class="comment">//表名与实体类名之间映射的策略</span></span><br><span class="line">strategy.setColumnNaming(NamingStrategy.underline_to_camel);<span class="comment">//字段与属性之间映射的策略</span></span><br></pre></td></tr></table></figure>
+<p>创建代码生成器对象，绑定配置，执行生成操作</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">AutoGenerator mpg = <span class="keyword">new</span> AutoGenerator();</span><br><span class="line">mpg.setGlobalConfig(gc);</span><br><span class="line">mpg.setDataSource(dsc);</span><br><span class="line">mpg.setPackageInfo(pc);</span><br><span class="line">mpg.setStrategy(strategy);</span><br><span class="line">mpg.excute();</span><br></pre></td></tr></table></figure>
+<h2 id="多数据源">多数据源</h2>
+<p><a href="https://mybatis.plus/guide/dynamic-datasource.html" target="_blank" rel="noopener">https://mybatis.plus/guide/dynamic-datasource.html</a></p>
+<p>添加依赖，配置数据源</p>
+<p>要在业务层完成数据源的切换，只在DAO层是不行的</p>
+<p>使用@DS注解xxxServiceImpl或其中的方法，切换数据源</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>Post author:</strong>
+    Chen Yanzhi
+  </li>
+  <li class="post-copyright-link">
+    <strong>Post link:</strong>
+    <a href="https://chenyz2000.github.io/CS/Back%20End/Spring/MyBatis-Plus/" title="MyBatis-Plus">https://chenyz2000.github.io/CS/Back%20End/Spring/MyBatis-Plus/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>Copyright Notice: </strong>
+    All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> unless stating additionally.
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/MyBatis/" rel="tag"># MyBatis</a>
+          
+            <a href="/tags/MyBatis-Plus/" rel="tag"># MyBatis-Plus</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/CS/Front%20End/Three-piece/Ajax/" rel="next" title="Ajax">
+                <i class="fa fa-chevron-left"></i> Ajax
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/CS/Front%20End/Vue/Vue%E4%BF%AE%E9%A5%B0%E7%AC%A6/" rel="prev" title="Vue修饰符">
+                Vue修饰符 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.jpg"
+                alt="Chen Yanzhi" />
+            
+              <p class="site-author-name" itemprop="name">Chen Yanzhi</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+                <a href="/archives">
+                  <span class="site-state-item-count">70</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-name">categories</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">70</span>
+                  <span class="site-state-item-name">tags</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/chenyz2000" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:chenyanzhi_2000@163.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#步骤"><span class="nav-text">步骤</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#IService，BaseMapper和ServiceImpl"><span class="nav-text">IService，BaseMapper和ServiceImpl</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#实体类与数据表的映射"><span class="nav-text">实体类与数据表的映射</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CRUD"><span class="nav-text">CRUD</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#增删改查"><span class="nav-text">增删改查</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#条件查询"><span class="nav-text">条件查询</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#模糊查询"><span class="nav-text">模糊查询</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#分页查询"><span class="nav-text">分页查询</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#AutoGenerator"><span class="nav-text">AutoGenerator</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#多数据源"><span class="nav-text">多数据源</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Chen Yanzhi</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

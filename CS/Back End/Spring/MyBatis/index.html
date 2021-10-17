@@ -1,0 +1,978 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="en">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="MyBatis,Spring Boot,ORM,动态代理," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="MyBatis MyBatis是ORM框架 ORM，Object Relational Mapping，对象关系映射。三个单词分别指Java的对象，数据库的关系，和映射 MyBatis是ORM框架，是基于Java的持久层框架，实现了数据持久化 连接Java程序和数据库，使Java开发者可以用面向对象的思想来管理数据库，支持通过配置或注解，将接口和POJO映射成数据库中的记录 是对JDBC的封装，相">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MyBatis">
+<meta property="og:url" content="https://chenyz2000.github.io/CS/Back%20End/Spring/MyBatis/index.html">
+<meta property="og:site_name" content="CYZ&#39;s Blog">
+<meta property="og:description" content="MyBatis MyBatis是ORM框架 ORM，Object Relational Mapping，对象关系映射。三个单词分别指Java的对象，数据库的关系，和映射 MyBatis是ORM框架，是基于Java的持久层框架，实现了数据持久化 连接Java程序和数据库，使Java开发者可以用面向对象的思想来管理数据库，支持通过配置或注解，将接口和POJO映射成数据库中的记录 是对JDBC的封装，相">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://chenyz2000.github.io/images/image-20200809195537434.png">
+<meta property="article:published_time" content="2020-08-05T03:30:00.000Z">
+<meta property="article:modified_time" content="2020-08-13T07:29:00.000Z">
+<meta property="article:author" content="Chen Yanzhi">
+<meta property="article:tag" content="MyBatis">
+<meta property="article:tag" content="Spring Boot">
+<meta property="article:tag" content="ORM">
+<meta property="article:tag" content="动态代理">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://chenyz2000.github.io/images/image-20200809195537434.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"always","offset":12,"b2t":true,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://chenyz2000.github.io/CS/Back End/Spring/MyBatis/"/>
+
+
+
+
+
+  <title>MyBatis | CYZ's Blog</title>
+  
+
+
+
+
+
+
+
+
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">CYZ's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            About
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://chenyz2000.github.io/CS/Back%20End/Spring/MyBatis/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Chen Yanzhi">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="CYZ's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">MyBatis</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-08-05T11:30:00+08:00">
+                2020-08-05
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Post modified&#58;</span>
+              
+              <time title="Post modified" itemprop="dateModified" datetime="2020-08-13T15:29:00+08:00">
+                2020-08-13
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Spring/" itemprop="url" rel="index">
+                    <span itemprop="name">Spring</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="MyBatis">MyBatis</h2>
+<h4 id="MyBatis是ORM框架">MyBatis是ORM框架</h4>
+<p>ORM，Object Relational Mapping，对象关系映射。三个单词分别指Java的对象，数据库的关系，和映射</p>
+<p>MyBatis是ORM框架，是基于Java的持久层框架，实现了数据持久化</p>
+<p>连接Java程序和数据库，使Java开发者可以用面向对象的思想来管理数据库，支持通过配置或注解，将接口和POJO映射成数据库中的记录</p>
+<p>是对JDBC的封装，相对于传统的JDBC，简化了连接、操作的过程，减少了一半的代码量，只需要把关注点放在SQL的增删改查上</p>
+<p>除了MyBatis以外，还有Hibernate、Spring Data。MyBatis是半自动的，Hibernate是全自动的，Spring Data是基于注解的</p>
+<a id="more"></a>
+<hr>
+<p>jar包目录为org.apache.ibatis</p>
+<p>MyBatis中SQL语句写在xml里，从代码中分离，实现了与代码的解耦合</p>
+<p>对象和表、属性和字段的映射也写在xml里</p>
+<h2 id="使用MyBatis的要素">使用MyBatis的要素</h2>
+<ul>
+<li><strong>Mapper接口</strong>：原始Dao开发用原生接口，Mapper代理开发用自定义接口，SpringBoot开发可用@Mapper标注自定义接口</li>
+<li><strong>映射文件</strong>：可用Mapper.xml文件，SpringBoot也支持@Insert等注解</li>
+<li><strong>MyBatis配置文件</strong>：可用conf.xml文件，SpringBoot也支持application.properties配置、configuration类配置</li>
+<li><strong>sqlSession数据库会话对象</strong>：非SpringBoot开发时需要创建</li>
+<li><strong>代理对象</strong>：Mapper代理开发时使用，SpringBoot直接自动注入</li>
+</ul>
+<p>以及，<strong>目标</strong>都是<strong>调用Mapper接口的方法</strong></p>
+<h2 id="非Spring-Boot开发MyBatis">非Spring Boot开发MyBatis</h2>
+<ul>
+<li>原始的Dao层开发</li>
+<li>Mapper动态代理方式</li>
+</ul>
+<p>先前准备：创建maven项目，添加<code>mybatis</code>和<code>mysql-connector-java</code>两个依赖，在数据库里建表</p>
+<h3 id="原始Dao开发方法">原始Dao开发方法</h3>
+<p>使用原生接口不需要自定义Mapper接口，通过sqlSession调用原生接口不需要代理对象调用Mapper接口</p>
+<h4 id="映射文件——Mapper-xml">映射文件——Mapper.xml</h4>
+<p>创建接口方法和SQL语句的映射文件Mapper.xml，以AccountMapper.xml为例：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version="1.0" encoding="UTF-8" ?&gt;</span></span><br><span class="line"><span class="meta">&lt;!DOCTYPE <span class="meta-keyword">configuration</span> <span class="meta-keyword">PUBLIC</span> <span class="meta-string">"-//mybatis.org//DTD Config 3.0//EN"</span> <span class="meta-string">"http://mybatis.org/dtd/mybatis-3-config.dtd"</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">mapper</span> <span class="attr">namespace</span>=<span class="string">"com.cyz.mapper.AccountMapper"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">insert</span> <span class="attr">id</span>=<span class="string">"save"</span> <span class="attr">parameterType</span>=<span class="string">"com.cyz.entity.Account"</span>&gt;</span></span><br><span class="line">        insert into account(username,money) values(#&#123;username&#125;,#&#123;money&#125;)</span><br><span class="line">    <span class="tag">&lt;/<span class="name">insert</span>&gt;</span></span><br><span class="line">    ......</span><br><span class="line">    <span class="tag">&lt;<span class="name">select</span> <span class="attr">id</span>=<span class="string">"findAll"</span> <span class="attr">resultType</span>=<span class="string">"com.cyz.entity.Account"</span>&gt;</span>	<span class="comment">&lt;!--写泛型的类型，而不是写List&lt;泛型&gt;--&gt;</span></span><br><span class="line">        select * form account</span><br><span class="line">    <span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">select</span> <span class="attr">id</span>=<span class="string">"findById"</span> <span class="attr">parameterType</span>=<span class="string">"int"</span> <span class="attr">resultType</span>=<span class="string">"com.cyz.entity.Account"</span>&gt;</span></span><br><span class="line">        select * from account where id=#&#123;id&#125;</span><br><span class="line">    <span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">mapper</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>
+<p>除了insert标签，还有update、delete、select，四者同理</p>
+</li>
+<li>
+<p>namespace是当前mapper文件的全路径，不加后缀名</p>
+</li>
+<li>
+<p>id是实际调用MyBatis方法时传入的参数，用来标示sql语句的id</p>
+</li>
+<li>
+<p>parameterType是调用对应方法时，方法参数的类型</p>
+<blockquote>
+<p>方法参数只有一个时（基本数据类型、String、数据类型包装类），sql语句里#{name}的name随便写</p>
+<p>方法参数有多个时，省略parameterType，sql语句里用下标#{arg0}、#{arg1}取</p>
+<p>方法参数为一个Bean对象时，sql语句可以用#{name}使用参数对象的属性</p>
+</blockquote>
+</li>
+<li>
+<p>resultType是对应方法的返回值类型，用于select中</p>
+<blockquote>
+<p>使用resultType进行到对象的输出映射</p>
+<p>Mapper.xml的resultType中写实体类名，代码中用实体类的列表承接返回值。当查询结果的字段与实体类的属性对应时才赋值，对应不上的不赋值，查询结果字段有重复时（如多表联合查询时）赋第一个字段的值。</p>
+</blockquote>
+<blockquote>
+<p>属性resultMap可以引用在resultMap标签里定义的字段到属性的输出映射</p>
+</blockquote>
+</li>
+</ul>
+<p>实体类的作用主要就是在parameterType中提供参数和resultType中承接查询结果</p>
+<h4 id="MyBatis配置文件——config-xml">MyBatis配置文件——config.xml</h4>
+<p>MyBatis全局配置文件config.xml放在resource中，文件名可自定义</p>
+   <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version="1.0" encoding="UTF-8" ?&gt;</span></span><br><span class="line"><span class="meta">&lt;!DOCTYPE <span class="meta-keyword">configuration</span> <span class="meta-keyword">PUBLIC</span> <span class="meta-string">"-//mybatis.org//DTD Config 3.0//EN"</span> <span class="meta-string">"http://mybatis.org/dtd/mybatis-3-config.dtd"</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">configuration</span>&gt;</span>		<span class="comment">&lt;!--根节点--&gt;</span></span><br><span class="line">    </span><br><span class="line">    <span class="tag">&lt;<span class="name">environments</span> <span class="attr">default</span>=<span class="string">""</span>&gt;</span>	<span class="comment">&lt;!--配置MyBatis运行环境（数据库环境），可以配多个选一个--&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">environment</span> <span class="attr">id</span>=<span class="string">""</span>&gt;</span></span><br><span class="line">            <span class="comment">&lt;!--jdbc的事务管理--&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">transactionManager</span> <span class="attr">type</span>=<span class="string">"JDBC"</span>&gt;</span><span class="tag">&lt;/<span class="name">transactionManager</span>&gt;</span></span><br><span class="line">            <span class="comment">&lt;!--数据源连接池，以POOLED为例--&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">dataSource</span> <span class="attr">type</span>=<span class="string">"POOLED"</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"driver"</span> <span class="attr">value</span>=<span class="string">"com.mysql.cj.jdbc.driver"</span>&gt;</span><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"url"</span> <span class="attr">value</span>=<span class="string">"此处写jdbc的url"</span>&gt;</span><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"username"</span> <span class="attr">value</span>=<span class="string">"..."</span>&gt;</span><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"password"</span> <span class="attr">value</span>=<span class="string">"..."</span>&gt;</span><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">dataSource</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">environment</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">environment</span> <span class="attr">id</span>=<span class="string">""</span>&gt;</span></span><br><span class="line">            ......</span><br><span class="line">        <span class="tag">&lt;/<span class="name">environment</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">environments</span>&gt;</span></span><br><span class="line">    </span><br><span class="line">    <span class="tag">&lt;<span class="name">mappers</span>&gt;</span>		<span class="comment">&lt;!--在全局配置文件config.xml中注册AccountMapper.xml--&gt;</span></span><br><span class="line">    	<span class="tag">&lt;<span class="name">mapper</span> <span class="attr">resource</span>=<span class="string">"com/cyz/mapper/AccountMapper.xml"</span>&gt;</span><span class="tag">&lt;/<span class="name">mapper</span>&gt;</span>		<span class="comment">&lt;!--resource写Mapper.xml的路径，带后缀，所以不能用.得用/--&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">mappers</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">configuration</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>通过config.xml确定数据库和mapper.xml，通过mapper.xml确定方法和sql语句</p>
+</blockquote>
+<h4 id="sqlSession数据库会话对象">sqlSession数据库会话对象</h4>
+<p>加载config.xml，创建sqlSession</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">InputStream in = Test.class.getClassLoader().getResourceAsStream("config.xml");		//config.xml对应的数据流</span><br><span class="line">SqlSessionFactoryBuilder sqlSessionFactoryBuilder = <span class="keyword">new</span> SqlSessionFactoryBuilder();</span><br><span class="line">SqlSessionFactory sqlSessionFactory = sqlSessionFactoryBuilder.build(in);</span><br><span class="line">SqlSession sqlSession = sqlSessionFactory.openSession();</span><br></pre></td></tr></table></figure>
+<p><strong>SqlSessionFactoryBuilder</strong>通过Build()建造SqlSessionFactory工厂对象</p>
+<p><strong>SqlSessionFactory</strong>调用openSession()获得一个<strong>SqlSession</strong>对象</p>
+<p>注意：SqlSessionFactoryBuilder和SqlSession的生命周期只在一个方法内，SqlSessionFactory的生命周期为整个程序</p>
+<ul>
+<li>[ ] <u>InputStream in = Resources.getResourceAsStream(config.xml);</u></li>
+</ul>
+<h4 id="调用Mapper接口方法">调用Mapper接口方法</h4>
+<p>调用MyBatis原生接口来执行操作</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">String stat = <span class="string">"com.cyz.mapper.AccountMapper.save"</span>;	<span class="comment">//namespace+id找到方法</span></span><br><span class="line">sqlSession.insert(stat, <span class="keyword">new</span> Account(<span class="string">"abc"</span>,<span class="string">"123"</span>));</span><br><span class="line">sqlSession.commit();		<span class="comment">//只要进行修改就要提交事务，查询不需要</span></span><br><span class="line">sqlSession.close();			<span class="comment">//关闭资源</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>Trouble：程序只能读取resource里的xml文件，不能读取java里的</p>
+<p>Solution：在pom.xml中添加以下内容</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">build</span>&gt;</span></span><br><span class="line"> <span class="tag">&lt;<span class="name">resources</span>&gt;</span></span><br><span class="line">     <span class="tag">&lt;<span class="name">resource</span>&gt;</span></span><br><span class="line">         <span class="tag">&lt;<span class="name">directory</span>&gt;</span>src/main/java<span class="tag">&lt;/<span class="name">directory</span>&gt;</span></span><br><span class="line">         <span class="tag">&lt;<span class="name">includes</span>&gt;</span></span><br><span class="line">             <span class="tag">&lt;<span class="name">include</span>&gt;</span>**/*.xml<span class="tag">&lt;/<span class="name">include</span>&gt;</span></span><br><span class="line">         <span class="tag">&lt;/<span class="name">includes</span>&gt;</span></span><br><span class="line">     <span class="tag">&lt;/<span class="name">resource</span>&gt;</span></span><br><span class="line"> <span class="tag">&lt;/<span class="name">resources</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">build</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</blockquote>
+<h3 id="Mapper代理开发方法">Mapper代理开发方法</h3>
+<p>使用自定义接口，通过sqlSession获取代理对象调用Mapper接口方法</p>
+<p>MyBatis为自定义的接口<strong>动态生成实现类并创建实现类的代理对象</strong>，不用写接口的实现代码</p>
+<img src="/images/image-20200809195537434.png" style="zoom:50%">
+<h4 id="Mapper接口——自定义">Mapper接口——自定义</h4>
+<p>自定义Mapper接口和业务方法</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">AccountMapper</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">save</span><span class="params">(Account account)</span></span>;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">update</span><span class="params">(Account account)</span></span>;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">detele</span><span class="params">(<span class="keyword">int</span> id)</span></span>;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> List&lt;Account&gt; <span class="title">findAll</span><span class="params">()</span></span>;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> Account <span class="title">findById</span><span class="params">(<span class="keyword">int</span> id)</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="映射文件——Mapper-xml-2">映射文件——Mapper.xml</h4>
+<p>必须满足：</p>
+<ul>
+<li>namespace要为接口的全类名</li>
+<li>id与接口中方法名对应</li>
+<li>parameterType与接口中方法的参数对应</li>
+<li>resultType与方法的返回值类型对应（添加、修改、删除没有这个属性，因为默认都是int）。</li>
+</ul>
+<h4 id="MyBatis配置文件——config-xml-2">MyBatis配置文件——config.xml</h4>
+<p>在config.xml中配置MyBatis环境，注册Mapper.xml，同<em>原生接口</em></p>
+<h4 id="sqlSession数据库会话对象-2">sqlSession数据库会话对象</h4>
+<p>同<em>原生接口</em></p>
+<h4 id="代理对象和调用Mapper接口方法">代理对象和调用Mapper接口方法</h4>
+<p>从<strong>SqlSession</strong>中获取实现类了接口的代理对象，通过对象调用Mapper接口的方法</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//accountMapper就是代理对象</span></span><br><span class="line">AccountMapper accountMapper = sqlSession.getMapper(AccountMapper<span class="class">.<span class="keyword">class</span>)</span>;</span><br><span class="line"><span class="comment">//通过accountMapper调用方法</span></span><br><span class="line">accountRepostity.save(<span class="keyword">new</span> Account(<span class="string">"xyz"</span>,<span class="number">456</span>));</span><br><span class="line">sqlSession.commit();</span><br><span class="line">Account a = accountMapper.findById(<span class="string">"id123"</span>);</span><br><span class="line">sqlSession.close();</span><br></pre></td></tr></table></figure>
+<h2 id="Spring-Boot整合MyBatis">Spring Boot整合MyBatis</h2>
+<p>需要添加<code>mybatis-spring-boot-starter</code>依赖</p>
+<h3 id="使用注解形式">使用注解形式</h3>
+<h4 id="MyBatis配置文件">MyBatis配置文件</h4>
+<p>Spring Boot中在application.properties配置MyBatis</p>
+  <figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">mybatis.type-aliases-package</span>=<span class="string">com.neo.model</span></span><br><span class="line"></span><br><span class="line"><span class="meta">spring.datasource.url</span>=<span class="string">jdbc:mysql://localhost:3306/test?serverTimezone=UTC&amp;useUnicode=true&amp;characterEncoding=utf-8&amp;useSSL=true</span></span><br><span class="line"><span class="meta">spring.datasource.username</span>=<span class="string">root</span></span><br><span class="line"><span class="meta">spring.datasource.password</span>=<span class="string">root</span></span><br><span class="line"><span class="meta">spring.datasource.driver-class-name</span>=<span class="string">com.mysql.cj.jdbc.Driver</span></span><br></pre></td></tr></table></figure>
+<p>此外，也可以使用配置类进行配置</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="meta">@ComponentScan</span> <span class="comment">//开启spring的自动扫描bean和管理bean</span></span><br><span class="line"><span class="meta">@MapperScan</span>(<span class="string">"com.spring.study.dao"</span>)<span class="comment">//开启mybatis的自动扫描mapper接口和管理</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SpringConfig</span> </span>&#123; <span class="comment">//数据源</span></span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> PooledDataSource <span class="title">dataSource</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        PooledDataSource dataSource = <span class="keyword">new</span> PooledDataSource();</span><br><span class="line">        dataSource.setDriver(<span class="string">"com.mysql.jdbc.Driver"</span>);</span><br><span class="line">        dataSource.setUrl(<span class="string">"jdbc:mysql://localhost:3306/test?serverTimezone=UTC&amp;useUnicode=true&amp;characterEncoding=utf-8&amp;useSSL=true"</span>);</span><br><span class="line">        dataSource.setUsername(<span class="string">"root"</span>);</span><br><span class="line">        dataSource.setPassword(<span class="string">"root"</span>);</span><br><span class="line">        <span class="keyword">return</span> dataSource;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> SqlSessionFactoryBean <span class="title">sqlSessionFactory</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        SqlSessionFactoryBean sqlSessionFactory = <span class="keyword">new</span> SqlSessionFactoryBean();</span><br><span class="line">        sqlSessionFactory.setDataSource(dataSource());</span><br><span class="line">        FileSystemResource fileSystemResource = <span class="keyword">new</span> FileSystemResource(<span class="string">"C:\\mapping\\InstrumentMapper.xml"</span>);</span><br><span class="line">        sqlSessionFactory.setMapperLocations(<span class="keyword">new</span> Resource[]&#123;fileSystemResource&#125;);</span><br><span class="line">        <span class="keyword">return</span> sqlSessionFactory;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="Mapper接口与映射">Mapper接口与映射</h4>
+<p>编写Mapper接口，用@Insert(“sql语句”)等四个注解、@Results注解对每个方法进行映射</p>
+<h4 id="注册Mapper接口">注册Mapper接口</h4>
+<p>在每个Mapper上加上@Mapper注解，或在启动类中使用@MapperScan注解扫描Mapper接口</p>
+<p>@Mapper注解，在每一个Mapper接口上添加此注解</p>
+<p>@MapperScan注解，指定要扫描的Mapper接口的包的路径</p>
+<ul>
+<li>[ ] @Mapper和@Repository差不多，两个都能用，有些细微差别</li>
+</ul>
+<h4 id="代理对象">代理对象</h4>
+<p>用@Autowired或@Resources等自动注入对象给接口</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Autowired</span></span><br><span class="line"><span class="keyword">private</span> AccountMapper accountMapper;</span><br></pre></td></tr></table></figure>
+<p>之后可以调用对象的方法了</p>
+<h2 id="使用XML形式">使用XML形式</h2>
+<p>编写Mapper接口、Mapper.xml、conf.xml</p>
+<p>在application.propertis中配置mybatis.mapper-location和mybatis.config-location</p>
+<p>注册Mapper接口</p>
+<p>之后通过自动注入使用对象</p>
+<h2 id="实例化接口">实例化接口</h2>
+<p>使用配置类进行配置的话</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">DataSource dataSource = BlogDataSourceFactory.getBlogDataSource();</span><br><span class="line">TransactionFactory transactionFactory = <span class="keyword">new</span> JdbcTransactionFactory();</span><br><span class="line">Environment environment = <span class="keyword">new</span> Environment(<span class="string">"development"</span>, transactionFactory, dataSource);</span><br><span class="line">Configuration configuration = <span class="keyword">new</span> Configuration(environment);</span><br><span class="line">configuration.addMapper(BlogMapper<span class="class">.<span class="keyword">class</span>)</span>;<span class="comment">// 添加Mapper接口</span></span><br><span class="line"></span><br><span class="line">SqlSessionFactory sqlSessionFactory = <span class="keyword">new</span> SqlSessionFactoryBuilder().build(configuration);</span><br><span class="line">SqlSession session = sqlSessionFactory.openSession();</span><br></pre></td></tr></table></figure>
+<h4 id="注册Mapper接口-2">注册Mapper接口</h4>
+<p>configuration的addMapper方法，将接口添加到mapperRegistry</p>
+<p>再深入mapperRegistry</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MapperRegistry</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> Map&lt;Class&lt;?&gt;, MapperProxyFactory&lt;?&gt;&gt; knownMappers = <span class="keyword">new</span> HashMap();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> &lt;T&gt; <span class="function"><span class="keyword">void</span> <span class="title">addMapper</span><span class="params">(Class&lt;T&gt; type)</span> </span>&#123;</span><br><span class="line">        knownMappers.put(type, <span class="keyword">new</span> MapperProxyFactory(type));</span><br><span class="line">    	......</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>可以发现mapperRegistry的结构是一个Map，其键为接口的class，值为以接口的class为type的MapperProxyFactory对象</p>
+<h2 id="MyBatis-Generator">MyBatis-Generator</h2>
+<p><a href="https://www.cnblogs.com/throwable/p/12046848.html" target="_blank" rel="noopener">参考</a></p>
+<p>生成实体类、Mapper接口、映射文件</p>
+<p>运行过程：连接数据库，从数据表中获取字段，根据字段生成</p>
+<blockquote>
+<p>默认会把数据库中的下划线规则转化成Java中的驼峰规则，也可以在generatorConfig.xml中设置</p>
+</blockquote>
+<p>Mybatis-Generator的运行方式有很多种：</p>
+<ul>
+<li>基于mybatis-generator-core-x.x.x.jar和其XML配置文件，通过命令行运行</li>
+<li>通过Maven插件运行（见方法二）</li>
+<li>通过Java代码和其XML配置文件运行（见方法一）</li>
+<li>通过Java代码和编程式配置运行</li>
+<li>通过Ant的Task结合其XML配置文件运行</li>
+<li>通过Eclipse Feature运行</li>
+</ul>
+<h4 id="方法一-通过Java代码运行">方法一 通过Java代码运行</h4>
+<p>需要先写好generatorConfig.xml</p>
+<p>导入依赖，此外也要有mybatis依赖和mysql-connector-java依赖</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.mybatis.generator<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>mybatis-generator-core<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.4.0<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>编写代码运行MyBatis-Generator</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">    List&lt;String&gt; warnings = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">    ConfigurationParser cp = <span class="keyword">new</span> ConfigurationParser(warnings);</span><br><span class="line"></span><br><span class="line">    Configuration config = cp.parseConfiguration(<span class="keyword">new</span> File(<span class="string">"路径/generatorConfig.xml"</span>));</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">boolean</span> overwrite = <span class="keyword">true</span>;		<span class="comment">// 如果已经存在生成过的文件是否进行覆盖</span></span><br><span class="line">    DefaultShellCallback callback = <span class="keyword">new</span> DefaultShellCallback(overwrite);</span><br><span class="line">    </span><br><span class="line">    MyBatisGenerator generator = <span class="keyword">new</span> MyBatisGenerator(config, callback, warnings);</span><br><span class="line">    generator.generate(<span class="keyword">null</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="方法二-通过Maven插件运行">方法二 通过Maven插件运行</h4>
+<p>需要先写好generatorConfig.xml</p>
+<p>pom.xml中导入插件</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">plugins</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">plugin</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.mybatis.generator<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>mybatis-generator-maven-plugin<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.4.0<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">executions</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">execution</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">id</span>&gt;</span>Generate MyBatis Artifacts<span class="tag">&lt;/<span class="name">id</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">goals</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">goal</span>&gt;</span>generate<span class="tag">&lt;/<span class="name">goal</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;/<span class="name">goals</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">execution</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">executions</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">configuration</span>&gt;</span></span><br><span class="line">            <span class="comment">&lt;!-- 输出详细信息 --&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">verbose</span>&gt;</span>true<span class="tag">&lt;/<span class="name">verbose</span>&gt;</span></span><br><span class="line">            <span class="comment">&lt;!-- 覆盖生成文件 --&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">overwrite</span>&gt;</span>true<span class="tag">&lt;/<span class="name">overwrite</span>&gt;</span></span><br><span class="line">            <span class="comment">&lt;!-- 定义配置文件 --&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">configurationFile</span>&gt;</span>src/main/resources/generatorConfig.xml<span class="tag">&lt;/<span class="name">configurationFile</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">configuration</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">plugin</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">plugins</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>之后通过命令行命令运行</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mvn mybatis-generator:generate</span><br></pre></td></tr></table></figure>
+<h4 id="generatorConfig-xml配置文件编写">generatorConfig.xml配置文件编写</h4>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span></span><br><span class="line"><span class="meta">&lt;!DOCTYPE <span class="meta-keyword">generatorConfiguration</span></span></span><br><span class="line"><span class="meta">        <span class="meta-keyword">PUBLIC</span> <span class="meta-string">"-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"</span></span></span><br><span class="line"><span class="meta">        <span class="meta-string">"http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">generatorConfiguration</span>&gt;</span></span><br><span class="line">    </span><br><span class="line"><span class="tag">&lt;/<span class="name">generatorConfiguration</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>[ ] 具体配置暂时跳过</li>
+</ul>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>Post author:</strong>
+    Chen Yanzhi
+  </li>
+  <li class="post-copyright-link">
+    <strong>Post link:</strong>
+    <a href="https://chenyz2000.github.io/CS/Back%20End/Spring/MyBatis/" title="MyBatis">https://chenyz2000.github.io/CS/Back%20End/Spring/MyBatis/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>Copyright Notice: </strong>
+    All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> unless stating additionally.
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/MyBatis/" rel="tag"># MyBatis</a>
+          
+            <a href="/tags/Spring-Boot/" rel="tag"># Spring Boot</a>
+          
+            <a href="/tags/ORM/" rel="tag"># ORM</a>
+          
+            <a href="/tags/%E5%8A%A8%E6%80%81%E4%BB%A3%E7%90%86/" rel="tag"># 动态代理</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/CS/Back%20End/Spring/Security/" rel="next" title="Security">
+                <i class="fa fa-chevron-left"></i> Security
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/CS/Back%20End/Spring/%E6%B3%A8%E8%A7%A3%E6%95%B4%E7%90%86/" rel="prev" title="注解整理">
+                注解整理 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.jpg"
+                alt="Chen Yanzhi" />
+            
+              <p class="site-author-name" itemprop="name">Chen Yanzhi</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+                <a href="/archives">
+                  <span class="site-state-item-count">70</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-name">categories</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">70</span>
+                  <span class="site-state-item-name">tags</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/chenyz2000" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:chenyanzhi_2000@163.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#MyBatis"><span class="nav-text">MyBatis</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#MyBatis是ORM框架"><span class="nav-text">MyBatis是ORM框架</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用MyBatis的要素"><span class="nav-text">使用MyBatis的要素</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#非Spring-Boot开发MyBatis"><span class="nav-text">非Spring Boot开发MyBatis</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#原始Dao开发方法"><span class="nav-text">原始Dao开发方法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#映射文件——Mapper-xml"><span class="nav-text">映射文件——Mapper.xml</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#MyBatis配置文件——config-xml"><span class="nav-text">MyBatis配置文件——config.xml</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#sqlSession数据库会话对象"><span class="nav-text">sqlSession数据库会话对象</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#调用Mapper接口方法"><span class="nav-text">调用Mapper接口方法</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Mapper代理开发方法"><span class="nav-text">Mapper代理开发方法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Mapper接口——自定义"><span class="nav-text">Mapper接口——自定义</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#映射文件——Mapper-xml-2"><span class="nav-text">映射文件——Mapper.xml</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#MyBatis配置文件——config-xml-2"><span class="nav-text">MyBatis配置文件——config.xml</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#sqlSession数据库会话对象-2"><span class="nav-text">sqlSession数据库会话对象</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#代理对象和调用Mapper接口方法"><span class="nav-text">代理对象和调用Mapper接口方法</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Spring-Boot整合MyBatis"><span class="nav-text">Spring Boot整合MyBatis</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#使用注解形式"><span class="nav-text">使用注解形式</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#MyBatis配置文件"><span class="nav-text">MyBatis配置文件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Mapper接口与映射"><span class="nav-text">Mapper接口与映射</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#注册Mapper接口"><span class="nav-text">注册Mapper接口</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#代理对象"><span class="nav-text">代理对象</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用XML形式"><span class="nav-text">使用XML形式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#实例化接口"><span class="nav-text">实例化接口</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#注册Mapper接口-2"><span class="nav-text">注册Mapper接口</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#MyBatis-Generator"><span class="nav-text">MyBatis-Generator</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#方法一-通过Java代码运行"><span class="nav-text">方法一 通过Java代码运行</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#方法二-通过Maven插件运行"><span class="nav-text">方法二 通过Maven插件运行</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#generatorConfig-xml配置文件编写"><span class="nav-text">generatorConfig.xml配置文件编写</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Chen Yanzhi</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

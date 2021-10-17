@@ -1,0 +1,912 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="en">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Spring Boot,HTML,request," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="超文本标记语言 超文本：使用超链接，网状结构 标记语言：标签构成的语言，如html，xml">
+<meta property="og:type" content="article">
+<meta property="og:title" content="HTML">
+<meta property="og:url" content="https://chenyz2000.github.io/CS/Front%20End/Three-piece/HTML/index.html">
+<meta property="og:site_name" content="CYZ&#39;s Blog">
+<meta property="og:description" content="超文本标记语言 超文本：使用超链接，网状结构 标记语言：标签构成的语言，如html，xml">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-05-29T04:24:00.000Z">
+<meta property="article:modified_time" content="2020-07-08T16:00:00.000Z">
+<meta property="article:author" content="Chen Yanzhi">
+<meta property="article:tag" content="Spring Boot">
+<meta property="article:tag" content="HTML">
+<meta property="article:tag" content="request">
+<meta name="twitter:card" content="summary">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"always","offset":12,"b2t":true,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://chenyz2000.github.io/CS/Front End/Three-piece/HTML/"/>
+
+
+
+
+
+  <title>HTML | CYZ's Blog</title>
+  
+
+
+
+
+
+
+
+
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">CYZ's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            About
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://chenyz2000.github.io/CS/Front%20End/Three-piece/HTML/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Chen Yanzhi">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="CYZ's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">HTML</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-05-29T12:24:00+08:00">
+                2020-05-29
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Post modified&#58;</span>
+              
+              <time title="Post modified" itemprop="dateModified" datetime="2020-07-09T00:00:00+08:00">
+                2020-07-09
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Three-piece/" itemprop="url" rel="index">
+                    <span itemprop="name">Three-piece</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="超文本标记语言">超文本标记语言</h2>
+<p>超文本：使用超链接，网状结构</p>
+<p>标记语言：标签构成的语言，如html，xml</p>
+<a id="more"></a>
+<h2 id="语法">语法</h2>
+<p>后缀名:.html或.htm，二者一样</p>
+<h4 id="标签种类">标签种类</h4>
+<ul>
+<li>围堵标签：包含开始标签和结束标签</li>
+<li>自闭合标签</li>
+</ul>
+<h4 id="标签属性">标签属性</h4>
+<p>key:“value”</p>
+<h4 id="基本结构">基本结构</h4>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!Doctype <span class="meta-keyword">html</span>&gt;</span>		<span class="comment">&lt;!--告诉浏览器使用什么样的规范来解析html文档，不写可能每个浏览器默认规范不同--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span>		<span class="comment">&lt;!--根标签--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>/&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">title</span>&gt;</span></span><br><span class="line">            标题，head中用户唯一可见的内容</span><br><span class="line">        <span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">link</span>&gt;</span><span class="tag">&lt;/<span class="name">link</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">		用户能看到的内容</span><br><span class="line">    <span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h6 id="meta">meta</h6>
+<p>提供页面的元信息</p>
+<ul>
+<li>页面编码<code>&lt;meta charset=&quot;UTF-8&quot;&gt;</code></li>
+<li>刷新和跳转<code>&lt;meta http-equiv=&quot;Refresh&quot; Content=&quot;5;Url=...&quot;&gt;</code>Content里的数字是刷新时间，如果Content里有Url，则刷新之后跳转到该网站</li>
+<li>关键字<code>&lt;meta name=&quot;...&quot; Content=&quot;...&quot;&gt;</code>用来给爬虫和搜索引擎使用</li>
+<li>IE的兼容<code>&lt;meta http-equiv=&quot;X-UA-Compatible&quot; Content&gt;=&quot;IE=edge&quot;</code></li>
+</ul>
+<h6 id="link">link</h6>
+<ul>
+<li>引入css<code>&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;...&quot;&gt;</code></li>
+<li>使用icon作为标题的图片<code>&lt;link rel=&quot;shortcut icon&quot; href=&quot;...&quot;&gt;</code></li>
+</ul>
+<h2 id="body内标签">body内标签</h2>
+<h4 id="特殊字符">特殊字符</h4>
+<p><a href="https://blog.csdn.net/u013778905/article/details/53177042" target="_blank" rel="noopener">https://blog.csdn.net/u013778905/article/details/53177042</a></p>
+<h4 id="分类">分类</h4>
+<ul>
+<li>块级标签：自己占一行，有高度和宽度。如div，h1，p</li>
+<li>行内标签：有多少内容占多少，无高度和宽度。如a，span，select</li>
+</ul>
+<h4 id="p和br标签">p和br标签</h4>
+<p>p是一个段落，自动换两行</p>
+<p><code>&lt;br&gt;</code>是换行符</p>
+<h4 id="a标签">a标签</h4>
+<p><code>&lt;a href=&quot;...&quot;&gt;显示的内容&lt;/a&gt;</code>a标签href属性的跳转功能是特有的</p>
+<ul>
+<li>
+<p>跳转：href里可以是url，跳转到网页</p>
+</li>
+<li>
+<p>锚：也可以是#id，跳转到当前页面对应id的标签处</p>
+<blockquote>
+<p>html中id值唯一</p>
+</blockquote>
+</li>
+</ul>
+<p>a标签有特有属性target，<code>target=&quot;_blank&quot;</code>表示跳转时打开新的标签页</p>
+<h4 id="h标签">h标签</h4>
+<p>从h1到h6</p>
+<p>html的样式默认情况下如此，不过它们都可以被css自定义</p>
+<h4 id="div和span">div和span</h4>
+<p>本身没有特殊效果，但是可以修改其中内容的样式</p>
+<h4 id="u-input-u"><u>input</u></h4>
+<p>单行文本框<code>&lt;input type=&quot;text&quot;/&gt;</code></p>
+<p>密文<code>&lt;input type=&quot;password&quot;/&gt;</code></p>
+<p>多行文本框<code>&lt;textarea&gt;...&lt;/textarea&gt;</code></p>
+<p>单选圆钮<code>&lt;input type=&quot;radio&quot;/&gt;</code>，想要多个互斥可以在每个标签里加<code>name=&quot;...&quot;</code>属性且值相同</p>
+<p>复选框<code>&lt;input type=&quot;checkbox&quot;/&gt;</code>，可以通过cb.checked的true/false（是obj.property不是attribute）操作选中与不选</p>
+<p>选择文件<code>&lt;input type=&quot;file&quot; /&gt;</code></p>
+<p>按钮<code>&lt;input type=&quot;button&quot; value=&quot;&quot; /&gt;</code>，空按钮，默认无功能</p>
+<h4 id="select">select</h4>
+<p>选择下拉框</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">select</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">oupgroup</span> <span class="attr">lable</span>=<span class="string">"..."</span>&gt;</span>		<span class="comment">&lt;!--分组--&gt;</span></span><br><span class="line">    	<span class="tag">&lt;<span class="name">option</span>&gt;</span>...<span class="tag">&lt;/<span class="name">option</span>&gt;</span>		<span class="comment">&lt;!--选择项--&gt;</span></span><br><span class="line">    	<span class="tag">&lt;<span class="name">option</span>&gt;</span>...<span class="tag">&lt;/<span class="name">option</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">oupgroup</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">oupgroup</span> <span class="attr">lable</span>=<span class="string">"..."</span>&gt;</span></span><br><span class="line">    	<span class="tag">&lt;<span class="name">option</span>&gt;</span>...<span class="tag">&lt;/<span class="name">option</span>&gt;</span></span><br><span class="line">    	<span class="tag">&lt;<span class="name">option</span>&gt;</span>...<span class="tag">&lt;/<span class="name">option</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">oupgroup</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>option中可以加属性<code>size=&quot;5&quot;</code>表示下拉框打开后显示几个选项，属性<code>multiple</code>表示可以多选</p>
+<h4 id="form标签、嵌套按钮和表单提交">form标签、嵌套按钮和表单提交</h4>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">form</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!--之前已经有一些需要填写的部件--&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"submit"</span> <span class="attr">value</span>=<span class="string">"按钮上显示的字"</span>&gt;</span>	<span class="comment">&lt;!--提交并清空--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"reset"</span> <span class="attr">value</span>=<span class="string">"按钮上显示的字"</span>&gt;</span>	<span class="comment">&lt;!--清空--&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>submit和reset可以对当前form表单里填写的内容进行控制，对input、select、textarea都有效</p>
+<ul>
+<li>
+<p><code>&lt;form action=&quot;url&quot; method=&quot;get&quot;&gt;</code></p>
+<p>action中填写提交到的url，不能带参数，默认为当前页面</p>
+<p>method是提交方式，默认为get，还有post方式</p>
+</li>
+<li>
+<p>想要服务器获取数据，需要加name属性，文本框提交的数据格式是name:text的字典</p>
+</li>
+<li>
+<p>表单中的互斥单选圆钮name属性相同，只要有其中之一勾选，提交的数据就为name:on；若想区分，则给每个圆钮加<code>value=&quot;...&quot;</code>的属性，提交的数据为name:value</p>
+</li>
+<li>
+<p>进行<strong>文件提交</strong>，服务器获得的是name:文件名，而不是文件，需要在form中加入属性**<code>enctype=&quot;multipart/form-data&quot;</code>**才会分块上传</p>
+</li>
+<li>
+<p>select中，name是select标签的属性，value是option标签的属性</p>
+</li>
+</ul>
+<p>提交表单的顺序：</p>
+<p>先根据form表单中enctype属性对数据进行编码，再根据form表单中的action和method属性向指定的地址发送数据</p>
+<p>其他通过form表单将数据传递到后端的笔记，见<a href="https://chenyz2000.github.io/Blog/Front%20End/%E5%89%8D%E5%90%8E%E7%AB%AF%E5%88%86%E7%A6%BB/">《前后端分离》</a></p>
+<h4 id="其他">其他</h4>
+<h6 id="image">image</h6>
+<p><code>&lt;img src=&quot;...&quot;&gt;</code>插入图片</p>
+<h6 id="Lable">Lable</h6>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">lable</span> <span class="attr">for</span>=<span class="string">"id"</span>&gt;</span>...<span class="tag">&lt;/<span class="name">lable</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">id</span>=<span class="string">"..."</span> <span class="attr">type</span>=<span class="string">"..."</span> /&gt;</span></span><br></pre></td></tr></table></figure>
+<p>点击lable时会触发关联id的元素</p>
+<h6 id="ul，ol，dl">ul，ol，dl</h6>
+<p>序号，ul是圆点，ol是数字，dl中dt是顶格dd是缩进</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">ul</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span>...<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span>...<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">ol</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">li</span>&gt;</span>...<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span>...<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">ol</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dl</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">dt</span>&gt;</span>...<span class="tag">&lt;/<span class="name">dt</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">dd</span>&gt;</span>...<span class="tag">&lt;/<span class="name">dd</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dl</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h6 id="table">table</h6>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">table</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">thead</span>&gt;</span>		<span class="comment">&lt;!--标题--&gt;</span></span><br><span class="line">    	<span class="tag">&lt;<span class="name">tr</span>&gt;</span>		<span class="comment">&lt;!--行--&gt;</span></span><br><span class="line">        	<span class="tag">&lt;<span class="name">th</span>&gt;</span>标题一<span class="tag">&lt;/<span class="name">th</span>&gt;</span>		<span class="comment">&lt;!--列--&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">th</span>&gt;</span>标题一<span class="tag">&lt;/<span class="name">th</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">thead</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">tbody</span>&gt;</span>		<span class="comment">&lt;!--内容--&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">td</span>&gt;</span>内容一<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">td</span>&gt;</span>内容二<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">tbody</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">table</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>thead和tbody可以省略，只要tr套th或td一行一行缕下来就行</p>
+<p>table属性<code>border=&quot;1&quot;</code>显示表格线</p>
+<p>合并单元格：横向合并td属性<code>clospan=&quot;2&quot;</code>，纵向合并td属性<code>rowspan=&quot;2&quot;</code>，还要把多余的格删除</p>
+<h6 id="fieldset">fieldset</h6>
+<p><code>&lt;fieldset&gt;&lt;/fieldset&gt;</code>扩住的部分外围会有一个边框</p>
+<h6 id="iframe">iframe</h6>
+<p><code>&lt;iframe src=&quot;url&quot;&gt;&lt;/iframe&gt;</code>将其他网页展示在本网页</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>Post author:</strong>
+    Chen Yanzhi
+  </li>
+  <li class="post-copyright-link">
+    <strong>Post link:</strong>
+    <a href="https://chenyz2000.github.io/CS/Front%20End/Three-piece/HTML/" title="HTML">https://chenyz2000.github.io/CS/Front%20End/Three-piece/HTML/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>Copyright Notice: </strong>
+    All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> unless stating additionally.
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Spring-Boot/" rel="tag"># Spring Boot</a>
+          
+            <a href="/tags/HTML/" rel="tag"># HTML</a>
+          
+            <a href="/tags/request/" rel="tag"># request</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/CS/Back%20End/Java%20Web/JSP/" rel="next" title="JSP">
+                <i class="fa fa-chevron-left"></i> JSP
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/CS/Back%20End/Linux/%E7%BD%91%E7%BB%9C%E9%85%8D%E7%BD%AE/" rel="prev" title="网络配置">
+                网络配置 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.jpg"
+                alt="Chen Yanzhi" />
+            
+              <p class="site-author-name" itemprop="name">Chen Yanzhi</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+                <a href="/archives">
+                  <span class="site-state-item-count">70</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-name">categories</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">70</span>
+                  <span class="site-state-item-name">tags</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/chenyz2000" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:chenyanzhi_2000@163.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#超文本标记语言"><span class="nav-text">超文本标记语言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#语法"><span class="nav-text">语法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#标签种类"><span class="nav-text">标签种类</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#标签属性"><span class="nav-text">标签属性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#基本结构"><span class="nav-text">基本结构</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#meta"><span class="nav-text">meta</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#link"><span class="nav-text">link</span></a></li></ol></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#body内标签"><span class="nav-text">body内标签</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#特殊字符"><span class="nav-text">特殊字符</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#分类"><span class="nav-text">分类</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#p和br标签"><span class="nav-text">p和br标签</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#a标签"><span class="nav-text">a标签</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#h标签"><span class="nav-text">h标签</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#div和span"><span class="nav-text">div和span</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#u-input-u"><span class="nav-text">input</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#select"><span class="nav-text">select</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#form标签、嵌套按钮和表单提交"><span class="nav-text">form标签、嵌套按钮和表单提交</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#其他"><span class="nav-text">其他</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#image"><span class="nav-text">image</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#Lable"><span class="nav-text">Lable</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#ul，ol，dl"><span class="nav-text">ul，ol，dl</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#table"><span class="nav-text">table</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#fieldset"><span class="nav-text">fieldset</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#iframe"><span class="nav-text">iframe</span></a></li></ol></li></ol></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Chen Yanzhi</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

@@ -1,0 +1,926 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="en">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="JSP," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="JSP Java Server Pages JSP执行流程 第一次访问  客户端提交请求 tomcat服务端（JSP引擎）将JSP翻译成Java源文件（即Servlet），从tomcat&#x2F;work中找Java文件能找到包含Servlet的_jspInit、 _jspService方法和out.write()的 并将其编译为.class文件，执行.class文件返回结果  第二次访问  直接访问cl">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JSP">
+<meta property="og:url" content="https://chenyz2000.github.io/CS/Back%20End/Java%20Web/JSP/index.html">
+<meta property="og:site_name" content="CYZ&#39;s Blog">
+<meta property="og:description" content="JSP Java Server Pages JSP执行流程 第一次访问  客户端提交请求 tomcat服务端（JSP引擎）将JSP翻译成Java源文件（即Servlet），从tomcat&#x2F;work中找Java文件能找到包含Servlet的_jspInit、 _jspService方法和out.write()的 并将其编译为.class文件，执行.class文件返回结果  第二次访问  直接访问cl">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-05-29T04:23:00.000Z">
+<meta property="article:modified_time" content="2020-11-22T16:00:00.000Z">
+<meta property="article:author" content="Chen Yanzhi">
+<meta property="article:tag" content="JSP">
+<meta name="twitter:card" content="summary">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"always","offset":12,"b2t":true,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://chenyz2000.github.io/CS/Back End/Java Web/JSP/"/>
+
+
+
+
+
+  <title>JSP | CYZ's Blog</title>
+  
+
+
+
+
+
+
+
+
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">CYZ's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            About
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://chenyz2000.github.io/CS/Back%20End/Java%20Web/JSP/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Chen Yanzhi">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="CYZ's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">JSP</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-05-29T12:23:00+08:00">
+                2020-05-29
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Post modified&#58;</span>
+              
+              <time title="Post modified" itemprop="dateModified" datetime="2020-11-23T00:00:00+08:00">
+                2020-11-23
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Java-Web/" itemprop="url" rel="index">
+                    <span itemprop="name">Java Web</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="JSP">JSP</h2>
+<p>Java Server Pages</p>
+<h2 id="JSP执行流程">JSP执行流程</h2>
+<p>第一次访问</p>
+<ol>
+<li>客户端提交请求</li>
+<li>tomcat服务端（JSP引擎）将JSP翻译成Java源文件（即Servlet），从tomcat/work中找Java文件能找到包含Servlet的_jspInit、 _jspService方法和out.write()的</li>
+<li>并将其编译为.class文件，执行.class文件返回结果</li>
+</ol>
+<p>第二次访问</p>
+<ol>
+<li>直接访问class文件</li>
+<li>若服务端代码修改，则按第一次访问进行</li>
+</ol>
+<a id="more"></a>
+<h2 id="统一编码">统一编码</h2>
+<ul>
+<li>jsp翻译到Java的编码：.jsp文件中的contentType和pageEconding属性</li>
+<li>浏览器读取时的编码：.jsp文件中的content属性</li>
+<li>文本文件的编码<br>
+一般都用utf-8</li>
+</ul>
+<hr>
+<p>Java运行Tomcat时，会复制一份配置文件</p>
+<p>将web工程以包的形式上传到服务器，而不是部署到webapps中</p>
+<h2 id="JSP语法">JSP语法</h2>
+<h4 id="基本格式">基本格式</h4>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;%@ page language=<span class="string">"java"</span> contentType=<span class="string">"text/html; charset=UTF-8"</span> %&gt;</span><br><span class="line"></span><br><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;div&gt;123&lt;/div&gt;</span><br><span class="line">    &lt;%</span><br><span class="line">       其中放jsp脚本，即Java代码</span><br><span class="line">    %&gt;</span><br><span class="line">&lt;/body&gt;</span><br></pre></td></tr></table></figure>
+<h4 id="指令">指令</h4>
+<ul>
+<li><code>&lt;%@ page attr:&quot;val&quot; %&gt;</code>，定义整个JSP页面的相关属性，其中attr有
+<ul>
+<li>language，指定JSP页面编写的脚本语言，一般为&quot;Java&quot;</li>
+<li>import，导入的类，如<code>import=&quot;java.util.*,java.sql.*&quot;</code></li>
+<li>pageEncoding，为JSP文件编码</li>
+<li>contentType，为浏览器解析编码</li>
+</ul>
+</li>
+<li><code>&lt;%@ include attr:&quot;val&quot; %&gt;</code>，重用代码
+<ul>
+<li>只有file一个属性，类似于c中的include，相当于直接把代码拷贝进来</li>
+</ul>
+</li>
+<li><code>&lt;%@ taglib attr:&quot;val&quot;%&gt;</code>，需要JSLT的核心库进行配置
+<ul>
+<li>uri</li>
+</ul>
+</li>
+</ul>
+<h4 id="脚本Scriptlet">脚本Scriptlet</h4>
+<p>脚本转为HTML源代码body中的内容</p>
+<ul>
+<li><code>&lt;%  局部变量，常规Java语句  %&gt;</code></li>
+<li><code>&lt;%!  全局变量、定义方法  %&gt;</code>，可以被其他段的语句调用</li>
+<li><code>&lt;%=  输出的字符串或值  %&gt;</code>，相当于<code>&lt;%  out.print(字符串)  %&gt;</code></li>
+</ul>
+<blockquote>
+<p>多段脚本按照在整个JSP文件中的顺序进行，可以互相调用</p>
+</blockquote>
+<blockquote>
+<p>在JSP脚本中println也不换行，换行需要&lt;br&gt;</p>
+<p>可以解析字符串中的HTML代码</p>
+</blockquote>
+<h4 id="注释">注释</h4>
+<ul>
+<li>HTML注释：<code>&lt;!--  --&gt;</code>，可以在源代码中看到</li>
+<li>Java注释</li>
+<li>JSP注释：<code>&lt;%--  --%&gt;</code></li>
+</ul>
+<p>一般而言，修改配置文件需要重启Tomcat，修改页面文件不需要重启</p>
+<h2 id="JSP九大内置对象">JSP九大内置对象</h2>
+<p>自带的，不需要new也能使用的对象</p>
+<ul>
+<li>
+<p>out：向网页页面输出</p>
+</li>
+<li>
+<p>request：网页向服务端的请求信息</p>
+<p>response：服务器向网页的响应信息</p>
+</li>
+<li>
+<p>session：表示会话，保存用户的信息</p>
+<p>application：所有用户的共享信息</p>
+</li>
+<li>
+<p>pageContext：表示当前JSP页面的运行环境</p>
+</li>
+<li>
+<p>page, config, exception</p>
+</li>
+</ul>
+<h4 id="request">request</h4>
+<ul>
+<li>
+<p>.getParameter(name)，根据表单的name获取value</p>
+<p>.getParameterValues(name)，返回数组</p>
+</li>
+<li>
+<p>.setCharacterEncoding(“utf-8”)，设置请求时的编码</p>
+<p>（Tomcat7以前默认为ISO8859-1，Tomcat8以后为utf-8）</p>
+</li>
+<li>
+<p>.getRequestDispacher(“跳转向的页面”).forward()，请求转发</p>
+</li>
+<li>
+<p>.getServletContext()</p>
+</li>
+</ul>
+<h4 id="response">response</h4>
+<ul>
+<li>.sendRedirect(“url”)，重新定位到页面</li>
+<li>.setHeader(attr,value)</li>
+<li>.addCookie(Cookie c)</li>
+</ul>
+<h4 id="session">session</h4>
+<ul>
+<li>.getAttribute(“name”)，返回对象</li>
+<li>.setAttribute(“name”, Object value)</li>
+</ul>
+<h4 id="application">application</h4>
+<ul>
+<li></li>
+</ul>
+<h4 id="pageContext">pageContext</h4>
+<ul>
+<li>.getOut()和.getRequest()等等，可以获得当前页面的其他八个对象</li>
+<li>.</li>
+</ul>
+<h4 id="cookie">cookie</h4>
+<p>存储在用户浏览器上的数据，用来辨别用户身份</p>
+<h2 id="request注册">request注册</h2>
+<p>register.jsp和show.jsp</p>
+<p>在register.jsp中的form表单属性写<code>action=&quot;show.jsp&quot;</code></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>Post author:</strong>
+    Chen Yanzhi
+  </li>
+  <li class="post-copyright-link">
+    <strong>Post link:</strong>
+    <a href="https://chenyz2000.github.io/CS/Back%20End/Java%20Web/JSP/" title="JSP">https://chenyz2000.github.io/CS/Back%20End/Java%20Web/JSP/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>Copyright Notice: </strong>
+    All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> unless stating additionally.
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/JSP/" rel="tag"># JSP</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/CS/Back%20End/Java%20SE/JavaIO/" rel="next" title="JavaIO">
+                <i class="fa fa-chevron-left"></i> JavaIO
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/CS/Front%20End/Three-piece/HTML/" rel="prev" title="HTML">
+                HTML <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.jpg"
+                alt="Chen Yanzhi" />
+            
+              <p class="site-author-name" itemprop="name">Chen Yanzhi</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+                <a href="/archives">
+                  <span class="site-state-item-count">70</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-name">categories</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">70</span>
+                  <span class="site-state-item-name">tags</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/chenyz2000" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:chenyanzhi_2000@163.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#JSP"><span class="nav-text">JSP</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#JSP执行流程"><span class="nav-text">JSP执行流程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#统一编码"><span class="nav-text">统一编码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#JSP语法"><span class="nav-text">JSP语法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#基本格式"><span class="nav-text">基本格式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#指令"><span class="nav-text">指令</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#脚本Scriptlet"><span class="nav-text">脚本Scriptlet</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#注释"><span class="nav-text">注释</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#JSP九大内置对象"><span class="nav-text">JSP九大内置对象</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#request"><span class="nav-text">request</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#response"><span class="nav-text">response</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#session"><span class="nav-text">session</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#application"><span class="nav-text">application</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#pageContext"><span class="nav-text">pageContext</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#cookie"><span class="nav-text">cookie</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#request注册"><span class="nav-text">request注册</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Chen Yanzhi</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

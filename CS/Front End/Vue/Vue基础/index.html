@@ -1,0 +1,898 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="en">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Vue,axios," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="Vue.js 前端框架，擅长于数据操作、表单填写、页面内容根据数据进行渲染、页面元素部分刷新 页面由数据生成，只要数据就可以进行页面视图的渲染，不需要再操作DOM元素 使用Vue时，建议不使用jQuery，尽量不要做Dom操作 前端发展过程：  原生JS jQuery等类库。解决了浏览器大部分兼容性问题 前端模板引擎。调用模板引擎的方法生成DOM元素渲染页面，而不是直接操作DOM，解决了频繁操作D">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Vue基础">
+<meta property="og:url" content="https://chenyz2000.github.io/CS/Front%20End/Vue/Vue%E5%9F%BA%E7%A1%80/index.html">
+<meta property="og:site_name" content="CYZ&#39;s Blog">
+<meta property="og:description" content="Vue.js 前端框架，擅长于数据操作、表单填写、页面内容根据数据进行渲染、页面元素部分刷新 页面由数据生成，只要数据就可以进行页面视图的渲染，不需要再操作DOM元素 使用Vue时，建议不使用jQuery，尽量不要做Dom操作 前端发展过程：  原生JS jQuery等类库。解决了浏览器大部分兼容性问题 前端模板引擎。调用模板引擎的方法生成DOM元素渲染页面，而不是直接操作DOM，解决了频繁操作D">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-07-23T03:19:00.000Z">
+<meta property="article:modified_time" content="2020-08-24T02:30:00.000Z">
+<meta property="article:author" content="Chen Yanzhi">
+<meta property="article:tag" content="Vue">
+<meta property="article:tag" content="axios">
+<meta name="twitter:card" content="summary">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"always","offset":12,"b2t":true,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://chenyz2000.github.io/CS/Front End/Vue/Vue基础/"/>
+
+
+
+
+
+  <title>Vue基础 | CYZ's Blog</title>
+  
+
+
+
+
+
+
+
+
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">CYZ's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            About
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://chenyz2000.github.io/CS/Front%20End/Vue/Vue%E5%9F%BA%E7%A1%80/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Chen Yanzhi">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="CYZ's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Vue基础</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-07-23T11:19:00+08:00">
+                2020-07-23
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Post modified&#58;</span>
+              
+              <time title="Post modified" itemprop="dateModified" datetime="2020-08-24T10:30:00+08:00">
+                2020-08-24
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Vue/" itemprop="url" rel="index">
+                    <span itemprop="name">Vue</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="Vue-js">Vue.js</h2>
+<p>前端框架，擅长于数据操作、表单填写、页面内容根据数据进行渲染、页面元素部分刷新</p>
+<p>页面由数据生成，只要数据就可以进行页面视图的渲染，不需要再操作DOM元素</p>
+<p>使用Vue时，建议不使用jQuery，尽量不要做Dom操作</p>
+<p>前端发展过程：</p>
+<ol>
+<li>原生JS</li>
+<li>jQuery等类库。解决了浏览器大部分兼容性问题</li>
+<li>前端模板引擎。调用模板引擎的方法生成DOM元素渲染页面，而不是直接操作DOM，解决了频繁操作DOM的问题</li>
+<li>Vue等前端框架。只渲染变更内容，减少不必要的操作，提高渲染效率，解决渲染整个页面的问题</li>
+</ol>
+<p>框架是一套完整的技术解决方案，项目选择框架后难以更改；类库提供的是单一的小功能，对项目的侵入性较小</p>
+<a id="more"></a>
+<p>开发环境版本<code>&lt;script src=&quot;https://cdn.jsdelivr.net/npm/vue/dist/vue.js&quot;&gt;&lt;/script&gt;</code></p>
+<p>生产环境mini版本<code>&lt;script src=&quot;https://cdn.jsdelivr.net/npm/vue&quot;&gt;&lt;/script&gt;</code></p>
+<h4 id="三大前端框架">三大前端框架</h4>
+<p>都适用于做单页面应用程序</p>
+<p>Vue人气比较高，React使用的人比较多</p>
+<p>React除了开发网站还可以开发手机APP，Vue在Weex的帮助下也可以</p>
+<h2 id="Vue实例">Vue实例</h2>
+<p>Vue实例写在js文件中</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">    new Vue(&#123;</span><br><span class="line">        el:&quot;#abc&quot;,</span><br><span class="line">        data:&#123;</span><br><span class="line">            msg:&quot;hello&quot;</span><br><span class="line">        &#125;,</span><br><span class="line">        methods:&#123;</span><br><span class="line">            Function:function()&#123;&#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">&lt;&#x2F;script&gt;</span><br></pre></td></tr></table></figure>
+<p>在Vue实例中有多个私有属性，分别为</p>
+<h4 id="el-挂载点">el 挂载点</h4>
+<p>设置Vue实例挂载点，使实例的作用域为挂载的元素内</p>
+<p>可以根据id、class、标签选择器进行挂载（所以<strong>可以挂在在若干个标签上</strong>），但不可以挂载到<html>和<body>上</p>
+<h4 id="data-数据对象">data 数据对象</h4>
+<p>Vue实例的数据定义在data中</p>
+<p>当引用这些数据时，普通数据用<code></code>，数组内数据用<code></code>，集合内数据用<code></code></p>
+<h4 id="methods-方法">methods 方法</h4>
+<p>有两种定义方法，类似声明式定义<code>Func(){}</code>，类似表达式定义<code>Func:function(){}</code></p>
+<p>方法中通过this代表Vue实例，可以获取data中的数据</p>
+<hr>
+<p><strong>directives 指令</strong>、<strong>components 组件</strong>、<strong>filters 过滤器</strong>见<em>Vue自定义指令、组件、过滤器</em></p>
+<p><strong>生命周期函数</strong>见<em>Vue实例生命周期</em></p>
+<hr>
+<h4 id="refs">$refs</h4>
+<p>在挂载了Vue实例的元素内，在标签的属性加上ref=“xxx”，就可以在Vue实例（父标签）中用this.$.refs.xxx定位写了ref属性的标签</p>
+<p>ref的作用是用来给元素或子组件注册引用信息，引用信息会注册到Vue实例的$refs上。</p>
+<p>如果使用ref的是普通的DOM元素，引用指向的就是该DOM元素，Vue实例中定位这个DOM对象可以进行JS操作</p>
+<p>如果使用ref的是子组件，引用指向的就是该子组件，Vue实例中定位这个子组件可以访问它的data和methods</p>
+<h2 id="Vue指令">Vue指令</h2>
+<p>Vue指令，作为<strong>标签的属性</strong>，属性值写在Vue实例中</p>
+<h4 id="v-text与v-html">v-text与v-html</h4>
+<p>v-text，设置标签的文本。属性值写在Vue实例的data中。类似直接把{ {  } }写在标签的文本中，但v-text会覆盖标签文本的内容</p>
+<p>v-html，设置标签的innerHTML，内容中有HTML结构会被解析为标签，其他与v-text一样</p>
+<h4 id="v-on">v-on</h4>
+<p><code>v-on:事件名=&quot;Func()&quot;</code>，v-on:可简写为<code>@</code>，为元素绑定事件，函数Func()写在Vue的methods里，写法<code>Func:function(){  }</code></p>
+<h4 id="v-bind">v-bind</h4>
+<p>用于<strong>绑定属性</strong>，可以是src、style、herf、class等标签属性</p>
+<p>格式为<code>v-bind:attr=&quot;value&quot;</code>，或简写为<code>:attr=&quot;value&quot;</code></p>
+<p>如<code>&lt;div v-bind:style=&quot;{fontSize: size +'px'}&quot;&gt;&lt;/div&gt;</code></p>
+<p>v-bind会把value（引号内的内容）<strong>当成JS表达式</strong>来处理。它可以是字符串（加上value外的引号一共是两层引号），可以是函数，可以是JS变量，可以是<strong>Vue实例的data中变量</strong>，可以是JS对象，可以是数组，可以是布尔值（值为false时该属性被移除）</p>
+<h6 id="举例v-bind-class-“”">举例v-bind:class=“”</h6>
+<p>不能用<code>:class=&quot;c1&quot;</code>，Vue会去找叫做c1的方法或变量，而不是css样式</p>
+<ul>
+<li>字符串<code>:class=&quot;'.c1 .c2'&quot;</code>，两层引号</li>
+<li>数组<code>:class=&quot;['c1','c2']&quot;</code></li>
+<li>三元表达式<code>:class=&quot;['c0', 条件?'c1':'c2']&quot;</code>，或把三元表达式改造成对象<code>:class=&quot;[{'c1':flag}, 'c2']&quot;</code></li>
+<li>JS对象<code>:class=&quot;{c1:flag1, c2:flag2}&quot;</code>，对象的键可带引号可不带，值为布尔类型</li>
+</ul>
+<h6 id="举例v-bind-style-“”">举例v-bind:style=“”</h6>
+<ul>
+<li>对象<code>:style=&quot;{color:'red', 'background-color':'yellow'}&quot;</code>，不符合标识符规则的键需要加引号</li>
+<li>数组中包含对象<code>:style=&quot;[{对象1},{对象2}]&quot;</code></li>
+</ul>
+<h4 id="v-show">v-show</h4>
+<p><code>v-show=&quot;条件表达式&quot;</code></p>
+<p>满足条件时显示元素，不满足时隐藏元素</p>
+<p>无论显示还是隐藏，<strong>元素一直存在</strong>，修改的只是css的display属性，有较高的初始性能消耗</p>
+<h4 id="v-if与v-else-if与v-else">v-if与v-else-if与v-else</h4>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">v-if</span>=<span class="string">"type==='A'"</span>&gt;</span>A<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">v-else-if</span>=<span class="string">"type==='B'"</span>&gt;</span>B<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">v-else-if</span>=<span class="string">"type==='C'"</span>&gt;</span>C<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">v-else</span>&gt;</span>Not A,B,C<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>用来实现条件渲染，表达式为值为真则渲染<strong>创建</strong>元素，值为假则<strong>移除</strong>这个元素，有较高的切换性能消耗</p>
+<h4 id="v-for">v-for</h4>
+<p>遍历数组、对象属性、基本数据范围，进行渲染</p>
+<p>格式<code>v-for=&quot;e in xxx&quot;</code>，之后可以用<code></code>表示获取的元素，而xxx可以有以下几种情形</p>
+<ul>
+<li>
+<p>数据范围<code>v-for=&quot;i in 10&quot;</code>，范围是[1,10]</p>
+</li>
+<li>
+<p>遍历数组<code>v-for=&quot;item in list&quot;</code>，list为<strong>整数数组</strong></p>
+<p>可以<code>v-for=&quot;(item,i) in list&quot;</code>，此时i为索引</p>
+<p>若数组为<strong>对象数组</strong>，item代表的是对象，可以用<code></code>表示对象属性</p>
+</li>
+<li>
+<p>遍历对象属性<code>v-for=&quot;(key,value) in obj&quot;</code></p>
+<p>也可以<code>(key,value,i)</code>获取索引</p>
+</li>
+</ul>
+<p>注意，在v-for中，拥有对父作用域属性的完全访问权限。（虽然item是items中的，但是还可以使用items外的parent）</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">v-for</span>=<span class="string">"item in items"</span>&gt;</span>&#123;&#123;parent&#125;&#125;--&#123;&#123;item.text&#125;&#125;<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="actionscript">    <span class="keyword">var</span> example = <span class="keyword">new</span> Vue(&#123;</span></span><br><span class="line"><span class="actionscript">      el:<span class="string">'#app'</span>,</span></span><br><span class="line">      data:&#123;</span><br><span class="line"><span class="actionscript">        parent:<span class="string">'父作用域'</span></span></span><br><span class="line"><span class="actionscript">        items:[&#123;text:<span class="string">'文本1'</span>&#125;,&#123;text:<span class="string">'文本2'</span>&#125;]</span></span><br><span class="line">      &#125;</span><br><span class="line">    &#125;)</span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>在2.2.0+版本中，使用v-for时需要指定key，使元素状态和数据关联起来，key只能是string或num</p>
+<p><code>v-for=&quot;item in list&quot; :key=&quot;item.id&quot;</code>，用v-bind绑定的形式使用key</p>
+<h4 id="v-model">v-model</h4>
+<p><strong>只用于表单</strong>，创建双向数据绑定</p>
+<p><code>&lt;input v-model=&quot;msg&quot;&gt;</code>，输入文本框的值会改变Vue实例data中msg的值</p>
+<h4 id="v-cloak">v-cloak</h4>
+<p>解决插值表达式闪烁问题</p>
+<p>设置css</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-attr">[v-cloak]</span>&#123;</span><br><span class="line">    <span class="attribute">display</span>:none;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>并在需要的标签上加上v-cloak</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>Post author:</strong>
+    Chen Yanzhi
+  </li>
+  <li class="post-copyright-link">
+    <strong>Post link:</strong>
+    <a href="https://chenyz2000.github.io/CS/Front%20End/Vue/Vue%E5%9F%BA%E7%A1%80/" title="Vue基础">https://chenyz2000.github.io/CS/Front%20End/Vue/Vue%E5%9F%BA%E7%A1%80/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>Copyright Notice: </strong>
+    All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> unless stating additionally.
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Vue/" rel="tag"># Vue</a>
+          
+            <a href="/tags/axios/" rel="tag"># axios</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/CS/Front%20End/Three-piece/jQuery/" rel="next" title="jQuery">
+                <i class="fa fa-chevron-left"></i> jQuery
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/CS/Tools/Maven/" rel="prev" title="Maven">
+                Maven <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.jpg"
+                alt="Chen Yanzhi" />
+            
+              <p class="site-author-name" itemprop="name">Chen Yanzhi</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+                <a href="/archives">
+                  <span class="site-state-item-count">70</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-name">categories</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">70</span>
+                  <span class="site-state-item-name">tags</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/chenyz2000" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:chenyanzhi_2000@163.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Vue-js"><span class="nav-text">Vue.js</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#三大前端框架"><span class="nav-text">三大前端框架</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Vue实例"><span class="nav-text">Vue实例</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#el-挂载点"><span class="nav-text">el 挂载点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#data-数据对象"><span class="nav-text">data 数据对象</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#methods-方法"><span class="nav-text">methods 方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#refs"><span class="nav-text">$refs</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Vue指令"><span class="nav-text">Vue指令</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#v-text与v-html"><span class="nav-text">v-text与v-html</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#v-on"><span class="nav-text">v-on</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#v-bind"><span class="nav-text">v-bind</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#举例v-bind-class-“”"><span class="nav-text">举例v-bind:class&#x3D;“”</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#举例v-bind-style-“”"><span class="nav-text">举例v-bind:style&#x3D;“”</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#v-show"><span class="nav-text">v-show</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#v-if与v-else-if与v-else"><span class="nav-text">v-if与v-else-if与v-else</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#v-for"><span class="nav-text">v-for</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#v-model"><span class="nav-text">v-model</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#v-cloak"><span class="nav-text">v-cloak</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Chen Yanzhi</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
