@@ -379,23 +379,12 @@ Linux系统启用X协议，配置X Client，本地有桌面环境的机器（如
 <p>xmanager通过端口将主机服务器的UI界面引导到本地电脑进行展现，如果操作中网络断开，操作将失败</p>
 <p>vnc在远程端上占用更小，xmanager更清晰</p>
 <a id="more"></a>
-<h2 id="SSH-X11">SSH+X11</h2>
+<h2 id="SSH-X11转发">SSH+X11转发</h2>
 <p><strong>服务器端不用安装服务和进行设置，开启SSH即可</strong>，只要求服务器有桌面环境如Gnome。</p>
 <h4 id="heavy-check-mark-服务器端SSH配置">:heavy_check_mark: 服务器端SSH配置</h4>
 <p>配置<code>/etc/ssh/sshd_config </code></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">AllowTcpForwarding yes</span><br><span class="line">X11Forwarding yes</span><br></pre></td></tr></table></figure>
-<h4 id="客户端为Linux的配置（理论上）">客户端为Linux的配置（理论上）</h4>
-<ol>
-<li>配置<code>/etc/ssh/sshd_config </code></li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ForwardAgent yes</span><br><span class="line">ForwardX11 yes</span><br><span class="line">ForwardX11Trusted yes</span><br></pre></td></tr></table></figure>
-<ol start="2">
-<li>运行命令<code>xhost + 172.16.1.45</code>，允许远程X界面连接过来：(注意+左右两边的空格)</li>
-<li>用<code>ssh -X username@172.16.1.45</code>进行图形化连接</li>
-<li>运行<code>export DISPLAY=localhost:0.0</code>，也有可能是10.0，表示将远程X的显示界面定位到本地的0.0显示器</li>
-<li>验证，<code>xclock</code>或<code>gedit</code>等，能够显示窗口</li>
-</ol>
-<h4 id="heavy-check-mark-Windows客户端方案1——xshell-VcXsrv">:heavy_check_mark:Windows客户端方案1——xshell+VcXsrv</h4>
+<h4 id="heavy-check-mark-Windows客户端方案1——xshell-VcXsrv（较流畅，画质良好，启动7s，延迟3s内，未解决的问题：图像占了全屏）">:heavy_check_mark:Windows客户端方案1——xshell+VcXsrv（较流畅，画质良好，启动7s，延迟3s内，未解决的问题：图像占了全屏）</h4>
 <p>xshell可以用putty代替， VcXsrv可以用Xming或Xmanager代替</p>
 <p>VcXsrv和Xming是windows上的X Server，是开源软件；Xmanager是商业软件</p>
 <hr>
@@ -408,17 +397,29 @@ Linux系统启用X协议，配置X Client，本地有桌面环境的机器（如
 <li>
 <p>xfce4，gnome-session，startkde</p>
 <blockquote>
-<p>gnome-session只能运行一个，如果要在远程运行，服务器就只能用命令行</p>
+<p>gnome-session只能运行一个，如果要在远程运行，服务器就只能打开在命令行界面</p>
 </blockquote>
 </li>
 </ul>
-<h4 id="heavy-check-mark-Windows客户端方案2——Xstart">:heavy_check_mark:Windows客户端方案2——Xstart</h4>
+<h4 id="heavy-check-mark-Windows客户端方案2——Xstart（卡顿，画质高，启动10s，延迟5s）">:heavy_check_mark:Windows客户端方案2——Xstart（卡顿，画质高，启动10s，延迟5s）</h4>
+<p>Xstart在Xmanager中有</p>
 <p>类似上一个，不过没有用xshell，而是直接用Xstart</p>
 <blockquote>
 <p>Xstart是一个窗口化的登陆界面，支持很多协议，如常用的SSH、Telnet等</p>
 </blockquote>
 <p>在Xstart中设置好服务器的ip、用户后，设置命令，此处的命令为上一个方案中的命令</p>
-<h2 id="heavy-check-mark-VNC">:heavy_check_mark:VNC</h2>
+<h4 id="客户端为Linux的配置（理论上）">客户端为Linux的配置（理论上）</h4>
+<ol>
+<li>配置<code>/etc/ssh/sshd_config </code></li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ForwardAgent yes</span><br><span class="line">ForwardX11 yes</span><br><span class="line">ForwardX11Trusted yes</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>运行命令<code>xhost + 172.16.1.45</code>，允许远程X界面连接过来：(注意+左右两边的空格)</li>
+<li>用<code>ssh -X username@172.16.1.45</code>进行图形化连接</li>
+<li>运行<code>export DISPLAY=localhost:0.0</code>，也有可能是10.0，表示将远程X的显示界面定位到本地的0.0显示器</li>
+<li>验证，<code>xclock</code>或<code>gedit</code>等，能够显示窗口</li>
+</ol>
+<h2 id="heavy-check-mark-VNC（流畅，画质中等）">:heavy_check_mark:VNC（流畅，画质中等）</h2>
 <p>以下是成功连接Ubuntu的例子，非常流畅</p>
 <p>Gnome3和Unity桌面，由于兼容性问题，VNC连接后会什么也无法显示，只能使用Gnome2或xface</p>
 <p><code>apt install xfce4</code></p>
@@ -710,7 +711,7 @@ Linux系统启用X协议，配置X Client，本地有桌面环境的机器（如
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#heavy-check-mark-图形化接口协议"><span class="nav-text">:heavy_check_mark:图形化接口协议</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SSH-X11"><span class="nav-text">SSH+X11</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#heavy-check-mark-服务器端SSH配置"><span class="nav-text">:heavy_check_mark: 服务器端SSH配置</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#客户端为Linux的配置（理论上）"><span class="nav-text">客户端为Linux的配置（理论上）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#heavy-check-mark-Windows客户端方案1——xshell-VcXsrv"><span class="nav-text">:heavy_check_mark:Windows客户端方案1——xshell+VcXsrv</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#heavy-check-mark-Windows客户端方案2——Xstart"><span class="nav-text">:heavy_check_mark:Windows客户端方案2——Xstart</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#heavy-check-mark-VNC"><span class="nav-text">:heavy_check_mark:VNC</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Ubuntu服务端"><span class="nav-text">Ubuntu服务端</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#客户端"><span class="nav-text">客户端</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#vncserver自启动！！"><span class="nav-text">vncserver自启动！！</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#X-Window原理"><span class="nav-text">X Window原理</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#工作流程"><span class="nav-text">工作流程</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#X-Window启动过程"><span class="nav-text">X Window启动过程</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#startx方式（命令行启动）"><span class="nav-text">startx方式（命令行启动）</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#display-manager（DM）方式（图形界面启动）"><span class="nav-text">display manager（DM）方式（图形界面启动）</span></a></li></ol></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#VNC原理"><span class="nav-text">VNC原理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Linux四大图形界面"><span class="nav-text">Linux四大图形界面</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#XDCMP"><span class="nav-text">XDCMP</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#heavy-check-mark-图形化接口协议"><span class="nav-text">:heavy_check_mark:图形化接口协议</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SSH-X11转发"><span class="nav-text">SSH+X11转发</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#heavy-check-mark-服务器端SSH配置"><span class="nav-text">:heavy_check_mark: 服务器端SSH配置</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#heavy-check-mark-Windows客户端方案1——xshell-VcXsrv（较流畅，画质良好，启动7s，延迟3s内，未解决的问题：图像占了全屏）"><span class="nav-text">:heavy_check_mark:Windows客户端方案1——xshell+VcXsrv（较流畅，画质良好，启动7s，延迟3s内，未解决的问题：图像占了全屏）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#heavy-check-mark-Windows客户端方案2——Xstart（卡顿，画质高，启动10s，延迟5s）"><span class="nav-text">:heavy_check_mark:Windows客户端方案2——Xstart（卡顿，画质高，启动10s，延迟5s）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#客户端为Linux的配置（理论上）"><span class="nav-text">客户端为Linux的配置（理论上）</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#heavy-check-mark-VNC（流畅，画质中等）"><span class="nav-text">:heavy_check_mark:VNC（流畅，画质中等）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Ubuntu服务端"><span class="nav-text">Ubuntu服务端</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#客户端"><span class="nav-text">客户端</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#vncserver自启动！！"><span class="nav-text">vncserver自启动！！</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#X-Window原理"><span class="nav-text">X Window原理</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#工作流程"><span class="nav-text">工作流程</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#X-Window启动过程"><span class="nav-text">X Window启动过程</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#startx方式（命令行启动）"><span class="nav-text">startx方式（命令行启动）</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#display-manager（DM）方式（图形界面启动）"><span class="nav-text">display manager（DM）方式（图形界面启动）</span></a></li></ol></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#VNC原理"><span class="nav-text">VNC原理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Linux四大图形界面"><span class="nav-text">Linux四大图形界面</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#XDCMP"><span class="nav-text">XDCMP</span></a></li></ol></div>
             
 
           </div>

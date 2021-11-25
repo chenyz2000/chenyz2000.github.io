@@ -79,15 +79,15 @@
 
 
 
-<meta name="description" content="注解、反射是Spring系列、MyBatis等框架的底层机制 反射Reflection java.lang.reflect包 Java是静态语言，但反射让Java有了一定的动态性，可以称为准动态语言 不过反射的速度会慢，例如用反射创建对象的速度比new慢几十上百倍">
+<meta name="description" content="反射，Reflection，在java.lang.reflect包中 Java是静态语言，但反射让Java有了一定的动态性，可以称为准动态语言 但反射的效率较低，eg：使用反射创建对象的速度比new慢几十上百倍 注解、反射是Spring系列、MyBatis等框架的底层机制">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Java反射">
 <meta property="og:url" content="https://chenyz2000.github.io/CS/Back%20End/Java%20SE/Java%E5%8F%8D%E5%B0%84/index.html">
 <meta property="og:site_name" content="CYZ&#39;s Blog">
-<meta property="og:description" content="注解、反射是Spring系列、MyBatis等框架的底层机制 反射Reflection java.lang.reflect包 Java是静态语言，但反射让Java有了一定的动态性，可以称为准动态语言 不过反射的速度会慢，例如用反射创建对象的速度比new慢几十上百倍">
+<meta property="og:description" content="反射，Reflection，在java.lang.reflect包中 Java是静态语言，但反射让Java有了一定的动态性，可以称为准动态语言 但反射的效率较低，eg：使用反射创建对象的速度比new慢几十上百倍 注解、反射是Spring系列、MyBatis等框架的底层机制">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2021-10-05T16:00:00.000Z">
-<meta property="article:modified_time" content="2021-10-06T16:00:00.000Z">
+<meta property="article:modified_time" content="2021-11-24T16:00:00.000Z">
 <meta property="article:author" content="Chen Yanzhi">
 <meta property="article:tag" content="Java">
 <meta name="twitter:card" content="summary">
@@ -308,8 +308,8 @@
               
                 <span class="post-meta-item-text">Post modified&#58;</span>
               
-              <time title="Post modified" itemprop="dateModified" datetime="2021-10-07T00:00:00+08:00">
-                2021-10-07
+              <time title="Post modified" itemprop="dateModified" datetime="2021-11-25T00:00:00+08:00">
+                2021-11-25
               </time>
             
           </span>
@@ -364,11 +364,10 @@
       
 
       
-        <p>注解、反射是Spring系列、MyBatis等框架的底层机制</p>
-<h2 id="反射Reflection">反射Reflection</h2>
-<p>java.lang.reflect包</p>
+        <p>反射，Reflection，在java.lang.reflect包中</p>
 <p>Java是静态语言，但反射让Java有了一定的动态性，可以称为准动态语言</p>
-<p>不过反射的速度会慢，例如用反射创建对象的速度比new慢几十上百倍</p>
+<p>但反射的效率较低，eg：使用反射创建对象的速度比new慢几十上百倍</p>
+<p>注解、反射是Spring系列、MyBatis等框架的底层机制</p>
 <a id="more"></a>
 <h2 id="Class对象">Class对象</h2>
 <p>Class类由系统掌控，Class对象由系统创建</p>
@@ -377,42 +376,99 @@
 <p>除了类以外，内部类、接口、数组、定义的注解、enum、基本数据类型、void都可以有Class对象</p>
 <p>元素类型相同、维度相同的数组，无论长度多少，对应的都是同一个Class对象</p>
 <p>Class对象包含了类的完整结构信息（字段、方法、构造器、父类、接口、注解等），可以在程序执行期间获取，并操作对象的属性、方法和构造器</p>
-<h4 id="获得Class对象">获得Class对象</h4>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Class c = Class.forName(<span class="string">"com.demo.User"</span>);		<span class="comment">//最常用，Class类的类方法，需要捕获异常，好处是可以外部传入字符串</span></span><br><span class="line">Class c = User<span class="class">.<span class="keyword">class</span></span>;		<span class="comment">//类的静态属性，此方法安全性高，性能最好</span></span><br><span class="line">Class c = user.getClass();		<span class="comment">//对象的方法</span></span><br></pre></td></tr></table></figure>
-<h4 id="使用Class对象">使用Class对象</h4>
-<p>获得类的结构</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/** 获得类名(接口等实体同理)*/</span></span><br><span class="line">c.getName();	c.getSimpleName();		<span class="comment">//前者为全类名，后者为简单名</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/** 获得成员变量，返回值为Field对象或列表*/</span></span><br><span class="line">c.getFields();		c.getField(<span class="string">"变量名"</span>);		<span class="comment">//仅获得public变量</span></span><br><span class="line">c.getDeclaredFields();		c.getDeclaredField(<span class="string">"变量名"</span>);		<span class="comment">//获得全部变量</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">/** 获得方法，返回值为Method对象或列表，不加s时参数为方法名和参数的class对象*/</span></span><br><span class="line">c.getMethods();  c.getMethod(name, paremeterTypes);		<span class="comment">//获取`本类和父类`的所有public方法</span></span><br><span class="line">c.getDeclaredMethods();  c.getDeclaredMethod(name, paremeterTypes);	<span class="comment">//仅获取`本类`的所有方法</span></span><br><span class="line">    <span class="comment">/*eg:</span></span><br><span class="line"><span class="comment">        c.getMethod("getName", null);</span></span><br><span class="line"><span class="comment">        c.getMethod("setName", String.class);</span></span><br><span class="line"><span class="comment">        c.getMethod("setData", int.class, int.class);	//多个参数</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/** 获得构造器，返回值为Constructor对象或列表，类似getMethod()*/</span></span><br><span class="line">c.getConstructors();	c.getConstructor(paremeterTypes);</span><br><span class="line">c.getDeclaredConstructors();	c.getDeclaredConstructor(paremeterTypes);</span><br></pre></td></tr></table></figure>
-<p>通过反射调用方法</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">c.getMethod(<span class="string">"setName"</span>, String<span class="class">.<span class="keyword">class</span>)</span>;</span><br><span class="line">setName.invoke(user, <span class="string">"abc"</span>);		<span class="comment">//参数为对象、实参</span></span><br></pre></td></tr></table></figure>
-<p>通过反射操作属性</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Field name = c.getDeclaredField(<span class="string">"name"</span>);</span><br><span class="line">name.setAccessible(<span class="keyword">true</span>);		<span class="comment">//只有设置完这一步才可以`操作私有属性`，Field、Method、Constructor都有这个方法</span></span><br><span class="line">name.set(user, <span class="string">"abc"</span>);</span><br></pre></td></tr></table></figure>
-<p>setAccessible()设为true可以避免安全检查，可以提高反射的效率，大约三倍</p>
-<p>通过反射动态创建对象</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//通过public的无参构造器创建对象</span></span><br><span class="line">User user = (User)c.newInstance();		<span class="comment">//返回值为Object</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//先通过class对象获得构造器，使用构造器创建对象</span></span><br><span class="line">Constructor cons = c.getDeclaredConstructor(<span class="keyword">int</span><span class="class">.<span class="keyword">class</span>, <span class="title">String</span>.<span class="title">class</span>)</span>;</span><br><span class="line">User user = (User)cons.newInstance(<span class="number">123</span>, <span class="string">"abc"</span>);</span><br></pre></td></tr></table></figure>
-<ul>
-<li><code>c.newInstance()</code>：调用无参构造函数，返回创建的对象，Object类型</li>
-<li><code>c.getSuperClass()</code>：获得当前类的父类的Class对象</li>
-<li><code>c.getInterfaces()</code>：获得当前类实现的接口的Class对象列表</li>
-<li><code>c.getClassLoader()</code>：获得当前类的类加载器</li>
-</ul>
-<p>Method、Field、Constructor都是java.lang.reflect包中的</p>
-<h4 id="反射操作注解">反射操作注解</h4>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@MyTable</span>(value=<span class="string">"db_user"</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">User</span></span>&#123;</span><br><span class="line">    <span class="meta">@MyField</span>(id=<span class="string">"123"</span>)</span><br><span class="line">    <span class="keyword">private</span> name;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Annotation[] annos = c.getAnnotations();</span><br><span class="line">Annotation anno = c.getAnnotation(MyTable<span class="class">.<span class="keyword">class</span>)</span>;		<span class="comment">//获得类上的注解对象</span></span><br><span class="line">MyTable myTable = (MyTable)anno;</span><br><span class="line">String val = myTable.value();		<span class="comment">//"db_user"</span></span><br><span class="line"></span><br><span class="line">Field field = c.getDeclaredField(<span class="string">"name"</span>);</span><br><span class="line">Annotation anno = field.getAnnotation(MyField<span class="class">.<span class="keyword">class</span>)</span>;</span><br><span class="line">anno.id();</span><br></pre></td></tr></table></figure>
-<h4 id="反射操作泛型">反射操作泛型</h4>
+<h2 id="获取Class对象">获取Class对象</h2>
+<p><strong>最常用</strong>的方法，可以传入外部字符串。是Class类的类方法，需要捕获异常</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Class clazz = Class.forName(<span class="string">"com.demo.User"</span>);</span><br></pre></td></tr></table></figure>
+<p>性能最好的方法，是类的静态属性，安全性高</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Class clazz = User<span class="class">.<span class="keyword">class</span></span>;</span><br></pre></td></tr></table></figure>
+<p>由对象获取Class对象的方法</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Class clazz = user.getClass();</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p><code>clazz.getSuperClass()</code>：获得当前类的父类的Class对象</p>
+</blockquote>
+<h2 id="获取类的结构">获取类的结构</h2>
+<h4 id="获取类名">获取类名</h4>
+<p>接口等同理</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">clazz.getName();			<span class="comment">//全类名</span></span><br><span class="line">clazz.getSimpleName();		<span class="comment">//简单类名</span></span><br></pre></td></tr></table></figure>
+<h4 id="获取成员变量">获取成员变量</h4>
+<p>获取某个成员变量，返回值为Field对象</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">clazz.getField(<span class="string">"变量名"</span>);				<span class="comment">//仅获得public变量</span></span><br><span class="line">clazz.getDeclaredField(<span class="string">"变量名"</span>);		<span class="comment">//全部变量</span></span><br></pre></td></tr></table></figure>
+<p>获取所有成员变量，返回值为Field对象的列表</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">clazz.getFields();</span><br><span class="line">clazz.getDeclaredFields();</span><br></pre></td></tr></table></figure>
+<h4 id="获取方法">获取方法</h4>
+<p>获取某个方法，返回值为Method对象，参数为方法名、方法参数的class对象</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">clazz.getMethod(name, paremeterTypes);				<span class="comment">//`本类和父类`的所有public方法</span></span><br><span class="line">clazz.getDeclaredMethod(name, paremeterTypes);		<span class="comment">//`本类`的所有方法</span></span><br><span class="line"><span class="comment">/*eg:</span></span><br><span class="line"><span class="comment">    clazz.getMethod("getName", null);</span></span><br><span class="line"><span class="comment">    clazz.getMethod("setName", String.class);</span></span><br><span class="line"><span class="comment">    clazz.getMethod("setData", int.class, int.class);	//多个参数</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
+<p>获取所有方法，返回值为Method对象的列表</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">clazz.getMethods();</span><br><span class="line">clazz.getDeclaredMethods();</span><br></pre></td></tr></table></figure>
+<h4 id="获取构造器">获取构造器</h4>
+<p>获取某个构造器，返回值为Constructor对象，类似类似getMethod()</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">clazz.getConstructor(paremeterTypes);</span><br><span class="line">clazz.getDeclaredConstructor(paremeterTypes);</span><br></pre></td></tr></table></figure>
+<p>获取所有构造器，返回值为Constructor对象的列表</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">clazz.getConstructors();	</span><br><span class="line">clazz.getDeclaredConstructors();</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>Method、Field、Constructor都在java.lang.reflect包中</p>
+</blockquote>
+<blockquote>
+<p><code>clazz.getInterfaces()</code>获取接口对象列表</p>
+<p><code>clazz.getClassLoader()</code>：获得当前类的类加载器</p>
+</blockquote>
+<h2 id="反射进行基本操作">反射进行基本操作</h2>
+<h4 id="调用方法">调用方法</h4>
+<p>获取Method对象，使用<strong>invoke()<strong>执行该方法，invoke()的两个参数为</strong>对象、方法实参</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Method sn = clazz.getMethod(<span class="string">"setName"</span>, String<span class="class">.<span class="keyword">class</span>)</span>;</span><br><span class="line">sn.invoke(user, <span class="string">"abc"</span>);</span><br></pre></td></tr></table></figure>
+<h4 id="操作属性">操作属性</h4>
+<p>获取Field对象，使用<strong>set()<strong>设置该属性，set()的两个参数为</strong>对象、属性新值</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Field id = clazz.getField(<span class="string">"id"</span>);</span><br><span class="line">id.set(user, <span class="number">123</span>);</span><br></pre></td></tr></table></figure>
+<h4 id="修改私有性">修改私有性</h4>
+<p>Field、Method、Constructor对象拥有<strong>setAccessible()<strong>方法，只有设置为true才可以</strong>对私有成员进行操作</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Field name = clazz.getDeclaredField(<span class="string">"name"</span>);</span><br><span class="line">name.setAccessible(<span class="keyword">true</span>);</span><br><span class="line">name.set(user, <span class="string">"abc"</span>);</span><br></pre></td></tr></table></figure>
+<p>setAccessible()设为true可以避免安全检查，提高反射的效率，大约三倍</p>
+<h4 id="动态创建对象">动态创建对象</h4>
+<p>使用**class对象的newInstance()**方法，调用无参构造函数创建对象，返回值为Object</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">User user = (User)clazz.newInstance();		<span class="comment">//无参</span></span><br></pre></td></tr></table></figure>
+<p>获取Constructor对象，使用**Constructor对象的newInstance()**方法创建实例，参数为传入构造器的实参，返回值为Object</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Constructor cons = clazz.getDeclaredConstructor(<span class="keyword">int</span><span class="class">.<span class="keyword">class</span>, <span class="title">String</span>.<span class="title">class</span>)</span>;</span><br><span class="line">User user = (User)cons.newInstance(<span class="number">123</span>, <span class="string">"abc"</span>);		<span class="comment">//可以有参</span></span><br></pre></td></tr></table></figure>
+<h2 id="反射操作注解">反射操作注解</h2>
+<p>注解只用来标识，具体操作一定由反射完成</p>
+<p>以下注解为举例</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@MyTable</span>(value=<span class="string">"db_user"</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">User</span></span>&#123;</span><br><span class="line">    <span class="meta">@MyField</span>(id=<span class="string">"123"</span>)</span><br><span class="line">    <span class="keyword">private</span> name;</span><br><span class="line">    <span class="meta">@MyMethod</span>(value=<span class="string">"456"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">setName</span><span class="params">()</span></span>&#123;&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="获取注解对象">获取注解对象</h4>
+<p>获取某个注解，Class/Field/Method对象都有**getAnnotation()**方法</p>
+<p>方法参数为注解名的class对象，返回值为Annotation对象</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Class clazz = Class.forName(<span class="string">"com.demo.User"</span>);</span><br><span class="line">Annotation classAnno = clazz.getAnnotation(MyTable<span class="class">.<span class="keyword">class</span>)</span>;	<span class="comment">//获取User类上的名为MyTable的注解</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Field field = clazz.getDeclaredField(<span class="string">"name"</span>);</span><br><span class="line">Annotation FieldAnno = field.getAnnotation(MyField<span class="class">.<span class="keyword">class</span>)</span>;	<span class="comment">//获取name字段上的名为MyField的注解</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Method method = clazz.getMethod(<span class="string">"setName"</span>);</span><br><span class="line">Annotation MethodAnno = method.getAnnotation(MyMethod<span class="class">.<span class="keyword">class</span>)</span>;	<span class="comment">//获取setName方法上的名为MyMethod的注解</span></span><br></pre></td></tr></table></figure>
+<p>获取所有注解，getAnnotations()方法，返回Annotation对象的列表</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Annotation[] annotations = clazz/field/method.getAnnotations();</span><br></pre></td></tr></table></figure>
+<h4 id="操作注解">操作注解</h4>
+<p>获取注解对象后，可以取得注解的值进行操作</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">MyTable myTable = (MyTable)classAnno;</span><br><span class="line">String val = myTable.value();		<span class="comment">//"db_user"</span></span><br></pre></td></tr></table></figure>
+<h2 id="反射操作泛型">反射操作泛型</h2>
 <p>Java中的泛型仅是给编译器javac使用的，用以确保数据的安全性和免去强制类型转换</p>
 <p>Java采用了泛型擦除的机制，一旦编译完成，所有和泛型有关的类型全部擦除</p>
-<p>为了使用反射操作泛型，Java新增了ParameterizedType、GenericArrayType、TypeVariable、WildcardType几种类型来代表不能被归一到Class类中但又和原始类型齐名的类型</p>
+<h4 id="Type接口的子接口">Type接口的子接口</h4>
+<p>为了使用反射操作泛型，Java新增了以下四种类型，来代表不能被归一到Class类中但又和原始类型齐名的类型</p>
 <ul>
-<li>ParameterizedType：表示参数化类型，如Collection&lt; String &gt;</li>
-<li>GenericArrayType：表示一种元素类型是参数化类型或者类型变量的数组类型</li>
-<li>TypeVariable：各种类型变量的公共父接口</li>
+<li>ParameterizedType：表示<strong>参数化类型</strong>，如Collection<T>、Map&lt;K,V&gt;等</li>
+<li>GenericArrayType：表示元素类型为参数化类型或类型变量的<strong>数组类型</strong></li>
+<li>TypeVariable：各种<strong>类型变量</strong>的公共父接口</li>
 <li>WildcardType：代表一种通配类型表达式</li>
 </ul>
-<p>这四个类型是Type类的子类</p>
-<p>Method对象有getGenericParameterTypes()方法，返回Type数组，获取参数</p>
-<p>和getGenericReturnType()方法，返回Type对象，获取返回值</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">func1</span><span class="params">(Map&lt;<span class="keyword">int</span>, String&gt; map)</span></span>&#123;&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">Method method = c.getMethod(<span class="string">"func1"</span>, Map<span class="class">.<span class="keyword">class</span>)</span>;</span><br><span class="line">Type[] paraTypes = method.getGenericParameterTypes();		<span class="comment">//获得泛型参数的类型</span></span><br><span class="line"><span class="comment">//paraTypes中元素为Map和List</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span>(type <span class="keyword">instanceof</span> ParameterizedType)&#123;</span><br><span class="line">    ParameterizedType p = (ParameterizedType)type;</span><br><span class="line">    Type[] actualArgue = p.getActuallyArguements();		<span class="comment">//获得泛型的类型参数（Type是Class实现的接口）</span></span><br><span class="line">    <span class="comment">//actualArgue中元素为Map的参数，这里为int和String的Class对象</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> Map&lt;<span class="keyword">int</span>, String&gt; <span class="title">func2</span><span class="params">()</span></span>&#123;&#125;</span><br><span class="line"></span><br><span class="line">Method method = c.getMethod(<span class="string">"func2"</span>, <span class="keyword">null</span>);</span><br><span class="line">Type returnType = method.getGenericReturnType();		<span class="comment">//获得泛型返回值的类型</span></span><br><span class="line"><span class="comment">//此处获得的returnType为Map</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span>(returnType <span class="keyword">instanceof</span> ParameterizedType)&#123;</span><br><span class="line">    ParameterizedType p = (ParameterizedType)returnType;</span><br><span class="line">    Type[] actualArgue = p.getActuallyArguements();		<span class="comment">//获得泛型的类型参数</span></span><br><span class="line">    <span class="comment">//actualArgue中元素为Map的参数，这里为int和String的Class对象</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>Class类是Type接口的实现类，对应<strong>原始类型</strong>和<strong>基本数据类型</strong></p>
+</blockquote>
+<h4 id="获取泛型对象——当为方法参数时">获取泛型对象——当为方法参数时</h4>
+<p>获取作为方法参数的泛型对象，使用Method对象的<code>getGenericParameterTypes()</code>方法，返回Type对象数组</p>
+<p>如例子<code>public void func1(Map&lt;int, String&gt; map){...}</code></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Type[] paraTypes = method.getGenericParameterTypes();		<span class="comment">//数组中为Map</span></span><br><span class="line">Type paraType = paraTypes[<span class="number">0</span>];</span><br><span class="line"><span class="keyword">if</span>(paraType <span class="keyword">instanceof</span> ParameterizedType)</span><br><span class="line">    ParameterizedType generics = (ParameterizedType)paraType;</span><br></pre></td></tr></table></figure>
+<h4 id="获取泛型对象——当为方法返回值时">获取泛型对象——当为方法返回值时</h4>
+<p>获取作为方法返回值的泛型对象，使用Method对象的<code>getGenericReturnType()</code>方法，返回值为Type对象</p>
+<p>如例子<code>public Map&lt;int, String&gt; func2(){...}</code></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Type returnType = method.getGenericReturnType();		<span class="comment">//为Map</span></span><br><span class="line"><span class="keyword">if</span>(returnType <span class="keyword">instanceof</span> ParameterizedType)</span><br><span class="line">    ParameterizedType generics = (ParameterizedType)returnType;</span><br></pre></td></tr></table></figure>
+<h4 id="获取泛型对象的类型参数">获取泛型对象的类型参数</h4>
+<p>类型参数指尖括号中的部分，如Map&lt;K,V&gt;中的K,V</p>
+<p>获得泛型对象generics后，用<code>getActuallyArguements()</code>获得其类型参数</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Type[] actualArgues = gene.getActuallyArguements();		<span class="comment">//[int.class, String.class]</span></span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -620,7 +676,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#反射Reflection"><span class="nav-text">反射Reflection</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Class对象"><span class="nav-text">Class对象</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#获得Class对象"><span class="nav-text">获得Class对象</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#使用Class对象"><span class="nav-text">使用Class对象</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#反射操作注解"><span class="nav-text">反射操作注解</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#反射操作泛型"><span class="nav-text">反射操作泛型</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Class对象"><span class="nav-text">Class对象</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#获取Class对象"><span class="nav-text">获取Class对象</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#获取类的结构"><span class="nav-text">获取类的结构</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#获取类名"><span class="nav-text">获取类名</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#获取成员变量"><span class="nav-text">获取成员变量</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#获取方法"><span class="nav-text">获取方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#获取构造器"><span class="nav-text">获取构造器</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#反射进行基本操作"><span class="nav-text">反射进行基本操作</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#调用方法"><span class="nav-text">调用方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#操作属性"><span class="nav-text">操作属性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#修改私有性"><span class="nav-text">修改私有性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#动态创建对象"><span class="nav-text">动态创建对象</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#反射操作注解"><span class="nav-text">反射操作注解</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#获取注解对象"><span class="nav-text">获取注解对象</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#操作注解"><span class="nav-text">操作注解</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#反射操作泛型"><span class="nav-text">反射操作泛型</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Type接口的子接口"><span class="nav-text">Type接口的子接口</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#获取泛型对象——当为方法参数时"><span class="nav-text">获取泛型对象——当为方法参数时</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#获取泛型对象——当为方法返回值时"><span class="nav-text">获取泛型对象——当为方法返回值时</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#获取泛型对象的类型参数"><span class="nav-text">获取泛型对象的类型参数</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
