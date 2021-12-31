@@ -1,0 +1,873 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="en">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="编码," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="计算机中的字符编码 步骤  确定包含哪些字符 进行数学编号 映射为二进制，确定逻辑编号 通过编码方案，确定物理存储编码">
+<meta property="og:type" content="article">
+<meta property="og:title" content="字符编码">
+<meta property="og:url" content="https://chenyz2000.github.io/CS/%E5%85%B6%E4%BB%96/%E5%AD%97%E7%AC%A6%E7%BC%96%E7%A0%81/index.html">
+<meta property="og:site_name" content="CYZ&#39;s Blog">
+<meta property="og:description" content="计算机中的字符编码 步骤  确定包含哪些字符 进行数学编号 映射为二进制，确定逻辑编号 通过编码方案，确定物理存储编码">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-05-29T08:29:00.000Z">
+<meta property="article:modified_time" content="2020-05-28T16:00:00.000Z">
+<meta property="article:author" content="Chen Yanzhi">
+<meta property="article:tag" content="编码">
+<meta name="twitter:card" content="summary">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"always","offset":12,"b2t":true,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://chenyz2000.github.io/CS/其他/字符编码/"/>
+
+
+
+
+
+  <title>字符编码 | CYZ's Blog</title>
+  
+
+
+
+
+
+
+
+
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">CYZ's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            About
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://chenyz2000.github.io/CS/%E5%85%B6%E4%BB%96/%E5%AD%97%E7%AC%A6%E7%BC%96%E7%A0%81/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Chen Yanzhi">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="CYZ's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">字符编码</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-05-29T16:29:00+08:00">
+                2020-05-29
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Post modified&#58;</span>
+              
+              <time title="Post modified" itemprop="dateModified" datetime="2020-05-29T00:00:00+08:00">
+                2020-05-29
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%85%B6%E4%BB%96/" itemprop="url" rel="index">
+                    <span itemprop="name">其他</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="计算机中的字符编码">计算机中的字符编码</h2>
+<h4 id="步骤">步骤</h4>
+<ol>
+<li>确定包含哪些字符</li>
+<li>进行数学编号</li>
+<li>映射为二进制，确定逻辑编号</li>
+<li>通过编码方案，确定物理存储编码</li>
+</ol>
+<a id="more"></a>
+<h4 id="编码字符集和编码方案">编码字符集和编码方案</h4>
+<ul>
+<li>
+<p>编码字符集：字库表中所有字符和其对应编码的集合（这个编码和计算机无关）</p>
+</li>
+<li>
+<p>编码方案：（最简单的形式就是直接用字符集编码后的二进制值）</p>
+</li>
+</ul>
+<blockquote>
+<p><strong>Unicode字符集</strong>：0000-FFFF为0号平面，10000-1FFFF为1号平面，…，A0000-AFFFF为10号平面，…，F0000-FFFFF为15号平面，100000-10FFFF为16号平面</p>
+<p><strong>UTF-8编码规则</strong>：1字节 0xxxxxxx，2字节 110xxxxx 10xxxxxx，3字节 1110xxxx 10xxxxxx 10xxxxxx，4字节 11110xxx 10xxxxxx 10xxxxxx 10xxxxxx，5字节 111110xx 10xxxxxx 10xxxxxx 10xxxxxx 10xxxxxx，6字节 1111110x 10xxxxxx 10xxxxxx 10xxxxxx 10xxxxxx 10xxxxxx</p>
+<p>&quot;严&quot;字的Unicode码是100111000100101，UTF-8编码是11100100 10111000 10100101</p>
+</blockquote>
+<h2 id="编码字符集">编码字符集</h2>
+<h4 id="ASCII编码字符集——ASCII编码方案">ASCII编码字符集——ASCII编码方案</h4>
+<p>范围0~127，最高位统一为0</p>
+<h4 id="扩展编码字符集">扩展编码字符集</h4>
+<p>加字节，是ASCII的超集</p>
+<ul>
+<li>
+<p>西欧语言：ISO 8859(1-15)，范围0~255</p>
+</li>
+<li>
+<p>中文：GB2312+Big5 ⊆ GBK ⊆ GB18030</p>
+<p>其中GB2312范围0xA1A1~0xFEFE，双字节表示——GB2312的编码方案为EUC-CN</p>
+<p>Big5为繁体中文</p>
+</li>
+<li>
+<p>日文：Shift_JIS</p>
+</li>
+</ul>
+<h4 id="Unicode编码字符集">Unicode编码字符集</h4>
+<p>三种编码方案</p>
+<ul>
+<li>UTF-8：兼容ASCII，1-4个字节，变长</li>
+<li>UTF-16：2或4个字节，变长</li>
+<li>UTF-32：4个字节，定长</li>
+</ul>
+<blockquote>
+<p>ANSI：windows上非Unicode的默认编码，记事本默认采用ANSI存储。简体中文系统中代表GBK，繁体中文系统中代表Big5，日文系统中代表Shift_JIS</p>
+</blockquote>
+<p><a href="https://blog.csdn.net/u010737354/article/details/52456570" target="_blank" rel="noopener">发展历史</a>：美国人发明ascii，用七位表示英文字符；后来欧洲人发现法语、希伯来语、俄语符号没法表示，所以把ascii码最高一位的1编进来，形成了15套编法，这15套中的128~255都不一样；之后中国人需要表示汉语，所以发明了GB2312表示常用的汉字（65536），有些生僻字不能显示，之后又对GB2312进行了升级；后来，人们发现文件需要全球使用，两边字符集不同，所以发明了万国码Unicode；不过Unicode统一了全世界字符的二进制编码，但没有规定如何存储，所以出现了Unicode的多种存储方式</p>
+<h2 id="中英文字符所占字节数">中英文字符所占字节数</h2>
+<h4 id="英文">英文</h4>
+<p>GB2312、GBK、GB18030：1字节</p>
+<p>ISO-8859-1：1字节</p>
+<p>UTF-8：1字节</p>
+<p>UTF-16：4字节</p>
+<h4 id="中文">中文</h4>
+<p>GB2312、GBK、GB18030：2字节</p>
+<p>UTF-8：3字节</p>
+<p>UTF-16：4字节</p>
+<h2 id="Java中的编码">Java中的编码</h2>
+<p>Java源文件建议用UTF-8，文件操作建议UTF-8</p>
+<p>Java程序内部使用UTF-16（不由程序员控制）</p>
+<h2 id="修改CMD编码">修改CMD编码</h2>
+<h4 id="暂时">暂时</h4>
+<p>查看编码的命令<code>chcp</code><br>
+修改为UTF-8<code>chcp 65001</code><br>
+修改为GBK<code>chcp 936</code></p>
+<h4 id="永久">永久</h4>
+<p>修改注册表<br>
+在路径<code>HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Command Processor</code>下</p>
+<p>添加一个字符串值，名为<code>autorun</code>，值为<code>chcp 65001</code>，即自动运行命令</p>
+<h2 id="永久修改Vscode的Console编码">永久修改Vscode的Console编码</h2>
+<p>在settings.json中添加键<code>&quot;terminal.integrated.shellArgs.windows&quot;</code></p>
+<p>若默认powershell的话则值为<code>[&quot;-NoExit&quot;,&quot;chcp 65001&quot;]</code>，若为cmd则值为<code>[&quot;/K chcp 65001 &gt;nul&quot;]</code></p>
+<h2 id="Trouble">Trouble</h2>
+<p>cmd一直显示“系统找不到可用的路径”，原来是<code>HKEY_CURRENT_USER\Software\Microsoft\Command Processor</code>下有多余的autorun代码</p>
+<p>powershell的启动运行命令写在<code>C:\Users\&lt;USERNAME&gt;\Documents\WindowsPowerShell\Microsoft.PowerShell_profile.ps1</code>中</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>Post author:</strong>
+    Chen Yanzhi
+  </li>
+  <li class="post-copyright-link">
+    <strong>Post link:</strong>
+    <a href="https://chenyz2000.github.io/CS/%E5%85%B6%E4%BB%96/%E5%AD%97%E7%AC%A6%E7%BC%96%E7%A0%81/" title="字符编码">https://chenyz2000.github.io/CS/%E5%85%B6%E4%BB%96/%E5%AD%97%E7%AC%A6%E7%BC%96%E7%A0%81/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>Copyright Notice: </strong>
+    All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> unless stating additionally.
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/%E7%BC%96%E7%A0%81/" rel="tag"># 编码</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/CS/%E5%BC%80%E5%8F%91/Python/Python%E5%AD%97%E7%AC%A6%E7%BC%96%E7%A0%81/" rel="next" title="Python字符编码">
+                <i class="fa fa-chevron-left"></i> Python字符编码
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/CS/%E5%BC%80%E5%8F%91/Java%E5%9F%BA%E7%A1%80/Java%E8%AF%AD%E8%A8%80%E7%89%B9%E6%80%A7/" rel="prev" title="Java语言特性">
+                Java语言特性 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.jpg"
+                alt="Chen Yanzhi" />
+            
+              <p class="site-author-name" itemprop="name">Chen Yanzhi</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+                <a href="/archives">
+                  <span class="site-state-item-count">72</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-name">categories</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">70</span>
+                  <span class="site-state-item-name">tags</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/chenyz2000" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:chenyanzhi_2000@163.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#计算机中的字符编码"><span class="nav-text">计算机中的字符编码</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#步骤"><span class="nav-text">步骤</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#编码字符集和编码方案"><span class="nav-text">编码字符集和编码方案</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#编码字符集"><span class="nav-text">编码字符集</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#ASCII编码字符集——ASCII编码方案"><span class="nav-text">ASCII编码字符集——ASCII编码方案</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#扩展编码字符集"><span class="nav-text">扩展编码字符集</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Unicode编码字符集"><span class="nav-text">Unicode编码字符集</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#中英文字符所占字节数"><span class="nav-text">中英文字符所占字节数</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#英文"><span class="nav-text">英文</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#中文"><span class="nav-text">中文</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Java中的编码"><span class="nav-text">Java中的编码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#修改CMD编码"><span class="nav-text">修改CMD编码</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#暂时"><span class="nav-text">暂时</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#永久"><span class="nav-text">永久</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#永久修改Vscode的Console编码"><span class="nav-text">永久修改Vscode的Console编码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Trouble"><span class="nav-text">Trouble</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Chen Yanzhi</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

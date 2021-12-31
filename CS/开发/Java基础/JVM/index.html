@@ -1,0 +1,882 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="en">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Java SE,JVM," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="JVM是C语言写的 JVM体系结构  栈、本地方法栈、程序计数器——这三块不会有垃圾需要回收 所谓的JVM调优，就是在方法区和堆中调（方法区也是特殊的堆） 本地方法，用native关键词">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JVM">
+<meta property="og:url" content="https://chenyz2000.github.io/CS/%E5%BC%80%E5%8F%91/Java%E5%9F%BA%E7%A1%80/JVM/index.html">
+<meta property="og:site_name" content="CYZ&#39;s Blog">
+<meta property="og:description" content="JVM是C语言写的 JVM体系结构  栈、本地方法栈、程序计数器——这三块不会有垃圾需要回收 所谓的JVM调优，就是在方法区和堆中调（方法区也是特殊的堆） 本地方法，用native关键词">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://chenyz2000.github.io/images/image-20211202143324449.png">
+<meta property="og:image" content="https://chenyz2000.github.io/images/image-20211202154407158.png">
+<meta property="og:image" content="https://chenyz2000.github.io/images/image-20211004201510564.png">
+<meta property="article:published_time" content="2021-10-03T16:00:00.000Z">
+<meta property="article:modified_time" content="2021-10-06T16:00:00.000Z">
+<meta property="article:author" content="Chen Yanzhi">
+<meta property="article:tag" content="Java SE">
+<meta property="article:tag" content="JVM">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://chenyz2000.github.io/images/image-20211202143324449.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"always","offset":12,"b2t":true,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://chenyz2000.github.io/CS/开发/Java基础/JVM/"/>
+
+
+
+
+
+  <title>JVM | CYZ's Blog</title>
+  
+
+
+
+
+
+
+
+
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">CYZ's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            About
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://chenyz2000.github.io/CS/%E5%BC%80%E5%8F%91/Java%E5%9F%BA%E7%A1%80/JVM/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Chen Yanzhi">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="CYZ's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">JVM</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2021-10-04T00:00:00+08:00">
+                2021-10-04
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Post modified&#58;</span>
+              
+              <time title="Post modified" itemprop="dateModified" datetime="2021-10-07T00:00:00+08:00">
+                2021-10-07
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Java%E5%9F%BA%E7%A1%80/" itemprop="url" rel="index">
+                    <span itemprop="name">Java基础</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>JVM是C语言写的</p>
+<h2 id="JVM体系结构">JVM体系结构</h2>
+<img src="/images/image-20211202143324449.png" alt="image-20211202143324449" style="zoom:40%;" />
+<p>栈、本地方法栈、程序计数器——这三块不会有垃圾需要回收</p>
+<p>所谓的JVM调优，就是在方法区和堆中调（方法区也是特殊的堆）</p>
+<p>本地方法，用native关键词</p>
+<a id="more"></a>
+<h2 id="类加载器">类加载器</h2>
+<p>作用：解析Class文件，生成class对象</p>
+<img src="/images/image-20211202154407158.png" alt="image-20211202154407158" style="zoom:40%;" />
+<h4 id="类的加载过程">类的加载过程</h4>
+<ol>
+<li>加载Load：将.class字节码文件读入内存，静态数据转换为<strong>方法区</strong>运行时的数据结构，生成Class对象到<strong>堆</strong>中，作为方法区中类数据的访问入口，此过程由类加载器完成</li>
+<li>链接Link：将类的二进制数据合并到JRE（JVM的运行环境）中。
+<ol>
+<li>验证：首先检查类信息是否符合JVM规范</li>
+<li>准备：之后在<strong>方法区</strong>中为类的static变量（非final常量）设置内存和<strong>默认值</strong>（0或null等，初始化时才赋指定值），为类的final常量设置内存并<strong>赋指定值</strong>、存放到常量区中</li>
+<li>解析：最后将类的符号引用（变量名、方法名）替换为直接引用（内存地址）</li>
+</ol>
+</li>
+<li>初始化Initialize：JVM对类进行初始化。JVM会执行<code>&lt;cInit&gt;()</code>类构造器方法对类进行构造（与构造函数创建对象不同），其中<code>&lt;cInit&gt;()</code>由编译器收集static代码（包括静态的变量、方法和代码块）合并产生。JVM会保证<code>&lt;cInit&gt;()</code>方法在多线程环境中被正确加锁和同步</li>
+</ol>
+<h4 id="类加载器ClassLoader">类加载器ClassLoader</h4>
+<p>类加载器的类型：</p>
+<ul>
+<li>BootStrapClassLoader：引导类加载器（根加载器），负责Java核心类库<code>rt.jar</code>的加载，由C++编写，是JVM自带的类加载器，开发者无法直接获取此加载器</li>
+<li>ExtClassLoader：扩展类加载器，负责<code>jre/lib/ext</code>扩展目录下类的加载</li>
+<li>AppClassLoader：当前应用程序加载器（系统类加载器），最常用的加载器，负责<code>java -classpath</code>目录下的类的加载</li>
+<li>自定义类加载器：实现ClassLoader抽象类</li>
+</ul>
+<p>四者由上到下是父类到子类的继承关系，检查类是否已装载的时候由下到上进行，加载类的时候由上到下进行</p>
+<p>类缓存：类加载的时候会在缓存中维持一段时间，之后类再加载的时候会向缓存中查找是否有之前加载的类。JVM垃圾回收机制gc会自动回收这些缓存</p>
+<p><strong>双亲委派机制</strong>：收到类加载请求时，从下到上进行检查，若已装载则结束；若未装载，则把请求委托给父类加载器进行检查和装载。目的是防止系统级别的类被篡改替换。</p>
+<p>沙箱安全机制：Java安全模型的核心就是沙箱，把Java程序限制在特定的运行范围中，限制程序对本地系统资源的访问。Java中执行程序分为本地代码和远程代码，本地代码默认可信任，远程代码默认不可信任</p>
+<h4 id="获得类加载器">获得类加载器</h4>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ClassLoader sc = ClassLoader.getSystemClassLoader();		<span class="comment">//获取系统类加载器</span></span><br><span class="line">ClassLoader ec = sc.getParent();		<span class="comment">//获取扩展类加载器</span></span><br><span class="line">ClassLoader ic = ec.getParent();		<span class="comment">//获取引导类加载器，然而在Java中获取不到，返回null</span></span><br></pre></td></tr></table></figure>
+<p>通过反射，class对象获取类的加载器</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Class.forName(<span class="string">"com.demo.User"</span>).getClassLoader();		<span class="comment">//AppClassLoader</span></span><br><span class="line">Class.forName(<span class="string">"java.lang.Object"</span>).getClassLoader();		<span class="comment">//null，因为Object类是rt.jar中的</span></span><br></pre></td></tr></table></figure>
+<h4 id="类的初始化">类的初始化</h4>
+<p>主动引用类的时候会发生初始化，包括</p>
+<ul>
+<li>new一个类</li>
+<li>虚拟机启动时初始化main方法所在的类</li>
+<li>调用类的静态变量（除了final常量）和静态方法（只有声明这个静态域的类会初始化，如通过子类调用父类声明的静态域，子类不会初始化）</li>
+<li>用java.lang.reflect包的方法对类进行反射调用（用<code>类.class</code>属性不会导致类被初始化）</li>
+<li>初始化类时，若其父类没有初始化，则先初始化父类</li>
+</ul>
+<p>被动引用类时不会发生初始化，包括</p>
+<ul>
+<li>创建类的数组</li>
+<li>调用类的final常量时类不会初始化，因为常量在链接阶段就在常量池中了</li>
+</ul>
+<h2 id="运行时数据区">运行时数据区</h2>
+<h4 id="栈stack——线程私有">栈stack——线程私有</h4>
+<p>存放基础数据类型，如Boolean、Byte、Char等</p>
+<p>以及对堆中对象的引用</p>
+<!--more-->
+<h4 id="堆heap——线程公有">堆heap——线程公有</h4>
+<p>存放new出来的对象和数组，如String</p>
+<p>也存放JVM自动创建的Class对象</p>
+<h4 id="方法区method-area——线程公有">方法区method area——线程公有</h4>
+<p>是特殊的堆</p>
+<p>包括虚拟机加载的类，和运行时常量池</p>
+<p>类的信息包括信息（类名、方法信息、字段信息、接口信息等）、类的常量池表（数值、字符串值、类引用、字段引用、方法引用）、类变量、类方法、指向Class对象的引用、指向类加载器的引用</p>
+<p>类加载后，类常量池表将载入到方法区的运行时常量池中</p>
+<blockquote>
+<p>元空间metaspace和永久代premGen</p>
+<p>方法区是JVM抽象的规范，元空间和永久代是方法区的具体实现。1.8之前的实现方式是永久代，当时永久代是堆空间的一部分；1.8及以后从堆空间里独立出来了元空间，使用了本地内存（<strong>系统的内存</strong>）而不是堆内存。</p>
+</blockquote>
+<h4 id="程序计数器program-counter-register——线程私有">程序计数器program counter register——线程私有</h4>
+<p>记录当前需要执行的指令地址，即每个线程执行到哪了</p>
+<p>空间占用很小，以至于没有定义的异常</p>
+<h4 id="本地方法栈native-method-stacks——线程私有">本地方法栈native method stacks——线程私有</h4>
+<p>给本地方法提供的专门的栈空间</p>
+<p>本地方法指其他语言编写的、交由Java运行的方法</p>
+<p>用native关键字描述的就是本地方法，如thread.sleep()</p>
+<img src="/images/image-20211004201510564.png" alt="image-20211004201510564" style="zoom: 40%;" />
+<h2 id="执行引擎">执行引擎</h2>
+<p>第三方插件，如Lombok，一般都操作执行引擎</p>
+<h4 id="解释器">解释器</h4>
+<h4 id="JIT编译器">JIT编译器</h4>
+<h4 id="垃圾回收器">垃圾回收器</h4>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>Post author:</strong>
+    Chen Yanzhi
+  </li>
+  <li class="post-copyright-link">
+    <strong>Post link:</strong>
+    <a href="https://chenyz2000.github.io/CS/%E5%BC%80%E5%8F%91/Java%E5%9F%BA%E7%A1%80/JVM/" title="JVM">https://chenyz2000.github.io/CS/%E5%BC%80%E5%8F%91/Java%E5%9F%BA%E7%A1%80/JVM/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>Copyright Notice: </strong>
+    All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> unless stating additionally.
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Java-SE/" rel="tag"># Java SE</a>
+          
+            <a href="/tags/JVM/" rel="tag"># JVM</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/CS/%E5%85%B6%E4%BB%96/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" rel="next" title="设计模式">
+                <i class="fa fa-chevron-left"></i> 设计模式
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/CS/%E5%BC%80%E5%8F%91/Java%E5%9F%BA%E7%A1%80/Java%E5%8F%8D%E5%B0%84/" rel="prev" title="Java反射">
+                Java反射 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.jpg"
+                alt="Chen Yanzhi" />
+            
+              <p class="site-author-name" itemprop="name">Chen Yanzhi</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+                <a href="/archives">
+                  <span class="site-state-item-count">72</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-name">categories</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">70</span>
+                  <span class="site-state-item-name">tags</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/chenyz2000" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:chenyanzhi_2000@163.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#JVM体系结构"><span class="nav-text">JVM体系结构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#类加载器"><span class="nav-text">类加载器</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#类的加载过程"><span class="nav-text">类的加载过程</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#类加载器ClassLoader"><span class="nav-text">类加载器ClassLoader</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#获得类加载器"><span class="nav-text">获得类加载器</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#类的初始化"><span class="nav-text">类的初始化</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#运行时数据区"><span class="nav-text">运行时数据区</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#栈stack——线程私有"><span class="nav-text">栈stack——线程私有</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#堆heap——线程公有"><span class="nav-text">堆heap——线程公有</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#方法区method-area——线程公有"><span class="nav-text">方法区method area——线程公有</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#程序计数器program-counter-register——线程私有"><span class="nav-text">程序计数器program counter register——线程私有</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#本地方法栈native-method-stacks——线程私有"><span class="nav-text">本地方法栈native method stacks——线程私有</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#执行引擎"><span class="nav-text">执行引擎</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#解释器"><span class="nav-text">解释器</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#JIT编译器"><span class="nav-text">JIT编译器</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#垃圾回收器"><span class="nav-text">垃圾回收器</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Chen Yanzhi</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

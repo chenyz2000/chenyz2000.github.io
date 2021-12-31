@@ -1,0 +1,879 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="en">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="RPC,REST,SOA," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="https:&#x2F;&#x2F;www.cnblogs.com&#x2F;bellkosmos&#x2F;p&#x2F;5213491.html 其实这些技术都没有明确的定义和范围，之间的关系因此不是那么精确 网络中C&#x2F;S远程调用技术（Web服务） Web服务（广义），就是服务器向客户端提供服务，是一种远程调用技术 现有的调用方式可以分为三类架构：  RPC远程过程调用架构【面向方法】 REST表征状态转移架构【面向资源】 SOA面向服务架构">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Web上的远程调用">
+<meta property="og:url" content="https://chenyz2000.github.io/CS/%E5%85%B6%E4%BB%96/Web%E4%B8%8A%E7%9A%84%E8%BF%9C%E7%A8%8B%E8%B0%83%E7%94%A8/index.html">
+<meta property="og:site_name" content="CYZ&#39;s Blog">
+<meta property="og:description" content="https:&#x2F;&#x2F;www.cnblogs.com&#x2F;bellkosmos&#x2F;p&#x2F;5213491.html 其实这些技术都没有明确的定义和范围，之间的关系因此不是那么精确 网络中C&#x2F;S远程调用技术（Web服务） Web服务（广义），就是服务器向客户端提供服务，是一种远程调用技术 现有的调用方式可以分为三类架构：  RPC远程过程调用架构【面向方法】 REST表征状态转移架构【面向资源】 SOA面向服务架构">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2021-02-11T16:00:00.000Z">
+<meta property="article:modified_time" content="2021-03-12T16:00:00.000Z">
+<meta property="article:author" content="Chen Yanzhi">
+<meta property="article:tag" content="RPC">
+<meta property="article:tag" content="REST">
+<meta property="article:tag" content="SOA">
+<meta name="twitter:card" content="summary">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"always","offset":12,"b2t":true,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://chenyz2000.github.io/CS/其他/Web上的远程调用/"/>
+
+
+
+
+
+  <title>Web上的远程调用 | CYZ's Blog</title>
+  
+
+
+
+
+
+
+
+
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">CYZ's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            About
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://chenyz2000.github.io/CS/%E5%85%B6%E4%BB%96/Web%E4%B8%8A%E7%9A%84%E8%BF%9C%E7%A8%8B%E8%B0%83%E7%94%A8/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Chen Yanzhi">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="CYZ's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Web上的远程调用</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2021-02-12T00:00:00+08:00">
+                2021-02-12
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Post modified&#58;</span>
+              
+              <time title="Post modified" itemprop="dateModified" datetime="2021-03-13T00:00:00+08:00">
+                2021-03-13
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%85%B6%E4%BB%96/" itemprop="url" rel="index">
+                    <span itemprop="name">其他</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><a href="https://www.cnblogs.com/bellkosmos/p/5213491.html" target="_blank" rel="noopener">https://www.cnblogs.com/bellkosmos/p/5213491.html</a></p>
+<p>其实这些技术都没有明确的定义和范围，之间的关系因此不是那么精确</p>
+<h2 id="网络中C-S远程调用技术（Web服务）">网络中C/S远程调用技术（<s>Web服务</s>）</h2>
+<p><s>Web服务（广义），就是服务器向客户端提供服务，是一种远程调用技术</s></p>
+<p>现有的调用方式可以分为三类架构：</p>
+<ul>
+<li>RPC远程过程调用架构【面向方法】</li>
+<li>REST表征状态转移架构【面向资源】</li>
+<li>SOA面向服务架构【面向消息】</li>
+</ul>
+<a id="more"></a>
+<h2 id="RPC">RPC</h2>
+<p>远程过程调用RPC，像调用本地方法一样，客户端上通过参数传递的方式调用服务器上的方法，并得到返回的结果</p>
+<p>RPC是一个请求响应模型，客户端发起请求，服务器返回响应</p>
+<p>按照数据类型分类：</p>
+<ul>
+<li>XML</li>
+<li>JSON</li>
+<li>SOAP（升级的XML，支持更多的数据类型，可以把对象进行编码并还原）</li>
+</ul>
+<p>按照通讯协议分类：</p>
+<p>（RPC不关心使用的协议， 会隐藏底层的通讯细节，不需要直接处理Socket通讯或Http通讯）</p>
+<ul>
+<li>一般用TCP</li>
+<li>也可以用HTTP</li>
+</ul>
+<p>RPC是同步调用的，常见的实现方式有WebService和RMI</p>
+<p>RPC的协议有CORBA、RMI、RPC风格的WebService</p>
+<p>RPC面向方法，较为成熟，适用于内网、密集调用</p>
+<p>RPC常用框架：Thrift(FaceBook)、dubbo(阿里)</p>
+<h4 id="MQ">MQ</h4>
+<p>消息队列MQ，是一种通信模型，一般来说是指实现这个模型的中间件</p>
+<p>RPC和MQ是两个领域</p>
+<p>要求这种通信模型能实现生产者到消费者的单向通信</p>
+<p>它可以是一个产品，或者是操作系统提供的一种服务之类。</p>
+<p>MQ有多种消息通信模式，有些是单向，有些是可以做双向通信的，如activemq里实现了jms里的requestor，用起来跟rpc很像</p>
+<p>rpc在C和S间添加中间件，即成为消息队列MQ。</p>
+<p>常见的规范有JMS、AMQP。</p>
+<p>JMS实现有ActiveMQ、Kafka消息中间件（Apache），RocketMQ（阿里）；AMQP实现有RabbitMQ、StormMQ</p>
+<p>同步使用RPC，异步使用MQ</p>
+<h4 id="Web-Service">Web Service</h4>
+<p>是一套RPC规范</p>
+<p>Web Service=简单对象访问协议SOAP + Web服务描述语言WSDL + UDDI</p>
+<p>通过SOAP在Web上提供的软件服务，使用WSDL文件进行说明，并通过UDDI进行注册</p>
+<p>当用户通过UDDI找到WSDL描述文档后，可以通过SOAP调用Web服务中的一个或多个操作</p>
+<blockquote>
+<p>WSDL：(Web Services Description Language) WSDL 文件是一个 XML 文档，用于说明一组 SOAP 消息以及如何交换这些消息。大多数情况下由软件自动生成和使用。</p>
+</blockquote>
+<p>Web Service提供的服务是基于web容器的，底层使用http协议，因而适合不同语言异构系统间的调用</p>
+<p>Web Service是一个Web应用程序，作为服务器向外界暴露一个调用接口，可以使运行在不同机器上的不同应用相互交换数据</p>
+<blockquote>
+<p>webservice是一种标准，他可以通过soap或rest的方式来实现。</p>
+<p>不过主要指的还是soap-webservice</p>
+</blockquote>
+<h4 id="SOAP">SOAP</h4>
+<p>SOAP，Simple Object Access Protocol，简单对象访问协议</p>
+<p>一种基于XML的通信协议，一般封装成了符合HTTP的格式，所以SOAP=XML+HTTP</p>
+<p>SOAP可以支持不同的底层接口，像HTTP或者SMTP</p>
+<p>SOAP可以和WebServices、HTTP、SMTP或RPC结合使用，是Web Service的默认通信协议</p>
+<ul>
+<li>[ ] 通信协议：HTTP、SOAP、websocket</li>
+</ul>
+<p>SOAP协议和HTTP协议一样，都是底层的通信协议，只是请求包的格式不同而已，SOAP包是XML格式的。</p>
+<h4 id="RMI">RMI</h4>
+<p>远程方法调用RMI，相对于RPC支持面向对象，但只能用于Java</p>
+<p>RMI实际上是Java语言的RPC实现，允许方法返回 Java 对象以及基本数据类型，适合用于JAVA语言构建的不同系统间的调用。</p>
+<p>Web Service本身其实是在实现应用程序间的通信。我们有两种应用程序通信的方法：RPC<a href="https://baike.baidu.com/item/%E8%BF%9C%E7%A8%8B%E8%BF%87%E7%A8%8B%E8%B0%83%E7%94%A8" target="_blank" rel="noopener">远程过程调用</a>和消息传递。使用RPC的时候，<a href="https://baike.baidu.com/item/%E5%AE%A2%E6%88%B7%E7%AB%AF" target="_blank" rel="noopener">客户端</a>的概念是调用服务器上的远程过程，通常方式为实例化一个远程对象并调用其方法和属性。RPC系统试图达到一种位置上的透明性：服务器暴露出远程对象的接口，而<a href="https://baike.baidu.com/item/%E5%AE%A2%E6%88%B7%E7%AB%AF" target="_blank" rel="noopener">客户端</a>就好像在本地使用的这些对象的接口一样，这样就隐藏了底层的信息，客户端也就根本不需要知道对象是在哪台机器上。</p>
+<h2 id="REST">REST</h2>
+<p>表述状态转移REST，是一种概念、架构风格，不是框架也不是协议</p>
+<p>将Web系统的服务抽象为资源，从资源的角度观察整个网络，分布在各处的资源由URI确定，而客户端的应用通过URI来获取资源的表征</p>
+<p>REST面向资源，适用于外网、低频调用</p>
+<p>REST 的三个要素是：唯一的资源标识，简单的方法 (抽象概念)，一定的表达方式</p>
+<p>REST以资源为中心，名词即资源的地址，动词即施加于名词上的一些有限操作，表达即对各种资源形态的抽象</p>
+<h4 id="HTTP">HTTP</h4>
+<p>以HTTP为例，名词即统一资源标识URI，动词包括POST、GET、PUT、DELETE等，资源的形态为text、html、image、pdf等</p>
+<p>HTTP是一种典型的REST风格，甚至在1994年提出REST风格时，REST被称作“HTTP对象模型”，这让人容易引起误解，实际上HTTP才是REST的具体实现</p>
+<h2 id="Web服务的发展趋势"><strong>Web服务的发展趋势</strong></h2>
+<p>-　在使用方式上，RPC和soap的使用在减少，Restful架构占到了主导地位<br>
+-　数据格式上，XML格式的使用在减少，JSON等轻量级格式的使用在增多<br>
+-　在设计架构上，越来越多的第三方软件让用户在客户端（即浏览器）直接与云端对话，不再使用第三方的服务器进行中转或处理数据</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>Post author:</strong>
+    Chen Yanzhi
+  </li>
+  <li class="post-copyright-link">
+    <strong>Post link:</strong>
+    <a href="https://chenyz2000.github.io/CS/%E5%85%B6%E4%BB%96/Web%E4%B8%8A%E7%9A%84%E8%BF%9C%E7%A8%8B%E8%B0%83%E7%94%A8/" title="Web上的远程调用">https://chenyz2000.github.io/CS/%E5%85%B6%E4%BB%96/Web%E4%B8%8A%E7%9A%84%E8%BF%9C%E7%A8%8B%E8%B0%83%E7%94%A8/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>Copyright Notice: </strong>
+    All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> unless stating additionally.
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/RPC/" rel="tag"># RPC</a>
+          
+            <a href="/tags/REST/" rel="tag"># REST</a>
+          
+            <a href="/tags/SOA/" rel="tag"># SOA</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/CS/%E5%BC%80%E5%8F%91/Python/flask/" rel="next" title="flask">
+                <i class="fa fa-chevron-left"></i> flask
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/CS/%E5%B7%A5%E5%85%B7/Python%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83/" rel="prev" title="Python虚拟环境">
+                Python虚拟环境 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.jpg"
+                alt="Chen Yanzhi" />
+            
+              <p class="site-author-name" itemprop="name">Chen Yanzhi</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+                <a href="/archives">
+                  <span class="site-state-item-count">72</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-name">categories</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">70</span>
+                  <span class="site-state-item-name">tags</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/chenyz2000" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:chenyanzhi_2000@163.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#网络中C-S远程调用技术（Web服务）"><span class="nav-text">网络中C&#x2F;S远程调用技术（Web服务）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#RPC"><span class="nav-text">RPC</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#MQ"><span class="nav-text">MQ</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Web-Service"><span class="nav-text">Web Service</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#SOAP"><span class="nav-text">SOAP</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#RMI"><span class="nav-text">RMI</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#REST"><span class="nav-text">REST</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#HTTP"><span class="nav-text">HTTP</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Web服务的发展趋势"><span class="nav-text">Web服务的发展趋势</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Chen Yanzhi</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
