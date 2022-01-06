@@ -79,15 +79,15 @@
 
 
 
-<meta name="description" content="移动开发：Android、IOS、H5 App、Native+H5、RN、ionic、MUI… Android开发简介 开发工具：Android Studio Android Studio使用Gradle构建项目 需要JDK + Android SDK Android最低支持版本可以选5.0 安卓自身系统库包含：媒体库支持播放音视频、web浏览器引擎、轻量级数据库SQLite、2D库、3D库、矢量">
+<meta name="description" content="移动开发：Android、IOS、H5 App、Native+H5、RN、ionic、MUI…  IDEA中右键→new→Vector asset，有很多矢量图标可以选择  160dp≈1英寸，可能会有偏差 当屏幕像素点密度为160dpi时，1dp&#x3D;1px">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Android开发">
 <meta property="og:url" content="https://chenyz2000.github.io/CS/%E5%BC%80%E5%8F%91/Android/Android%E5%BC%80%E5%8F%91/index.html">
 <meta property="og:site_name" content="CYZ&#39;s Blog">
-<meta property="og:description" content="移动开发：Android、IOS、H5 App、Native+H5、RN、ionic、MUI… Android开发简介 开发工具：Android Studio Android Studio使用Gradle构建项目 需要JDK + Android SDK Android最低支持版本可以选5.0 安卓自身系统库包含：媒体库支持播放音视频、web浏览器引擎、轻量级数据库SQLite、2D库、3D库、矢量">
+<meta property="og:description" content="移动开发：Android、IOS、H5 App、Native+H5、RN、ionic、MUI…  IDEA中右键→new→Vector asset，有很多矢量图标可以选择  160dp≈1英寸，可能会有偏差 当屏幕像素点密度为160dpi时，1dp&#x3D;1px">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2020-11-07T08:21:00.000Z">
-<meta property="article:modified_time" content="2021-12-29T16:00:00.000Z">
+<meta property="article:published_time" content="2021-12-27T16:00:00.000Z">
+<meta property="article:modified_time" content="2022-01-01T16:00:00.000Z">
 <meta property="article:author" content="Chen Yanzhi">
 <meta property="article:tag" content="Android">
 <meta name="twitter:card" content="summary">
@@ -292,8 +292,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-11-07T16:21:00+08:00">
-                2020-11-07
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2021-12-28T00:00:00+08:00">
+                2021-12-28
               </time>
             
 
@@ -308,8 +308,8 @@
               
                 <span class="post-meta-item-text">Post modified&#58;</span>
               
-              <time title="Post modified" itemprop="dateModified" datetime="2021-12-30T00:00:00+08:00">
-                2021-12-30
+              <time title="Post modified" itemprop="dateModified" datetime="2022-01-02T00:00:00+08:00">
+                2022-01-02
               </time>
             
           </span>
@@ -365,57 +365,132 @@
 
       
         <p>移动开发：Android、IOS、H5 App、Native+H5、RN、ionic、MUI…</p>
+<blockquote>
+<p>IDEA中右键→new→Vector asset，有很多矢量图标可以选择</p>
+</blockquote>
+<p>160dp≈1英寸，可能会有偏差</p>
+<p>当屏幕像素点密度为160dpi时，1dp=1px</p>
+<a id="more"></a>
+<ul>
+<li>material design：样式设计</li>
+<li>Jetpack：组件库，适合大型、有复用需求的项目</li>
+<li>Flutter：跨平台UI包，需要学习一门新语言 Dart</li>
+<li>RxJava：异步操作、多线程库</li>
+<li>Retrofit：网络请求框架</li>
+<li>Glide：图片加载框架</li>
+<li>Realm：替代SQLite的更轻量的数据库</li>
+<li>MVP设计模式，Dagger2依赖注入</li>
+</ul>
+<h4 id="app开发">app开发</h4>
+<ul>
+<li>
+<p>原生：安卓用Java/Kotlin，IOS用Object-C/Swift</p>
+</li>
+<li>
+<p>混合：Html+容器（PhoneGap/Cordova/Ionic）</p>
+</li>
+<li>
+<p>跨平台——编译：前端JS+前端框架+自研引擎。复用前端技术，更易开发。</p>
+<blockquote>
+<p>先用特定语言编写，编译时转换为原生语法</p>
+</blockquote>
+<ul>
+<li><strong>React Native</strong>：脸书家，使用JS作为编程语言，生态好，最稳妥，跨安卓+IOS。eg：抖音、京东、网易云音乐、QQ音乐、百度、小红书、爱奇艺、喜马拉雅</li>
+<li>weex：阿里家，基于Vue，跨安卓+IOS+网页。eg：淘宝、钉钉</li>
+</ul>
+</li>
+<li>
+<p>跨平台-编译2：自研语言+框架+引擎。性能好</p>
+<ul>
+<li><strong>Flutter</strong>：谷歌家，Dart语言，性能好，跨安卓+IOS。eg：QQ、快手、闲鱼、美团</li>
+<li>Xamarin：微软家，C#语言</li>
+<li>QT：QML语言</li>
+</ul>
+</li>
+<li>
+<p>跨平台-小程序：</p>
+<ul>
+<li><strong>uniapp</strong>：基于Vue，相当于Vue+小程序，可跨所有平台+小程序</li>
+<li>taro：基于React</li>
+<li>chameleon</li>
+</ul>
+</li>
+</ul>
+<p>原生用来调用硬件，UI用前端技术开发，二者之间用webview的js桥连接</p>
+<p>推荐：公司开发，最稳妥用RN，Flutter的比例在接近RN；需要小程序，uniapp适合快速开发、小型项目</p>
 <h2 id="Android开发简介">Android开发简介</h2>
 <p>开发工具：Android Studio</p>
 <p>Android Studio使用Gradle构建项目</p>
 <p>需要JDK + Android SDK</p>
-<p>Android最低支持版本可以选5.0</p>
+<p>Android最低支持版本选则5.0就好</p>
 <p>安卓自身系统库包含：媒体库支持播放音视频、web浏览器引擎、轻量级数据库SQLite、2D库、3D库、矢量渲染库</p>
-<a id="more"></a>
 <h2 id="文件目录">文件目录</h2>
 <ul>
 <li>app/src/main/
 <ul>
-<li>java/：代码
+<li>java/&lt;包名&gt;：
 <ul>
-<li>MainActivity.java</li>
+<li>MainActivity.java：窗口的操作</li>
 </ul>
 </li>
 <li>res/：资源文件
 <ul>
-<li>drawable/：放图片或xml</li>
-<li>layout/：放布局文件</li>
-<li>values/：存放定义的值（可以用@在xml里引用）</li>
+<li>drawable/：放<strong>图片</strong>或小型布局的xml</li>
+<li>layout/：放<strong>窗口结构的布局文件</strong></li>
+<li>values/：存放<strong>定义的值</strong></li>
+<li>mipmap/：位图</li>
 </ul>
 </li>
 <li>assets/：不编译的资源文件，如html</li>
-<li>AndroidManifest.xml：配置文件，<strong>声明用到的所有activity界面</strong></li>
+<li>AndroidManifest.xml：<strong>配置文件，注册用到的所有activity界面</strong></li>
 </ul>
 </li>
 <li>app/src/build.gradle：配置客户端版本号和依赖的包</li>
 </ul>
+<h4 id="引用">@引用</h4>
+<p>res中的内容，包括layout、value和drawable等文件夹，可以在xml里和java里引用</p>
+<p>建议使用需要数值的时候进行引用而不是写具体数值</p>
+<p>eg:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">内容：layout&#x2F;activity_main</span><br><span class="line">Java中引用：R.layout.activity_main</span><br><span class="line">xml中引用未实验</span><br><span class="line"></span><br><span class="line">内容：drawable&#x2F;icon.xml</span><br><span class="line">Java中引用未实验</span><br><span class="line">xml中引用：@drawable&#x2F;icon</span><br><span class="line"></span><br><span class="line">内容：value&#x2F;strings.xml中的K:V对</span><br><span class="line">xml中引用：@string&#x2F;K</span><br><span class="line">Java中引用：R.string.K</span><br><span class="line"></span><br><span class="line">内容：@+id&#x2F;xxx</span><br><span class="line">Java中引用：R.id.xxx</span><br></pre></td></tr></table></figure>
+<p>相当于layout和drawable是一类，文件名就是K值，文件内容是V；value文件夹是另一类，在strings等xml内定义K:V对</p>
+<p>值得一提的是，values/styles.xml可以设置多个属性合并为一个风格，根据风格名引用</p>
 <h2 id="文件调用关系（重要）">文件调用关系（重要）</h2>
-<p><code>MainActivity.java</code>在<code>AndroidManifest.xml</code>中<code>&lt;activity&gt;  &lt;/activity&gt;</code><strong>注册</strong></p>
+<p>一个Activity表示一个窗口</p>
+<p><code>MainActivity.java</code>在<code>AndroidManifest.xml</code>中进行<strong>注册</strong></p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">activity</span> <span class="attr">android:name</span>=<span class="string">".MainActivity"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">activity</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <p><code>MainActivity.java</code>中用<code>setContentView()</code><strong>设置布局文件</strong><code>activity_main.xml</code></p>
-<p><code>activity_main.xml</code>中，<code>&lt;TextView /&gt;</code>显示文本的控件</p>
-<h2 id="布局管理器">布局管理器</h2>
-<h4 id="线性布局LinearLayout">线性布局LinearLayout</h4>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">LinearLayout</span> <span class="attr">android:orientation</span>=<span class="string">"horizontal"</span>&gt;</span></span><br><span class="line">	</span><br><span class="line"><span class="tag">&lt;/<span class="name">LinearLayout</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">setContentView(R.layout.activity_main);</span><br></pre></td></tr></table></figure>
+<p><code>activity_main.xml</code>中，编写显示在窗口中的<strong>控件</strong></p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">LinearLayout</span> <span class="attr">xmlns:android</span>=<span class="string">"http://schemas.android.com/apk/res/android"</span></span></span><br><span class="line"><span class="tag">              <span class="attr">android:layout_width</span>=<span class="string">"match_parent"</span></span></span><br><span class="line"><span class="tag">              <span class="attr">android:layout_height</span>=<span class="string">"match_parent"</span></span></span><br><span class="line"><span class="tag">              <span class="attr">android:orientation</span>=<span class="string">"vertical"</span></span></span><br><span class="line"><span class="tag">              <span class="attr">android:padding</span>=<span class="string">"16dp"</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">TextView</span> <span class="attr">android:layout_width</span>=<span class="string">"match_parent"</span> </span></span><br><span class="line"><span class="tag">              <span class="attr">android:layout_height</span>=<span class="string">"wrap_content"</span></span></span><br><span class="line"><span class="tag">              <span class="attr">android:text</span>=<span class="string">"Hello World"</span></span></span><br><span class="line"><span class="tag">              /&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">LinearLayout</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>（xml和activity.java有点类似html和js）</p>
+<h2 id="布局">布局</h2>
 <p>布局也是控件</p>
-<p>控件的属性有：</p>
-<p><code>android:id</code></p>
-<p><code>android:layout_width</code>, <code>android:layout_height</code>，长度宽度单位常用dp、匹配父控件、按内容调整</p>
-<p><code>android:layout_margin</code>, <code>android:layout_padding</code></p>
-<p><code>android:background</code></p>
-<p><code>android:gravity</code>，内部元素对齐方式</p>
-<p><code>android:weight</code>，剩余空间平分的权重</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">TextView</span> <span class="attr">android:text</span>=<span class="string">"helloworld"</span>/&gt;</span></span><br></pre></td></tr></table></figure>
-<p><code>&lt;View /&gt;</code>是所有控件的父类</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">LinearLayout</span> <span class="attr">attr</span>=<span class="string">"xxx"</span>&gt;</span></span><br><span class="line">	控件</span><br><span class="line"><span class="tag">&lt;/<span class="name">LinearLayout</span>&gt;</span></span><br><span class="line">--------------------------------</span><br><span class="line"><span class="tag">&lt;<span class="name">RelativeLayout</span> <span class="attr">attr</span>=<span class="string">"xxx"</span>&gt;</span></span><br><span class="line">	控件</span><br><span class="line"><span class="tag">&lt;/<span class="name">RelativeLayout</span>&gt;</span></span><br><span class="line">---------------------------------</span><br><span class="line"><span class="tag">&lt;<span class="name">ConstraintLayout</span> <span class="attr">attr</span>=<span class="string">"xxx"</span>&gt;</span></span><br><span class="line">	控件</span><br><span class="line"><span class="tag">&lt;/<span class="name">ConstraintLayout</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h4 id="线性布局LinearLayout">线性布局LinearLayout</h4>
+<p>元素对于当前页面是固定的</p>
+<p>常用属性如下</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"># 间隔</span><br><span class="line">android:layout_margin</span><br><span class="line">android:layout_padding</span><br><span class="line"># 方向</span><br><span class="line">android:orientation&#x3D;&quot;horizontal&quot;</span><br></pre></td></tr></table></figure>
 <h4 id="相对布局RelativeLayout">相对布局RelativeLayout</h4>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">RelativeLayout</span>&gt;</span><span class="tag">&lt;/<span class="name">RelativeLayout</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p>相对布局的属性：</p>
-<p><code>android:layout_toLeftOf</code>， <code>android:layout_toRightOf</code>，<code>android:layout_below</code>，在某个控件的左、右、下面</p>
-<p><code>android:layout_alignBottom</code>，<code>android:layout_alignParentBottom</code>，底部对齐，也有right</p>
+<p>如果想要页面移动，按钮不动，应该使用相对布局</p>
+<p>常用属性如下</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"># 在某个控件的左、右、下面</span><br><span class="line">android:layout_toLeftOf</span><br><span class="line">android:layout_toRightOf</span><br><span class="line">android:layout_below</span><br><span class="line"># 底部对齐，也有right</span><br><span class="line">android:layout_alignBottom</span><br><span class="line">android:layout_alignParentBottom</span><br></pre></td></tr></table></figure>
+<h4 id="约束布局ConstraintLayout">约束布局ConstraintLayout</h4>
+<p>相对布局的进化版</p>
+<h4 id="使用建议">使用建议</h4>
+<ul>
+<li>在布局简单的情况下，优先使用LinearLayout，其次考虑RelativeLayout和ConstraintLayout。简单布局下，LinearLayout代码量相对较少</li>
+<li>在布局复杂的情况下，优先使用RelativeLayout和ConstraintLayout，不建议使用LinearLayout各种嵌套，过多层次的嵌套会增加绘制时间</li>
+<li>如果习惯使用RelativeLayout，则不必刻意追求使用ConstraintLayout</li>
+</ul>
+<h2 id="Intent">Intent</h2>
+<p>四大组件间的枢纽，Android通信的桥梁</p>
+<p>Intent可以启动Activity、Service和Broadcast</p>
+<h4 id="Activity跳转">Activity跳转</h4>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Intent intent = <span class="keyword">new</span> Intent(<span class="keyword">this</span>, Activity2<span class="class">.<span class="keyword">class</span>)</span>;		<span class="comment">//当前Activity跳转到Activity2</span></span><br><span class="line">startActivity(intent);		<span class="comment">//启动</span></span><br></pre></td></tr></table></figure>
+<h4 id="Extra扩展信息">Extra扩展信息</h4>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//发送的Activity</span></span><br><span class="line">Intent intent = <span class="keyword">new</span> Intent();</span><br><span class="line">intent.putExtra(<span class="string">"tag"</span>,<span class="string">"msg"</span>);</span><br><span class="line">setResult(RESULT_OK, intent);</span><br><span class="line">finish();</span><br><span class="line"></span><br><span class="line"><span class="comment">//接收的Activity</span></span><br><span class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onActivityResult</span><span class="params">(<span class="keyword">int</span> requestCode, <span class="keyword">int</span> resultCode, @Nullable Intent data)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">super</span>.onActivityResult(requestCode, resultCode, data);</span><br><span class="line">    String s = data.getStringExtra(<span class="string">"tag"</span>);		<span class="comment">//跳转回当前页面带来的data</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="log">log</h2>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> android.util.Log;</span><br><span class="line">Log.d("tag","msg");		#debug时打印</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -464,8 +539,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/CS/%E8%BF%90%E7%BB%B4/Linux/Docker/" rel="next" title="Docker">
-                <i class="fa fa-chevron-left"></i> Docker
+              <a href="/CS/%E5%BC%80%E5%8F%91/Java%E5%9F%BA%E7%A1%80/Java%E5%A4%9A%E7%BA%BF%E7%A8%8B/" rel="next" title="Java多线程">
+                <i class="fa fa-chevron-left"></i> Java多线程
               </a>
             
           </div>
@@ -474,8 +549,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/CS/%E5%B7%A5%E5%85%B7/VS%20Code%E8%B0%83%E8%AF%95C++/" rel="prev" title="VS Code调试C++">
-                VS Code调试C++ <i class="fa fa-chevron-right"></i>
+              <a href="/CS/%E5%BC%80%E5%8F%91/Android/Android%20SDK/" rel="prev" title="Android SDK">
+                Android SDK <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -555,7 +630,7 @@
             
               <div class="site-state-item site-state-posts">
                 <a href="/archives">
-                  <span class="site-state-item-count">72</span>
+                  <span class="site-state-item-count">75</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -578,7 +653,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">70</span>
+                  <span class="site-state-item-count">72</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>
@@ -627,7 +702,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Android开发简介"><span class="nav-text">Android开发简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#文件目录"><span class="nav-text">文件目录</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#文件调用关系（重要）"><span class="nav-text">文件调用关系（重要）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#布局管理器"><span class="nav-text">布局管理器</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#线性布局LinearLayout"><span class="nav-text">线性布局LinearLayout</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#相对布局RelativeLayout"><span class="nav-text">相对布局RelativeLayout</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#app开发"><span class="nav-text">app开发</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Android开发简介"><span class="nav-text">Android开发简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#文件目录"><span class="nav-text">文件目录</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#引用"><span class="nav-text">@引用</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#文件调用关系（重要）"><span class="nav-text">文件调用关系（重要）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#布局"><span class="nav-text">布局</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#线性布局LinearLayout"><span class="nav-text">线性布局LinearLayout</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#相对布局RelativeLayout"><span class="nav-text">相对布局RelativeLayout</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#约束布局ConstraintLayout"><span class="nav-text">约束布局ConstraintLayout</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#使用建议"><span class="nav-text">使用建议</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Intent"><span class="nav-text">Intent</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Activity跳转"><span class="nav-text">Activity跳转</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Extra扩展信息"><span class="nav-text">Extra扩展信息</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#log"><span class="nav-text">log</span></a></div>
             
 
           </div>
@@ -654,7 +729,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2021</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2022</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>

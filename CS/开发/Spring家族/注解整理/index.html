@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="RabbitMQ,AMQP,Spring Boot," />
+  <meta name="keywords" content="Spring Boot,Spring,Spring MVC,Annotation," />
 
 
 
@@ -79,19 +79,20 @@
 
 
 
-<meta name="description" content="消息队列 消息队列Message Queue 页面发布到服务器上，页面发布程序直接和每一个服务器的程序通信，叫做同步操作，同步操作是一步做完了才能做下一步 服务器的程序监听一个消息队列MQ，页面发布程序把消息发布给MQ，MQ把消息通知给监听它的每一个程序，MQ使发布程序和接收程序间异步处理，并且解耦合">
+<meta name="description" content="参考 Spring注解 import org.springframework.beans.factory.annotation.*; jar包位于仓库的org\springframework\spring-beans\5.x.x.RELEASE\spring-beans-5.1.5.RELEASE.jar @autowired和@Qualifier @Value @Required 已废弃">
 <meta property="og:type" content="article">
-<meta property="og:title" content="RabbitMQ">
-<meta property="og:url" content="https://chenyz2000.github.io/CS/%E5%BC%80%E5%8F%91/Spring/RabbitMQ/index.html">
+<meta property="og:title" content="注解整理">
+<meta property="og:url" content="https://chenyz2000.github.io/CS/%E5%BC%80%E5%8F%91/Spring%E5%AE%B6%E6%97%8F/%E6%B3%A8%E8%A7%A3%E6%95%B4%E7%90%86/index.html">
 <meta property="og:site_name" content="CYZ&#39;s Blog">
-<meta property="og:description" content="消息队列 消息队列Message Queue 页面发布到服务器上，页面发布程序直接和每一个服务器的程序通信，叫做同步操作，同步操作是一步做完了才能做下一步 服务器的程序监听一个消息队列MQ，页面发布程序把消息发布给MQ，MQ把消息通知给监听它的每一个程序，MQ使发布程序和接收程序间异步处理，并且解耦合">
+<meta property="og:description" content="参考 Spring注解 import org.springframework.beans.factory.annotation.*; jar包位于仓库的org\springframework\spring-beans\5.x.x.RELEASE\spring-beans-5.1.5.RELEASE.jar @autowired和@Qualifier @Value @Required 已废弃">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2020-08-09T02:24:00.000Z">
-<meta property="article:modified_time" content="2020-08-09T02:24:00.000Z">
+<meta property="article:published_time" content="2020-08-06T02:39:00.000Z">
+<meta property="article:modified_time" content="2020-08-06T02:39:00.000Z">
 <meta property="article:author" content="Chen Yanzhi">
-<meta property="article:tag" content="RabbitMQ">
-<meta property="article:tag" content="AMQP">
 <meta property="article:tag" content="Spring Boot">
+<meta property="article:tag" content="Spring">
+<meta property="article:tag" content="Spring MVC">
+<meta property="article:tag" content="Annotation">
 <meta name="twitter:card" content="summary">
 
 
@@ -122,13 +123,13 @@
 
 
 
-  <link rel="canonical" href="https://chenyz2000.github.io/CS/开发/Spring/RabbitMQ/"/>
+  <link rel="canonical" href="https://chenyz2000.github.io/CS/开发/Spring家族/注解整理/"/>
 
 
 
 
 
-  <title>RabbitMQ | CYZ's Blog</title>
+  <title>注解整理 | CYZ's Blog</title>
   
 
 
@@ -265,7 +266,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://chenyz2000.github.io/CS/%E5%BC%80%E5%8F%91/Spring/RabbitMQ/">
+    <link itemprop="mainEntityOfPage" href="https://chenyz2000.github.io/CS/%E5%BC%80%E5%8F%91/Spring%E5%AE%B6%E6%97%8F/%E6%B3%A8%E8%A7%A3%E6%95%B4%E7%90%86/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Chen Yanzhi">
@@ -282,7 +283,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">RabbitMQ</h1>
+          <h1 class="post-title" itemprop="name headline">注解整理</h1>
         
 
         <div class="post-meta">
@@ -294,8 +295,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-08-09T10:24:00+08:00">
-                2020-08-09
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-08-06T10:39:00+08:00">
+                2020-08-06
               </time>
             
 
@@ -310,8 +311,8 @@
               
                 <span class="post-meta-item-text">Post modified&#58;</span>
               
-              <time title="Post modified" itemprop="dateModified" datetime="2020-08-09T10:24:00+08:00">
-                2020-08-09
+              <time title="Post modified" itemprop="dateModified" datetime="2020-08-06T10:39:00+08:00">
+                2020-08-06
               </time>
             
           </span>
@@ -366,19 +367,41 @@
       
 
       
-        <h2 id="消息队列">消息队列</h2>
-<p>消息队列Message Queue</p>
-<p>页面发布到服务器上，页面发布程序直接和每一个服务器的程序通信，叫做同步操作，同步操作是一步做完了才能做下一步</p>
-<p>服务器的程序监听一个消息队列MQ，页面发布程序把消息发布给MQ，MQ把消息通知给监听它的每一个程序，MQ使发布程序和接收程序间异步处理，并且解耦合</p>
+        <p><a href="https://blog.csdn.net/kxj19980524/article/details/85124785" target="_blank" rel="noopener">参考</a></p>
+<h2 id="Spring注解">Spring注解</h2>
+<p>import org.springframework.beans.factory.annotation.*;</p>
+<p>jar包位于仓库的org\springframework\spring-beans\5.x.x.RELEASE\spring-beans-5.1.5.RELEASE.jar</p>
+<h4 id="autowired和-Qualifier">@autowired和@Qualifier</h4>
+<h4 id="Value">@Value</h4>
+<h4 id="Required">@Required</h4>
+<p>已废弃</p>
 <a id="more"></a>
-<p>市场上有多家消息队列：ActiveMQ，RabbitMQ，ZeroMQ，Kafka，MetaMQ，RocketMQ，Redis</p>
-<h2 id="RabbitMQ">RabbitMQ</h2>
-<p>基于高级消息队列协议AMQP实现的消息队列</p>
-<p>由erlang语言开发，高并发性好</p>
-<p>Spring Boot默认的消息队列</p>
-<blockquote>
-<p>JMS，Java消息服务，是一个接口，类似于JDBC也是</p>
-</blockquote>
+<hr>
+<p>import org.springframework.context.annotation.*;</p>
+<p>jar包位于仓库的org\springframework\spring-context\5.x.x.RELEASE\spring-context-5.1.5.RELEASE.jar</p>
+<h4 id="Bean">@Bean</h4>
+<p>见@Configuration</p>
+<h4 id="ComponentScan">@ComponentScan</h4>
+<p>@ComponentScan对应XML配置形式中的&lt;context：component-scan&gt;元素，用于配合一些元信息JavaAnnotation，比如@Component和@Repository等，将标注了这些元信息Annotation的bean定义类<strong>批量采集</strong>到Spring的IoC容器中。</p>
+<p>我们可以通过basePackages等属性来细粒度地定制@ComponentScan自动扫描的范围，如果不指定，则默认Spring框架实现会从声明@ComponentScan所在类的package进行扫描。</p>
+<h4 id="Conditional">@Conditional</h4>
+<h4 id="Configuration">@Configuration</h4>
+<p>Spring3.0后可以通过注解标注Config配置类，替代xml配置</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">StudentConfiguration</span></span>&#123;		<span class="comment">//配置类</span></span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> StudentService <span class="title">studentService</span><span class="params">()</span></span>&#123;		<span class="comment">//bean的定义</span></span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> StudentServiceImpl();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>标注了@Bean的方法，返回值将作为一个bean定义注册到 Spring 的 IoC 容器，其id默认为方法名</p>
+<p>依赖注入</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">StudentConfiguration</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> StudentService <span class="title">studentService</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> StudentServiceImpl(dependencyService());</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> DependencyService <span class="title">dependencyService</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> DependencyServiceImpl();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>注意：这里DependencyServiceImpl就算多次实例化也只创建同一个对象，采取的实现方式是通过拦截配置类的方法调用，一旦拥有拦截逻辑的子类发现当前方法没有对应的类型实例时才会去请求父类的同一方法来初始化对象实例，否则直接返回之前的对象实例。</p>
+<h4 id="Import">@Import</h4>
+<p>在XML形式的配置中，我们通过&lt; import resource=“XXX.xml”/&gt;的形式将多个分开的容器配置合到一个配置中，在JavaConfig形式的配置中，我们则使用@Import这个Annotation完成同样目的：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="meta">@Import</span>(MockConfiguration<span class="class">.<span class="keyword">class</span>)</span></span><br><span class="line"><span class="class"><span class="title">public</span> <span class="title">class</span> <span class="title">XConfiguration</span></span>&#123;</span><br><span class="line">	......</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>@Import只负责引入JavaConfig形式定义的IoC容器配置，如果有一些遗留的配置或者遗留系统需要以XML形式来配置（比如dubbo框架），我们依然可以通过<u>@ImportResource</u>将它们一起合并到当前JavaConfig配置的容器中。</p>
+<h4 id="Lazy">@Lazy</h4>
+<h4 id="PropertySources">@PropertySources</h4>
+<p><u>@PropertySource</u>用于从某些地方加载*.properties文件内容，并将其中的属性加载到IoC容器中，便于填充一些bean定义属性的占位符（placeholder），当然，这需要PropertySourcesPlaceholderConfigurer的配合。</p>
+<p>如果我们使用Java8或者更高版本开发，那么，我们可以并行声明多个@PropertySource：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="meta">@PropertySource</span>(<span class="string">"classpath:1.properties"</span>)</span><br><span class="line"><span class="meta">@PropertySource</span>(<span class="string">"classpath:2.properties"</span>)</span><br><span class="line"><span class="meta">@PropertySource</span>(<span class="string">"..."</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">XConfiguration</span></span>&#123;</span><br><span class="line">	......</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="Scope">@Scope</h4>
 
       
     </div>
@@ -399,7 +422,7 @@
   </li>
   <li class="post-copyright-link">
     <strong>Post link:</strong>
-    <a href="https://chenyz2000.github.io/CS/%E5%BC%80%E5%8F%91/Spring/RabbitMQ/" title="RabbitMQ">https://chenyz2000.github.io/CS/%E5%BC%80%E5%8F%91/Spring/RabbitMQ/</a>
+    <a href="https://chenyz2000.github.io/CS/%E5%BC%80%E5%8F%91/Spring%E5%AE%B6%E6%97%8F/%E6%B3%A8%E8%A7%A3%E6%95%B4%E7%90%86/" title="注解整理">https://chenyz2000.github.io/CS/%E5%BC%80%E5%8F%91/Spring%E5%AE%B6%E6%97%8F/%E6%B3%A8%E8%A7%A3%E6%95%B4%E7%90%86/</a>
   </li>
   <li class="post-copyright-license">
     <strong>Copyright Notice: </strong>
@@ -414,11 +437,13 @@
       
         <div class="post-tags">
           
-            <a href="/tags/RabbitMQ/" rel="tag"># RabbitMQ</a>
-          
-            <a href="/tags/AMQP/" rel="tag"># AMQP</a>
-          
             <a href="/tags/Spring-Boot/" rel="tag"># Spring Boot</a>
+          
+            <a href="/tags/Spring/" rel="tag"># Spring</a>
+          
+            <a href="/tags/Spring-MVC/" rel="tag"># Spring MVC</a>
+          
+            <a href="/tags/Annotation/" rel="tag"># Annotation</a>
           
         </div>
       
@@ -431,8 +456,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/CS/%E5%B7%A5%E5%85%B7/IDEA/" rel="next" title="IDEA">
-                <i class="fa fa-chevron-left"></i> IDEA
+              <a href="/CS/%E5%BC%80%E5%8F%91/Spring%E5%AE%B6%E6%97%8F/MyBatis/" rel="next" title="MyBatis">
+                <i class="fa fa-chevron-left"></i> MyBatis
               </a>
             
           </div>
@@ -441,8 +466,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/CS/%E5%BC%80%E5%8F%91/%E5%89%8D%E7%AB%AF%E4%B8%89%E5%89%91%E5%AE%A2/Ajax/" rel="prev" title="Ajax">
-                Ajax <i class="fa fa-chevron-right"></i>
+              <a href="/CS/%E8%BF%90%E7%BB%B4/Database/Redis/" rel="prev" title="Redis">
+                Redis <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -522,7 +547,7 @@
             
               <div class="site-state-item site-state-posts">
                 <a href="/archives">
-                  <span class="site-state-item-count">72</span>
+                  <span class="site-state-item-count">75</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -545,7 +570,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">70</span>
+                  <span class="site-state-item-count">72</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>
@@ -594,7 +619,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#消息队列"><span class="nav-text">消息队列</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#RabbitMQ"><span class="nav-text">RabbitMQ</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Spring注解"><span class="nav-text">Spring注解</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#autowired和-Qualifier"><span class="nav-text">@autowired和@Qualifier</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Value"><span class="nav-text">@Value</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Required"><span class="nav-text">@Required</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Bean"><span class="nav-text">@Bean</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#ComponentScan"><span class="nav-text">@ComponentScan</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Conditional"><span class="nav-text">@Conditional</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Configuration"><span class="nav-text">@Configuration</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Import"><span class="nav-text">@Import</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Lazy"><span class="nav-text">@Lazy</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#PropertySources"><span class="nav-text">@PropertySources</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Scope"><span class="nav-text">@Scope</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
@@ -621,7 +646,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2021</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2022</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
