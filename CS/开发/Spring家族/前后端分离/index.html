@@ -82,7 +82,7 @@
 <meta name="description" content="浏览器作为客户端，向服务器请求获得一段字符串（即HTML），之后经过浏览器的规则识别进行渲染 Spring Boot+Vue 传统的Java Web开发中，前端使用JSP开发，后端使用Java语言开发 JSP不是后端独立完成的，是由前端开发HTML，再由后端转成JSP 前后端开发的内容互相影响，互不理解 前后端耦合高，开发效率低">
 <meta property="og:type" content="article">
 <meta property="og:title" content="前后端分离">
-<meta property="og:url" content="https://chenyz2000.github.io/CS/%E5%BC%80%E5%8F%91/%E5%89%8D%E7%AB%AF%E4%B8%89%E5%89%91%E5%AE%A2/%E5%89%8D%E5%90%8E%E7%AB%AF%E5%88%86%E7%A6%BB/index.html">
+<meta property="og:url" content="https://chenyz2000.github.io/CS/%E5%BC%80%E5%8F%91/Spring%E5%AE%B6%E6%97%8F/%E5%89%8D%E5%90%8E%E7%AB%AF%E5%88%86%E7%A6%BB/index.html">
 <meta property="og:site_name" content="CYZ&#39;s Blog">
 <meta property="og:description" content="浏览器作为客户端，向服务器请求获得一段字符串（即HTML），之后经过浏览器的规则识别进行渲染 Spring Boot+Vue 传统的Java Web开发中，前端使用JSP开发，后端使用Java语言开发 JSP不是后端独立完成的，是由前端开发HTML，再由后端转成JSP 前后端开发的内容互相影响，互不理解 前后端耦合高，开发效率低">
 <meta property="og:locale" content="en_US">
@@ -127,7 +127,7 @@
 
 
 
-  <link rel="canonical" href="https://chenyz2000.github.io/CS/开发/前端三剑客/前后端分离/"/>
+  <link rel="canonical" href="https://chenyz2000.github.io/CS/开发/Spring家族/前后端分离/"/>
 
 
 
@@ -270,7 +270,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://chenyz2000.github.io/CS/%E5%BC%80%E5%8F%91/%E5%89%8D%E7%AB%AF%E4%B8%89%E5%89%91%E5%AE%A2/%E5%89%8D%E5%90%8E%E7%AB%AF%E5%88%86%E7%A6%BB/">
+    <link itemprop="mainEntityOfPage" href="https://chenyz2000.github.io/CS/%E5%BC%80%E5%8F%91/Spring%E5%AE%B6%E6%97%8F/%E5%89%8D%E5%90%8E%E7%AB%AF%E5%88%86%E7%A6%BB/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Chen Yanzhi">
@@ -334,8 +334,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%89%8D%E7%AB%AF%E4%B8%89%E5%89%91%E5%AE%A2/" itemprop="url" rel="index">
-                    <span itemprop="name">前端三剑客</span>
+                  <a href="/categories/Spring%E5%AE%B6%E6%97%8F/" itemprop="url" rel="index">
+                    <span itemprop="name">Spring家族</span>
                   </a>
                 </span>
 
@@ -399,7 +399,7 @@ vue中是通过axios插件实现<br>
 vue中所有的js代码都要写到script的export default{}中</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">default</span>&#123;</span><br><span class="line">    name: <span class="string">"Book"</span>;</span><br><span class="line">    data()&#123;</span><br><span class="line">        <span class="keyword">return</span>&#123;</span><br><span class="line">            msg: <span class="string">""</span>,</span><br><span class="line">            books:[&#123;&#125;,&#123;&#125;]	<span class="comment">//在代码中用插值表达式调用</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    created()&#123;	<span class="comment">//加载对象时调用</span></span><br><span class="line">        <span class="keyword">const</span> _this=<span class="keyword">this</span>;	<span class="comment">//vue对象</span></span><br><span class="line">        axios.get(<span class="string">"url"</span>).then(<span class="function"><span class="keyword">function</span>(<span class="params">resp</span>)</span>&#123;		<span class="comment">//形参resp承接从后端返回的结果</span></span><br><span class="line">            _this.books=resp.data;	<span class="comment">//只需要data信息	//这里的this不是vue对象，是回调</span></span><br><span class="line">            <span class="comment">//修改的是下划线处books的值</span></span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <blockquote>
-<p>Trouble：可能会出现跨服务的问题</p>
+<p>Error：可能会出现跨服务的问题</p>
 <p>Solution：可在前端可在后端解决。如在Springboot中加一个配置类，实现WebMvcConfigurer接口，重写addCorsMappings方法</p>
 </blockquote>
 <h2 id="HTTP">HTTP</h2>
@@ -445,8 +445,7 @@ vue中所有的js代码都要写到script的export default{}中</p>
 </ul>
 <h2 id="前后端数据交互">前后端数据交互</h2>
 <p>前后端数据交互：表单，Ajax</p>
-<h3 id="表单">表单</h3>
-<h4 id="提交数据">提交数据</h4>
+<h3 id="提交请求">提交请求</h3>
 <p>表单用post/get方式提交</p>
 <p>get是将键值对<strong>拼接到url的后面</strong>，即请求数据直接放在url中，通过访问或跳转，向服务器发送url请求（地址栏、超链接访问都属于get提交方式  ）</p>
 <p>post是参数直接发送给后台，数据放在<strong>请求体body</strong>（或称HttpEntity，主体entity body）中，不是放在url中</p>
@@ -455,8 +454,11 @@ vue中所有的js代码都要写到script的export default{}中</p>
 <p>对于<strong>Url类请求</strong>，客户端是不能通过body写出数据的，服务端拿到的<strong>body是空的</strong>。</p>
 <p>对于<strong>Body类请求</strong>，客户端通过body写进数据，服务端通过body接收数据。根据不同的enctype，数据可由@RequestBody或@RequestParam接收，但@RequestParam也是通过body接收。</p>
 </blockquote>
-<h4 id="接收数据"><a href="https://blog.csdn.net/qfikh/article/details/88553603" target="_blank" rel="noopener">接收数据</a></h4>
-<p>get方法接收数据：</p>
+<h3 id="接收请求"><a href="https://blog.csdn.net/qfikh/article/details/88553603" target="_blank" rel="noopener">接收请求</a></h3>
+<h4 id="get方法接收数据">get方法接收数据</h4>
+<blockquote>
+<p>get方法编码类型为application/x-www-form-url</p>
+</blockquote>
 <ul>
 <li>
 <p><strong>HttpServletRequest</strong></p>
@@ -471,10 +473,7 @@ vue中所有的js代码都要写到script的export default{}中</p>
 <p>注解方法的参数，将值传到对应name标注的参数</p>
 </li>
 </ul>
-<blockquote>
-<p>get方法编码类型为application/x-www-form-url</p>
-</blockquote>
-<p>post方法接收数据：</p>
+<h4 id="post方法接收数据">post方法接收数据</h4>
 <ul>
 <li>
 <p><strong>HttpServletRequest</strong></p>
@@ -482,15 +481,16 @@ vue中所有的js代码都要写到script的export default{}中</p>
 </li>
 <li>
 <p><strong>@RequestBody</strong>无参，注解方法的参数</p>
-<p>编码类型为<strong>application/json或application/xml</strong>时，<br>
-必须使用**@RequestBody**处理。</p>
-<p>一次请求只能有一个Body，将body中的内容转为一个整体对象。请求体中的数据以json等格式传递（貌似没有简单的k-v格式），并要求接收数据的、被@RequestBody修饰的参数为String、Map、JSONObject或JavaBean数据类型。为Map时将内容绑定到单个K-V Map，内容拆分为其中的多个元素；为JavaBean时将内容绑定到单个对象中，需要保证内容的key和JavaBean的属性对应。</p>
+<p>编码类型为<u><strong>application/json或application/xml</strong></u>时，必须使用**@RequestBody**处理。</p>
+<p>一次请求只能有一个Body，将body中的内容转为一个整体对象。请求体中的数据以json等格式传递（貌似没有简单的k-v格式）。<br>
+要求接收数据的方法中 被@RequestBody修饰的参数 为String、Map、JSONObject或JavaBean数据类型。<br>
+为Map时将内容绑定到单个K-V Map，内容拆分为其中的多个元素；为JavaBean时将内容绑定到单个对象中，需要保证内容的key和JavaBean的属性对应。</p>
 <p>由于get请求没有body所以只能用于post方式，所以@RequestBody不能用于get方式。</p>
 <p>注意，<strong>可以与url后面的参数一起用</strong>，即@RequestBody与@RequestParam同时使用，前者获取请求体的数据，后者获取url的数据</p>
 </li>
 <li>
 <p><strong>@RequestParam(“name”)</strong>						<em>@ModelAttribute也可以处理</em></p>
-<p>编码类型为<strong>application/x-www-form-urlencoded</strong>（form的默认类型）或<strong>multipart/form-data</strong>时，必须使用**@RequestParam(“name”)**处理，客户端将k-v对数据包装到body中。</p>
+<p>编码类型为<u><strong>application/x-www-form-urlencoded</strong></u>（form的默认类型）或<u><strong>multipart/form-data</strong></u>时，必须使用**@RequestParam(“name”)**处理，客户端将k-v对数据包装到body中。</p>
 <blockquote>
 <p>这是比较统一保守的规则，某些地方可能会支持部分特殊特性</p>
 </blockquote>
@@ -535,7 +535,7 @@ vue中所有的js代码都要写到script的export default{}中</p>
   </li>
   <li class="post-copyright-link">
     <strong>Post link:</strong>
-    <a href="https://chenyz2000.github.io/CS/%E5%BC%80%E5%8F%91/%E5%89%8D%E7%AB%AF%E4%B8%89%E5%89%91%E5%AE%A2/%E5%89%8D%E5%90%8E%E7%AB%AF%E5%88%86%E7%A6%BB/" title="前后端分离">https://chenyz2000.github.io/CS/%E5%BC%80%E5%8F%91/%E5%89%8D%E7%AB%AF%E4%B8%89%E5%89%91%E5%AE%A2/%E5%89%8D%E5%90%8E%E7%AB%AF%E5%88%86%E7%A6%BB/</a>
+    <a href="https://chenyz2000.github.io/CS/%E5%BC%80%E5%8F%91/Spring%E5%AE%B6%E6%97%8F/%E5%89%8D%E5%90%8E%E7%AB%AF%E5%88%86%E7%A6%BB/" title="前后端分离">https://chenyz2000.github.io/CS/%E5%BC%80%E5%8F%91/Spring%E5%AE%B6%E6%97%8F/%E5%89%8D%E5%90%8E%E7%AB%AF%E5%88%86%E7%A6%BB/</a>
   </li>
   <li class="post-copyright-license">
     <strong>Copyright Notice: </strong>
@@ -660,7 +660,7 @@ vue中所有的js代码都要写到script的export default{}中</p>
             
               <div class="site-state-item site-state-posts">
                 <a href="/archives">
-                  <span class="site-state-item-count">75</span>
+                  <span class="site-state-item-count">76</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -672,7 +672,7 @@ vue中所有的js代码都要写到script的export default{}中</p>
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-count">13</span>
                   <span class="site-state-item-name">categories</span>
                 </a>
               </div>
@@ -683,7 +683,7 @@ vue中所有的js代码都要写到script的export default{}中</p>
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">72</span>
+                  <span class="site-state-item-count">73</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>
@@ -732,7 +732,7 @@ vue中所有的js代码都要写到script的export default{}中</p>
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Spring-Boot-Vue"><span class="nav-text">Spring Boot+Vue</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Vue开发"><span class="nav-text">Vue开发</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Vue与后端的交互"><span class="nav-text">Vue与后端的交互</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HTTP"><span class="nav-text">HTTP</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#消息格式"><span class="nav-text">消息格式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#请求方法"><span class="nav-text">请求方法</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#区别"><span class="nav-text">区别</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#适用情景"><span class="nav-text">适用情景</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#编码类型"><span class="nav-text">编码类型</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#前后端数据交互"><span class="nav-text">前后端数据交互</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#表单"><span class="nav-text">表单</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#提交数据"><span class="nav-text">提交数据</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#接收数据"><span class="nav-text">接收数据</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Todo"><span class="nav-text">Todo</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Spring-Boot-Vue"><span class="nav-text">Spring Boot+Vue</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Vue开发"><span class="nav-text">Vue开发</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Vue与后端的交互"><span class="nav-text">Vue与后端的交互</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HTTP"><span class="nav-text">HTTP</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#消息格式"><span class="nav-text">消息格式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#请求方法"><span class="nav-text">请求方法</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#区别"><span class="nav-text">区别</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#适用情景"><span class="nav-text">适用情景</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#编码类型"><span class="nav-text">编码类型</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#前后端数据交互"><span class="nav-text">前后端数据交互</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#提交请求"><span class="nav-text">提交请求</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#接收请求"><span class="nav-text">接收请求</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#get方法接收数据"><span class="nav-text">get方法接收数据</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#post方法接收数据"><span class="nav-text">post方法接收数据</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Todo"><span class="nav-text">Todo</span></a></li></ol></div>
             
 
           </div>

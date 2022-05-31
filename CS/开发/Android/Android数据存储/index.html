@@ -395,12 +395,11 @@
 <p>通过文件保存数据库，该文件是跨平台的，可以自由复制。一个文件就是一个数据库，数据库名称即文件名</p>
 <p>数据库里面可以包含多个表格，在每个表格中可以添加多条记录；记录可以由多个字段组成，每个字段都要有相对应的值，每个值都必须指定类型</p>
 <p>数据库存储在<code>data/&lt;项目文件夹&gt;/databases/</code>目录下</p>
-<h2 id="adb调试查看数据">adb调试查看数据</h2>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">adb shell</span><br><span class="line">cd data/data</span><br></pre></td></tr></table></figure>
-<p>查看sqlite数据</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cd &lt;project_name&gt;</span><br><span class="line">cd databases</span><br><span class="line">sqlite3 &lt;db_name&gt;	#连接数据库</span><br></pre></td></tr></table></figure>
-<p>进入数据库</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">.databases        #产看当前数据库</span><br><span class="line">.tables           #查看当前数据库中的表</span><br></pre></td></tr></table></figure>
+<h4 id="adb调试查看数据">adb调试查看数据</h4>
+<p>连接数据库</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">adb shell</span><br><span class="line">cd data/data/&lt;project_name&gt;/databases</span><br><span class="line">sqlite3 &lt;xxx.db&gt;	#连接数据库</span><br></pre></td></tr></table></figure>
+<p>sqlite中命令</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">.databases        #产看当前数据库，通常是一个主数据库和一个临时数据库</span><br><span class="line">.tables           #查看当前数据库中的表</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -449,8 +448,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/CS/%E5%BC%80%E5%8F%91/Android/Android%20SDK/" rel="next" title="Android SDK">
-                <i class="fa fa-chevron-left"></i> Android SDK
+              <a href="/CS/%E5%BC%80%E5%8F%91/Android/%E5%AE%89%E5%8D%93UI/" rel="next" title="安卓UI">
+                <i class="fa fa-chevron-left"></i> 安卓UI
               </a>
             
           </div>
@@ -459,8 +458,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/CS/%E5%BC%80%E5%8F%91/Android/React%20Native/" rel="prev" title="React Native">
-                React Native <i class="fa fa-chevron-right"></i>
+              <a href="/CS/%E5%BC%80%E5%8F%91/Android/Kotlin%E4%B8%8EJava%E7%9A%84%E5%B7%AE%E5%BC%82/" rel="prev" title="Kotlin与Java的差异">
+                Kotlin与Java的差异 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -540,7 +539,7 @@
             
               <div class="site-state-item site-state-posts">
                 <a href="/archives">
-                  <span class="site-state-item-count">75</span>
+                  <span class="site-state-item-count">76</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -552,7 +551,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-count">13</span>
                   <span class="site-state-item-name">categories</span>
                 </a>
               </div>
@@ -563,7 +562,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">72</span>
+                  <span class="site-state-item-count">73</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>
@@ -612,7 +611,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#分类"><span class="nav-text">分类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SharedPreferences"><span class="nav-text">SharedPreferences</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#文件存储"><span class="nav-text">文件存储</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#内部存储"><span class="nav-text">内部存储</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#外部存储"><span class="nav-text">外部存储</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SQLite"><span class="nav-text">SQLite</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#adb调试查看数据"><span class="nav-text">adb调试查看数据</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#分类"><span class="nav-text">分类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SharedPreferences"><span class="nav-text">SharedPreferences</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#文件存储"><span class="nav-text">文件存储</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#内部存储"><span class="nav-text">内部存储</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#外部存储"><span class="nav-text">外部存储</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SQLite"><span class="nav-text">SQLite</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#adb调试查看数据"><span class="nav-text">adb调试查看数据</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>

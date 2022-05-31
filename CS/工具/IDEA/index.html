@@ -79,12 +79,12 @@
 
 
 
-<meta name="description" content="快捷键 ctrl+ w 选中代码块（逐渐扩大）		&lt;&#x3D;&#x3D;&gt;  ctrl+shift+w 逐渐减小 e 最近文件 j 自动代码片 y 删除一行 o 重写接口或父类方法 F12 显示方法和成员变量 ~ 调整View b 查看被调用的地方 d 向下复制一份">
+<meta name="description" content="快捷键 重要快捷键 ctrl + alt + L：格式化代码 ctrl + W：扩大选中的代码块，再加shift是缩小 ctrl + D：向下复制当前行 ctrl + Y：删除当前行 ctrl + O：重写、实现父类或接口的方法 alt + insert：生成getter、setter、toString等 ctrl + alt + O：调整导入的包 ctrl + alt + T：为当前代码选定环绕">
 <meta property="og:type" content="article">
 <meta property="og:title" content="IDEA">
 <meta property="og:url" content="https://chenyz2000.github.io/CS/%E5%B7%A5%E5%85%B7/IDEA/index.html">
 <meta property="og:site_name" content="CYZ&#39;s Blog">
-<meta property="og:description" content="快捷键 ctrl+ w 选中代码块（逐渐扩大）		&lt;&#x3D;&#x3D;&gt;  ctrl+shift+w 逐渐减小 e 最近文件 j 自动代码片 y 删除一行 o 重写接口或父类方法 F12 显示方法和成员变量 ~ 调整View b 查看被调用的地方 d 向下复制一份">
+<meta property="og:description" content="快捷键 重要快捷键 ctrl + alt + L：格式化代码 ctrl + W：扩大选中的代码块，再加shift是缩小 ctrl + D：向下复制当前行 ctrl + Y：删除当前行 ctrl + O：重写、实现父类或接口的方法 alt + insert：生成getter、setter、toString等 ctrl + alt + O：调整导入的包 ctrl + alt + T：为当前代码选定环绕">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2020-08-08T16:00:00.000Z">
 <meta property="article:modified_time" content="2021-08-11T16:00:00.000Z">
@@ -365,32 +365,43 @@
 
       
         <h2 id="快捷键">快捷键</h2>
+<h4 id="重要快捷键">重要快捷键</h4>
+<p><code>ctrl + alt + L</code>：格式化代码</p>
+<p><code>ctrl + W</code>：扩大选中的代码块，再加shift是缩小</p>
+<p><code>ctrl + D</code>：向下复制当前行</p>
+<p><code>ctrl + Y</code>：删除当前行</p>
+<p><code>ctrl + O</code>：重写、实现父类或接口的方法</p>
+<p><code>alt + insert</code>：生成getter、setter、toString等</p>
+<p><code>ctrl + alt + O</code>：调整导入的包</p>
+<p><code>ctrl + alt + T</code>：为当前代码选定环绕代码(if、for、try等)</p>
+<p><code>ctrl+shift + del</code>：删除环绕代码</p>
+<a id="more"></a>
 <h4 id="ctrl">ctrl+</h4>
-<p><code>w</code> 选中代码块（逐渐扩大）		&lt;==&gt;  ctrl+shift+w 逐渐减小</p>
+<p><s><code>w</code> 		&lt;==&gt;  ctrl+shift+w 逐渐减小</s></p>
 <p><code>e</code> 最近文件</p>
-<p><code>j</code> 自动代码片</p>
-<p><code>y</code> 删除一行</p>
-<p><code>o</code> 重写接口或父类方法</p>
+<p><code>j</code> 显示所有代码片的简写</p>
+<p><code>y</code> <s>删除一行</s></p>
+<p><code>o</code> <s>重写接口或父类方法</s></p>
 <p><code>F12</code> 显示方法和成员变量</p>
 <p><code>~</code> 调整View</p>
 <p><code>b</code> 查看被调用的地方</p>
-<p><code>d</code> <strong>向下复制一份</strong></p>
-<a id="more"></a>
+<p><s><code>d</code> <strong>向下复制一份</strong></s></p>
 <h4 id="alt">alt+</h4>
 <p><code>~</code> 版本控制</p>
-<p><code>j</code> 选中同名变量</p>
-<p><code>insert</code> 再送生成getter、setter、toString等</p>
+<p><code>j</code> 选中当前变量下次出现处       alt+shift+j选中前一个    ctrl+shift+alt+j选中文件中所有出现</p>
+<p><code>insert</code> 生成getter、setter、toString等</p>
 <p><code>F1</code> 多个功能的select in面板</p>
 <h4 id="ctrl-shift">ctrl+shift+</h4>
 <p><code>j</code> 与下一行合并</p>
-<p><code>i</code> （缩略）查看定义</p>
+<p><code>i</code> 查看简略的定义</p>
 <p><code>u</code> 全变成大写或小写</p>
 <p><code>-</code> <strong>收缩所有代码段</strong></p>
 <h4 id="ctrl-alt">ctrl+alt+</h4>
 <p><code>u</code> 类图简略</p>
 <p><code>o</code> <strong>调整import</strong></p>
-<p><code>v</code> 提取语句中的变量出来</p>
+<p><code>m</code> 提取语句中的方法出来</p>
 <p><code>l</code> <strong>格式化</strong></p>
+<p><code>t</code>为选定的代码加一段代码进行环绕(if、for、try等)，ctrl+shift+del可以删除环绕代码</p>
 <h4 id="其他">其他</h4>
 <p><code>按下滚轮动鼠标</code>  多光标</p>
 <h2 id="插件">插件</h2>
@@ -450,8 +461,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/CS/%E5%BC%80%E5%8F%91/Spring%E5%AE%B6%E6%97%8F/Spring%20Boot%E6%95%B4%E5%90%88Redis/" rel="next" title="Spring Boot整合Redis">
-                <i class="fa fa-chevron-left"></i> Spring Boot整合Redis
+              <a href="/CS/%E5%BC%80%E5%8F%91/Spring%E5%AE%B6%E6%97%8F/Spring%20Boot%E6%95%B4%E5%90%88/" rel="next" title="Spring Boot整合">
+                <i class="fa fa-chevron-left"></i> Spring Boot整合
               </a>
             
           </div>
@@ -541,7 +552,7 @@
             
               <div class="site-state-item site-state-posts">
                 <a href="/archives">
-                  <span class="site-state-item-count">75</span>
+                  <span class="site-state-item-count">76</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -553,7 +564,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-count">13</span>
                   <span class="site-state-item-name">categories</span>
                 </a>
               </div>
@@ -564,7 +575,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">72</span>
+                  <span class="site-state-item-count">73</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>
@@ -613,7 +624,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#快捷键"><span class="nav-text">快捷键</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#ctrl"><span class="nav-text">ctrl+</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#alt"><span class="nav-text">alt+</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#ctrl-shift"><span class="nav-text">ctrl+shift+</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#ctrl-alt"><span class="nav-text">ctrl+alt+</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#其他"><span class="nav-text">其他</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#插件"><span class="nav-text">插件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#设置"><span class="nav-text">设置</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#快捷键"><span class="nav-text">快捷键</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#重要快捷键"><span class="nav-text">重要快捷键</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#ctrl"><span class="nav-text">ctrl+</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#alt"><span class="nav-text">alt+</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#ctrl-shift"><span class="nav-text">ctrl+shift+</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#ctrl-alt"><span class="nav-text">ctrl+alt+</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#其他"><span class="nav-text">其他</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#插件"><span class="nav-text">插件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#设置"><span class="nav-text">设置</span></a></li></ol></div>
             
 
           </div>

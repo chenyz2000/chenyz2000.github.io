@@ -397,6 +397,11 @@
 <p>为了避免开发功能时开发人员相互干扰，所以用feature分支边开发边在本地调试修改，一个版本会有多个feature分支，且不断提交新的，覆盖原有的，当分支代码通过了代码审查，项目组长即可将此段代码合并入develop分支。</p>
 <p>当所有需要的特性都继承进入develop分支时，即可发布release分支，对其进行测试和bug修复，完成后即可提交到master分支。</p>
 <p>master上线过程中，一旦发现紧急问题，则进入hotfix分支，只针对某bug的紧急修复。</p>
+<h2 id="git提交规范">git提交规范</h2>
+<p><code>&lt;type&gt;:&lt;subject&gt;</code></p>
+<p>其中，<code>&lt;type&gt;</code>为提交类别。feat表示新功能，fix修复bug，docs仅修改文档，perf改进性能，style修改格式，refactor重构，test增加或修改测试，revert回滚，merge合并</p>
+<p><code>&lt;subject&gt;</code>为简短描述，可以使用中文</p>
+<p>多次提交，不要放在一起提交</p>
 
       
     </div>
@@ -536,7 +541,7 @@
             
               <div class="site-state-item site-state-posts">
                 <a href="/archives">
-                  <span class="site-state-item-count">75</span>
+                  <span class="site-state-item-count">76</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -548,7 +553,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-count">13</span>
                   <span class="site-state-item-name">categories</span>
                 </a>
               </div>
@@ -559,7 +564,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">72</span>
+                  <span class="site-state-item-count">73</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>
@@ -608,7 +613,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#分支介绍"><span class="nav-text">分支介绍</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#分支详细描述"><span class="nav-text">分支详细描述</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#管理策略"><span class="nav-text">管理策略</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#分支介绍"><span class="nav-text">分支介绍</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#分支详细描述"><span class="nav-text">分支详细描述</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#管理策略"><span class="nav-text">管理策略</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#git提交规范"><span class="nav-text">git提交规范</span></a></div>
             
 
           </div>

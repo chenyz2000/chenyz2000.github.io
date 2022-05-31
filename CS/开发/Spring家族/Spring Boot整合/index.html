@@ -79,15 +79,15 @@
 
 
 
-<meta name="description" content="Spring Boot整合Redis 实际是在Spring Boot中用Spring Data Redis框架操作Redis 在maven工程中添加spirng-boot-starter-data-redis和commons-pools2依赖 在application.properties中配置Radis 123spring.redis.database:0		&#x2F;&#x2F;表示的是统一的整体数据库spri">
+<meta name="description" content="在整合其他技术时，需要先安装对应的环境，整合只是使Spring Boot调用它罢了 整合Mysql   添加依赖 12345678&lt;dependency&gt;    &lt;groupId&gt;mysql&lt;&#x2F;groupId&gt;    &lt;artifactId&gt;mysql-connector-java&lt;&#x2F;artifactId&gt;&lt;&#x2F;dependency&amp;">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Spring Boot整合Redis">
-<meta property="og:url" content="https://chenyz2000.github.io/CS/%E5%BC%80%E5%8F%91/Spring%E5%AE%B6%E6%97%8F/Spring%20Boot%E6%95%B4%E5%90%88Redis/index.html">
+<meta property="og:title" content="Spring Boot整合">
+<meta property="og:url" content="https://chenyz2000.github.io/CS/%E5%BC%80%E5%8F%91/Spring%E5%AE%B6%E6%97%8F/Spring%20Boot%E6%95%B4%E5%90%88/index.html">
 <meta property="og:site_name" content="CYZ&#39;s Blog">
-<meta property="og:description" content="Spring Boot整合Redis 实际是在Spring Boot中用Spring Data Redis框架操作Redis 在maven工程中添加spirng-boot-starter-data-redis和commons-pools2依赖 在application.properties中配置Radis 123spring.redis.database:0		&#x2F;&#x2F;表示的是统一的整体数据库spri">
+<meta property="og:description" content="在整合其他技术时，需要先安装对应的环境，整合只是使Spring Boot调用它罢了 整合Mysql   添加依赖 12345678&lt;dependency&gt;    &lt;groupId&gt;mysql&lt;&#x2F;groupId&gt;    &lt;artifactId&gt;mysql-connector-java&lt;&#x2F;artifactId&gt;&lt;&#x2F;dependency&amp;">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2020-08-07T07:19:00.000Z">
-<meta property="article:modified_time" content="2020-08-07T08:22:00.000Z">
+<meta property="article:modified_time" content="2022-05-28T16:00:00.000Z">
 <meta property="article:author" content="Chen Yanzhi">
 <meta property="article:tag" content="Spring Boot">
 <meta property="article:tag" content="Redis">
@@ -122,13 +122,13 @@
 
 
 
-  <link rel="canonical" href="https://chenyz2000.github.io/CS/开发/Spring家族/Spring Boot整合Redis/"/>
+  <link rel="canonical" href="https://chenyz2000.github.io/CS/开发/Spring家族/Spring Boot整合/"/>
 
 
 
 
 
-  <title>Spring Boot整合Redis | CYZ's Blog</title>
+  <title>Spring Boot整合 | CYZ's Blog</title>
   
 
 
@@ -265,7 +265,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://chenyz2000.github.io/CS/%E5%BC%80%E5%8F%91/Spring%E5%AE%B6%E6%97%8F/Spring%20Boot%E6%95%B4%E5%90%88Redis/">
+    <link itemprop="mainEntityOfPage" href="https://chenyz2000.github.io/CS/%E5%BC%80%E5%8F%91/Spring%E5%AE%B6%E6%97%8F/Spring%20Boot%E6%95%B4%E5%90%88/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Chen Yanzhi">
@@ -282,7 +282,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Spring Boot整合Redis</h1>
+          <h1 class="post-title" itemprop="name headline">Spring Boot整合</h1>
         
 
         <div class="post-meta">
@@ -310,8 +310,8 @@
               
                 <span class="post-meta-item-text">Post modified&#58;</span>
               
-              <time title="Post modified" itemprop="dateModified" datetime="2020-08-07T16:22:00+08:00">
-                2020-08-07
+              <time title="Post modified" itemprop="dateModified" datetime="2022-05-29T00:00:00+08:00">
+                2022-05-29
               </time>
             
           </span>
@@ -366,12 +366,70 @@
       
 
       
-        <h2 id="Spring-Boot整合Redis">Spring Boot整合Redis</h2>
-<p>实际是在Spring Boot中用Spring Data Redis框架操作Redis</p>
-<p>在maven工程中添加<code>spirng-boot-starter-data-redis</code>和<code>commons-pools2</code>依赖</p>
-<h4 id="在application-properties中配置Radis">在application.properties中配置Radis</h4>
-<figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">spring.redis.database</span>:<span class="string">0		//表示的是统一的整体数据库</span></span><br><span class="line"><span class="meta">spring.redis.host</span>:<span class="string">localhost</span></span><br><span class="line"><span class="meta">spring.redis.port</span>:<span class="string">6379</span></span><br></pre></td></tr></table></figure>
+        <p>在整合其他技术时，需要先安装对应的环境，整合只是使Spring Boot调用它罢了</p>
+<h2 id="整合Mysql">整合Mysql</h2>
+<ol>
+<li>
+<p>添加依赖</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>mysql<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>mysql-connector-java<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-jdbc<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>在main/resources下添加application.properties，为Spring Boot的配置文件</p>
+</li>
+<li>
+<p>在配置文件中添加配置</p>
+<figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">spring.datasource.url</span>=<span class="string">jdbc:mysql://121.36.63.84:3306/数据库名</span></span><br><span class="line"><span class="meta">spring.datasource.username</span>=<span class="string">用户名</span></span><br><span class="line"><span class="meta">spring.datasource.password</span>=<span class="string">密码</span></span><br><span class="line"><span class="meta">spring.datasource.driver-class-name</span>=<span class="string">com.mysql.jdbc.Driver</span></span><br></pre></td></tr></table></figure>
+</li>
+</ol>
 <a id="more"></a>
+<blockquote>
+<h4 id="Error">Error</h4>
+<ul>
+<li>jdbcTemplate为null。将测试程序和main所在的包保持统一，并注意写完整测试程序的注解</li>
+<li>连接mysql出现caching_sha2_password错误。默认的mysql-connector-java版本是5.7左右，连接8.0版本的mysql加密方式会出错，在pom.xml中将mysql-connector-java改为8.0以后的版本即可</li>
+<li>连接mysql出现timezone错误。在jdbc的url后加上<code>?serverTimezone=UTC</code></li>
+</ul>
+</blockquote>
+<h2 id="整合MyBatis">整合MyBatis</h2>
+<p>需要添加<code>mybatis-spring-boot-starter</code>依赖</p>
+<h3 id="使用注解形式">使用注解形式</h3>
+<h4 id="MyBatis配置文件">MyBatis配置文件</h4>
+<p>Spring Boot中在application.properties配置MyBatis</p>
+  <figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">mybatis.type-aliases-package</span>=<span class="string">com.neo.model</span></span><br><span class="line"></span><br><span class="line"><span class="meta">spring.datasource.url</span>=<span class="string">jdbc:mysql://localhost:3306/test?serverTimezone=UTC&amp;useUnicode=true&amp;characterEncoding=utf-8&amp;useSSL=true</span></span><br><span class="line"><span class="meta">spring.datasource.username</span>=<span class="string">root</span></span><br><span class="line"><span class="meta">spring.datasource.password</span>=<span class="string">root</span></span><br><span class="line"><span class="meta">spring.datasource.driver-class-name</span>=<span class="string">com.mysql.cj.jdbc.Driver</span></span><br></pre></td></tr></table></figure>
+<p>此外，也可以使用配置类进行配置</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="meta">@ComponentScan</span> <span class="comment">//开启spring的自动扫描bean和管理bean</span></span><br><span class="line"><span class="meta">@MapperScan</span>(<span class="string">"com.spring.study.dao"</span>)<span class="comment">//开启mybatis的自动扫描mapper接口和管理</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SpringConfig</span> </span>&#123; <span class="comment">//数据源</span></span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> PooledDataSource <span class="title">dataSource</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        PooledDataSource dataSource = <span class="keyword">new</span> PooledDataSource();</span><br><span class="line">        dataSource.setDriver(<span class="string">"com.mysql.jdbc.Driver"</span>);</span><br><span class="line">        dataSource.setUrl(<span class="string">"jdbc:mysql://localhost:3306/test?serverTimezone=UTC&amp;useUnicode=true&amp;characterEncoding=utf-8&amp;useSSL=true"</span>);</span><br><span class="line">        dataSource.setUsername(<span class="string">"root"</span>);</span><br><span class="line">        dataSource.setPassword(<span class="string">"root"</span>);</span><br><span class="line">        <span class="keyword">return</span> dataSource;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> SqlSessionFactoryBean <span class="title">sqlSessionFactory</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        SqlSessionFactoryBean sqlSessionFactory = <span class="keyword">new</span> SqlSessionFactoryBean();</span><br><span class="line">        sqlSessionFactory.setDataSource(dataSource());</span><br><span class="line">        FileSystemResource fileSystemResource = <span class="keyword">new</span> FileSystemResource(<span class="string">"C:\\mapping\\InstrumentMapper.xml"</span>);</span><br><span class="line">        sqlSessionFactory.setMapperLocations(<span class="keyword">new</span> Resource[]&#123;fileSystemResource&#125;);</span><br><span class="line">        <span class="keyword">return</span> sqlSessionFactory;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="Mapper接口与xml映射">Mapper接口与xml映射</h4>
+<p>编写Mapper接口</p>
+<p>用@Insert(“sql语句”)等四个注解、@Results注解对每个方法进行映射</p>
+<p>==注解开发==</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Mapper</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">UserMapper</span></span>&#123;</span><br><span class="line">    <span class="meta">@Insert</span>(<span class="string">"insert into user(id, name) values(#&#123;id&#125;,#&#123;name&#125;)"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">save</span><span class="params">(User user)</span></span>;</span><br><span class="line">    </span><br><span class="line">    <span class="meta">@Update</span>(<span class="string">"update user set name= #&#123;name&#125; where id = #&#123;id&#125;"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">updateUserById</span><span class="params">(User user)</span></span>;</span><br><span class="line">    </span><br><span class="line">    <span class="meta">@Delete</span>(<span class="string">"delete from user where id =#&#123;id&#125;"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">deteleUserById</span><span class="params">(<span class="keyword">int</span> id)</span></span>;</span><br><span class="line">    </span><br><span class="line">    <span class="meta">@Select</span>(&#123;<span class="string">"select id, name, class_id from student"</span>&#125;)</span><br><span class="line">    <span class="meta">@Results</span>(id=<span class="string">"studentMap"</span>, value=&#123;</span><br><span class="line">        <span class="meta">@Result</span>(column=<span class="string">"id"</span>, property=<span class="string">"id"</span>, jdbcType=JdbcType.INTEGER, id=<span class="keyword">true</span>),</span><br><span class="line">        <span class="meta">@Result</span>(column=<span class="string">"name"</span>, property=<span class="string">"name"</span>, jdbcType=JdbcType.VARCHAR),</span><br><span class="line">        <span class="meta">@Result</span>(column=<span class="string">"class_id "</span>, property=<span class="string">"classId"</span>, jdbcType=JdbcType.INTEGER)</span><br><span class="line">    &#125;)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> List&lt;User&gt; <span class="title">findAll</span><span class="params">()</span></span>;</span><br><span class="line">    </span><br><span class="line">    <span class="meta">@Select</span>(<span class="string">"select * from user where id=#&#123;id&#125;"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> User <span class="title">findUserById</span><span class="params">(<span class="keyword">int</span> id)</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="注册Mapper接口">注册Mapper接口</h4>
+<p>在每个Mapper上加上@Mapper注解，或在启动类中使用@MapperScan注解扫描Mapper接口</p>
+<p><strong>@Mapper</strong>注解，在每一个Mapper接口上添加此注解</p>
+<p><strong>@MapperScan</strong>注解，指定要扫描的Mapper接口的包的路径</p>
+<ul>
+<li>[ ] @Mapper和@Repository差不多，两个都能用，有些细微差别</li>
+</ul>
+<h4 id="代理对象">代理对象</h4>
+<p>用@Autowired或@Resources等自动注入对象给接口</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Autowired</span></span><br><span class="line"><span class="keyword">private</span> AccountMapper accountMapper;</span><br></pre></td></tr></table></figure>
+<p>之后可以调用对象的方法了</p>
+<h3 id="使用XML形式">使用XML形式</h3>
+<p>编写Mapper接口、Mapper.xml、conf.xml</p>
+<p>在application.propertis中配置mybatis.mapper-location和mybatis.config-location</p>
+<p>注册Mapper接口</p>
+<p>之后通过自动注入使用对象</p>
+<h2 id="整合Redis">整合Redis</h2>
+<p>实际是在Spring Boot中用Spring Data Redis框架操作Redis</p>
+<ol>
+<li>
+<p>在maven工程中添加<code>spirng-boot-starter-data-redis</code>和<code>commons-pools2</code>依赖</p>
+</li>
+<li>
+<p>在application.properties中配置Radis</p>
+<figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">spring.redis.database</span>:<span class="string">0		//表示的是统一的整体数据库</span></span><br><span class="line"><span class="meta">spring.redis.host</span>:<span class="string">localhost</span></span><br><span class="line"><span class="meta">spring.redis.port</span>:<span class="string">6379</span></span><br></pre></td></tr></table></figure>
+</li>
+</ol>
 <h4 id="实体类对象存入Redis">实体类对象存入Redis</h4>
 <p>实体类需要<strong>实现序列化接口Serializable</strong>，一个对象存储起来都要实现序列化接口</p>
 <p>例如在Controller里使用Redis</p>
@@ -410,7 +468,7 @@
   </li>
   <li class="post-copyright-link">
     <strong>Post link:</strong>
-    <a href="https://chenyz2000.github.io/CS/%E5%BC%80%E5%8F%91/Spring%E5%AE%B6%E6%97%8F/Spring%20Boot%E6%95%B4%E5%90%88Redis/" title="Spring Boot整合Redis">https://chenyz2000.github.io/CS/%E5%BC%80%E5%8F%91/Spring%E5%AE%B6%E6%97%8F/Spring%20Boot%E6%95%B4%E5%90%88Redis/</a>
+    <a href="https://chenyz2000.github.io/CS/%E5%BC%80%E5%8F%91/Spring%E5%AE%B6%E6%97%8F/Spring%20Boot%E6%95%B4%E5%90%88/" title="Spring Boot整合">https://chenyz2000.github.io/CS/%E5%BC%80%E5%8F%91/Spring%E5%AE%B6%E6%97%8F/Spring%20Boot%E6%95%B4%E5%90%88/</a>
   </li>
   <li class="post-copyright-license">
     <strong>Copyright Notice: </strong>
@@ -533,7 +591,7 @@
             
               <div class="site-state-item site-state-posts">
                 <a href="/archives">
-                  <span class="site-state-item-count">75</span>
+                  <span class="site-state-item-count">76</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -545,7 +603,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-count">13</span>
                   <span class="site-state-item-name">categories</span>
                 </a>
               </div>
@@ -556,7 +614,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">72</span>
+                  <span class="site-state-item-count">73</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>
@@ -605,7 +663,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Spring-Boot整合Redis"><span class="nav-text">Spring Boot整合Redis</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#在application-properties中配置Radis"><span class="nav-text">在application.properties中配置Radis</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#实体类对象存入Redis"><span class="nav-text">实体类对象存入Redis</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#五种数据类型存入Redis"><span class="nav-text">五种数据类型存入Redis</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#字符串存取"><span class="nav-text">字符串存取</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#列表存取"><span class="nav-text">列表存取</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#集合"><span class="nav-text">集合</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#有序集合"><span class="nav-text">有序集合</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#哈希"><span class="nav-text">哈希</span></a></li></ol></li></ol></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#整合Mysql"><span class="nav-text">整合Mysql</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Error"><span class="nav-text">Error</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#整合MyBatis"><span class="nav-text">整合MyBatis</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#使用注解形式"><span class="nav-text">使用注解形式</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#MyBatis配置文件"><span class="nav-text">MyBatis配置文件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Mapper接口与xml映射"><span class="nav-text">Mapper接口与xml映射</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#注册Mapper接口"><span class="nav-text">注册Mapper接口</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#代理对象"><span class="nav-text">代理对象</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用XML形式"><span class="nav-text">使用XML形式</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#整合Redis"><span class="nav-text">整合Redis</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#实体类对象存入Redis"><span class="nav-text">实体类对象存入Redis</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#五种数据类型存入Redis"><span class="nav-text">五种数据类型存入Redis</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#字符串存取"><span class="nav-text">字符串存取</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#列表存取"><span class="nav-text">列表存取</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#集合"><span class="nav-text">集合</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#有序集合"><span class="nav-text">有序集合</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#哈希"><span class="nav-text">哈希</span></a></li></ol></li></ol></li></ol></li></ol></li></ol></div>
             
 
           </div>
