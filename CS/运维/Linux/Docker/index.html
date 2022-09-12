@@ -387,21 +387,39 @@
 <p>docker rm -f 容器ID值</p>
 <p>docker rmi -f 镜像ID值</p>
 <p>docker commit 容器ID值 镜像名</p>
+<h2 id="Debian一句话安装docker">Debian一句话安装docker</h2>
+<p>见https://www.runoob.com/docker/debian-docker-install.html</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https:&#x2F;&#x2F;www.runoob.com&#x2F;docker&#x2F;debian-docker-install.html</span><br></pre></td></tr></table></figure>
 <h1>镜像源</h1>
 <p>修改/etc/docker/daemon.json</p>
 <figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line"> <span class="attr">"registry-mirrors"</span>: [<span class="string">"https://registry.docker-cn.com"</span>]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h2 id="排错">排错</h2>
 <p>Got permission denied while trying to connect to the Docker daemon socket at unix:///var/run/docker.sock: Get http://%2Fvar%2Frun%2Fdocker.sock/_ping: dial unix /var/run/docker.sock: connect: permission denied</p>
 <p>是因为权限不足，没有用root用户使用docker</p>
+<p>docker run -d --network=host --env PORT=9000 --restart=always --name portainer -v /var/run/docker.sock:/var/run/docker.sock -v /usr/dockerfile/portainer/data:/data <a href="http://docker.io/portainer/portainer" target="_blank" rel="noopener">docker.io/portainer/portainer</a></p>
 <h2 id="应用">应用</h2>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -d -p 9000:9000 --restart=always --name portainer -v /var/run/docker.sock:/var/run/docker.sock -v /usr/dockerfile/portainer/data:/data docker.io/portainer/portainer</span><br></pre></td></tr></table></figure>
+<p>portainer</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -d -p 9000:9000 --restart=always --name portainer -v /var/run/docker.sock:/var/run/docker.sock -v /srv/dockerfile/portainer/data:/data docker.io/portainer/portainer</span><br></pre></td></tr></table></figure>
+<p>nginx</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -d -p 80:80 --restart=always --name navigator -v /usr/dockerfile/navigator/html:/usr/share/nginx/html nginx</span><br></pre></td></tr></table></figure>
+<p>jellyfin</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -d -p 8096:8096 --restart=always --name jellyfin -v /usr/dockerfile/jellyfin/config:/config -v /usr/downloads:/media --device=/dev/dri jellyfin/jellyfin</span><br></pre></td></tr></table></figure>
+<p>aria2</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">docker run -d -p 5000:80 --restart=always --name aria2 -v /usr/downloads/aria2:/data -v /usr/dockerfile/aria2:/conf \</span><br><span class="line">    -e PUID=1000 \</span><br><span class="line">    -e PGID=1000 \</span><br><span class="line">    -e EXTERNAL_PORT=5000 \</span><br><span class="line">    -e USER_NAME=admin \</span><br><span class="line">    -e PASSWORD=cyz200056 \</span><br><span class="line">    sanjusss/aria2-ariang-docker</span><br></pre></td></tr></table></figure>
+<p>rrshare64</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -d -p 3001:3001 --restart=always --name rrshare -v /usr/downloads/rrshare:/opt/work/store oldiy/rrshare64</span><br></pre></td></tr></table></figure>
+<p>transmission</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">docker run -d --name=transmission --restart=always \</span><br><span class="line">-v /usr/dockerfile/transmission/config:/config \</span><br><span class="line">-v /usr/downloads/transmission:/downloads \</span><br><span class="line">-v /usr/dockerfile/transmission/watch:/watch \</span><br><span class="line">-e PGID=1000 -e PUID=1000 \</span><br><span class="line">-p 9091:9091 -p 51413:51413 -p 51413:51413/udp \</span><br><span class="line">linuxserver/transmission</span><br></pre></td></tr></table></figure>
+<p>nextcloud</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -d -p 3456:80 --restart=always --name nextcloud -v /usr/dockerfile/nextcloud:/var/www/html nextcloud</span><br></pre></td></tr></table></figure>
+<p>baidupcs</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -d -p 5299:5299 --restart=always --name baidupcs  -v /usr/downloads/baidupcs:/downloads -v /usr/dockerfile/baidupcs/config:/root/.config/BaiduPCS-Go oldiy/baidupcs</span><br></pre></td></tr></table></figure>
+<p>arm架构的docker，网络只有host模式（x86下默认是bridge），需要把<code>-p 9000:9000</code>换成<code>--network=host --env PORT=9000</code></p>
+<blockquote>
+<p>host表示占据宿主机的端口，bridge表示有自己虚拟出来的端口</p>
+</blockquote>
+<p>filebrowser比较复杂，想要把其中的配置文件.filebrowser.json和database.db映射出来，需要更多步骤。因为docker -v一般用来映射目录，它也可以映射文件，但是需要宿主机有该文件，不然docker会在宿主机上自动创建文件夹。所以想要映射filebrowser中的文件，可以先运行一次镜像，此时虚拟机里已经有了两个文件，可以在宿主机用docker cp，把虚拟机里的文件拷贝到宿主机来。之后，就可以重新创建一个镜像了。</p>
+
       
     </div>
     
@@ -542,7 +560,7 @@
             
               <div class="site-state-item site-state-posts">
                 <a href="/archives">
-                  <span class="site-state-item-count">76</span>
+                  <span class="site-state-item-count">78</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -565,7 +583,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">73</span>
+                  <span class="site-state-item-count">74</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>
@@ -614,7 +632,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#Docker和虚拟机做类比"><span class="nav-text">Docker和虚拟机做类比</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#命令"><span class="nav-text">命令</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#"><span class="nav-text">镜像源</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#排错"><span class="nav-text">排错</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#应用"><span class="nav-text">应用</span></a></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#Docker和虚拟机做类比"><span class="nav-text">Docker和虚拟机做类比</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#命令"><span class="nav-text">命令</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Debian一句话安装docker"><span class="nav-text">Debian一句话安装docker</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#"><span class="nav-text">镜像源</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#排错"><span class="nav-text">排错</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#应用"><span class="nav-text">应用</span></a></div>
             
 
           </div>

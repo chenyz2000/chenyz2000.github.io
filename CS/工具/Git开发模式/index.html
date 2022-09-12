@@ -381,7 +381,7 @@
 <p>圆点4所在的线为新功能发布分支（release）</p>
 </li>
 <li>
-<p>圆点5所在的线为发布版本bug修复分支（hotfix）</p>
+<p>圆点5所在的线为发布版本bug紧急修复分支（hotfix）</p>
 </li>
 </ul>
 <h4 id="分支详细描述">分支详细描述</h4>
@@ -390,7 +390,7 @@
 <li>develop分支：一个集成分支，用来记录开发新功能的轨迹</li>
 <li>feature分支：临时分支。每一个新的功能都应该创建一个feature分支，从develop分支中派生出来；当功能完成后，要合并回develop分支，合并后其生命周期即结束。feature分支不会和master分支有交汇。</li>
 <li>release分支：临时分支。为预发分支，当需要发布时，应该将满足发布条件的feature分支合并到develop分支中，然后开出一个release分支，开始准备一个发布版本。这个分支上不能再添加新的功能，只有bug修复和该版本为导向的任务。一旦到了发布日期，release分支就要合并回master分支发布，并且打出版本标签，另外还需要合并回develop分支。</li>
-<li>hotfix分支：临时分支。为线上bug修复分支，用来快速修复生产环境中出现的紧急问题。</li>
+<li>hotfix分支：临时分支。为线上bug修复分支，用来快速修复生产环境中出现的紧急问题。hotfix只会和master交互。</li>
 </ul>
 <h4 id="管理策略">管理策略</h4>
 <p>develop分支必须从master的稳定版内容合并过来。</p>
@@ -541,7 +541,7 @@
             
               <div class="site-state-item site-state-posts">
                 <a href="/archives">
-                  <span class="site-state-item-count">76</span>
+                  <span class="site-state-item-count">78</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -564,7 +564,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">73</span>
+                  <span class="site-state-item-count">74</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>

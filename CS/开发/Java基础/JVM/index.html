@@ -79,18 +79,23 @@
 
 
 
-<meta name="description" content="JVM是C语言写的 JVM体系结构  栈、本地方法栈、程序计数器——这三块不会有垃圾需要回收 所谓的JVM调优，就是在方法区和堆中调（方法区也是特殊的堆） 本地方法，用native关键词">
+<meta name="description" content="知识点拓展 JVM是C语言写的 看源码只能看OpenJDK的 基于JVM的语言：除了Java以外，还有Kotlin、Scala、Groovy、Clojure等 JVM虚拟机：最主流的是Hotspot，此外还有JRockit、J9等。本文讨论的是HotSpot  JVM体系结构">
 <meta property="og:type" content="article">
 <meta property="og:title" content="JVM">
 <meta property="og:url" content="https://chenyz2000.github.io/CS/%E5%BC%80%E5%8F%91/Java%E5%9F%BA%E7%A1%80/JVM/index.html">
 <meta property="og:site_name" content="CYZ&#39;s Blog">
-<meta property="og:description" content="JVM是C语言写的 JVM体系结构  栈、本地方法栈、程序计数器——这三块不会有垃圾需要回收 所谓的JVM调优，就是在方法区和堆中调（方法区也是特殊的堆） 本地方法，用native关键词">
+<meta property="og:description" content="知识点拓展 JVM是C语言写的 看源码只能看OpenJDK的 基于JVM的语言：除了Java以外，还有Kotlin、Scala、Groovy、Clojure等 JVM虚拟机：最主流的是Hotspot，此外还有JRockit、J9等。本文讨论的是HotSpot  JVM体系结构">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://chenyz2000.github.io/images/image-20211202143324449.png">
-<meta property="og:image" content="https://chenyz2000.github.io/images/image-20211202154407158.png">
 <meta property="og:image" content="https://chenyz2000.github.io/images/image-20211004201510564.png">
+<meta property="og:image" content="https://chenyz2000.github.io/images/image-20220912111356543.png">
+<meta property="og:image" content="https://chenyz2000.github.io/images/image-20220912111654193.png">
+<meta property="og:image" content="https://chenyz2000.github.io/images/image-20220912151040912.png">
+<meta property="og:image" content="https://chenyz2000.github.io/images/Snipaste_20220911_165810.png">
+<meta property="og:image" content="https://chenyz2000.github.io/images/image-20220912102847093.png">
+<meta property="og:image" content="https://chenyz2000.github.io/images/image-20220912103125162.png">
 <meta property="article:published_time" content="2021-10-03T16:00:00.000Z">
-<meta property="article:modified_time" content="2021-10-06T16:00:00.000Z">
+<meta property="article:modified_time" content="2022-09-11T16:00:00.000Z">
 <meta property="article:author" content="Chen Yanzhi">
 <meta property="article:tag" content="Java SE">
 <meta property="article:tag" content="JVM">
@@ -313,8 +318,8 @@
               
                 <span class="post-meta-item-text">Post modified&#58;</span>
               
-              <time title="Post modified" itemprop="dateModified" datetime="2021-10-07T00:00:00+08:00">
-                2021-10-07
+              <time title="Post modified" itemprop="dateModified" datetime="2022-09-12T00:00:00+08:00">
+                2022-09-12
               </time>
             
           </span>
@@ -369,84 +374,148 @@
       
 
       
-        <p>JVM是C语言写的</p>
+        <blockquote>
+<h4 id="知识点拓展">知识点拓展</h4>
+<p>JVM是C语言写的</p>
+<p>看源码只能看OpenJDK的</p>
+<p>基于JVM的语言：除了Java以外，还有Kotlin、Scala、Groovy、Clojure等</p>
+<p>JVM虚拟机：最主流的是Hotspot，此外还有JRockit、J9等。本文讨论的是HotSpot</p>
+</blockquote>
 <h2 id="JVM体系结构">JVM体系结构</h2>
 <img src="/images/image-20211202143324449.png" alt="image-20211202143324449" style="zoom:40%;" />
-<p>栈、本地方法栈、程序计数器——这三块不会有垃圾需要回收</p>
-<p>所谓的JVM调优，就是在方法区和堆中调（方法区也是特殊的堆）</p>
-<p>本地方法，用native关键词</p>
 <a id="more"></a>
-<h2 id="类加载器">类加载器</h2>
-<p>作用：解析Class文件，生成class对象</p>
-<img src="/images/image-20211202154407158.png" alt="image-20211202154407158" style="zoom:40%;" />
-<h4 id="类的加载过程">类的加载过程</h4>
-<ol>
-<li>加载Load：将.class字节码文件读入内存，静态数据转换为<strong>方法区</strong>运行时的数据结构，生成Class对象到<strong>堆</strong>中，作为方法区中类数据的访问入口，此过程由类加载器完成</li>
-<li>链接Link：将类的二进制数据合并到JRE（JVM的运行环境）中。
-<ol>
-<li>验证：首先检查类信息是否符合JVM规范</li>
-<li>准备：之后在<strong>方法区</strong>中为类的static变量（非final常量）设置内存和<strong>默认值</strong>（0或null等，初始化时才赋指定值），为类的final常量设置内存并<strong>赋指定值</strong>、存放到常量区中</li>
-<li>解析：最后将类的符号引用（变量名、方法名）替换为直接引用（内存地址）</li>
-</ol>
-</li>
-<li>初始化Initialize：JVM对类进行初始化。JVM会执行<code>&lt;cInit&gt;()</code>类构造器方法对类进行构造（与构造函数创建对象不同），其中<code>&lt;cInit&gt;()</code>由编译器收集static代码（包括静态的变量、方法和代码块）合并产生。JVM会保证<code>&lt;cInit&gt;()</code>方法在多线程环境中被正确加锁和同步</li>
-</ol>
-<h4 id="类加载器ClassLoader">类加载器ClassLoader</h4>
-<p>类加载器的类型：</p>
-<ul>
-<li>BootStrapClassLoader：引导类加载器（根加载器），负责Java核心类库<code>rt.jar</code>的加载，由C++编写，是JVM自带的类加载器，开发者无法直接获取此加载器</li>
-<li>ExtClassLoader：扩展类加载器，负责<code>jre/lib/ext</code>扩展目录下类的加载</li>
-<li>AppClassLoader：当前应用程序加载器（系统类加载器），最常用的加载器，负责<code>java -classpath</code>目录下的类的加载</li>
-<li>自定义类加载器：实现ClassLoader抽象类</li>
-</ul>
-<p>四者由上到下是父类到子类的继承关系，检查类是否已装载的时候由下到上进行，加载类的时候由上到下进行</p>
-<p>类缓存：类加载的时候会在缓存中维持一段时间，之后类再加载的时候会向缓存中查找是否有之前加载的类。JVM垃圾回收机制gc会自动回收这些缓存</p>
-<p><strong>双亲委派机制</strong>：收到类加载请求时，从下到上进行检查，若已装载则结束；若未装载，则把请求委托给父类加载器进行检查和装载。目的是防止系统级别的类被篡改替换。</p>
-<p>沙箱安全机制：Java安全模型的核心就是沙箱，把Java程序限制在特定的运行范围中，限制程序对本地系统资源的访问。Java中执行程序分为本地代码和远程代码，本地代码默认可信任，远程代码默认不可信任</p>
-<h4 id="获得类加载器">获得类加载器</h4>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ClassLoader sc = ClassLoader.getSystemClassLoader();		<span class="comment">//获取系统类加载器</span></span><br><span class="line">ClassLoader ec = sc.getParent();		<span class="comment">//获取扩展类加载器</span></span><br><span class="line">ClassLoader ic = ec.getParent();		<span class="comment">//获取引导类加载器，然而在Java中获取不到，返回null</span></span><br></pre></td></tr></table></figure>
-<p>通过反射，class对象获取类的加载器</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Class.forName(<span class="string">"com.demo.User"</span>).getClassLoader();		<span class="comment">//AppClassLoader</span></span><br><span class="line">Class.forName(<span class="string">"java.lang.Object"</span>).getClassLoader();		<span class="comment">//null，因为Object类是rt.jar中的</span></span><br></pre></td></tr></table></figure>
-<h4 id="类的初始化">类的初始化</h4>
-<p>主动引用类的时候会发生初始化，包括</p>
-<ul>
-<li>new一个类</li>
-<li>虚拟机启动时初始化main方法所在的类</li>
-<li>调用类的静态变量（除了final常量）和静态方法（只有声明这个静态域的类会初始化，如通过子类调用父类声明的静态域，子类不会初始化）</li>
-<li>用java.lang.reflect包的方法对类进行反射调用（用<code>类.class</code>属性不会导致类被初始化）</li>
-<li>初始化类时，若其父类没有初始化，则先初始化父类</li>
-</ul>
-<p>被动引用类时不会发生初始化，包括</p>
-<ul>
-<li>创建类的数组</li>
-<li>调用类的final常量时类不会初始化，因为常量在链接阶段就在常量池中了</li>
-</ul>
-<h2 id="运行时数据区">运行时数据区</h2>
-<h4 id="栈stack——线程私有">栈stack——线程私有</h4>
-<p>存放基础数据类型，如Boolean、Byte、Char等</p>
-<p>以及对堆中对象的引用</p>
-<!--more-->
-<h4 id="堆heap——线程公有">堆heap——线程公有</h4>
-<p>存放new出来的对象和数组，如String</p>
-<p>也存放JVM自动创建的Class对象</p>
-<h4 id="方法区method-area——线程公有">方法区method area——线程公有</h4>
-<p>是特殊的堆</p>
-<p>包括虚拟机加载的类，和运行时常量池</p>
-<p>类的信息包括信息（类名、方法信息、字段信息、接口信息等）、类的常量池表（数值、字符串值、类引用、字段引用、方法引用）、类变量、类方法、指向Class对象的引用、指向类加载器的引用</p>
-<p>类加载后，类常量池表将载入到方法区的运行时常量池中</p>
-<blockquote>
-<p>元空间metaspace和永久代premGen</p>
-<p>方法区是JVM抽象的规范，元空间和永久代是方法区的具体实现。1.8之前的实现方式是永久代，当时永久代是堆空间的一部分；1.8及以后从堆空间里独立出来了元空间，使用了本地内存（<strong>系统的内存</strong>）而不是堆内存。</p>
-</blockquote>
-<h4 id="程序计数器program-counter-register——线程私有">程序计数器program counter register——线程私有</h4>
-<p>记录当前需要执行的指令地址，即每个线程执行到哪了</p>
-<p>空间占用很小，以至于没有定义的异常</p>
-<h4 id="本地方法栈native-method-stacks——线程私有">本地方法栈native method stacks——线程私有</h4>
-<p>给本地方法提供的专门的栈空间</p>
-<p>本地方法指其他语言编写的、交由Java运行的方法</p>
-<p>用native关键字描述的就是本地方法，如thread.sleep()</p>
+<h2 id="star-运行时数据区">:star:运行时数据区</h2>
 <img src="/images/image-20211004201510564.png" alt="image-20211004201510564" style="zoom: 40%;" />
+<table>
+<thead>
+<tr>
+<th>区域</th>
+<th>线程共享/私有</th>
+<th>意义</th>
+<th>存放内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>堆</td>
+<td>共享</td>
+<td>唯一目的就是存放对象和数组</td>
+<td>new出来的<strong>对象和数组</strong>，如String；JVM自动创建的<strong>Class对象</strong></td>
+</tr>
+<tr>
+<td>方法区</td>
+<td>共享</td>
+<td></td>
+<td>通过字节码<strong>加载的类型信息</strong>；<strong>运行时常量池</strong></td>
+</tr>
+<tr>
+<td>栈</td>
+<td>私有</td>
+<td>记录当前线程的Java方法调用</td>
+<td><strong>基本数据类型</strong>；对<strong>堆中对象的引用</strong></td>
+</tr>
+<tr>
+<td>本地方法栈</td>
+<td>私有</td>
+<td>记录当前线程的本地方法调用</td>
+<td></td>
+</tr>
+<tr>
+<td>程序计数器</td>
+<td>私有</td>
+<td>记录当前线程执行到哪儿了</td>
+<td>记录当前执行<strong>指令的地址</strong></td>
+</tr>
+</tbody>
+</table>
+<p>JVM分为共享区（堆、方法区）和线程私有区（栈、本地方法栈、程序计数器）</p>
+<ul>
+<li>共享区：<strong>JVM调优</strong>、<strong>垃圾回收</strong>的区域</li>
+<li>线程私有区：<strong>没有垃圾回收</strong>，因为生命周期比较短</li>
+</ul>
+<h2 id="堆">堆</h2>
+<p>JVM中<strong>最大</strong>的一块，启动时创建，一个JVM只有一个堆</p>
+<p>逻辑上是连续的，物理上可以不连续</p>
+<p>堆的范围没有明确的划分，比较主流的是从垃圾回收的角度划分</p>
+<h4 id="垃圾收集">垃圾收集</h4>
+<p>垃圾收集的分代收集理论：</p>
+<img src="/images/image-20220912111356543.png" alt="image-20220912111356543" style="zoom: 35%;" />
+<img src="/images/image-20220912111654193.png" alt="image-20220912111654193" style="zoom: 35%;" />
+<h4 id="字符串常量池">字符串常量池</h4>
+<p>jdk1.8后，将字符串常量池放到了堆中</p>
+<p>字符串常量池在堆中，class常量池和<strong>运行时常量池</strong>在方法区</p>
+<p>字符串常量池的存储位置在不同版本下变化了多次，早期是在方法区（1.7以前），后来又放到堆里了，因为可以方便回收</p>
+<h2 id="方法区">方法区</h2>
+<p>~~方法区是堆的一个逻辑部分，~~但是有个别名叫做“非堆”</p>
+<p><s>仅仅只是逻辑上的独立，实际上还是包含在堆中，方法区是特殊的堆</s></p>
+<h4 id="字节码">字节码</h4>
+<p>编译后，<strong>字节码</strong>包含以下内容：</p>
+<ul>
+<li>
+<p>类型信息、字段信息、方法信息</p>
+</li>
+<li>
+<p>static变量</p>
+</li>
+<li>
+<p>指向Class对象的引用、指向类加载器的引用</p>
+</li>
+<li>
+<p>常量池——编译生成的字面量（整数字面量、字符串字面量）、符号引用（类引用、字段引用、方法引用）</p>
+</li>
+</ul>
+<p>常量存在动态常量池？好像不在</p>
+<p>static方法？</p>
+<h4 id="字节码加载到方法区">字节码加载到方法区</h4>
+<p><strong>类加载时，JVM会把字节码加载到方法区</strong></p>
+<p>其中，字节码的<strong>常量池</strong>会被加载到方法区的<strong>运行时常量池</strong>中</p>
+<img src="/images/image-20220912151040912.png" alt="image-20220912151040912" style="zoom: 67%;" />
+<h4 id="两个实现——永久代和元空间">两个实现——永久代和元空间</h4>
+<p>方法区是抽象规范</p>
+<p><strong>永久代</strong>（1.7及以前）和<strong>元空间</strong>（1.8及以后）是方法区的具体实现</p>
+<h5 id="元空间和永久代最大的区别">元空间和永久代最大的区别</h5>
+<p>永久代是堆空间的一部分；元空间从堆中分离，使用<strong>本地内存</strong>（系统的内存），默认大小为本地内存的大小</p>
+<img src="/images/Snipaste_20220911_165810.png" alt="Snipaste_20220911_165810" style="zoom: 50%;" />
+<h5 id="永久代">永久代</h5>
+<p>一开始选择永久代的原因：可以复用代码</p>
+<p>缺点：</p>
+<ol>
+<li>永久代的大小由启动参数指定，太小会内存溢出，太大会空间浪费（挤占堆空间）</li>
+<li>永久代面向堆设计，设计太复杂，其中的对象不是连续的，需要额外的存储信息和对象查找机制来定位对象</li>
+</ol>
+<h5 id="元空间">元空间</h5>
+<p>优点：</p>
+<ol>
+<li>存储在本地内存，IO性能更强</li>
+<li>没有固定大小，只受本地内存限制，不会出现OutOfMemoryError错误</li>
+</ol>
+<p>本地内存不够时不会触发gc</p>
+<h2 id="栈">栈</h2>
+<p>又称为虚拟机栈，Java方法栈</p>
+<p>栈中的元素是<strong>栈帧</strong>，是方法调用的封装</p>
+<p>程序执行实际是方法的调用，对应栈帧的出栈和入栈</p>
+<p>主管Java程序的运行，它保存方法的局部变量（基本数据类型，对象的引用地址），部分结果，并参与方法的调用和返回</p>
+<p><img src="/images/image-20220912102847093.png" alt="image-20220912102847093" style="zoom: 50%;" />					<img src="/images/image-20220912103125162.png" alt="image-20220912103125162" style="zoom:50%;" /></p>
+<ul>
+<li>局部变量表：存放方法参数和方法内部定义的局部变量，基本数据类型的变量直接存储值，引用类型的变量则存的是指向对象的引用</li>
+<li>操作数栈：用来辅助计算的，存储变量和中间结果，从而对表达式求值</li>
+<li>动态链接：一个指向运行时常量池中方法的引用，和类加载的连接不同的是这里因为多态而动态链接
+<ul>
+<li>[ ] 帮助使用类中的常量？？</li>
+</ul>
+</li>
+<li>返回地址：方法返回地址</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">func()&#123;</span><br><span class="line">    <span class="keyword">int</span> a=<span class="number">1</span>, b=<span class="number">2</span>, m;	<span class="comment">//对应局部变量表</span></span><br><span class="line">    m = a+b;	<span class="comment">//使用操作数栈计算，计算后的值存储回局部变量表</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="本地方法栈">本地方法栈</h2>
+<p>和虚拟机栈类似，不过是专门为Native方法服务的栈空间</p>
+<p>本地方法指其他语言编写的、交由Java运行的方法（主要是C、C++）</p>
+<p>用native关键字描述的就是本地方法，如thread.sleep()</p>
+<h2 id="程序计数器">程序计数器</h2>
+<p>一块<strong>很小</strong>的内存空间，以至于没有定义的异常</p>
+<p>pc不向外暴露，虚拟机不提供它的查询接口</p>
 <h2 id="执行引擎">执行引擎</h2>
+<p>JVM操作硬件需要发送指令，这些指令由执行引擎翻译给操作系统，让操作系统去控制硬件</p>
 <p>第三方插件，如Lombok，一般都操作执行引擎</p>
 <h4 id="解释器">解释器</h4>
 <h4 id="JIT编译器">JIT编译器</h4>
@@ -501,8 +570,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/CS/%E5%85%B6%E4%BB%96/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" rel="next" title="设计模式">
-                <i class="fa fa-chevron-left"></i> 设计模式
+              <a href="/CS/%E5%BC%80%E5%8F%91/Java%E5%9F%BA%E7%A1%80/Java%E7%B1%BB%E5%8A%A0%E8%BD%BD/" rel="next" title="Java类加载">
+                <i class="fa fa-chevron-left"></i> Java类加载
               </a>
             
           </div>
@@ -592,7 +661,7 @@
             
               <div class="site-state-item site-state-posts">
                 <a href="/archives">
-                  <span class="site-state-item-count">76</span>
+                  <span class="site-state-item-count">78</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -615,7 +684,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">73</span>
+                  <span class="site-state-item-count">74</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>
@@ -664,7 +733,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#JVM体系结构"><span class="nav-text">JVM体系结构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#类加载器"><span class="nav-text">类加载器</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#类的加载过程"><span class="nav-text">类的加载过程</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#类加载器ClassLoader"><span class="nav-text">类加载器ClassLoader</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#获得类加载器"><span class="nav-text">获得类加载器</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#类的初始化"><span class="nav-text">类的初始化</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#运行时数据区"><span class="nav-text">运行时数据区</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#栈stack——线程私有"><span class="nav-text">栈stack——线程私有</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#堆heap——线程公有"><span class="nav-text">堆heap——线程公有</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#方法区method-area——线程公有"><span class="nav-text">方法区method area——线程公有</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#程序计数器program-counter-register——线程私有"><span class="nav-text">程序计数器program counter register——线程私有</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#本地方法栈native-method-stacks——线程私有"><span class="nav-text">本地方法栈native method stacks——线程私有</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#执行引擎"><span class="nav-text">执行引擎</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#解释器"><span class="nav-text">解释器</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#JIT编译器"><span class="nav-text">JIT编译器</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#垃圾回收器"><span class="nav-text">垃圾回收器</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#知识点拓展"><span class="nav-text">知识点拓展</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#JVM体系结构"><span class="nav-text">JVM体系结构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#star-运行时数据区"><span class="nav-text">:star:运行时数据区</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#堆"><span class="nav-text">堆</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#垃圾收集"><span class="nav-text">垃圾收集</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#字符串常量池"><span class="nav-text">字符串常量池</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#方法区"><span class="nav-text">方法区</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#字节码"><span class="nav-text">字节码</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#字节码加载到方法区"><span class="nav-text">字节码加载到方法区</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#两个实现——永久代和元空间"><span class="nav-text">两个实现——永久代和元空间</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#元空间和永久代最大的区别"><span class="nav-text">元空间和永久代最大的区别</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#永久代"><span class="nav-text">永久代</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#元空间"><span class="nav-text">元空间</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#栈"><span class="nav-text">栈</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#本地方法栈"><span class="nav-text">本地方法栈</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#程序计数器"><span class="nav-text">程序计数器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#执行引擎"><span class="nav-text">执行引擎</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#解释器"><span class="nav-text">解释器</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#JIT编译器"><span class="nav-text">JIT编译器</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#垃圾回收器"><span class="nav-text">垃圾回收器</span></a></li></ol></div>
             
 
           </div>

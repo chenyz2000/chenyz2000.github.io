@@ -87,6 +87,7 @@
 <meta property="og:description" content="简介 Java2之前，Java工具包提供了一些简单的可以自扩展的容器类，包括Enumeration，BitSet，Dictionary，Vector，Stack，Hashtable和 Properties 在Java2中，设计了一个核心统一的主题，引入了一套完整的集合框架 旧的容器类目前仍保留，但应尽量使用新的集合框架">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://chenyz2000.github.io/images/image-20200719150331075.png">
+<meta property="og:image" content="https://chenyz2000.github.io/images/image-20220911150943056.png">
 <meta property="article:published_time" content="2020-07-19T05:53:00.000Z">
 <meta property="article:modified_time" content="2020-07-19T05:53:00.000Z">
 <meta property="article:author" content="Chen Yanzhi">
@@ -380,6 +381,72 @@
 <li>算法</li>
 </ul>
 <img src="/images/image-20200719150331075.png">
+<h4 id="面试常考知识点">面试常考知识点</h4>
+<p>Collection、Map、List、Set、Queue</p>
+<p>ArrayList和LinkedList</p>
+<p>ArrayList和Vector，扩容机制</p>
+<p>HashMap和HashTable，底层原理，红黑树的算法</p>
+<p>线程安全和不安全的集合类</p>
+<p>ConcurrentHashMap</p>
+<h2 id="HashMap底层原理">HashMap底层原理</h2>
+<p>1.7及以前采用数组+链表，1.8及以后采用数组+链表+红黑树</p>
+<p>数组是一个Entry&lt;K,V&gt;数组或者Node&lt;K,V&gt;数组，数组名叫Table</p>
+<img src="/images/image-20220911150943056.png" alt="image-20220911150943056" style="zoom:50%;" />
+<h4 id="1-7和1-8的区别">1.7和1.8的区别</h4>
+<ul>
+<li>
+<p>1.7只用链表，1.8除了链表还用红黑树，最坏情况的复杂度从O(n)降为O(logn)</p>
+</li>
+<li>
+<p>1.7的K-V对被封装为Entry对象，1.8的K-V对被封装为Node对象</p>
+<blockquote>
+<p>Entry是接口，Node是其实现类</p>
+</blockquote>
+</li>
+<li>
+<p>1.7采用头插法，1.8采用尾插法，因为1.8插入时需要遍历一遍链表统计元素个数</p>
+</li>
+</ul>
+<h4 id="存放过程">存放过程</h4>
+<ol>
+<li>
+<p>对Key进行hash计算，得到hash值</p>
+<blockquote>
+<p>这里得到的hash值为(h=key.hashcode()) ^ (h&gt;&gt;&gt;16)，即hashcode与自己右移4位进行异或。(&gt;&gt;&gt;16相当于&gt;&gt;4)<br>
+这样比直接用hashcode进入下一步更好，因为下一步取模会丢失hashcode的高位信息；像这样高位低位异或，能保留高位信息，减少碰撞。</p>
+</blockquote>
+</li>
+<li>
+<p>对hash值进行取模（这里采用了一个小算法：和length-1进行位与运算，length一直为2的n次方），得到Key的下标</p>
+</li>
+<li>
+<p>将封装的K-V对象（Entry/Node）放在对应位置</p>
+<ul>
+<li>
+<p>如果对应位置为空，直接存放</p>
+</li>
+<li>
+<p>如果不为空，JDK1.7→→先判断是否需要扩容，然后头插</p>
+</li>
+<li>
+<p>如果不为空，JDK1.8，新节点为红黑树Node→→加入红黑树，如果已存在Key则更新Value，加入后判断是否需要扩容</p>
+</li>
+<li>
+<p>如果不为空，JDK1.8，新节点为链表Node→→尾插加入链表，如果已存在Key则更新Value，加入后判断是否需要扩容或转为红黑树</p>
+<blockquote>
+<p>先插入节点，然后若数量大于8（即第9个结点），则链表转红黑树</p>
+</blockquote>
+</li>
+</ul>
+</li>
+</ol>
+<h4 id="扩容">扩容</h4>
+<p>扩容指的是数组扩容</p>
+<h4 id="默认值">默认值</h4>
+<p>数组默认大小为16：<code>static final int DEFAULT_INITIAL_CAPACITY = 1 &lt;&lt; 4;</code></p>
+<p>负载因子（数组扩容的临界比例）为0.75：<code>static final float DEFAULT_LOAD_FACTOR = 0.75f;</code>和泊松分布有关</p>
+<p>链表转红黑树的临界值为8：<code>static final int TREEIFY_THRESHOLD = 8;</code>也和泊松分布相关。在理想情况下，链表长度符合泊松分布，各个长度的命中概率依次递减，当长度为8的时候，概率仅为0.00000006，小于千万分之一。所以通常情况下，不会发生从链表向红黑树的转换。除非极端情况，比如人为重写hashcode方法，让节点易碰撞。</p>
+<p>红黑树转链表的临界值为6：<code>static final int UNTREEIFY_THRESHOLD = 6;</code></p>
 
       
     </div>
@@ -521,7 +588,7 @@
             
               <div class="site-state-item site-state-posts">
                 <a href="/archives">
-                  <span class="site-state-item-count">76</span>
+                  <span class="site-state-item-count">78</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -544,7 +611,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">73</span>
+                  <span class="site-state-item-count">74</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>
@@ -593,7 +660,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#简介"><span class="nav-text">简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#体系"><span class="nav-text">体系</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#简介"><span class="nav-text">简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#体系"><span class="nav-text">体系</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#面试常考知识点"><span class="nav-text">面试常考知识点</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HashMap底层原理"><span class="nav-text">HashMap底层原理</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-7和1-8的区别"><span class="nav-text">1.7和1.8的区别</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#存放过程"><span class="nav-text">存放过程</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#扩容"><span class="nav-text">扩容</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#默认值"><span class="nav-text">默认值</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
