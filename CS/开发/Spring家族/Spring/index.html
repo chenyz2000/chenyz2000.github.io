@@ -377,8 +377,8 @@
 <p>ORM层：Hibernate、MyBatis、Spring Data</p>
 <h4 id="两大核心机制">两大核心机制</h4>
 <ul>
-<li>IoC控制反转：针对复杂的对象管理问题，将设计好的对象交给IoC容器而不是new。工厂模式。</li>
-<li>AOP面向切面编程：代码解耦，不改变源代码功能流程的基础上加入新功能，扩展性。代理模式。</li>
+<li><strong>IoC控制反转</strong>：针对复杂的对象管理问题，将设计好的对象交给IoC容器而不是new。工厂模式。</li>
+<li><strong>AOP面向切面编程</strong>：代码解耦，不改变源代码功能流程的基础上加入新功能，扩展性。代理模式。</li>
 </ul>
 <p>痛点：配置文件多</p>
 <a id="more"></a>
@@ -387,28 +387,21 @@
 <p>传统程序开发中，对象是由调用者new创建出来的；但Spring框架中，对象<strong>由IoC容器创建</strong>，再<strong>注入给调用者</strong>，整个流程完成反转</p>
 <p>实现对象之间的解耦合</p>
 <h3 id="IoC代码使用">IoC代码使用</h3>
-<ul>
-<li>
-<p>创建maven项目，添加依赖spring上下文</p>
+<h4 id="1-创建maven项目，添加sprint-context依赖">1.创建maven项目，添加sprint-context依赖</h4>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-context<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>5.0.11.RELEASE<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
-</li>
-<li>
-<p><strong>在xml配置文件中添加需要管理的bean对象（具体见下一小节）</strong></p>
+<h4 id="2-在xml配置文件中，添加需要管理的bean对象（具体见下一小节）">2.在xml配置文件中，添加需要管理的bean对象（具体见下一小节）</h4>
 <p>创建Spring配置文件，放在resource包里，格式为xml，文件名随意</p>
 <p>自动生成<code>&lt;beans&gt;</code>标签，在其中加入<code>&lt;bean&gt;</code>的配置</p>
 <p>要保证属性可写，保证类有无参构造函数（因为Spring底层通过反射机制调用它创建对象）</p>
 <blockquote>
-<p><strong>Error</strong></p>
+<p>Error</p>
 <p>配置文件页面提醒Application context not configured for this file。实际是没有配置该文件到项目中，需要File-Project Structure-Module，在项目中点击+，添加xml文件</p>
 </blockquote>
-</li>
-<li>
-<p><strong>从IoC中获取对象</strong></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ApplicationContext applicationContext = <span class="keyword">new</span> ClassPathXmlApplicationContext(<span class="string">"setting.xml"</span>);</span><br><span class="line">Student student = (Student)applicationContext.getBean(<span class="string">"zhangsan"</span>);</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
+<h4 id="3-从IoC中获取对象">3.从IoC中获取对象</h4>
+  <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ApplicationContext applicationContext = <span class="keyword">new</span> ClassPathXmlApplicationContext(<span class="string">"setting.xml"</span>);</span><br><span class="line">Student student = (Student)applicationContext.getBean(<span class="string">"zhangsan"</span>);</span><br></pre></td></tr></table></figure>
 <h3 id="bean的配置">bean的配置</h3>
-<p><strong>Spring bean</strong>指被实例化，组装，并通过 Spring IoC 容器所管理的对象</p>
+<h4 id="Spring-bean">Spring bean</h4>
+<p>指被实例化，组装，并通过 Spring IoC 容器所管理的对象</p>
   <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"student_zs"</span> <span class="attr">class</span>=<span class="string">"com.cyz.entity.Student"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"id"</span> <span class="attr">value</span>=<span class="string">"id123"</span>&gt;</span><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"name"</span> <span class="attr">value</span>=<span class="string">"张三"</span>&gt;</span><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <p>id用来标识bean相当于对象名，class为类名；property的name是属性名，<strong>value</strong>是实例的<strong>数据型</strong>属性值，没有配置property的属性为空</p>
 <h4 id="注入对象作为属性">注入对象作为属性</h4>
@@ -432,7 +425,7 @@
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//className是从class属性获取的值</span></span><br><span class="line">Class clazz = Class.forName(className);		<span class="comment">//通过反射机制创建对象</span></span><br><span class="line">Constructor constructor = clazz.getConstructor();		<span class="comment">//获取无参构造函数</span></span><br><span class="line">Object object = constructor.newInstance();</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
-<h3 id="scope作用域">scope作用域</h3>
+<h3 id="bean的scope作用域">bean的scope作用域</h3>
 <p>Spring管理的bean是根据scope来生成的，表示bean的作用域</p>
 <p>默认是单例模式，可以在bean标签的scope属性修改</p>
 <ul>
@@ -748,7 +741,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Spring"><span class="nav-text">Spring</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#分层"><span class="nav-text">分层</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#两大核心机制"><span class="nav-text">两大核心机制</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#IoC控制反转"><span class="nav-text">IoC控制反转</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#IoC代码使用"><span class="nav-text">IoC代码使用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#bean的配置"><span class="nav-text">bean的配置</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#注入对象作为属性"><span class="nav-text">注入对象作为属性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#注入集合作为属性"><span class="nav-text">注入集合作为属性</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#底层原理"><span class="nav-text">底层原理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#scope作用域"><span class="nav-text">scope作用域</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Spring的继承"><span class="nav-text">Spring的继承</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Spring的依赖"><span class="nav-text">Spring的依赖</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#p命名空间"><span class="nav-text">p命名空间</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#IoC自动装载（Autowire）"><span class="nav-text">&#x3D;&#x3D;IoC自动装载（Autowire）&#x3D;&#x3D;</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#byName：通过属性名自动装载"><span class="nav-text">byName：通过属性名自动装载</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#byType通过属性数据类型自动装载"><span class="nav-text">byType通过属性数据类型自动装载</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#工厂方法"><span class="nav-text">工厂方法</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#静态工厂方法"><span class="nav-text">静态工厂方法</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#实例工厂方法"><span class="nav-text">实例工厂方法</span></a></li></ol></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#AOP面向切面编程"><span class="nav-text">AOP面向切面编程</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#通过动态代理实现AOP"><span class="nav-text">通过动态代理实现AOP</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#通过Spring实现AOP"><span class="nav-text">通过Spring实现AOP</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Spring"><span class="nav-text">Spring</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#分层"><span class="nav-text">分层</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#两大核心机制"><span class="nav-text">两大核心机制</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#IoC控制反转"><span class="nav-text">IoC控制反转</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#IoC代码使用"><span class="nav-text">IoC代码使用</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-创建maven项目，添加sprint-context依赖"><span class="nav-text">1.创建maven项目，添加sprint-context依赖</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-在xml配置文件中，添加需要管理的bean对象（具体见下一小节）"><span class="nav-text">2.在xml配置文件中，添加需要管理的bean对象（具体见下一小节）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-从IoC中获取对象"><span class="nav-text">3.从IoC中获取对象</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#bean的配置"><span class="nav-text">bean的配置</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Spring-bean"><span class="nav-text">Spring bean</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#注入对象作为属性"><span class="nav-text">注入对象作为属性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#注入集合作为属性"><span class="nav-text">注入集合作为属性</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#底层原理"><span class="nav-text">底层原理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#bean的scope作用域"><span class="nav-text">bean的scope作用域</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Spring的继承"><span class="nav-text">Spring的继承</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Spring的依赖"><span class="nav-text">Spring的依赖</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#p命名空间"><span class="nav-text">p命名空间</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#IoC自动装载（Autowire）"><span class="nav-text">&#x3D;&#x3D;IoC自动装载（Autowire）&#x3D;&#x3D;</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#byName：通过属性名自动装载"><span class="nav-text">byName：通过属性名自动装载</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#byType通过属性数据类型自动装载"><span class="nav-text">byType通过属性数据类型自动装载</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#工厂方法"><span class="nav-text">工厂方法</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#静态工厂方法"><span class="nav-text">静态工厂方法</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#实例工厂方法"><span class="nav-text">实例工厂方法</span></a></li></ol></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#AOP面向切面编程"><span class="nav-text">AOP面向切面编程</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#通过动态代理实现AOP"><span class="nav-text">通过动态代理实现AOP</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#通过Spring实现AOP"><span class="nav-text">通过Spring实现AOP</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
@@ -775,7 +768,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2022</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2023</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>

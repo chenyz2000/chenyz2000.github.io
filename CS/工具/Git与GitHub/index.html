@@ -79,12 +79,12 @@
 
 
 
-<meta name="description" content="版本控制   管理版本，随时回退到任何时刻   协同开发，自动合并代码   创建分支 创建新分支git branch &lt;newBranch&gt; 创建新分支并切换git checkout -b &lt;newBranch&gt; [&lt;Node&gt;]，相当于git branch &lt;newBranch&gt;; git checkout &lt;newBranch&gt;">
+<meta name="description" content="版本控制的作用   管理版本，随时回退到任何时刻   协同开发，自动合并代码   创建分支 创建新分支 git branch &lt;newBranch&gt; 创建新分支并切换 git checkout -b &lt;newBranch&gt; [&lt;Node&gt;] 相当于git branch &lt;newBranch&gt;; git checkout &lt;newBranch&amp;g">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Git与GitHub">
 <meta property="og:url" content="https://chenyz2000.github.io/CS/%E5%B7%A5%E5%85%B7/Git%E4%B8%8EGitHub/index.html">
 <meta property="og:site_name" content="CYZ&#39;s Blog">
-<meta property="og:description" content="版本控制   管理版本，随时回退到任何时刻   协同开发，自动合并代码   创建分支 创建新分支git branch &lt;newBranch&gt; 创建新分支并切换git checkout -b &lt;newBranch&gt; [&lt;Node&gt;]，相当于git branch &lt;newBranch&gt;; git checkout &lt;newBranch&gt;">
+<meta property="og:description" content="版本控制的作用   管理版本，随时回退到任何时刻   协同开发，自动合并代码   创建分支 创建新分支 git branch &lt;newBranch&gt; 创建新分支并切换 git checkout -b &lt;newBranch&gt; [&lt;Node&gt;] 相当于git branch &lt;newBranch&gt;; git checkout &lt;newBranch&amp;g">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://chenyz2000.github.io/images/image-20211121105715402.png">
 <meta property="og:image" content="https://chenyz2000.github.io/images/capture_stepup1_4_3.png">
@@ -370,7 +370,7 @@
       
 
       
-        <h2 id="版本控制">版本控制</h2>
+        <h4 id="版本控制的作用">版本控制的作用</h4>
 <ul>
 <li>
 <p>管理版本，随时回退到任何时刻</p>
@@ -379,11 +379,14 @@
 <p>协同开发，自动合并代码</p>
 </li>
 </ul>
-<h4 id="创建分支">创建分支</h4>
-<p>创建新分支<code>git branch &lt;newBranch&gt;</code></p>
-<p>创建新分支并切换<code>git checkout -b &lt;newBranch&gt; [&lt;Node&gt;]</code>，相当于<code>git branch &lt;newBranch&gt;; git checkout &lt;newBranch&gt;</code></p>
+<h2 id="创建分支">创建分支</h2>
+<h4 id="创建新分支">创建新分支</h4>
+<p><code>git branch &lt;newBranch&gt;</code></p>
+<h4 id="创建新分支并切换">创建新分支并切换</h4>
+<p><code>git checkout -b &lt;newBranch&gt; [&lt;Node&gt;]</code></p>
+<p>相当于<code>git branch &lt;newBranch&gt;; git checkout &lt;newBranch&gt;</code></p>
 <a id="more"></a>
-<h4 id="分支合并">分支合并</h4>
+<h2 id="分支合并merge">分支合并merge</h2>
 <p>当前分支A指向结点a，待合并分支B指向结点b</p>
 <p>将待合并分支B并入当前分支A，使用命令：<code>git checkout A; git merge B</code></p>
 <ol>
@@ -396,11 +399,12 @@
 <blockquote>
 <p>继承关系的父子结点中，父结点表示旧的提交，子结点表示新的提交</p>
 </blockquote>
+<h4 id="HEAD">HEAD</h4>
 <p>HEAD一般作为分支的指针，即HEAD→main→c1</p>
 <p>HEAD也可以作为分支，即结点的指针，即HEAD→c1</p>
 <p>main、新建分支都是分支，即节点的指针</p>
 <p>结点哈希值、分支名、两种作用下的HEAD  都可以作为命令中用到的参数</p>
-<h4 id="变基">变基</h4>
+<h2 id="变基rebase">变基rebase</h2>
 <p>当前分支A指向结点a，目标分支B指向结点b</p>
 <p>将当前分支A的修改汇入目标分支B，使用命令：<code>git checkout A; git rebase B</code></p>
 <ol>
@@ -410,15 +414,20 @@
 <p><code>git rebase -i</code>可以进行交互式变基，可以选择结点、调整顺序、调整信息等，不像原来的rebase只能默认全部变基</p>
 <p>所以可以实现子结点向父结点变基，不会显示A比B新</p>
 <p><code>git rebase B A</code>，A分支向B分支注入</p>
+<h2 id="切换checkout">切换checkout</h2>
 <p><code>git checkout</code>改变HEAD的指向</p>
-<p>相对引用<code>git checkout {x}{y}</code>，x为结点或分支或HEAD，y为<code>^</code>或<code>~</code>表示父结点，y为<code>~3</code>表示上溯3个结点，这样可以不用输入哈希值</p>
+<h4 id="相对引用">相对引用</h4>
+<p><code>git checkout &lt;x&gt;&lt;y&gt;</code></p>
+<p>x为结点或分支或HEAD，y为<code>^</code>或<code>~</code>表示父结点，y为<code>~3</code>表示上溯3个结点，这样可以不用输入哈希值</p>
 <p>移动HEAD到某个结点<code>git checkout &lt;Node&gt;</code></p>
 <p>移动分支到某个结点<code>git branch -f &lt;Branch&gt; &lt;Node&gt;</code></p>
+<h4 id="恢复">恢复</h4>
 <p><code>git reset &lt;Node&gt;</code>将当前分支状态改到指定的Node</p>
 <blockquote>
 <p>reset后，原本的变更还在，但是处于未加入暂存区状态</p>
 </blockquote>
 <p><code>git revert &lt;Node&gt;</code>在当前分支新建一个子结点，该结点状态与指定的Node<strong>之前的状态</strong>相同，即将Node之后记录取消（不修改历史提交，可以与他人同步）</p>
+<h4 id="cherry-pick">cherry-pick</h4>
 <p><code>git cherry-pick &lt;Node1&gt; &lt;Node2&gt; &lt;Noden&gt;</code>，意思是择优挑选，将一些提交复制到当前位置后，按照Node1、Node2…Noden的顺序，HEAD←Node1←Node2←Noden，依次为子节点</p>
 <h4 id="修改先前提交的代码">修改先前提交的代码</h4>
 <p>会产生至少三条分支：原分支、修改分支、修改后的分支</p>
@@ -499,7 +508,7 @@
 <p>解决方法一：git rm –cached</p>
 <p>解决方法二：git clean -d -fx</p>
 <h2 id="GitHub">GitHub</h2>
-<h4 id="Folk与Pull-Request">Folk与Pull Request</h4>
+<h4 id="Fork与Pull-Request">Fork与Pull Request</h4>
 <p>与Clone不同，Folk将别人的仓库复制一份到自己的账号，并与原本的仓库有所联系</p>
 <p>在自己Folk下来的仓库创建一个分支，在此分支上修改</p>
 <p>之后可以将此分支PR给原仓库，等待对方的审核</p>
@@ -723,7 +732,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#版本控制"><span class="nav-text">版本控制</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#创建分支"><span class="nav-text">创建分支</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#分支合并"><span class="nav-text">分支合并</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#变基"><span class="nav-text">变基</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#修改先前提交的代码"><span class="nav-text">修改先前提交的代码</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Git"><span class="nav-text">Git</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#文件四个状态"><span class="nav-text">文件四个状态</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#基本快照"><span class="nav-text">基本快照</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#提交历史"><span class="nav-text">提交历史</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#分支管理"><span class="nav-text">分支管理</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#创建分支-2"><span class="nav-text">创建分支</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#查看分支"><span class="nav-text">查看分支</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#删除分支"><span class="nav-text">删除分支</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#切换分支"><span class="nav-text">切换分支</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#合并分支"><span class="nav-text">合并分支</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#远程仓库"><span class="nav-text">远程仓库</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#添加删除远程仓库"><span class="nav-text">添加删除远程仓库</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#查看所有远程仓库"><span class="nav-text">查看所有远程仓库</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#推送到远程仓库"><span class="nav-text">推送到远程仓库</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#获取远程仓库更新"><span class="nav-text">获取远程仓库更新</span></a></li></ol></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#GitHub"><span class="nav-text">GitHub</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Folk与Pull-Request"><span class="nav-text">Folk与Pull Request</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#merge和rebase"><span class="nav-text">merge和rebase</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#版本控制的作用"><span class="nav-text">版本控制的作用</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#创建分支"><span class="nav-text">创建分支</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#创建新分支"><span class="nav-text">创建新分支</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#创建新分支并切换"><span class="nav-text">创建新分支并切换</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#分支合并merge"><span class="nav-text">分支合并merge</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#HEAD"><span class="nav-text">HEAD</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#变基rebase"><span class="nav-text">变基rebase</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#切换checkout"><span class="nav-text">切换checkout</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#相对引用"><span class="nav-text">相对引用</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#恢复"><span class="nav-text">恢复</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#cherry-pick"><span class="nav-text">cherry-pick</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#修改先前提交的代码"><span class="nav-text">修改先前提交的代码</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Git"><span class="nav-text">Git</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#文件四个状态"><span class="nav-text">文件四个状态</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#基本快照"><span class="nav-text">基本快照</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#提交历史"><span class="nav-text">提交历史</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#分支管理"><span class="nav-text">分支管理</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#创建分支-2"><span class="nav-text">创建分支</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#查看分支"><span class="nav-text">查看分支</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#删除分支"><span class="nav-text">删除分支</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#切换分支"><span class="nav-text">切换分支</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#合并分支"><span class="nav-text">合并分支</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#远程仓库"><span class="nav-text">远程仓库</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#添加删除远程仓库"><span class="nav-text">添加删除远程仓库</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#查看所有远程仓库"><span class="nav-text">查看所有远程仓库</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#推送到远程仓库"><span class="nav-text">推送到远程仓库</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#获取远程仓库更新"><span class="nav-text">获取远程仓库更新</span></a></li></ol></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#GitHub"><span class="nav-text">GitHub</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Fork与Pull-Request"><span class="nav-text">Fork与Pull Request</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#merge和rebase"><span class="nav-text">merge和rebase</span></a></li></ol></div>
             
 
           </div>
@@ -750,7 +759,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2022</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2023</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
