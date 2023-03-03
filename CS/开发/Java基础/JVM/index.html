@@ -400,19 +400,19 @@
 <td>堆</td>
 <td>共享</td>
 <td>唯一目的就是存放对象和数组</td>
-<td>new出来的<strong>对象和数组</strong>，如String；JVM自动创建的<strong>Class对象</strong></td>
+<td>new出来的<strong>对象和数组</strong>，如String；<br />JVM自动创建的<strong>Class对象</strong>；<br />JDK7及之后包含<strong>字符串常量池</strong></td>
 </tr>
 <tr>
 <td>方法区</td>
 <td>共享</td>
-<td></td>
-<td>通过字节码<strong>加载的类型信息</strong>；<strong>运行时常量池</strong></td>
+<td>类加载</td>
+<td>通过字节码<strong>加载的类型信息</strong>；<br /><strong>运行时常量池</strong></td>
 </tr>
 <tr>
 <td>栈</td>
 <td>私有</td>
 <td>记录当前线程的Java方法调用</td>
-<td><strong>基本数据类型</strong>；对<strong>堆中对象的引用</strong></td>
+<td><strong>基本数据类型</strong>；<br />对<strong>堆中对象的引用</strong></td>
 </tr>
 <tr>
 <td>本地方法栈</td>
@@ -442,7 +442,7 @@
 <img src="/images/image-20220912111356543.png" alt="image-20220912111356543" style="zoom: 35%;" />
 <img src="/images/image-20220912111654193.png" alt="image-20220912111654193" style="zoom: 35%;" />
 <h4 id="字符串常量池">字符串常量池</h4>
-<p>jdk1.8后，将字符串常量池放到了堆中</p>
+<p>jdk1.8后，将<strong>字符串常量池</strong>放到了堆中</p>
 <p>字符串常量池在堆中，class常量池和<strong>运行时常量池</strong>在方法区</p>
 <p>字符串常量池的存储位置在不同版本下变化了多次，早期是在方法区（1.7以前），后来又放到堆里了，因为可以方便回收</p>
 <h2 id="方法区">方法区</h2>
@@ -661,7 +661,7 @@
             
               <div class="site-state-item site-state-posts">
                 <a href="/archives">
-                  <span class="site-state-item-count">78</span>
+                  <span class="site-state-item-count">79</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>

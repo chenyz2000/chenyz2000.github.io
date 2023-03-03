@@ -470,11 +470,11 @@
 <p>包含以下三个子注解：</p>
 <ul>
 <li>
-<p><strong>@SpringBootConfiguration</strong>，和其子注解@Configuration含义一样，只是在Spring Boot中重新定义了一下<br>
+<p><strong>@SpringBootConfiguration 配置</strong>，和其子注解@Configuration含义一样，只是在Spring Boot中重新定义了一下<br>
 @Configuration是Spring的IoC容器配置类，表示该类是bean定义的源，即其中定义了bean</p>
 </li>
 <li>
-<p>==<strong>@EnableAutoConfiguration</strong>==，开启自动配置<br>
+<p>==<strong>@EnableAutoConfiguration 开启自动配置</strong>==<br>
 包括以下两个子注解，重要的是@Import()</p>
 <ul>
 <li>
@@ -492,7 +492,7 @@
 <p>给容器中导入组件，组件为导入组件的选择器</p>
 </li>
 <li>
-<p><strong>@ComponentScan</strong>，定义扫描的包路径</p>
+<p><strong>@ComponentScan 扫描</strong>，定义扫描的包路径</p>
 <p>标注了需要自动扫描并加载符合条件的组件或 bean 定义，最终将这些 bean 定义加载到容器中。加载 bean 定义到 Spring 的 IoC 容器，我们可以手工单个注册，不一定非要通过批量的自动扫描完成，所以说@ComponentScan是可有可无的。</p>
 </li>
 </ul>
@@ -645,7 +645,7 @@
             
               <div class="site-state-item site-state-posts">
                 <a href="/archives">
-                  <span class="site-state-item-count">78</span>
+                  <span class="site-state-item-count">79</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
