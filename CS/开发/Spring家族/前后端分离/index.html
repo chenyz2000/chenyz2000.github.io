@@ -482,7 +482,7 @@ vue中所有的js代码都要写到script的export default{}中</p>
 <li>
 <p><strong>@RequestBody</strong>无参，注解方法的参数</p>
 <p>编码类型为<u><strong>application/json或application/xml</strong></u>时，必须使用**@RequestBody**处理。</p>
-<p>一次请求只能有一个Body，将body中的内容转为一个整体对象。请求体中的数据以json等格式传递（貌似没有简单的k-v格式）。<br>
+<p><strong>一次请求只能有一个</strong>Body，将body中的内容转为一个整体对象。请求体中的数据以json等格式传递（貌似没有简单的k-v格式）。<br>
 要求接收数据的方法中 被@RequestBody修饰的参数 为String、Map、JSONObject或JavaBean数据类型。<br>
 为Map时将内容绑定到单个K-V Map，内容拆分为其中的多个元素；为JavaBean时将内容绑定到单个对象中，需要保证内容的key和JavaBean的属性对应。</p>
 <p>由于get请求没有body所以只能用于post方式，所以@RequestBody不能用于get方式。</p>
@@ -660,7 +660,7 @@ vue中所有的js代码都要写到script的export default{}中</p>
             
               <div class="site-state-item site-state-posts">
                 <a href="/archives">
-                  <span class="site-state-item-count">79</span>
+                  <span class="site-state-item-count">84</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -683,7 +683,7 @@ vue中所有的js代码都要写到script的export default{}中</p>
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">74</span>
+                  <span class="site-state-item-count">75</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>

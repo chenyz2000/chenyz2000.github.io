@@ -79,14 +79,16 @@
 
 
 
+<meta name="description" content="git提交规范 &lt;type&gt;:&lt;subject&gt; 其中，&lt;type&gt;为提交类别。feat表示新功能，fix修复bug，docs仅修改文档，perf改进性能，style修改格式，refactor重构，test增加或修改测试，revert重做，merge合并 &lt;subject&gt;为简短描述，可以使用中文 多次提交，不要放在一起提交">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Git开发模式">
 <meta property="og:url" content="https://chenyz2000.github.io/CS/%E5%B7%A5%E5%85%B7/Git%E5%BC%80%E5%8F%91%E6%A8%A1%E5%BC%8F/index.html">
 <meta property="og:site_name" content="CYZ&#39;s Blog">
+<meta property="og:description" content="git提交规范 &lt;type&gt;:&lt;subject&gt; 其中，&lt;type&gt;为提交类别。feat表示新功能，fix修复bug，docs仅修改文档，perf改进性能，style修改格式，refactor重构，test增加或修改测试，revert重做，merge合并 &lt;subject&gt;为简短描述，可以使用中文 多次提交，不要放在一起提交">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://chenyz2000.github.io/images/WIN_20210704_16_48_10_Pro.jpg">
 <meta property="article:published_time" content="2021-07-03T16:00:00.000Z">
-<meta property="article:modified_time" content="2021-07-03T16:00:00.000Z">
+<meta property="article:modified_time" content="2023-05-10T16:00:00.000Z">
 <meta property="article:author" content="Chen Yanzhi">
 <meta property="article:tag" content="Git">
 <meta name="twitter:card" content="summary">
@@ -308,8 +310,8 @@
               
                 <span class="post-meta-item-text">Post modified&#58;</span>
               
-              <time title="Post modified" itemprop="dateModified" datetime="2021-07-04T00:00:00+08:00">
-                2021-07-04
+              <time title="Post modified" itemprop="dateModified" datetime="2023-05-11T00:00:00+08:00">
+                2023-05-11
               </time>
             
           </span>
@@ -364,44 +366,64 @@
       
 
       
-        <p><img src="/images/WIN_20210704_16_48_10_Pro.jpg" alt="WIN_20210704_16_48_10_Pro"></p>
-<a id="more"></a>
-<h4 id="分支介绍">分支介绍</h4>
-<ul>
-<li>
-<p>圆点1所在的线为主线（master），方框指向的节点为每一个发布版本的标签（tag）</p>
-</li>
-<li>
-<p>圆点2所在的线为主要分支（develop）</p>
-</li>
-<li>
-<p>圆点3所在的线为新功能开发分支（feature）</p>
-</li>
-<li>
-<p>圆点4所在的线为新功能发布分支（release）</p>
-</li>
-<li>
-<p>圆点5所在的线为发布版本bug紧急修复分支（hotfix）</p>
-</li>
-</ul>
-<h4 id="分支详细描述">分支详细描述</h4>
-<ul>
-<li>master分支：用来记录官方发布轨迹</li>
-<li>develop分支：一个集成分支，用来记录开发新功能的轨迹</li>
-<li>feature分支：临时分支。每一个新的功能都应该创建一个feature分支，从develop分支中派生出来；当功能完成后，要合并回develop分支，合并后其生命周期即结束。feature分支不会和master分支有交汇。</li>
-<li>release分支：临时分支。为预发分支，当需要发布时，应该将满足发布条件的feature分支合并到develop分支中，然后开出一个release分支，开始准备一个发布版本。这个分支上不能再添加新的功能，只有bug修复和该版本为导向的任务。一旦到了发布日期，release分支就要合并回master分支发布，并且打出版本标签，另外还需要合并回develop分支。</li>
-<li>hotfix分支：临时分支。为线上bug修复分支，用来快速修复生产环境中出现的紧急问题。hotfix只会和master交互。</li>
-</ul>
-<h4 id="管理策略">管理策略</h4>
-<p>develop分支必须从master的稳定版内容合并过来。</p>
-<p>为了避免开发功能时开发人员相互干扰，所以用feature分支边开发边在本地调试修改，一个版本会有多个feature分支，且不断提交新的，覆盖原有的，当分支代码通过了代码审查，项目组长即可将此段代码合并入develop分支。</p>
-<p>当所有需要的特性都继承进入develop分支时，即可发布release分支，对其进行测试和bug修复，完成后即可提交到master分支。</p>
-<p>master上线过程中，一旦发现紧急问题，则进入hotfix分支，只针对某bug的紧急修复。</p>
-<h2 id="git提交规范">git提交规范</h2>
+        <h2 id="git提交规范">git提交规范</h2>
 <p><code>&lt;type&gt;:&lt;subject&gt;</code></p>
-<p>其中，<code>&lt;type&gt;</code>为提交类别。feat表示新功能，fix修复bug，docs仅修改文档，perf改进性能，style修改格式，refactor重构，test增加或修改测试，revert回滚，merge合并</p>
+<p>其中，<code>&lt;type&gt;</code>为提交类别。feat表示新功能，fix修复bug，docs仅修改文档，perf改进性能，style修改格式，refactor重构，test增加或修改测试，revert重做，merge合并</p>
 <p><code>&lt;subject&gt;</code>为简短描述，可以使用中文</p>
 <p>多次提交，不要放在一起提交</p>
+<a id="more"></a>
+<h2 id="实习中的实际开发流程">实习中的实际开发流程</h2>
+<ol>
+<li>从clone下来的仓库的master分支拉出一个feature分支，在feature分支上开发</li>
+<li>feature分支推送到gitlab，在测试环境部署该feature分支</li>
+<li>通过测试后，在gitlab上merge request（或称PR），等待代码审查人员的审核</li>
+<li>通过code review后，feature分支合并到远程仓库的master分支</li>
+<li>若未通过，仍可继续commit、pull，不需要重新提MR</li>
+<li>merge后，部署master分支到所有环境，这一步骤应当采取从部分部署到推全的过程</li>
+<li>本地仓库拉取最新的提交</li>
+</ol>
+<h4 id="共同开发">共同开发</h4>
+<p>当自己在拉出的feature分支开发时，别人修改了代码，master分支更新了</p>
+<ol>
+<li>在本地的master分支，git pull拉取最新更新</li>
+<li>切换到自己的feature分支，rebase到最新的master提交，<code>git checkout feature-xx; git rebase master</code></li>
+</ol>
+<p>这样会把feature分支放到master新的commit之后，并且HEAD仍指向feature最新的commit</p>
+<h2 id="开源项目的实际开发流程">开源项目的实际开发流程</h2>
+<ol>
+<li>对开源项目进行Fork，得到自己的远程仓库</li>
+<li>clone下来，直接在master分支上修改</li>
+<li>提交修改，push到自己的远程仓库</li>
+<li>提交Pull Request，请求将自己的仓库与原仓库合并</li>
+</ol>
+<blockquote>
+<p>Fork是在原仓库的基础上创建一个新的分支（仓库），和创建分支非常类似，只是创建的分支是一个代码仓</p>
+</blockquote>
+<h4 id="共同开发-2">共同开发</h4>
+<p>当开源项目更新了，应当对原仓库和Fork后的仓库两个remote进行操作</p>
+<ul>
+<li>添加上游仓库：从原仓库获取最新的更新，即创建一个新的remote，命名为upstream</li>
+<li>拉取上游仓库变动并合并：在本地进行rebase合并</li>
+<li>更新自己的远程仓库：push到Fork后到仓库，例如叫做origin</li>
+</ul>
+<p>注意，这里操作的都是master分支，将本地的提交rebase到upstream最新的提交后</p>
+<h2 id="git-flow">git flow</h2>
+<p><img src="/images/WIN_20210704_16_48_10_Pro.jpg" alt="WIN_20210704_16_48_10_Pro"></p>
+<h4 id="分支介绍">分支介绍</h4>
+<ul>
+<li>master分支——主线（节点1所在的线）：用来记录官方发布轨迹，方框指向的节点为每一个发布版本的标签（tag）</li>
+<li>develop分支——主要开发分支（节点2所在的线）：一个集成分支，用来记录开发新功能的轨迹</li>
+<li>feature分支——新功能开发分支（节点3所在的线）：一个临时分支。每一个新的功能都应该创建一个feature分支，从develop分支中派生出来；当功能完成后，要合并回develop分支，合并后其生命周期即结束。feature分支不会和master分支有交汇。</li>
+<li>release分支——新功能发布分支（节点4所在的线）：一个临时分支。为预发分支，当需要发布时，应该将满足发布条件的feature分支合并到develop分支中，然后开出一个release分支，开始准备一个发布版本。这个分支上不能再添加新的功能，只有bug修复和该版本为导向的任务。一旦到了发布日期，release分支就要合并回master分支发布，并且打出版本标签，另外还需要合并回develop分支。</li>
+<li>hotfix分支——发布版本bug紧急修复分支（节点5所在的线）：一个临时分支。为线上bug修复分支，用来快速修复生产环境中出现的紧急问题。hotfix只会和master交互。</li>
+</ul>
+<h4 id="管理策略">管理策略</h4>
+<ul>
+<li>develop分支必须从master的稳定版内容合并过来。</li>
+<li>为了避免开发功能时开发人员相互干扰，所以用feature分支边开发边在本地调试修改，一个版本会有多个feature分支，且不断提交新的，覆盖原有的，当分支代码通过了代码审查，项目组长即可将此段代码合并入develop分支。</li>
+<li>当所有需要的特性都继承进入develop分支时，即可发布release分支，对其进行测试和bug修复，完成后即可提交到master分支。</li>
+<li>master上线过程中，一旦发现紧急问题，则进入hotfix分支，只针对某bug的紧急修复。</li>
+</ul>
 
       
     </div>
@@ -541,7 +563,7 @@
             
               <div class="site-state-item site-state-posts">
                 <a href="/archives">
-                  <span class="site-state-item-count">79</span>
+                  <span class="site-state-item-count">84</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -564,7 +586,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">74</span>
+                  <span class="site-state-item-count">75</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>
@@ -613,7 +635,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#分支介绍"><span class="nav-text">分支介绍</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#分支详细描述"><span class="nav-text">分支详细描述</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#管理策略"><span class="nav-text">管理策略</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#git提交规范"><span class="nav-text">git提交规范</span></a></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#git提交规范"><span class="nav-text">git提交规范</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#实习中的实际开发流程"><span class="nav-text">实习中的实际开发流程</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#共同开发"><span class="nav-text">共同开发</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#开源项目的实际开发流程"><span class="nav-text">开源项目的实际开发流程</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#共同开发-2"><span class="nav-text">共同开发</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#git-flow"><span class="nav-text">git flow</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#分支介绍"><span class="nav-text">分支介绍</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#管理策略"><span class="nav-text">管理策略</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
