@@ -504,6 +504,9 @@
 <h4 id="代理对象和调用Mapper接口方法">代理对象和调用Mapper接口方法</h4>
 <p>从<strong>SqlSession</strong>中获取实现类了接口的代理对象，通过对象调用Mapper接口的方法</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//accountMapper就是代理对象</span></span><br><span class="line">AccountMapper accountMapper = sqlSession.getMapper(AccountMapper<span class="class">.<span class="keyword">class</span>)</span>;</span><br><span class="line"><span class="comment">//通过accountMapper调用方法</span></span><br><span class="line">accountRepostity.save(<span class="keyword">new</span> Account(<span class="string">"xyz"</span>,<span class="number">456</span>));</span><br><span class="line">sqlSession.commit();</span><br><span class="line">Account a = accountMapper.findById(<span class="string">"id123"</span>);</span><br><span class="line">sqlSession.close();</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>从sqlSession获取Mapper对象，相当于在Mapper接口上用@Mapper注解+自动注入</p>
+</blockquote>
 <h2 id="Spring-Boot整合MyBatis">Spring Boot整合MyBatis</h2>
 <p>见《Spring Boot整合》</p>
 <h2 id="实例化接口">实例化接口</h2>
@@ -692,7 +695,7 @@
             
               <div class="site-state-item site-state-posts">
                 <a href="/archives">
-                  <span class="site-state-item-count">84</span>
+                  <span class="site-state-item-count">88</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -704,7 +707,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-count">12</span>
                   <span class="site-state-item-name">categories</span>
                 </a>
               </div>
@@ -715,7 +718,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">75</span>
+                  <span class="site-state-item-count">79</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>

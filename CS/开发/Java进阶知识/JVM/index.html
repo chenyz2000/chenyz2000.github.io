@@ -1,0 +1,951 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="en">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Java SE,JVM," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="知识点拓展 JVM是C语言写的 看源码只能看OpenJDK的 基于JVM的语言：除了Java以外，还有Kotlin、Scala、Groovy、Clojure等 JVM虚拟机：最主流的是Hotspot，此外还有JRockit、J9等。本文讨论的是HotSpot  JVM体系结构">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JVM">
+<meta property="og:url" content="https://chenyz2000.github.io/CS/%E5%BC%80%E5%8F%91/Java%E8%BF%9B%E9%98%B6%E7%9F%A5%E8%AF%86/JVM/index.html">
+<meta property="og:site_name" content="CYZ&#39;s Blog">
+<meta property="og:description" content="知识点拓展 JVM是C语言写的 看源码只能看OpenJDK的 基于JVM的语言：除了Java以外，还有Kotlin、Scala、Groovy、Clojure等 JVM虚拟机：最主流的是Hotspot，此外还有JRockit、J9等。本文讨论的是HotSpot  JVM体系结构">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://chenyz2000.github.io/images/image-20211202143324449.png">
+<meta property="og:image" content="https://chenyz2000.github.io/images/image-20211004201510564.png">
+<meta property="og:image" content="https://chenyz2000.github.io/images/image-20220912111356543.png">
+<meta property="og:image" content="https://chenyz2000.github.io/images/image-20220912111654193.png">
+<meta property="og:image" content="https://chenyz2000.github.io/images/image-20220912151040912.png">
+<meta property="og:image" content="https://chenyz2000.github.io/images/Snipaste_20220911_165810.png">
+<meta property="og:image" content="https://chenyz2000.github.io/images/image-20220912102847093.png">
+<meta property="og:image" content="https://chenyz2000.github.io/images/image-20220912103125162.png">
+<meta property="article:published_time" content="2021-10-03T16:00:00.000Z">
+<meta property="article:modified_time" content="2022-09-11T16:00:00.000Z">
+<meta property="article:author" content="Chen Yanzhi">
+<meta property="article:tag" content="Java SE">
+<meta property="article:tag" content="JVM">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://chenyz2000.github.io/images/image-20211202143324449.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"always","offset":12,"b2t":true,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://chenyz2000.github.io/CS/开发/Java进阶知识/JVM/"/>
+
+
+
+
+
+  <title>JVM | CYZ's Blog</title>
+  
+
+
+
+
+
+
+
+
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">CYZ's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            About
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://chenyz2000.github.io/CS/%E5%BC%80%E5%8F%91/Java%E8%BF%9B%E9%98%B6%E7%9F%A5%E8%AF%86/JVM/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Chen Yanzhi">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="CYZ's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">JVM</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2021-10-04T00:00:00+08:00">
+                2021-10-04
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Post modified&#58;</span>
+              
+              <time title="Post modified" itemprop="dateModified" datetime="2022-09-12T00:00:00+08:00">
+                2022-09-12
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Java%E8%BF%9B%E9%98%B6%E7%9F%A5%E8%AF%86/" itemprop="url" rel="index">
+                    <span itemprop="name">Java进阶知识</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
+<h4 id="知识点拓展">知识点拓展</h4>
+<p>JVM是C语言写的</p>
+<p>看源码只能看OpenJDK的</p>
+<p>基于JVM的语言：除了Java以外，还有Kotlin、Scala、Groovy、Clojure等</p>
+<p>JVM虚拟机：最主流的是Hotspot，此外还有JRockit、J9等。本文讨论的是HotSpot</p>
+</blockquote>
+<h2 id="JVM体系结构">JVM体系结构</h2>
+<img src="/images/image-20211202143324449.png" alt="image-20211202143324449" style="zoom:40%;" />
+<a id="more"></a>
+<h2 id="star-运行时数据区">:star:运行时数据区</h2>
+<img src="/images/image-20211004201510564.png" alt="image-20211004201510564" style="zoom: 40%;" />
+<table>
+<thead>
+<tr>
+<th>区域</th>
+<th>线程共享/私有</th>
+<th>意义</th>
+<th>存放内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>堆</td>
+<td>共享</td>
+<td>唯一目的就是存放对象和数组</td>
+<td>new出来的<strong>对象和数组</strong>，如String；<br />JVM自动创建的<strong>Class对象</strong>；<br />JDK7及之后包含<strong>字符串常量池</strong></td>
+</tr>
+<tr>
+<td>方法区</td>
+<td>共享</td>
+<td>类加载</td>
+<td>通过字节码<strong>加载的类型信息</strong>；<br /><strong>运行时常量池</strong></td>
+</tr>
+<tr>
+<td>栈</td>
+<td>私有</td>
+<td>记录当前线程的Java方法调用</td>
+<td><strong>基本数据类型</strong>；<br />对<strong>堆中对象的引用</strong></td>
+</tr>
+<tr>
+<td>本地方法栈</td>
+<td>私有</td>
+<td>记录当前线程的本地方法调用</td>
+<td></td>
+</tr>
+<tr>
+<td>程序计数器</td>
+<td>私有</td>
+<td>记录当前线程执行到哪儿了</td>
+<td>记录当前执行<strong>指令的地址</strong></td>
+</tr>
+</tbody>
+</table>
+<p>JVM分为共享区（堆、方法区）和线程私有区（栈、本地方法栈、程序计数器）</p>
+<ul>
+<li>共享区：<strong>JVM调优</strong>、<strong>垃圾回收</strong>的区域</li>
+<li>线程私有区：<strong>没有垃圾回收</strong>，因为生命周期比较短</li>
+</ul>
+<h2 id="堆">堆</h2>
+<p>JVM中<strong>最大</strong>的一块，启动时创建，一个JVM只有一个堆</p>
+<p>逻辑上是连续的，物理上可以不连续</p>
+<p>堆的范围没有明确的划分，比较主流的是从垃圾回收的角度划分</p>
+<h4 id="垃圾收集">垃圾收集</h4>
+<p>垃圾收集的分代收集理论：</p>
+<img src="/images/image-20220912111356543.png" alt="image-20220912111356543" style="zoom: 35%;" />
+<img src="/images/image-20220912111654193.png" alt="image-20220912111654193" style="zoom: 35%;" />
+<h4 id="字符串常量池">字符串常量池</h4>
+<p>jdk1.8后，将<strong>字符串常量池</strong>放到了堆中</p>
+<p>字符串常量池在堆中，class常量池和<strong>运行时常量池</strong>在方法区</p>
+<p>字符串常量池的存储位置在不同版本下变化了多次，早期是在方法区（1.7以前），后来又放到堆里了，因为可以方便回收</p>
+<h2 id="方法区">方法区</h2>
+<p>~~方法区是堆的一个逻辑部分，~~但是有个别名叫做“非堆”</p>
+<p><s>仅仅只是逻辑上的独立，实际上还是包含在堆中，方法区是特殊的堆</s></p>
+<h4 id="字节码">字节码</h4>
+<p>编译后，<strong>字节码</strong>包含以下内容：</p>
+<ul>
+<li>
+<p>类型信息、字段信息、方法信息</p>
+</li>
+<li>
+<p>static变量</p>
+</li>
+<li>
+<p>指向Class对象的引用、指向类加载器的引用</p>
+</li>
+<li>
+<p>常量池——编译生成的字面量（整数字面量、字符串字面量）、符号引用（类引用、字段引用、方法引用）</p>
+</li>
+</ul>
+<p>常量存在动态常量池？好像不在</p>
+<p>static方法？</p>
+<h4 id="字节码加载到方法区">字节码加载到方法区</h4>
+<p><strong>类加载时，JVM会把字节码加载到方法区</strong></p>
+<p>其中，字节码的<strong>常量池</strong>会被加载到方法区的<strong>运行时常量池</strong>中</p>
+<img src="/images/image-20220912151040912.png" alt="image-20220912151040912" style="zoom: 67%;" />
+<h4 id="两个实现——永久代和元空间">两个实现——永久代和元空间</h4>
+<p>方法区是抽象规范</p>
+<p><strong>永久代</strong>（1.7及以前）和<strong>元空间</strong>（1.8及以后）是方法区的具体实现</p>
+<h5 id="元空间和永久代最大的区别">元空间和永久代最大的区别</h5>
+<p>永久代是堆空间的一部分；元空间从堆中分离，使用<strong>本地内存</strong>（系统的内存，不属于JVM），默认大小为本地内存的大小</p>
+<img src="/images/Snipaste_20220911_165810.png" alt="Snipaste_20220911_165810" style="zoom: 50%;" />
+<h5 id="永久代">永久代</h5>
+<p>一开始选择永久代的原因：可以复用代码</p>
+<p>缺点：</p>
+<ol>
+<li>永久代的大小由启动参数指定，太小会内存溢出，太大会空间浪费（挤占堆空间）</li>
+<li>永久代面向堆设计，设计太复杂，其中的对象不是连续的，需要额外的存储信息和对象查找机制来定位对象</li>
+</ol>
+<h5 id="元空间">元空间</h5>
+<p>优点：</p>
+<ol>
+<li>存储在本地内存，IO性能更强</li>
+<li>没有固定大小，只受本地内存限制，不会出现OutOfMemoryError错误</li>
+</ol>
+<p>本地内存不够时不会触发gc</p>
+<h2 id="栈">栈</h2>
+<p>又称为虚拟机栈，Java方法栈</p>
+<p>栈中的元素是<strong>栈帧</strong>，是方法调用的封装</p>
+<p>程序执行实际是方法的调用，对应栈帧的出栈和入栈</p>
+<p>主管Java程序的运行，它保存方法的局部变量（基本数据类型，对象的引用地址），部分结果，并参与方法的调用和返回</p>
+<p><img src="/images/image-20220912102847093.png" alt="image-20220912102847093" style="zoom: 50%;" />					<img src="/images/image-20220912103125162.png" alt="image-20220912103125162" style="zoom:50%;" /></p>
+<ul>
+<li>局部变量表：存放方法参数和方法内部定义的局部变量，基本数据类型的变量直接存储值，引用类型的变量则存的是指向对象的引用</li>
+<li>操作数栈：用来辅助计算的，存储变量和中间结果，从而对表达式求值</li>
+<li>动态链接：一个指向运行时常量池中方法的引用，和类加载的连接不同的是这里因为多态而动态链接
+<ul>
+<li>[ ] 帮助使用类中的常量？？</li>
+</ul>
+</li>
+<li>返回地址：方法返回地址</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">func()&#123;</span><br><span class="line">    <span class="keyword">int</span> a=<span class="number">1</span>, b=<span class="number">2</span>, m;	<span class="comment">//对应局部变量表</span></span><br><span class="line">    m = a+b;	<span class="comment">//使用操作数栈计算，计算后的值存储回局部变量表</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="本地方法栈">本地方法栈</h2>
+<p>和虚拟机栈类似，不过是专门为Native方法服务的栈空间</p>
+<p>本地方法指其他语言编写的、交由Java运行的方法（主要是C、C++）</p>
+<p>用native关键字描述的就是本地方法，如thread.sleep()</p>
+<h2 id="程序计数器">程序计数器</h2>
+<p>一块<strong>很小</strong>的内存空间，以至于没有定义的异常</p>
+<p>pc不向外暴露，虚拟机不提供它的查询接口</p>
+<h2 id="执行引擎">执行引擎</h2>
+<p>JVM操作硬件需要发送指令，这些指令由执行引擎翻译给操作系统，让操作系统去控制硬件</p>
+<p>第三方插件，如Lombok，一般都操作执行引擎</p>
+<h4 id="解释器">解释器</h4>
+<h4 id="JIT编译器">JIT编译器</h4>
+<h4 id="垃圾回收器">垃圾回收器</h4>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>Post author:</strong>
+    Chen Yanzhi
+  </li>
+  <li class="post-copyright-link">
+    <strong>Post link:</strong>
+    <a href="https://chenyz2000.github.io/CS/%E5%BC%80%E5%8F%91/Java%E8%BF%9B%E9%98%B6%E7%9F%A5%E8%AF%86/JVM/" title="JVM">https://chenyz2000.github.io/CS/%E5%BC%80%E5%8F%91/Java%E8%BF%9B%E9%98%B6%E7%9F%A5%E8%AF%86/JVM/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>Copyright Notice: </strong>
+    All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> unless stating additionally.
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Java-SE/" rel="tag"># Java SE</a>
+          
+            <a href="/tags/JVM/" rel="tag"># JVM</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/CS/%E5%BC%80%E5%8F%91/Java%E8%BF%9B%E9%98%B6%E7%9F%A5%E8%AF%86/Java%E7%B1%BB%E5%8A%A0%E8%BD%BD/" rel="next" title="Java类加载">
+                <i class="fa fa-chevron-left"></i> Java类加载
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/CS/%E5%BC%80%E5%8F%91/Java%E8%BF%9B%E9%98%B6%E7%9F%A5%E8%AF%86/Java%E5%8F%8D%E5%B0%84/" rel="prev" title="Java反射">
+                Java反射 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.jpg"
+                alt="Chen Yanzhi" />
+            
+              <p class="site-author-name" itemprop="name">Chen Yanzhi</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+                <a href="/archives">
+                  <span class="site-state-item-count">88</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-name">categories</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">79</span>
+                  <span class="site-state-item-name">tags</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/chenyz2000" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:chenyanzhi_2000@163.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#知识点拓展"><span class="nav-text">知识点拓展</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#JVM体系结构"><span class="nav-text">JVM体系结构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#star-运行时数据区"><span class="nav-text">:star:运行时数据区</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#堆"><span class="nav-text">堆</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#垃圾收集"><span class="nav-text">垃圾收集</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#字符串常量池"><span class="nav-text">字符串常量池</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#方法区"><span class="nav-text">方法区</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#字节码"><span class="nav-text">字节码</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#字节码加载到方法区"><span class="nav-text">字节码加载到方法区</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#两个实现——永久代和元空间"><span class="nav-text">两个实现——永久代和元空间</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#元空间和永久代最大的区别"><span class="nav-text">元空间和永久代最大的区别</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#永久代"><span class="nav-text">永久代</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#元空间"><span class="nav-text">元空间</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#栈"><span class="nav-text">栈</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#本地方法栈"><span class="nav-text">本地方法栈</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#程序计数器"><span class="nav-text">程序计数器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#执行引擎"><span class="nav-text">执行引擎</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#解释器"><span class="nav-text">解释器</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#JIT编译器"><span class="nav-text">JIT编译器</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#垃圾回收器"><span class="nav-text">垃圾回收器</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Chen Yanzhi</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
