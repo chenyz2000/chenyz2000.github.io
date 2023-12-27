@@ -1,0 +1,916 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="en">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Android," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="移动开发：Android、IOS、H5 App、Native+H5、RN、ionic、MUI…  IDEA中右键→new→Vector asset，有很多矢量图标可以选择  160dp≈1英寸，可能会有偏差 当屏幕像素点密度为160dpi时，1dp&#x3D;1px">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Android开发">
+<meta property="og:url" content="https://chenyz2000.github.io/CS/%E5%BC%80%E5%8F%91%EF%BC%88%E4%B8%8D%E5%B8%B8%E7%94%A8%EF%BC%89/Android/Android%E5%BC%80%E5%8F%91/index.html">
+<meta property="og:site_name" content="CYZ&#39;s Blog">
+<meta property="og:description" content="移动开发：Android、IOS、H5 App、Native+H5、RN、ionic、MUI…  IDEA中右键→new→Vector asset，有很多矢量图标可以选择  160dp≈1英寸，可能会有偏差 当屏幕像素点密度为160dpi时，1dp&#x3D;1px">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2021-12-27T16:00:00.000Z">
+<meta property="article:modified_time" content="2022-01-11T16:00:00.000Z">
+<meta property="article:author" content="Chen Yanzhi">
+<meta property="article:tag" content="Android">
+<meta name="twitter:card" content="summary">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"always","offset":12,"b2t":true,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://chenyz2000.github.io/CS/开发（不常用）/Android/Android开发/"/>
+
+
+
+
+
+  <title>Android开发 | CYZ's Blog</title>
+  
+
+
+
+
+
+
+
+
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">CYZ's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            About
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://chenyz2000.github.io/CS/%E5%BC%80%E5%8F%91%EF%BC%88%E4%B8%8D%E5%B8%B8%E7%94%A8%EF%BC%89/Android/Android%E5%BC%80%E5%8F%91/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Chen Yanzhi">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="CYZ's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Android开发</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2021-12-28T00:00:00+08:00">
+                2021-12-28
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Post modified&#58;</span>
+              
+              <time title="Post modified" itemprop="dateModified" datetime="2022-01-12T00:00:00+08:00">
+                2022-01-12
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Android/" itemprop="url" rel="index">
+                    <span itemprop="name">Android</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>移动开发：Android、IOS、H5 App、Native+H5、RN、ionic、MUI…</p>
+<blockquote>
+<p>IDEA中右键→new→Vector asset，有很多矢量图标可以选择</p>
+</blockquote>
+<p>160dp≈1英寸，可能会有偏差</p>
+<p>当屏幕像素点密度为160dpi时，1dp=1px</p>
+<a id="more"></a>
+<ul>
+<li>material design：样式设计</li>
+<li>Flutter：跨平台UI包，需要学习一门新语言 Dart</li>
+<li></li>
+<li>Jetpack：组件库，适合大型、有复用需求的项目</li>
+<li>RxJava：异步操作、多线程库</li>
+<li>Retrofit：网络请求框架</li>
+<li>Glide：图片加载框架</li>
+<li>Realm：替代SQLite的更轻量的数据库</li>
+<li>MVP设计模式，Dagger2依赖注入</li>
+</ul>
+<h4 id="app开发">app开发</h4>
+<ul>
+<li>
+<p>原生：安卓用Java/Kotlin，IOS用Object-C/Swift</p>
+</li>
+<li>
+<p>混合：Html+容器（PhoneGap/Cordova/Ionic）</p>
+</li>
+<li>
+<p>跨平台——编译：前端JS+前端框架+自研引擎。复用前端技术，更易开发。</p>
+<blockquote>
+<p>先用特定语言编写，编译时转换为原生语法</p>
+</blockquote>
+<ul>
+<li><strong>React Native</strong>：脸书家，使用JS作为编程语言，生态好，最稳妥，跨安卓+IOS。eg：抖音、京东、网易云音乐、QQ音乐、百度、小红书、爱奇艺、喜马拉雅</li>
+<li>weex：阿里家，基于Vue，跨安卓+IOS+网页。eg：淘宝、钉钉</li>
+</ul>
+</li>
+<li>
+<p>跨平台-编译2：自研语言+框架+引擎。性能好</p>
+<ul>
+<li><strong>Flutter</strong>：谷歌家，Dart语言，性能好，跨安卓+IOS。eg：QQ、快手、闲鱼、美团</li>
+<li>Xamarin：微软家，C#语言</li>
+<li>QT：QML语言</li>
+</ul>
+</li>
+<li>
+<p>跨平台-小程序：</p>
+<ul>
+<li><strong>uniapp</strong>：基于Vue，相当于Vue+小程序，可跨所有平台+小程序</li>
+<li>taro：基于React</li>
+<li>chameleon</li>
+</ul>
+</li>
+</ul>
+<p>原生用来调用硬件，UI用前端技术开发，二者之间用webview的js桥连接</p>
+<p>推荐：公司开发，最稳妥用RN，Flutter的比例在接近RN；需要小程序，uniapp适合快速开发、小型项目</p>
+<h2 id="Android开发简介">Android开发简介</h2>
+<p>开发工具：Android Studio</p>
+<p>Android Studio使用Gradle构建项目</p>
+<p>需要JDK + Android SDK</p>
+<p>Android最低支持版本选则5.0就好</p>
+<p>安卓自身系统库包含：媒体库支持播放音视频、web浏览器引擎、轻量级数据库SQLite、2D库、3D库、矢量渲染库</p>
+<h2 id="项目目录">项目目录</h2>
+<ul>
+<li>app/src/main/
+<ul>
+<li>java/&lt;包名&gt;：
+<ul>
+<li>MainActivity.java：窗口的操作</li>
+</ul>
+</li>
+<li>res/：资源文件
+<ul>
+<li>drawable/：放<strong>图片</strong>或小型布局的xml</li>
+<li>layout/：放<strong>窗口结构的布局文件</strong></li>
+<li>values/：存放<strong>定义的值</strong></li>
+<li>mipmap/：位图</li>
+</ul>
+</li>
+<li>assets/：不编译的资源文件，如html</li>
+<li>AndroidManifest.xml：<strong>配置文件，注册用到的所有activity界面</strong></li>
+</ul>
+</li>
+<li>app/src/build.gradle：配置客户端版本号和依赖的包</li>
+</ul>
+<h4 id="引用">@引用</h4>
+<p>res中的内容，包括layout、value和drawable等文件夹，可以在xml里和java里引用</p>
+<p>建议使用需要数值的时候进行引用而不是写具体数值</p>
+<p>eg:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">内容：layout&#x2F;activity_main</span><br><span class="line">Java中引用：R.layout.activity_main</span><br><span class="line">xml中引用未实验</span><br><span class="line"></span><br><span class="line">内容：drawable&#x2F;icon.xml</span><br><span class="line">Java中引用未实验</span><br><span class="line">xml中引用：@drawable&#x2F;icon</span><br><span class="line"></span><br><span class="line">内容：value&#x2F;strings.xml中的K:V对</span><br><span class="line">xml中引用：@string&#x2F;K</span><br><span class="line">Java中引用：R.string.K</span><br><span class="line"></span><br><span class="line">内容：@+id&#x2F;xxx</span><br><span class="line">Java中引用：R.id.xxx</span><br></pre></td></tr></table></figure>
+<p>相当于layout和drawable是一类，文件名就是K值，文件内容是V；value文件夹是另一类，在strings等xml内定义K:V对</p>
+<p>值得一提的是，values/styles.xml可以设置多个属性合并为一个风格，根据风格名引用</p>
+<h2 id="文件调用关系（重要）">文件调用关系（重要）</h2>
+<p>一个Activity表示一个窗口</p>
+<p><code>MainActivity.java</code>在<code>AndroidManifest.xml</code>中进行<strong>注册</strong></p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">activity</span> <span class="attr">android:name</span>=<span class="string">".MainActivity"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">activity</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p><code>MainActivity.java</code>中用<code>setContentView()</code><strong>设置布局文件</strong><code>activity_main.xml</code></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">setContentView(R.layout.activity_main);</span><br></pre></td></tr></table></figure>
+<p><code>activity_main.xml</code>中，编写显示在窗口中的<strong>控件</strong></p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">LinearLayout</span> <span class="attr">xmlns:android</span>=<span class="string">"http://schemas.android.com/apk/res/android"</span></span></span><br><span class="line"><span class="tag">              <span class="attr">android:layout_width</span>=<span class="string">"match_parent"</span></span></span><br><span class="line"><span class="tag">              <span class="attr">android:layout_height</span>=<span class="string">"match_parent"</span></span></span><br><span class="line"><span class="tag">              <span class="attr">android:orientation</span>=<span class="string">"vertical"</span></span></span><br><span class="line"><span class="tag">              <span class="attr">android:padding</span>=<span class="string">"16dp"</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">TextView</span> <span class="attr">android:layout_width</span>=<span class="string">"match_parent"</span> </span></span><br><span class="line"><span class="tag">              <span class="attr">android:layout_height</span>=<span class="string">"wrap_content"</span></span></span><br><span class="line"><span class="tag">              <span class="attr">android:text</span>=<span class="string">"Hello World"</span></span></span><br><span class="line"><span class="tag">              /&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">LinearLayout</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>（xml和activity.java有点类似html和js）</p>
+<h2 id="Android-SDK目录">Android SDK目录</h2>
+<ul>
+<li>add-ons/：存放Android的扩展库</li>
+<li>docs/：存放developer.Android.com的开发文档</li>
+<li>extras/：存放附加支持文件，包含Android的support 支持包、Google的工具和驱动、Intel的IntelHaxm</li>
+<li>platforms/：存放Android SDK Platforms 平台相关文件，包括字体、res 资源、模板等</li>
+<li>platform-tools/：各个平台工具
+<ul>
+<li>api/：其中的api-versions.xml文件，用于指明所需类的属性、方法、接口等</li>
+<li>lib/：</li>
+</ul>
+</li>
+<li>samples/：示例工程</li>
+</ul>
+<h2 id="Intent">Intent</h2>
+<p>四大组件间的枢纽，Android通信的桥梁</p>
+<p>Intent可以启动Activity、Service和Broadcast</p>
+<h4 id="Activity跳转">Activity跳转</h4>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Intent intent = <span class="keyword">new</span> Intent(MainActivity.<span class="keyword">this</span>, NewActivity<span class="class">.<span class="keyword">class</span>)</span>;		<span class="comment">//当前Activity跳转到NewActivity</span></span><br><span class="line">startActivity(intent);		<span class="comment">//启动</span></span><br></pre></td></tr></table></figure>
+<h4 id="Extra扩展信息">Extra扩展信息</h4>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//发送的Activity</span></span><br><span class="line">Intent intent = <span class="keyword">new</span> Intent();</span><br><span class="line">intent.putExtra(<span class="string">"tag"</span>,<span class="string">"msg"</span>);</span><br><span class="line">setResult(RESULT_OK, intent);</span><br><span class="line">finish();</span><br><span class="line"></span><br><span class="line"><span class="comment">//接收的Activity</span></span><br><span class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onActivityResult</span><span class="params">(<span class="keyword">int</span> requestCode, <span class="keyword">int</span> resultCode, @Nullable Intent data)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">super</span>.onActivityResult(requestCode, resultCode, data);</span><br><span class="line">    String s = data.getStringExtra(<span class="string">"tag"</span>);		<span class="comment">//跳转回当前页面带来的data</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="log">log</h2>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> android.util.Log;</span><br><span class="line">Log.d("tag","msg");		#debug时打印</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>Post author:</strong>
+    Chen Yanzhi
+  </li>
+  <li class="post-copyright-link">
+    <strong>Post link:</strong>
+    <a href="https://chenyz2000.github.io/CS/%E5%BC%80%E5%8F%91%EF%BC%88%E4%B8%8D%E5%B8%B8%E7%94%A8%EF%BC%89/Android/Android%E5%BC%80%E5%8F%91/" title="Android开发">https://chenyz2000.github.io/CS/%E5%BC%80%E5%8F%91%EF%BC%88%E4%B8%8D%E5%B8%B8%E7%94%A8%EF%BC%89/Android/Android%E5%BC%80%E5%8F%91/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>Copyright Notice: </strong>
+    All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> unless stating additionally.
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Android/" rel="tag"># Android</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/CS/%E5%BC%80%E5%8F%91%EF%BC%88%E4%B8%8D%E5%B8%B8%E7%94%A8%EF%BC%89/Python%E4%B8%8EAI/sklearn/" rel="next" title="sklearn">
+                <i class="fa fa-chevron-left"></i> sklearn
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/CS/%E5%BC%80%E5%8F%91%EF%BC%88%E4%B8%8D%E5%B8%B8%E7%94%A8%EF%BC%89/Android/%E5%AE%89%E5%8D%93UI/" rel="prev" title="安卓UI">
+                安卓UI <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.jpg"
+                alt="Chen Yanzhi" />
+            
+              <p class="site-author-name" itemprop="name">Chen Yanzhi</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+                <a href="/archives">
+                  <span class="site-state-item-count">102</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">15</span>
+                  <span class="site-state-item-name">categories</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">85</span>
+                  <span class="site-state-item-name">tags</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/chenyz2000" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:chenyanzhi_2000@163.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#app开发"><span class="nav-text">app开发</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Android开发简介"><span class="nav-text">Android开发简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#项目目录"><span class="nav-text">项目目录</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#引用"><span class="nav-text">@引用</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#文件调用关系（重要）"><span class="nav-text">文件调用关系（重要）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Android-SDK目录"><span class="nav-text">Android SDK目录</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Intent"><span class="nav-text">Intent</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Activity跳转"><span class="nav-text">Activity跳转</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Extra扩展信息"><span class="nav-text">Extra扩展信息</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#log"><span class="nav-text">log</span></a></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Chen Yanzhi</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

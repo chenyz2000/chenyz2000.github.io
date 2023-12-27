@@ -1,0 +1,912 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="en">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Go," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="go中读写文件主要涉及4个包  os io bufio ioutil">
+<meta property="og:type" content="article">
+<meta property="og:title" content="go文件开闭与读写">
+<meta property="og:url" content="https://chenyz2000.github.io/CS/%E5%BC%80%E5%8F%91/Go/go%E6%96%87%E4%BB%B6%E5%BC%80%E9%97%AD%E4%B8%8E%E8%AF%BB%E5%86%99/index.html">
+<meta property="og:site_name" content="CYZ&#39;s Blog">
+<meta property="og:description" content="go中读写文件主要涉及4个包  os io bufio ioutil">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://chenyz2000.github.io/images/20200704200830588.png">
+<meta property="og:image" content="d:%5Csource%5Cimages%5C20200419135009938.png">
+<meta property="article:published_time" content="2023-11-02T07:00:00.000Z">
+<meta property="article:modified_time" content="2023-11-07T06:00:00.000Z">
+<meta property="article:author" content="Chen Yanzhi">
+<meta property="article:tag" content="Go">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://chenyz2000.github.io/images/20200704200830588.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"always","offset":12,"b2t":true,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://chenyz2000.github.io/CS/开发/Go/go文件开闭与读写/"/>
+
+
+
+
+
+  <title>go文件开闭与读写 | CYZ's Blog</title>
+  
+
+
+
+
+
+
+
+
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">CYZ's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            About
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://chenyz2000.github.io/CS/%E5%BC%80%E5%8F%91/Go/go%E6%96%87%E4%BB%B6%E5%BC%80%E9%97%AD%E4%B8%8E%E8%AF%BB%E5%86%99/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Chen Yanzhi">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="CYZ's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">go文件开闭与读写</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2023-11-02T15:00:00+08:00">
+                2023-11-02
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Post modified&#58;</span>
+              
+              <time title="Post modified" itemprop="dateModified" datetime="2023-11-07T14:00:00+08:00">
+                2023-11-07
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Go/" itemprop="url" rel="index">
+                    <span itemprop="name">Go</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>go中读写文件主要涉及4个包</p>
+<ul>
+<li>os</li>
+<li>io</li>
+<li>bufio</li>
+<li>ioutil</li>
+</ul>
+<a id="more"></a>
+<h3 id="打开关闭文件">打开关闭文件</h3>
+<p>打开文件常用的方法有</p>
+<ul>
+<li><code>os.Open()</code>一般在<strong>读取</strong>文件时使用</li>
+<li><code>os.Create()</code>一般在<strong>创建</strong>文件时使用</li>
+<li><code>os.OpenFile()</code>一般在<strong>追加</strong>内容时使用</li>
+</ul>
+<p>Open和Create方法都调用了OpenFile方法，并选择了特定的模式，源码如下</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">Open</span><span class="params">(name <span class="keyword">string</span>)</span> <span class="params">(*File, error)</span></span> &#123;</span><br><span class="line">	<span class="keyword">return</span> OpenFile(name, O_RDONLY, <span class="number">0</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">Create</span><span class="params">(name <span class="keyword">string</span>)</span> <span class="params">(*File, error)</span></span> &#123;</span><br><span class="line">	<span class="keyword">return</span> OpenFile(name, O_RDWR|O_CREATE|O_TRUNC, <span class="number">0666</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// OpenFile的定义</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">OpenFile</span><span class="params">(name <span class="keyword">string</span>, flag <span class="keyword">int</span>, perm FileMode)</span> <span class="params">(*File, error)</span></span> &#123;&#125;</span><br></pre></td></tr></table></figure>
+<p>使用示例如下</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">file, err := os.Open(<span class="string">"filepath"</span>)		<span class="comment">// 只读打开</span></span><br><span class="line">file, err := os.Create(<span class="string">"filepath"</span>)		<span class="comment">// 创建</span></span><br><span class="line">file, err := os.OpenFile(<span class="string">"filepath"</span>, name, os.O_RDWR|os.O_CREATE|os.O_APPEND, <span class="number">0666</span>)		<span class="comment">// 追加</span></span><br><span class="line">file.Close()</span><br></pre></td></tr></table></figure>
+<p>其中，OpenFile可选的flag有</p>
+<ul>
+<li>O_RDONLY只读，O_WRONLY只写，O_RDWR读写，三选一</li>
+<li>O_APPEND追加</li>
+<li>O_CREATE如果文件不存在则创建文件，O_EXCL和创建文件一起使用，文件必须不存在</li>
+</ul>
+<p>常用的flag组合有</p>
+<ul>
+<li>os.O_WRONLY | os.O_CREATE | os.O_APPEND，创建文件，如果已经存在则在尾部添加写</li>
+<li>os.O_WRONLY | os.O_CREATE，创建文件，如果已经存在，会覆盖写</li>
+<li>os.O_WRONLY | os.O_CREATE | O_EXCL，创建文件，如果已经存在，则创建失败</li>
+</ul>
+<p>其中，OpenFile的filemode权限一般用</p>
+<ul>
+<li>0777：表示创建了一个普通文件，所有人拥有所有的读、写、执行权限</li>
+<li>0666：表示创建了一个普通文件，所有人拥有对该文件的读、写权限，但是都不可执行</li>
+<li>0644：表示创建了一个普通文件，文件所有者对该文件有读写权限，用户组和其他人只有读权限，都没有执行权限</li>
+</ul>
+<img src="/images/20200704200830588.png"/>
+<h3 id="读取文件">读取文件</h3>
+<p>读取文件的四种方式</p>
+<ul>
+<li>成员函数file.Read——分段读，不推荐</li>
+<li>bufio.Scanner（NewReader + reader.ReadLine）——分行读</li>
+<li>ioutil.ReadAll</li>
+<li><strong>os.ReadFile</strong>（原ioutil.ReadFile）——推荐，常用</li>
+</ul>
+<p>读取文件若需要打开文件，使用<strong>os.Open只读打开</strong>即可</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">file, err := os.Open(<span class="string">"D:\test.txt"</span>)</span><br></pre></td></tr></table></figure>
+<p>下面是对四种方法的详细介绍</p>
+<h4 id="file-Read">file.Read</h4>
+<p>方法定义如下，是File类的成员函数</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(f *File)</span> <span class="title">Read</span><span class="params">(b []<span class="keyword">byte</span>)</span> <span class="params">(n <span class="keyword">int</span>, err error)</span></span></span><br></pre></td></tr></table></figure>
+<p>需要先<code>file, err := os.Open(&quot;path&quot;)</code>手动打开文件</p>
+<p>接着需要通过循环手动分段读取</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> chunk []<span class="keyword">byte</span></span><br><span class="line">buf := <span class="built_in">make</span>([]<span class="keyword">byte</span>, <span class="number">1024</span>)</span><br><span class="line"><span class="keyword">for</span> &#123;</span><br><span class="line">    length, err := file.Read(buf)	<span class="comment">// 读取</span></span><br><span class="line">    <span class="keyword">if</span> err != <span class="literal">nil</span> &amp;&amp; err != io.EOF&#123;</span><br><span class="line">        fmt.Println(<span class="string">"read buf fail"</span>, err)</span><br><span class="line">        <span class="keyword">return</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> length == <span class="number">0</span> &#123;	<span class="comment">// 结束</span></span><br><span class="line">        <span class="keyword">break</span></span><br><span class="line">    &#125;</span><br><span class="line">    chunk = <span class="built_in">append</span>(chunk, buf[:n]...)</span><br><span class="line">&#125;</span><br><span class="line">fmt.Println(<span class="keyword">string</span>(chunk))</span><br></pre></td></tr></table></figure>
+<h4 id="bufio-Scanner（NewReader-reader-ReadLine）">bufio.Scanner（NewReader + reader.ReadLine）</h4>
+<p>方法定义</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">NewReader</span><span class="params">(rd io.Reader)</span> *<span class="title">Reader</span></span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(b *Reader)</span> <span class="title">ReadLine</span><span class="params">()</span> <span class="params">(line []<span class="keyword">byte</span>, isPrefix <span class="keyword">bool</span>, err error)</span></span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">NewScanner</span><span class="params">(r io.Reader)</span> *<span class="title">Scanner</span></span></span><br></pre></td></tr></table></figure>
+<p>和file.Read类似需要手动打开文件，也是分段读取</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">reader := bufio.NewReader(file)</span><br><span class="line">line := <span class="number">0</span></span><br><span class="line"><span class="keyword">for</span> &#123;</span><br><span class="line">    content, isPrefix, err := reader.ReadLine()	<span class="comment">// 读取，此外还有reader.Read(buf)的方法</span></span><br><span class="line">  fmt.Println(<span class="keyword">string</span>(content), isPrefix, err)</span><br><span class="line">  <span class="keyword">if</span> !isPrefix &#123;</span><br><span class="line">    line++</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">if</span> err == io.EOF &#123;</span><br><span class="line">    <span class="keyword">break</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>bufio还定义了<strong>Scanner</strong>用来简化这个，非常类似Java的Scanner</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">scanner := bufio.NewScanner(file)</span><br><span class="line"><span class="keyword">for</span> scanner.Scan() &#123;</span><br><span class="line">    line := scanner.Text()</span><br><span class="line">    fmt.Println(line)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="ioutil-ReadAll">ioutil.ReadAll</h4>
+<p>方法定义</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">ReadAll</span><span class="params">(r io.Reader)</span> <span class="params">([]<span class="keyword">byte</span>, error)</span></span></span><br></pre></td></tr></table></figure>
+<p>需要手动打开文件，但是可以一次性把数据读完</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bytes, err := ioutil.ReadAll(file)</span><br></pre></td></tr></table></figure>
+<h4 id="os-ReadFile">os.ReadFile</h4>
+<p>原本是ioutil包中的方法，新版已经移动到os包中了</p>
+<p>方法定义</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">ReadFile</span><span class="params">(name <span class="keyword">string</span>)</span> <span class="params">([]<span class="keyword">byte</span>, error)</span></span></span><br></pre></td></tr></table></figure>
+<p><strong>不需要手动打开文件，可以一次性把数据读完</strong></p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bytes, err := ioutil.ReadFile(<span class="string">`D:\test.txt`</span>)</span><br></pre></td></tr></table></figure>
+<h3 id="写入">写入</h3>
+<p>写文件的四种方式</p>
+<p>四种方式使用起来都还行，前三种需要手动创建file对象，可以选择使用追加模式，第四种自动使用覆盖模式</p>
+<ul>
+<li>成员函数file.WriteString或file.Write</li>
+<li>io.WriteString</li>
+<li>bufio.NewWriter + writer.WriteString</li>
+<li><strong>os.WriteFile</strong>（原ioutil.WriteFile）——常用</li>
+</ul>
+<p>下面的方法若需要打开文件，需要使用<strong>os.OpenFile按照写权限打开文件</strong></p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">file, err = os.OpenFile(fileName, os.O_APPEND, <span class="number">0666</span>)		<span class="comment">// 追加模式打开文件</span></span><br></pre></td></tr></table></figure>
+<p>下面是对四种方法的详细介绍</p>
+<h4 id="file-WriteString或file-Write">file.WriteString或file.Write</h4>
+<p>方法定义</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">WriteString</span><span class="params">(w Writer, s <span class="keyword">string</span>)</span> <span class="params">(n <span class="keyword">int</span>, err error)</span></span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(f *File)</span> <span class="title">Write</span><span class="params">(b []<span class="keyword">byte</span>)</span> <span class="params">(n <span class="keyword">int</span>, err error)</span></span></span><br></pre></td></tr></table></figure>
+<p>需要手动打开文件，可以一次性写入</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 写入字符串</span></span><br><span class="line">length, err = file.WriteString(<span class="string">"content"</span>)</span><br><span class="line"><span class="comment">// 写入bytes</span></span><br><span class="line">length, err := file.Write([]<span class="keyword">byte</span>(<span class="string">"content"</span>))</span><br></pre></td></tr></table></figure>
+<h4 id="io-WriteString">io.WriteString</h4>
+<p>方法定义</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">WriteString</span><span class="params">(w Writer, s <span class="keyword">string</span>)</span> <span class="params">(n <span class="keyword">int</span>, err error)</span></span></span><br></pre></td></tr></table></figure>
+<p>和file.WriteString类似，需要手动打开文件，可以一次性写入</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">length, err := io.WriteString(file, content)</span><br></pre></td></tr></table></figure>
+<h4 id="bufio-NewWriter-writer-WriteString">bufio.NewWriter + writer.WriteString</h4>
+<p>方法定义</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">NewWriter</span><span class="params">(w io.Writer)</span> *<span class="title">Writer</span></span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(b *Writer)</span> <span class="title">WriteString</span><span class="params">(s <span class="keyword">string</span>)</span> <span class="params">(<span class="keyword">int</span>, error)</span></span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(b *Writer)</span> <span class="title">Write</span><span class="params">(p []<span class="keyword">byte</span>)</span> <span class="params">(nn <span class="keyword">int</span>, err error)</span></span></span><br></pre></td></tr></table></figure>
+<p>需要手动创建file对象</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">writer := bufio.NewWriter(file)</span><br><span class="line">length, err := writer.WriteString(<span class="string">"content"</span>)</span><br><span class="line">length, err := writer.Write([]<span class="keyword">byte</span>(<span class="string">"content"</span>))</span><br><span class="line">writer.flush()</span><br></pre></td></tr></table></figure>
+<h4 id="os-WriteFile">os.WriteFile</h4>
+<p>方法定义</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">WriteFile</span><span class="params">(filename <span class="keyword">string</span>, data []<span class="keyword">byte</span>, perm os.FileMode)</span> <span class="title">error</span></span></span><br></pre></td></tr></table></figure>
+<p>不需要手动打开文件，若文件不存在会自动创建文件，若文件存在则覆盖原本内容</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">err := ioutil.WriteFile(fileName, []<span class="keyword">byte</span>(<span class="string">"content"</span>), <span class="number">0666</span>)</span><br></pre></td></tr></table></figure>
+<p>底层使用了os.OpenFile()打开文件和File.Write()写入文件内容</p>
+<hr>
+<h4 id="文件读取">文件读取</h4>
+<p><img src="D:%5Csource%5Cimages%5C20200419135009938.png" alt="img"></p>
+<ul>
+<li>net.Conn, os.Stdin, os.File: 网络、标准输入输出、文件的流读取</li>
+<li>strings.Reader: 把字符串抽象成Reader</li>
+<li>bytes.Reader: 把[]byte抽象成Reader</li>
+<li>bytes.Buffer: 把[]byte抽象成Reader和Writer</li>
+<li>bufio.Reader/Writer: 抽象成带缓冲的流读取（比如按行读写）</li>
+</ul>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>Post author:</strong>
+    Chen Yanzhi
+  </li>
+  <li class="post-copyright-link">
+    <strong>Post link:</strong>
+    <a href="https://chenyz2000.github.io/CS/%E5%BC%80%E5%8F%91/Go/go%E6%96%87%E4%BB%B6%E5%BC%80%E9%97%AD%E4%B8%8E%E8%AF%BB%E5%86%99/" title="go文件开闭与读写">https://chenyz2000.github.io/CS/%E5%BC%80%E5%8F%91/Go/go%E6%96%87%E4%BB%B6%E5%BC%80%E9%97%AD%E4%B8%8E%E8%AF%BB%E5%86%99/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>Copyright Notice: </strong>
+    All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> unless stating additionally.
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Go/" rel="tag"># Go</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/CS/%E5%BC%80%E5%8F%91/Java%E8%BF%9B%E9%98%B6%E7%9F%A5%E8%AF%86/JDK%E7%89%88%E6%9C%AC%E6%96%B0%E7%89%B9%E6%80%A7/" rel="next" title="JDK版本新特性">
+                <i class="fa fa-chevron-left"></i> JDK版本新特性
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/CS/%E5%BC%80%E5%8F%91/Go/go%20gin%E5%92%8Chttp/" rel="prev" title="go gin和http">
+                go gin和http <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.jpg"
+                alt="Chen Yanzhi" />
+            
+              <p class="site-author-name" itemprop="name">Chen Yanzhi</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+                <a href="/archives">
+                  <span class="site-state-item-count">102</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">15</span>
+                  <span class="site-state-item-name">categories</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">85</span>
+                  <span class="site-state-item-name">tags</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/chenyz2000" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:chenyanzhi_2000@163.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#打开关闭文件"><span class="nav-text">打开关闭文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#读取文件"><span class="nav-text">读取文件</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#file-Read"><span class="nav-text">file.Read</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#bufio-Scanner（NewReader-reader-ReadLine）"><span class="nav-text">bufio.Scanner（NewReader + reader.ReadLine）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#ioutil-ReadAll"><span class="nav-text">ioutil.ReadAll</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#os-ReadFile"><span class="nav-text">os.ReadFile</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#写入"><span class="nav-text">写入</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#file-WriteString或file-Write"><span class="nav-text">file.WriteString或file.Write</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#io-WriteString"><span class="nav-text">io.WriteString</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#bufio-NewWriter-writer-WriteString"><span class="nav-text">bufio.NewWriter + writer.WriteString</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#os-WriteFile"><span class="nav-text">os.WriteFile</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#文件读取"><span class="nav-text">文件读取</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Chen Yanzhi</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

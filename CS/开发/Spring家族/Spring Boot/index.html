@@ -378,7 +378,7 @@
 <p>Spring Boot配合Spring Cloud：Spring Boot用于开发微服务中的一个个服务，SpringCloud用于管理Spring Boot开发的多个服务</p>
 <a id="more"></a>
 <h2 id="创建项目">创建项目</h2>
-<h4 id="通过maven项目构建">通过maven项目构建</h4>
+<h4 id="方法一：通过maven项目构建">方法一：通过maven项目构建</h4>
 <ol>
 <li>
 <p>创建maven项目</p>
@@ -411,22 +411,19 @@
 </li>
 <li>
 <p>部署</p>
-<p>导入插件，可以将引用打包成可执行的jar包</p>
+<p>导入插件，可以将应用打包成可执行的jar包</p>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">build</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">plugins</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">plugin</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-maven-plugin<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">plugin</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">plugins</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">build</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p>之后用maven的package打包，打完包后放在项目文件夹的target目录中</p>
+<p>之后用<code>mvn package</code>打包，打完后的jar包后放在项目文件夹的target目录中</p>
 </li>
-</ol>
-<ul>
 <li>
-<p>[ ] 此处打包失败，尚未解决</p>
 <p>之后可以直接用<code>java -jar</code>运行jar包</p>
 <p>jar包中，BOOT-INF/classes是程序的字节码，BOOT-INF/lib是程序依赖的jar包（包括tomcat-embeded）</p>
 </li>
-</ul>
-<h4 id="直接创建Spring项目">直接创建Spring项目</h4>
+</ol>
+<h4 id="方法二：直接创建Spring项目">方法二：直接创建Spring项目</h4>
 <p>idea会自动从maven仓库的SpringFramework下载创建项目所需的文件</p>
 <p>系统会将main/java/com.cyz/Main创建好，并写好主类</p>
-<h4 id="使用Spring-Initializer">使用Spring Initializer</h4>
+<h4 id="方法三：使用Spring-Initializer">方法三：使用Spring Initializer</h4>
 <p>选择JDK、maven等，之后选择模块，IDEA就会联网创建Spring Boot项目，其中pom和主程序都给创建好了</p>
 <blockquote>
 <p>Spring Boot的启动类不能直接放在src/java目录下，不然会报错</p>
@@ -554,7 +551,7 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/CS/%E5%BC%80%E5%8F%91/%E5%89%8D%E7%AB%AF/CSS/" rel="next" title="CSS">
+              <a href="/CS/%E5%BC%80%E5%8F%91%EF%BC%88%E4%B8%8D%E5%B8%B8%E7%94%A8%EF%BC%89/%E5%89%8D%E7%AB%AF/CSS/" rel="next" title="CSS">
                 <i class="fa fa-chevron-left"></i> CSS
               </a>
             
@@ -564,7 +561,7 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/CS/%E5%BC%80%E5%8F%91/%E5%89%8D%E7%AB%AF/JS/" rel="prev" title="JS">
+              <a href="/CS/%E5%BC%80%E5%8F%91%EF%BC%88%E4%B8%8D%E5%B8%B8%E7%94%A8%EF%BC%89/%E5%89%8D%E7%AB%AF/JS/" rel="prev" title="JS">
                 JS <i class="fa fa-chevron-right"></i>
               </a>
             
@@ -645,7 +642,7 @@
             
               <div class="site-state-item site-state-posts">
                 <a href="/archives">
-                  <span class="site-state-item-count">88</span>
+                  <span class="site-state-item-count">102</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -657,7 +654,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-count">15</span>
                   <span class="site-state-item-name">categories</span>
                 </a>
               </div>
@@ -668,7 +665,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">79</span>
+                  <span class="site-state-item-count">85</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>
@@ -717,7 +714,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Spring-Boot"><span class="nav-text">Spring Boot</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#创建项目"><span class="nav-text">创建项目</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#通过maven项目构建"><span class="nav-text">通过maven项目构建</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#直接创建Spring项目"><span class="nav-text">直接创建Spring项目</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#使用Spring-Initializer"><span class="nav-text">使用Spring Initializer</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#POM文件"><span class="nav-text">POM文件</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#父项目"><span class="nav-text">父项目</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Spring-Boot-Starter自动配置依赖模块"><span class="nav-text">Spring-Boot-Starter自动配置依赖模块</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#应用日志——logging"><span class="nav-text">应用日志——logging</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Web应用——web"><span class="nav-text">Web应用——web</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#访问数据库——jdbc"><span class="nav-text">访问数据库——jdbc</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#AOP——aop"><span class="nav-text">AOP——aop</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#自动配置"><span class="nav-text">自动配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Error"><span class="nav-text">Error</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Spring-Boot"><span class="nav-text">Spring Boot</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#创建项目"><span class="nav-text">创建项目</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#方法一：通过maven项目构建"><span class="nav-text">方法一：通过maven项目构建</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#方法二：直接创建Spring项目"><span class="nav-text">方法二：直接创建Spring项目</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#方法三：使用Spring-Initializer"><span class="nav-text">方法三：使用Spring Initializer</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#POM文件"><span class="nav-text">POM文件</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#父项目"><span class="nav-text">父项目</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Spring-Boot-Starter自动配置依赖模块"><span class="nav-text">Spring-Boot-Starter自动配置依赖模块</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#应用日志——logging"><span class="nav-text">应用日志——logging</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Web应用——web"><span class="nav-text">Web应用——web</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#访问数据库——jdbc"><span class="nav-text">访问数据库——jdbc</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#AOP——aop"><span class="nav-text">AOP——aop</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#自动配置"><span class="nav-text">自动配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Error"><span class="nav-text">Error</span></a></li></ol></div>
             
 
           </div>

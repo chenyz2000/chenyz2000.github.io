@@ -385,9 +385,9 @@
 <ul>
 <li>compile：编译，生成class文件保存到target文件夹中</li>
 <li>package：打包成jar/war，保存到target文件夹中</li>
-<li>install：安装项目包到<strong>本地仓库</strong>，这样项目包可以用作其他本地项目的依赖</li>
+<li>install：安装项目包到<strong>本地仓库</strong>，这样项目包可以<strong>用作其他本地项目的依赖</strong></li>
 <li>deploy：将项目包复制到远程仓库中</li>
-<li>clean：删除target文件夹，包括其中的class文件和jar包等</li>
+<li>clean：<strong>删除target文件夹</strong>，包括其中的class文件和jar包等</li>
 </ul>
 </blockquote>
 <ul>
@@ -408,6 +408,23 @@
 <h2 id="添加镜像">添加镜像</h2>
 <p>maven添加阿里云仓库，在settings.xml文件的mirrors的mirror标签里加入</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;id&gt;nexus-aliyun&lt;&#x2F;id&gt;</span><br><span class="line">&lt;mirrorOf&gt;central&lt;&#x2F;mirrorOf&gt;</span><br><span class="line">&lt;name&gt;Nexus aliyun&lt;&#x2F;name&gt;</span><br><span class="line">&lt;url&gt;http:&#x2F;&#x2F;maven.aliyun.com&#x2F;nexus&#x2F;content&#x2F;groups&#x2F;public&lt;&#x2F;url&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="IDEA和Maven">IDEA和Maven</h2>
+<p>按钮作用（从左向右）</p>
+<ul>
+<li>
+<p>Reload All Maven Projects：根据pom.xml进行刷新，并<br>
+上图中的 1 图标按钮的作用是根据 pom.xml 文件的配置重载所有的 Maven 项目</p>
+<p>Generate Sources and Update Folders For All Projects<br>
+上图中的 2 图标按钮的作用是让源代码重新编译</p>
+<p>Download Sources and/or Documentation<br>
+上图中的 3 图标按钮的作用是下载源码和文档</p>
+<p>Add Maven Projects<br>
+上图中的 4 图标按钮的作用是添加 Maven 项目</p>
+<p>Run Maven Build</p>
+<p>Execute Maven Goal</p>
+<p>上图中的 6 图标按钮的作用是执行 mvn 命令或自定义的命令。</p>
+</li>
+</ul>
 <h2 id="Error">Error</h2>
 <p>构建项目报错：unable to import maven project，是maven的端口被占用了</p>
 <p>解决方法：运行cmd，netstat -ano|findstr 8080，找到8080端口被谁占用</p>
@@ -462,7 +479,7 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/CS/%E5%BC%80%E5%8F%91/Vue/Vue%E5%9F%BA%E7%A1%80/" rel="next" title="Vue基础">
+              <a href="/CS/%E5%BC%80%E5%8F%91%EF%BC%88%E4%B8%8D%E5%B8%B8%E7%94%A8%EF%BC%89/Vue/Vue%E5%9F%BA%E7%A1%80/" rel="next" title="Vue基础">
                 <i class="fa fa-chevron-left"></i> Vue基础
               </a>
             
@@ -553,7 +570,7 @@
             
               <div class="site-state-item site-state-posts">
                 <a href="/archives">
-                  <span class="site-state-item-count">88</span>
+                  <span class="site-state-item-count">102</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -565,7 +582,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-count">15</span>
                   <span class="site-state-item-name">categories</span>
                 </a>
               </div>
@@ -576,7 +593,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">79</span>
+                  <span class="site-state-item-count">85</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>
@@ -625,7 +642,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Maven的作用"><span class="nav-text">Maven的作用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Maven构建流程"><span class="nav-text">Maven构建流程</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Lifecycle-Phase-Goal"><span class="nav-text">Lifecycle-Phase-Goal</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#常用命令"><span class="nav-text">常用命令</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#添加镜像"><span class="nav-text">添加镜像</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Error"><span class="nav-text">Error</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Maven的作用"><span class="nav-text">Maven的作用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Maven构建流程"><span class="nav-text">Maven构建流程</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Lifecycle-Phase-Goal"><span class="nav-text">Lifecycle-Phase-Goal</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#常用命令"><span class="nav-text">常用命令</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#添加镜像"><span class="nav-text">添加镜像</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#IDEA和Maven"><span class="nav-text">IDEA和Maven</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Error"><span class="nav-text">Error</span></a></li></ol></div>
             
 
           </div>

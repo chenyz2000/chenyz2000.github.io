@@ -259,7 +259,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://chenyz2000.github.io/CS/%E5%BC%80%E5%8F%91/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E4%B8%8E%E4%BA%91%E5%8E%9F%E7%94%9F/Go%E8%AF%AD%E8%A8%80%E7%AE%80%E4%BB%8B/">
+    <link itemprop="mainEntityOfPage" href="https://chenyz2000.github.io/CS/%E5%BC%80%E5%8F%91/%E6%95%B0%E6%8D%AE%E5%BA%93%E3%80%81%E7%BC%93%E5%AD%98%E3%80%81%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/Kafka/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Chen Yanzhi">
@@ -278,7 +278,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/CS/%E5%BC%80%E5%8F%91/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E4%B8%8E%E4%BA%91%E5%8E%9F%E7%94%9F/Go%E8%AF%AD%E8%A8%80%E7%AE%80%E4%BB%8B/" itemprop="url">Go语言简介</a></h1>
+                <a class="post-title-link" href="/CS/%E5%BC%80%E5%8F%91/%E6%95%B0%E6%8D%AE%E5%BA%93%E3%80%81%E7%BC%93%E5%AD%98%E3%80%81%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/Kafka/" itemprop="url">Kafka</a></h1>
         
 
         <div class="post-meta">
@@ -290,8 +290,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2023-08-22T00:00:00+08:00">
-                2023-08-22
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2023-02-20T00:00:00+08:00">
+                2023-02-20
               </time>
             
 
@@ -306,8 +306,8 @@
               
                 <span class="post-meta-item-text">Post modified&#58;</span>
               
-              <time title="Post modified" itemprop="dateModified" datetime="2023-10-10T00:00:00+08:00">
-                2023-10-10
+              <time title="Post modified" itemprop="dateModified" datetime="2023-12-27T17:00:00+08:00">
+                2023-12-27
               </time>
             
           </span>
@@ -325,8 +325,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E4%B8%8E%E4%BA%91%E5%8E%9F%E7%94%9F/" itemprop="url" rel="index">
-                    <span itemprop="name">微服务与云原生</span>
+                  <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93%E3%80%81%E7%BC%93%E5%AD%98%E3%80%81%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/" itemprop="url" rel="index">
+                    <span itemprop="name">数据库、缓存、消息队列</span>
                   </a>
                 </span>
 
@@ -363,19 +363,19 @@
 
       
         
-          <p>还需要了解的点：panic、defer、struct、interface、slice、map</p>
-<p>优势：</p>
-<ul>
-<li>部署简单：可以直接编译成机器码(0和1)，不依赖其他库，运行即可部署</li>
-<li>静态类型语言</li>
-<li>语言层面支持并发，充分利用多核</li>
-<li>强大的标准库</li>
-<li>编译速度快，运行效率高（接近C语言）</li>
-<li>易学易用，大厂背书</li>
-</ul>
+          <h2 id="kafka">kafka</h2>
+<p>日志、请求都属于消息</p>
+<p>一般的消息处理，要求consumer实时处理消息，如果consumer暂时没能力处理，则消息会丢失</p>
+<p>此外，producer需要额外维护consumer的消息（如向多个consumer发送消息），多做了很多不应该负责的工作</p>
+<p>所以，需要一个独立的消息队列，加在producer和consumer之间</p>
+<p>不过，如果消息队列很多，维护起来就非常复杂</p>
+<p>kafka则作为一个消息队列集合，将所有队列统一管理了</p>
+<p>Kafka集群将消息存储在特定的文件中，对外表现为Topics</p>
+<p>每个topic对应一个消息队列，一个消息队列里包含多个partition</p>
+<p>每个partition中的数据是有序的，但是partition之间无法保证有序</p>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/CS/%E5%BC%80%E5%8F%91/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E4%B8%8E%E4%BA%91%E5%8E%9F%E7%94%9F/Go%E8%AF%AD%E8%A8%80%E7%AE%80%E4%BB%8B/#more" rel="contents">
+            <a class="btn" href="/CS/%E5%BC%80%E5%8F%91/%E6%95%B0%E6%8D%AE%E5%BA%93%E3%80%81%E7%BC%93%E5%AD%98%E3%80%81%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/Kafka/#more" rel="contents">
               Read more &raquo;
             </a>
           </div>
@@ -426,7 +426,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://chenyz2000.github.io/CS/%E5%BC%80%E5%8F%91/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E4%B8%8E%E4%BA%91%E5%8E%9F%E7%94%9F/RPC/">
+    <link itemprop="mainEntityOfPage" href="https://chenyz2000.github.io/CS/%E8%BE%85%E5%8A%A9/%E5%B7%A5%E5%85%B7/Jekins/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Chen Yanzhi">
@@ -445,7 +445,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/CS/%E5%BC%80%E5%8F%91/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E4%B8%8E%E4%BA%91%E5%8E%9F%E7%94%9F/RPC/" itemprop="url">RPC</a></h1>
+                <a class="post-title-link" href="/CS/%E8%BE%85%E5%8A%A9/%E5%B7%A5%E5%85%B7/Jekins/" itemprop="url">Jekins</a></h1>
         
 
         <div class="post-meta">
@@ -457,8 +457,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2023-08-14T00:00:00+08:00">
-                2023-08-14
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2023-12-27T12:00:00+08:00">
+                2023-12-27
               </time>
             
 
@@ -473,8 +473,8 @@
               
                 <span class="post-meta-item-text">Post modified&#58;</span>
               
-              <time title="Post modified" itemprop="dateModified" datetime="2023-10-08T00:00:00+08:00">
-                2023-10-08
+              <time title="Post modified" itemprop="dateModified" datetime="2023-12-27T12:00:00+08:00">
+                2023-12-27
               </time>
             
           </span>
@@ -492,8 +492,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E4%B8%8E%E4%BA%91%E5%8E%9F%E7%94%9F/" itemprop="url" rel="index">
-                    <span itemprop="name">微服务与云原生</span>
+                  <a href="/categories/%E5%B7%A5%E5%85%B7/" itemprop="url" rel="index">
+                    <span itemprop="name">工具</span>
                   </a>
                 </span>
 
@@ -530,17 +530,16 @@
 
       
         
-          <p>RPC：Remote Procedure Call，远程过程调用，它定义了<strong>服务间的通信方式</strong></p>
-<h4 id="RPC、HTTP、TCP之间的关系">RPC、HTTP、TCP之间的关系</h4>
-<p>TCP的三个特点：面向连接、可靠、基于字节流（但是无边界）</p>
-<p>因为TCP的包无法区分边界，所以要在它上面定义一个应用层协议来区分边界</p>
-<p>如HTTP，就区分了TCP的边界，定义了消息头和消息体，其他的协议也类似</p>
-<p>大部分RPC框架底层用TCP，但是也可以用UDP或HTTP</p>
-<p>HTTP比较通用，而RPC比较定制化、<strong>性能</strong>较高，常用于公司<strong>内部</strong>集群里各个微服务的通讯</p>
-<p>RPC性能较高，但是HTTP2性能可能较高（2015年发布），因此gRPC就采用基于HTTP2的方案</p>
+          <h2 id="Jekins安装">Jekins安装</h2>
+<p>下载地址https://www.jenkins.io/download/</p>
+<p>下载得到一个war包，需要通过java运行</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">java -jar jenkins.war --httpPort&#x3D;8080</span><br></pre></td></tr></table></figure>
+<p>第一次运行时，Jekins会创建一个Admin用户，并且随机创一个密码</p>
+<p>在命令行中有提示，例如</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Jenkins initial setup is required. An admin user has been created and a password generated.</span><br><span class="line">Please use the following password to proceed to installation:</span><br><span class="line"></span><br><span class="line">c1d84376b4c547fda7858f63b550xxxx</span><br><span class="line"></span><br><span class="line">This may also be found at: C:\Users\CYZ\.jenkins\secrets\initialAdminPassword</span><br></pre></td></tr></table></figure>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/CS/%E5%BC%80%E5%8F%91/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E4%B8%8E%E4%BA%91%E5%8E%9F%E7%94%9F/RPC/#more" rel="contents">
+            <a class="btn" href="/CS/%E8%BE%85%E5%8A%A9/%E5%B7%A5%E5%85%B7/Jekins/#more" rel="contents">
               Read more &raquo;
             </a>
           </div>
@@ -591,7 +590,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://chenyz2000.github.io/CS/%E5%BC%80%E5%8F%91/%E5%85%B6%E4%BB%96/HTTPS/">
+    <link itemprop="mainEntityOfPage" href="https://chenyz2000.github.io/CS/%E5%BC%80%E5%8F%91/%E5%85%B6%E4%BB%96/%E4%B8%AD%E9%97%B4%E4%BB%B6/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Chen Yanzhi">
@@ -610,7 +609,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/CS/%E5%BC%80%E5%8F%91/%E5%85%B6%E4%BB%96/HTTPS/" itemprop="url">HTTPS</a></h1>
+                <a class="post-title-link" href="/CS/%E5%BC%80%E5%8F%91/%E5%85%B6%E4%BB%96/%E4%B8%AD%E9%97%B4%E4%BB%B6/" itemprop="url">中间件</a></h1>
         
 
         <div class="post-meta">
@@ -622,8 +621,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2023-09-18T00:00:00+08:00">
-                2023-09-18
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2023-08-07T00:00:00+08:00">
+                2023-08-07
               </time>
             
 
@@ -638,8 +637,8 @@
               
                 <span class="post-meta-item-text">Post modified&#58;</span>
               
-              <time title="Post modified" itemprop="dateModified" datetime="2023-09-18T00:00:00+08:00">
-                2023-09-18
+              <time title="Post modified" itemprop="dateModified" datetime="2023-12-27T00:00:00+08:00">
+                2023-12-27
               </time>
             
           </span>
@@ -695,12 +694,16 @@
 
       
         
-          <p>HTTPS = HTTP + SSL/TLS，使用HTTP通信，使用SSL/TLS加密数据包，SSL/TLS在HTTP层和TCP层之间</p>
-<p>SSL是TLS的前身，SSL3.0和TLS1.0存在漏洞且已经废弃，目前使用广泛的是TLS1.1和TLS1.2</p>
-<p><strong>不加密的风险</strong>：1、窃取信息，2、修改信息，3、冒充身份参与通信</p>
+          <h4 id="中间件">中间件</h4>
+<p>MiddleWare</p>
+<p>介于应用程序和操作系统之间的软件，也是在业务和底层之间，使它俩解耦</p>
+<p>从另一个角度看，是非业务的技术类组件</p>
+<img src="images\43f1d363308243b9817444185dd42657.png" style="zoom:80%;" />
+<p>中间件技术创建在对应用软件部分常用功能的抽象上，将常用且重要的<strong>过程调用、分布式组件、消息队列、事务、安全、链接器、商业流程、网络并发、HTTP 服务器、Web Service</strong> 等功能集于一身或者分别在不同品牌的不同产品中分别完成。</p>
+<p>中国科学院软件所研究员仲萃豪把中间件定义为「平台＋通信」。这个定义限定了只有用于分布式系统中的此类软件才能被称为中间件，同时此定义也把中间件与实际应用的应用软件区分开来。</p>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/CS/%E5%BC%80%E5%8F%91/%E5%85%B6%E4%BB%96/HTTPS/#more" rel="contents">
+            <a class="btn" href="/CS/%E5%BC%80%E5%8F%91/%E5%85%B6%E4%BB%96/%E4%B8%AD%E9%97%B4%E4%BB%B6/#more" rel="contents">
               Read more &raquo;
             </a>
           </div>
@@ -798,8 +801,8 @@
               
                 <span class="post-meta-item-text">Post modified&#58;</span>
               
-              <time title="Post modified" itemprop="dateModified" datetime="2023-08-22T00:00:00+08:00">
-                2023-08-22
+              <time title="Post modified" itemprop="dateModified" datetime="2023-12-27T00:00:00+08:00">
+                2023-12-27
               </time>
             
           </span>
@@ -855,7 +858,8 @@
 
       
         
-          <p>Kubernetes是一个开源容器编排引擎和容器集群管理工具，用来对容器化应用进行自动化部署、扩缩和管理</p>
+          <p><strong>容器编排技术</strong></p>
+<p>Kubernetes是一个开源容器编排引擎和容器集群管理工具，用来对容器化应用进行自动化部署、扩缩和管理</p>
 <p>可以提供的功能：</p>
 <ul>
 <li>服务发现和负载均衡</li>
@@ -917,7 +921,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://chenyz2000.github.io/CS/%E5%BC%80%E5%8F%91/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E4%B8%8E%E4%BA%91%E5%8E%9F%E7%94%9F/Protobuf/">
+    <link itemprop="mainEntityOfPage" href="https://chenyz2000.github.io/CS/%E5%BC%80%E5%8F%91/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E4%B8%8E%E4%BA%91%E5%8E%9F%E7%94%9F/Zookeeper/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Chen Yanzhi">
@@ -936,7 +940,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/CS/%E5%BC%80%E5%8F%91/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E4%B8%8E%E4%BA%91%E5%8E%9F%E7%94%9F/Protobuf/" itemprop="url">Protobuf</a></h1>
+                <a class="post-title-link" href="/CS/%E5%BC%80%E5%8F%91/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E4%B8%8E%E4%BA%91%E5%8E%9F%E7%94%9F/Zookeeper/" itemprop="url">Zookeeper</a></h1>
         
 
         <div class="post-meta">
@@ -948,8 +952,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2023-08-14T00:00:00+08:00">
-                2023-08-14
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2023-12-08T11:00:00+08:00">
+                2023-12-08
               </time>
             
 
@@ -964,8 +968,8 @@
               
                 <span class="post-meta-item-text">Post modified&#58;</span>
               
-              <time title="Post modified" itemprop="dateModified" datetime="2023-08-14T00:00:00+08:00">
-                2023-08-14
+              <time title="Post modified" itemprop="dateModified" datetime="2023-12-08T14:00:00+08:00">
+                2023-12-08
               </time>
             
           </span>
@@ -1021,14 +1025,15 @@
 
       
         
-          <p>protocol buffers，简称Protobuf</p>
-<p>一种与语言无关（定义了自己的IDL语言）、与平台无关的序列化方法</p>
-<p>用于客户端和服务器之间的rpc数据传输</p>
-<p>Protobuf目前有2和3两个版本，gRPC、Dubbo等主流技术用的是pb3</p>
-<p>使用时需要安装pb的编译器，可以把pb自身IDL语言转换为Java等编程语言</p>
+          <p>Zookeeper是一个<strong>树形目录服务</strong>，是一个数据强一致的分布式协调服务，主要<strong>解决分布式系统中的数据管理问题</strong></p>
+<p>Zookeeper = <strong>树形数据存储</strong>+<strong>通知机制</strong></p>
+<p>多个大型开源项目如Hadoop、HBase、Kafka、Dubbo都依赖于Zookeeper</p>
+<p>zk可以把数据同步的时间压缩的很短，用起来像单机一样</p>
+<p>zk是CAP理论中，满足CP，不满足A的那类分布式系统</p>
+<p>Zookeeper的核心是原子广播，实现这个机制的协议叫做Zab协议</p>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/CS/%E5%BC%80%E5%8F%91/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E4%B8%8E%E4%BA%91%E5%8E%9F%E7%94%9F/Protobuf/#more" rel="contents">
+            <a class="btn" href="/CS/%E5%BC%80%E5%8F%91/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E4%B8%8E%E4%BA%91%E5%8E%9F%E7%94%9F/Zookeeper/#more" rel="contents">
               Read more &raquo;
             </a>
           </div>
@@ -1079,7 +1084,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://chenyz2000.github.io/CS/%E5%BC%80%E5%8F%91/Spring%E5%AE%B6%E6%97%8F/AOP/">
+    <link itemprop="mainEntityOfPage" href="https://chenyz2000.github.io/CS/%E5%BC%80%E5%8F%91%EF%BC%88%E4%B8%8D%E5%B8%B8%E7%94%A8%EF%BC%89/Python%E4%B8%8EAI/python%20Celery/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Chen Yanzhi">
@@ -1098,7 +1103,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/CS/%E5%BC%80%E5%8F%91/Spring%E5%AE%B6%E6%97%8F/AOP/" itemprop="url">AOP</a></h1>
+                <a class="post-title-link" href="/CS/%E5%BC%80%E5%8F%91%EF%BC%88%E4%B8%8D%E5%B8%B8%E7%94%A8%EF%BC%89/Python%E4%B8%8EAI/python%20Celery/" itemprop="url">Python Celery</a></h1>
         
 
         <div class="post-meta">
@@ -1110,8 +1115,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2023-06-21T00:00:00+08:00">
-                2023-06-21
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2023-11-17T11:00:00+08:00">
+                2023-11-17
               </time>
             
 
@@ -1126,8 +1131,8 @@
               
                 <span class="post-meta-item-text">Post modified&#58;</span>
               
-              <time title="Post modified" itemprop="dateModified" datetime="2023-06-21T00:00:00+08:00">
-                2023-06-21
+              <time title="Post modified" itemprop="dateModified" datetime="2023-11-17T11:00:00+08:00">
+                2023-11-17
               </time>
             
           </span>
@@ -1145,8 +1150,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Spring%E5%AE%B6%E6%97%8F/" itemprop="url" rel="index">
-                    <span itemprop="name">Spring家族</span>
+                  <a href="/categories/Python%E4%B8%8EAI/" itemprop="url" rel="index">
+                    <span itemprop="name">Python与AI</span>
                   </a>
                 </span>
 
@@ -1183,11 +1188,18 @@
 
       
         
-          <h2 id="代码结构">代码结构</h2>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Aspect</span></span><br><span class="line"><span class="meta">@Component</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">AuditLogAspect</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Pointcut</span>(<span class="string">"execution(* com.kuaishou.video.infra.controller.*.*(..))"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">auditLog</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Before</span>(<span class="string">"auditLog()"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">doBefore</span><span class="params">(JoinPoint joinPoint, Object returnValue)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+          <h2 id="python的Celery">python的Celery</h2>
+<p>Celery是一个基于python开发的<strong>分布式异步任务队列</strong></p>
+<p>可以将耗时、定时的任务交给Celery去异步执行，例如大文件上传、音频处理、定时任务、爬虫等</p>
+<blockquote>
+<p>消息队列：解决应用耦合，实现异步消息传递，流量削峰。使用场景例如日志处理</p>
+</blockquote>
+<blockquote>
+<p>除了Python的Celery以外，使用较多的任务队列有：machiney、goWorker、YTask，这三个都是Go语言中的</p>
+</blockquote>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/CS/%E5%BC%80%E5%8F%91/Spring%E5%AE%B6%E6%97%8F/AOP/#more" rel="contents">
+            <a class="btn" href="/CS/%E5%BC%80%E5%8F%91%EF%BC%88%E4%B8%8D%E5%B8%B8%E7%94%A8%EF%BC%89/Python%E4%B8%8EAI/python%20Celery/#more" rel="contents">
               Read more &raquo;
             </a>
           </div>
@@ -1238,7 +1250,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://chenyz2000.github.io/CS/%E8%BE%85%E5%8A%A9/%E5%B7%A5%E5%85%B7/Maven/">
+    <link itemprop="mainEntityOfPage" href="https://chenyz2000.github.io/CS/%E5%BC%80%E5%8F%91%EF%BC%88%E4%B8%8D%E5%B8%B8%E7%94%A8%EF%BC%89/Python%E4%B8%8EAI/Python%20SqlAlchemy/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Chen Yanzhi">
@@ -1257,7 +1269,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/CS/%E8%BE%85%E5%8A%A9/%E5%B7%A5%E5%85%B7/Maven/" itemprop="url">Maven</a></h1>
+                <a class="post-title-link" href="/CS/%E5%BC%80%E5%8F%91%EF%BC%88%E4%B8%8D%E5%B8%B8%E7%94%A8%EF%BC%89/Python%E4%B8%8EAI/Python%20SqlAlchemy/" itemprop="url">Python SqlAlchemy</a></h1>
         
 
         <div class="post-meta">
@@ -1269,8 +1281,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-07-27T13:57:00+08:00">
-                2020-07-27
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2023-11-14T17:00:00+08:00">
+                2023-11-14
               </time>
             
 
@@ -1285,8 +1297,8 @@
               
                 <span class="post-meta-item-text">Post modified&#58;</span>
               
-              <time title="Post modified" itemprop="dateModified" datetime="2023-05-30T00:00:00+08:00">
-                2023-05-30
+              <time title="Post modified" itemprop="dateModified" datetime="2023-11-14T17:00:00+08:00">
+                2023-11-14
               </time>
             
           </span>
@@ -1304,8 +1316,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%B7%A5%E5%85%B7/" itemprop="url" rel="index">
-                    <span itemprop="name">工具</span>
+                  <a href="/categories/Python%E4%B8%8EAI/" itemprop="url" rel="index">
+                    <span itemprop="name">Python与AI</span>
                   </a>
                 </span>
 
@@ -1342,15 +1354,179 @@
 
       
         
-          <h2 id="Maven的作用">Maven的作用</h2>
+          <p>sqlalchemy是python的orm库</p>
+<h4 id="创建数据库连接">创建数据库连接</h4>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sqlalchemy <span class="keyword">import</span> create_engine</span><br><span class="line"></span><br><span class="line">DB = create_engine(<span class="string">"DB_URL"</span>, echo=<span class="literal">True</span>, pool_pre_ping=<span class="literal">True</span>, pool_recycle=<span class="number">3600</span>)</span><br></pre></td></tr></table></figure>
+<h4 id="创建会话">创建会话</h4>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sqlalchemy.orm <span class="keyword">import</span> Session</span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> Session(DB) <span class="keyword">as</span> session:</span><br><span class="line">    xxx</span><br></pre></td></tr></table></figure>
+<p>之后对表的所有操作，如select、add等，都是通过session对象操作的</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/CS/%E5%BC%80%E5%8F%91%EF%BC%88%E4%B8%8D%E5%B8%B8%E7%94%A8%EF%BC%89/Python%E4%B8%8EAI/Python%20SqlAlchemy/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://chenyz2000.github.io/CS/%E5%BC%80%E5%8F%91/Go/go%E6%96%87%E4%BB%B6%E5%BC%80%E9%97%AD%E4%B8%8E%E8%AF%BB%E5%86%99/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Chen Yanzhi">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="CYZ's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/CS/%E5%BC%80%E5%8F%91/Go/go%E6%96%87%E4%BB%B6%E5%BC%80%E9%97%AD%E4%B8%8E%E8%AF%BB%E5%86%99/" itemprop="url">go文件开闭与读写</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2023-11-02T15:00:00+08:00">
+                2023-11-02
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Post modified&#58;</span>
+              
+              <time title="Post modified" itemprop="dateModified" datetime="2023-11-07T14:00:00+08:00">
+                2023-11-07
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Go/" itemprop="url" rel="index">
+                    <span itemprop="name">Go</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>go中读写文件主要涉及4个包</p>
 <ul>
-<li>规定了一套标准的项目结构</li>
-<li>提供了一套依赖管理机制</li>
-<li>提供了一套标准化的构建流程（编译，测试，打包，发布……）</li>
+<li>os</li>
+<li>io</li>
+<li>bufio</li>
+<li>ioutil</li>
 </ul>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/CS/%E8%BE%85%E5%8A%A9/%E5%B7%A5%E5%85%B7/Maven/#more" rel="contents">
+            <a class="btn" href="/CS/%E5%BC%80%E5%8F%91/Go/go%E6%96%87%E4%BB%B6%E5%BC%80%E9%97%AD%E4%B8%8E%E8%AF%BB%E5%86%99/#more" rel="contents">
               Read more &raquo;
             </a>
           </div>
@@ -1401,7 +1577,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://chenyz2000.github.io/CS/%E8%BE%85%E5%8A%A9/%E5%B7%A5%E5%85%B7/Git%E5%BC%80%E5%8F%91%E6%A8%A1%E5%BC%8F/">
+    <link itemprop="mainEntityOfPage" href="https://chenyz2000.github.io/CS/%E5%BC%80%E5%8F%91/Go/go%20gin%E5%92%8Chttp/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Chen Yanzhi">
@@ -1420,7 +1596,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/CS/%E8%BE%85%E5%8A%A9/%E5%B7%A5%E5%85%B7/Git%E5%BC%80%E5%8F%91%E6%A8%A1%E5%BC%8F/" itemprop="url">Git开发模式</a></h1>
+                <a class="post-title-link" href="/CS/%E5%BC%80%E5%8F%91/Go/go%20gin%E5%92%8Chttp/" itemprop="url">go gin和http</a></h1>
         
 
         <div class="post-meta">
@@ -1432,8 +1608,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2021-07-04T00:00:00+08:00">
-                2021-07-04
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2023-11-03T14:00:00+08:00">
+                2023-11-03
               </time>
             
 
@@ -1448,8 +1624,8 @@
               
                 <span class="post-meta-item-text">Post modified&#58;</span>
               
-              <time title="Post modified" itemprop="dateModified" datetime="2023-05-11T00:00:00+08:00">
-                2023-05-11
+              <time title="Post modified" itemprop="dateModified" datetime="2023-11-03T14:00:00+08:00">
+                2023-11-03
               </time>
             
           </span>
@@ -1467,8 +1643,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%B7%A5%E5%85%B7/" itemprop="url" rel="index">
-                    <span itemprop="name">工具</span>
+                  <a href="/categories/Go/" itemprop="url" rel="index">
+                    <span itemprop="name">Go</span>
                   </a>
                 </span>
 
@@ -1505,14 +1681,14 @@
 
       
         
-          <h2 id="git提交规范">git提交规范</h2>
-<p><code>&lt;type&gt;:&lt;subject&gt;</code></p>
-<p>其中，<code>&lt;type&gt;</code>为提交类别。feat表示新功能，fix修复bug，docs仅修改文档，perf改进性能，style修改格式，refactor重构，test增加或修改测试，revert重做，merge合并</p>
-<p><code>&lt;subject&gt;</code>为简短描述，可以使用中文</p>
-<p>多次提交，不要放在一起提交</p>
+          <h2 id="net-http标准库">net/http标准库</h2>
+<p>提供了http的服务端和客户端</p>
+<h6 id="服务端">服务端</h6>
+<p>通过HandleFunc和ListenAndServe两个方法就能建立一个web服务端了</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">hello</span><span class="params">(w http.ResponseWriter, r *http.Request)</span></span> &#123;</span><br><span class="line">    fmt.Fprintf(w, <span class="string">"Hello!"</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    http.HandleFunc(<span class="string">"/hello"</span>, hello)</span><br><span class="line">    http.ListenAndServe(<span class="string">":8080"</span>, <span class="literal">nil</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/CS/%E8%BE%85%E5%8A%A9/%E5%B7%A5%E5%85%B7/Git%E5%BC%80%E5%8F%91%E6%A8%A1%E5%BC%8F/#more" rel="contents">
+            <a class="btn" href="/CS/%E5%BC%80%E5%8F%91/Go/go%20gin%E5%92%8Chttp/#more" rel="contents">
               Read more &raquo;
             </a>
           </div>
@@ -1563,7 +1739,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://chenyz2000.github.io/CS/%E8%BE%85%E5%8A%A9/%E5%B7%A5%E5%85%B7/Git%E5%88%86%E6%94%AF%E5%91%BD%E4%BB%A4/">
+    <link itemprop="mainEntityOfPage" href="https://chenyz2000.github.io/CS/%E5%BC%80%E5%8F%91/%E6%95%B0%E6%8D%AE%E5%BA%93%E3%80%81%E7%BC%93%E5%AD%98%E3%80%81%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/MySQL/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Chen Yanzhi">
@@ -1582,7 +1758,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/CS/%E8%BE%85%E5%8A%A9/%E5%B7%A5%E5%85%B7/Git%E5%88%86%E6%94%AF%E5%91%BD%E4%BB%A4/" itemprop="url">Git分支命令</a></h1>
+                <a class="post-title-link" href="/CS/%E5%BC%80%E5%8F%91/%E6%95%B0%E6%8D%AE%E5%BA%93%E3%80%81%E7%BC%93%E5%AD%98%E3%80%81%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/MySQL/" itemprop="url">MySQL</a></h1>
         
 
         <div class="post-meta">
@@ -1594,8 +1770,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-07-13T16:06:00+08:00">
-                2020-07-13
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-03-03T00:00:00+08:00">
+                2020-03-03
               </time>
             
 
@@ -1610,8 +1786,8 @@
               
                 <span class="post-meta-item-text">Post modified&#58;</span>
               
-              <time title="Post modified" itemprop="dateModified" datetime="2023-04-29T00:00:00+08:00">
-                2023-04-29
+              <time title="Post modified" itemprop="dateModified" datetime="2023-11-02T00:00:00+08:00">
+                2023-11-02
               </time>
             
           </span>
@@ -1629,8 +1805,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%B7%A5%E5%85%B7/" itemprop="url" rel="index">
-                    <span itemprop="name">工具</span>
+                  <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93%E3%80%81%E7%BC%93%E5%AD%98%E3%80%81%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/" itemprop="url" rel="index">
+                    <span itemprop="name">数据库、缓存、消息队列</span>
                   </a>
                 </span>
 
@@ -1667,179 +1843,16 @@
 
       
         
-          <h2 id="分支的含义">分支的含义</h2>
-<p>实质上，分支、远程分支和HEAD都是指向commit的指针</p>
-<p>commit的哈希值、分支的名字、两种作用下的HEAD ，都可以作为命令中用到的参数</p>
-<h4 id="HEAD">HEAD</h4>
-<p>HEAD既可以作为指向branch的指针，即HEAD→main→c1</p>
-<p>HEAD也可以作为指向commit的指针，即，即HEAD→c1</p>
+          <h2 id="mysql实用语句">mysql实用语句</h2>
+<p>连接数据库</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql -h &lt;ip地址&gt; -P &lt;端口号&gt; -u &lt;用户名&gt; -p</span><br></pre></td></tr></table></figure>
+<p>查看库，使用库</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">show databases;</span><br><span class="line">use xxx;</span><br></pre></td></tr></table></figure>
+<p>查看所有表</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">show tables;</span><br></pre></td></tr></table></figure>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/CS/%E8%BE%85%E5%8A%A9/%E5%B7%A5%E5%85%B7/Git%E5%88%86%E6%94%AF%E5%91%BD%E4%BB%A4/#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://chenyz2000.github.io/CS/%E5%BC%80%E5%8F%91/%E5%89%8D%E7%AB%AF/Cookie/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Chen Yanzhi">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="CYZ's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/CS/%E5%BC%80%E5%8F%91/%E5%89%8D%E7%AB%AF/Cookie/" itemprop="url">Cookie</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2023-04-25T00:00:00+08:00">
-                2023-04-25
-              </time>
-            
-
-            
-              <span class="post-meta-divider">|</span>
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Post modified&#58;</span>
-              
-              <time title="Post modified" itemprop="dateModified" datetime="2023-04-25T00:00:00+08:00">
-                2023-04-25
-              </time>
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%89%8D%E7%AB%AF/" itemprop="url" rel="index">
-                    <span itemprop="name">前端</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>HTTP连接是无状态的，想要在客户端记录信息，需要用到cookie</p>
-<p>cookie是键值对组成的字符串形式，形如<code>&quot;cookie1=value; cookie2=value;&quot;</code></p>
-<h2 id="JS中操作cookie">JS中操作cookie</h2>
-<p>前后端分离项目里，想要在浏览器的层面记录信息，一般在前端设置cookie</p>
-<h4 id="获取cookie">获取cookie</h4>
-<p>通过<code>document.cookie</code>获取到整个cookie字符串</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">getCookie(cname: string) &#123;</span><br><span class="line">  <span class="keyword">var</span> name = cname + <span class="string">"="</span>;</span><br><span class="line">  <span class="keyword">var</span> lst = <span class="built_in">document</span>.cookie.split(<span class="string">';'</span>);</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; lst.length; i++) &#123;</span><br><span class="line">    <span class="keyword">var</span> c = lst[i].trim();</span><br><span class="line">    <span class="keyword">if</span> (c.indexOf(name) == <span class="number">0</span>) <span class="keyword">return</span> c.substring(name.length, c.length);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> <span class="string">""</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/CS/%E5%BC%80%E5%8F%91/%E5%89%8D%E7%AB%AF/Cookie/#more" rel="contents">
+            <a class="btn" href="/CS/%E5%BC%80%E5%8F%91/%E6%95%B0%E6%8D%AE%E5%BA%93%E3%80%81%E7%BC%93%E5%AD%98%E3%80%81%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/MySQL/#more" rel="contents">
               Read more &raquo;
             </a>
           </div>
@@ -1881,7 +1894,7 @@
 
   
  <nav class="pagination">
-   <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/">9</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="accessibility.next_page"></i></a>
+   <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/11/">11</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="accessibility.next_page"></i></a>
  </nav>
 
 
@@ -1928,7 +1941,7 @@
             
               <div class="site-state-item site-state-posts">
                 <a href="/archives">
-                  <span class="site-state-item-count">88</span>
+                  <span class="site-state-item-count">102</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -1940,7 +1953,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-count">15</span>
                   <span class="site-state-item-name">categories</span>
                 </a>
               </div>
@@ -1951,7 +1964,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">79</span>
+                  <span class="site-state-item-count">85</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>

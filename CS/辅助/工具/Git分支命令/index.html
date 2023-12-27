@@ -463,6 +463,13 @@
 <li>将c3’'和原分支中c3以外的结点按照原来的顺序放入修改后的分支</li>
 </ol>
 <p>这一过程涉及了至少三条分支：原分支、temp修改分支、修改后的分支</p>
+<h2 id="冲突解决">冲突解决</h2>
+<p>冲突标记示例如下</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD</span><br><span class="line">HEAD分支的修改内容</span><br><span class="line">&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;</span><br><span class="line">B分支的修改内容</span><br><span class="line">&gt;&gt;&gt;&gt;&gt;&gt;&gt; branchB</span><br></pre></td></tr></table></figure>
+<p>修改完文件后</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git add .</span><br></pre></td></tr></table></figure>
+<p>之后提交修改</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># merge遇到冲突时</span></span><br><span class="line">git commit -m <span class="string">"解决冲突"</span></span><br><span class="line"><span class="comment"># rebase遇到冲突时</span></span><br><span class="line">git rebase --<span class="built_in">continue</span></span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -521,8 +528,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/CS/%E5%BC%80%E5%8F%91/Spring%E5%AE%B6%E6%97%8F/Spring/" rel="prev" title="Spring">
-                Spring <i class="fa fa-chevron-right"></i>
+              <a href="/CS/%E5%BC%80%E5%8F%91/Spring%E5%AE%B6%E6%97%8F/Spring%E5%92%8CBean%E7%9A%84xml%E9%85%8D%E7%BD%AE/" rel="prev" title="Spring和Bean的xml配置">
+                Spring和Bean的xml配置 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -602,7 +609,7 @@
             
               <div class="site-state-item site-state-posts">
                 <a href="/archives">
-                  <span class="site-state-item-count">88</span>
+                  <span class="site-state-item-count">102</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -614,7 +621,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-count">15</span>
                   <span class="site-state-item-name">categories</span>
                 </a>
               </div>
@@ -625,7 +632,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">79</span>
+                  <span class="site-state-item-count">85</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>
@@ -674,7 +681,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#分支的含义"><span class="nav-text">分支的含义</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#HEAD"><span class="nav-text">HEAD</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#查看分支"><span class="nav-text">查看分支</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#删除分支"><span class="nav-text">删除分支</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#创建分支"><span class="nav-text">创建分支</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#创建新分支"><span class="nav-text">创建新分支</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#创建新分支并切换"><span class="nav-text">创建新分支并切换</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#切换checkout"><span class="nav-text">切换checkout</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#相对引用"><span class="nav-text">相对引用</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#合并merge"><span class="nav-text">合并merge</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#变基rebase"><span class="nav-text">变基rebase</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#rebase原理"><span class="nav-text">rebase原理</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#交互式变基"><span class="nav-text">交互式变基</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#merge对比rebase"><span class="nav-text">merge对比rebase</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#cherry-pick"><span class="nav-text">cherry-pick</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#应用举例：如何对已提交的代码进行修改"><span class="nav-text">应用举例：如何对已提交的代码进行修改</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#分支的含义"><span class="nav-text">分支的含义</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#HEAD"><span class="nav-text">HEAD</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#查看分支"><span class="nav-text">查看分支</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#删除分支"><span class="nav-text">删除分支</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#创建分支"><span class="nav-text">创建分支</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#创建新分支"><span class="nav-text">创建新分支</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#创建新分支并切换"><span class="nav-text">创建新分支并切换</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#切换checkout"><span class="nav-text">切换checkout</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#相对引用"><span class="nav-text">相对引用</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#合并merge"><span class="nav-text">合并merge</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#变基rebase"><span class="nav-text">变基rebase</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#rebase原理"><span class="nav-text">rebase原理</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#交互式变基"><span class="nav-text">交互式变基</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#merge对比rebase"><span class="nav-text">merge对比rebase</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#cherry-pick"><span class="nav-text">cherry-pick</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#应用举例：如何对已提交的代码进行修改"><span class="nav-text">应用举例：如何对已提交的代码进行修改</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#冲突解决"><span class="nav-text">冲突解决</span></a></li></ol></div>
             
 
           </div>

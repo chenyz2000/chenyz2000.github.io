@@ -1,0 +1,808 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="en">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Jekins," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="Jekins安装 下载地址https:&#x2F;&#x2F;www.jenkins.io&#x2F;download&#x2F; 下载得到一个war包，需要通过java运行 1java -jar jenkins.war --httpPort&#x3D;8080 第一次运行时，Jekins会创建一个Admin用户，并且随机创一个密码 在命令行中有提示，例如 123456Jenkins initial setup is required.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Jekins">
+<meta property="og:url" content="https://chenyz2000.github.io/CS/%E8%BE%85%E5%8A%A9/%E5%B7%A5%E5%85%B7/Jekins/index.html">
+<meta property="og:site_name" content="CYZ&#39;s Blog">
+<meta property="og:description" content="Jekins安装 下载地址https:&#x2F;&#x2F;www.jenkins.io&#x2F;download&#x2F; 下载得到一个war包，需要通过java运行 1java -jar jenkins.war --httpPort&#x3D;8080 第一次运行时，Jekins会创建一个Admin用户，并且随机创一个密码 在命令行中有提示，例如 123456Jenkins initial setup is required.">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2023-12-27T04:00:00.000Z">
+<meta property="article:modified_time" content="2023-12-27T04:00:00.000Z">
+<meta property="article:author" content="Chen Yanzhi">
+<meta property="article:tag" content="Jekins">
+<meta name="twitter:card" content="summary">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"always","offset":12,"b2t":true,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://chenyz2000.github.io/CS/辅助/工具/Jekins/"/>
+
+
+
+
+
+  <title>Jekins | CYZ's Blog</title>
+  
+
+
+
+
+
+
+
+
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">CYZ's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            About
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://chenyz2000.github.io/CS/%E8%BE%85%E5%8A%A9/%E5%B7%A5%E5%85%B7/Jekins/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Chen Yanzhi">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="CYZ's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Jekins</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2023-12-27T12:00:00+08:00">
+                2023-12-27
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Post modified&#58;</span>
+              
+              <time title="Post modified" itemprop="dateModified" datetime="2023-12-27T12:00:00+08:00">
+                2023-12-27
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%B7%A5%E5%85%B7/" itemprop="url" rel="index">
+                    <span itemprop="name">工具</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="Jekins安装">Jekins安装</h2>
+<p>下载地址https://www.jenkins.io/download/</p>
+<p>下载得到一个war包，需要通过java运行</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">java -jar jenkins.war --httpPort&#x3D;8080</span><br></pre></td></tr></table></figure>
+<p>第一次运行时，Jekins会创建一个Admin用户，并且随机创一个密码</p>
+<p>在命令行中有提示，例如</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Jenkins initial setup is required. An admin user has been created and a password generated.</span><br><span class="line">Please use the following password to proceed to installation:</span><br><span class="line"></span><br><span class="line">c1d84376b4c547fda7858f63b550xxxx</span><br><span class="line"></span><br><span class="line">This may also be found at: C:\Users\CYZ\.jenkins\secrets\initialAdminPassword</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<p>浏览器访问端口就可以使用Jekins了</p>
+<p>第一次访问需要管理员密码解锁使用</p>
+<p>之后安装插件，可以选择“安装推荐的插件”</p>
+<p>之后创建用户，就可以使用了</p>
+<p>使用则见网上教程</p>
+<h4 id="pipline语法">pipline语法</h4>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">pipeline &#123;</span><br><span class="line">    stages &#123;</span><br><span class="line">        stage(&#39;name&#39;) &#123;</span><br><span class="line">            steps &#123;</span><br><span class="line">            	命令</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>编译举例</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">pipeline &#123;</span><br><span class="line">    agent any</span><br><span class="line">    </span><br><span class="line">    stages &#123;</span><br><span class="line">        stage(&#39;Pull Code&#39;) &#123;</span><br><span class="line">            steps &#123;</span><br><span class="line">                buildDescription &quot;branch: $&#123;params.BRANCH&#125;&quot;</span><br><span class="line">                git branch: &quot;$&#123;params.BRANCH&#125;&quot;, credentialsId: &#39;192e668f-7f9a-44bd-bbff-3b42c0a781ef&#39;, url: &#39;https:&#x2F;&#x2F;gitlab.fourjoy.org&#x2F;color&#x2F;color-paint-cms.git&#39;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        stage(&#39;Compile&#39;) &#123;</span><br><span class="line">            steps &#123;</span><br><span class="line">                sh &#39;mkdir -p scripts&#x2F;temporary&#39;</span><br><span class="line">                sh &#39;mkdir -p scripts&#x2F;color&#39;</span><br><span class="line">                sh &#39;mkdir -p cmsapi&#x2F;apps&#x2F;outsourcing&#x2F;dowloadzip&#39;</span><br><span class="line">                sh &#39;mkdir -p cmsapi&#x2F;apps&#x2F;outsourcing&#x2F;undowloadzip&#39;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        stage(&#39;Upload&#39;) &#123;</span><br><span class="line">            steps &#123;</span><br><span class="line">                sh &quot;&quot;&quot;zip -ry color-paint-cms.zip . -x \&#39;.git&#x2F;*\&#39;&quot;&quot;&quot;</span><br><span class="line">                &#x2F;&#x2F; archiveArtifacts artifacts: &quot;color-paint-cms.zip&quot;, allowEmptyArchive: false</span><br><span class="line">                script &#123;</span><br><span class="line">                    def s3Path &#x3D; &#39;mint-artifact&#x2F;&#39; + JOB_NAME + &#39;&#x2F;&#39; + BUILD_NUMBER + &#39;&#x2F;artifacts&#39;</span><br><span class="line">                    def fileName &#x3D; &#39;color-paint-cms.zip&#39;</span><br><span class="line">                    s3Upload consoleLogLevel: &#39;INFO&#39;, dontSetBuildResultOnFailure: false, dontWaitForConcurrentBuildCompletion: false, entries: [[bucket: s3Path, excludedFile: &#39;&#39;, flatten: false, gzipFiles: false, keepForever: false, managedArtifacts: false, noUploadOnFailure: true, selectedRegion: &#39;us-east-1&#39;, showDirectlyInBrowser: false, sourceFile: fileName, storageClass: &#39;STANDARD&#39;, uploadFromSlave: true, useServerSideEncryption: false]], pluginFailureResultConstraint: &#39;FAILURE&#39;, profileName: &#39;s3&#39;, userMetadata: []</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    post &#123;</span><br><span class="line">        always &#123;</span><br><span class="line">            echo &quot;env clean&quot;</span><br><span class="line">            sh &#39;&#39;&#39;ls -la | grep &quot;^[^t].*&quot; | awk &#39;&#123;print $9&#125;&#39; | sed -n &#39;3,$ p&#39; | xargs rm -rf&#39;&#39;&#39;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>部署举例</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><span class="line">def nodeMap &#x3D; [</span><br><span class="line">    &#39;prod&#39;: [&#39;172.31.28.48&#39;, &#39;172.31.11.224&#39;]</span><br><span class="line">]</span><br><span class="line"></span><br><span class="line">pipeline &#123;</span><br><span class="line">    agent any</span><br><span class="line">    stages &#123; </span><br><span class="line">        stage(&#39;Download Package&#39;) &#123;</span><br><span class="line">            steps &#123;</span><br><span class="line">                buildDescription &quot;env: $&#123;params.ENV&#125;, compile num: $&#123;params.COMPILE_NUM&#125;&quot;</span><br><span class="line">                sh &quot;aws s3 cp s3:&#x2F;&#x2F;mint-artifact&#x2F;color&#x2F;compiling&#x2F;backend&#x2F;color-data-go&#x2F;&#39;$&#123;params.COMPILE_NUM&#125;&#39;&#x2F;artifacts&#x2F;color-data-go.zip .&quot;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        stage(&#39;Copy To Server&#39;) &#123;</span><br><span class="line">            steps &#123;</span><br><span class="line">                script &#123;</span><br><span class="line">                    def nodes &#x3D; nodeMap.get(params.ENV)</span><br><span class="line">                    for (String nodeName : nodes) &#123;</span><br><span class="line">                        sh &quot;&quot;&quot;</span><br><span class="line">                            ssh -i &quot;&#x2F;home&#x2F;ubuntu&#x2F;code&#x2F;key&#x2F;color_paint_ed_key.cer&quot; ubuntu@&#39;$&#123;nodeName&#125;&#39; \</span><br><span class="line">                                &quot;rm -rf &#x2F;home&#x2F;ubuntu&#x2F;code&#x2F;color&#x2F;recommend&#x2F;color-data-go&#x2F;main_temp; \</span><br><span class="line">                                mkdir -p &#x2F;home&#x2F;ubuntu&#x2F;code&#x2F;color&#x2F;recommend&#x2F;color-data-go&#x2F;main_temp; \</span><br><span class="line">                                sudo mkdir -p &#x2F;var&#x2F;log&#x2F;color-data-go; \</span><br><span class="line">                                sudo chown ubuntu:ubuntu &#x2F;var&#x2F;log&#x2F;color-data-go&quot; </span><br><span class="line">                        &quot;&quot;&quot;</span><br><span class="line">                        sh &quot;&quot;&quot;scp -i &quot;&#x2F;home&#x2F;ubuntu&#x2F;code&#x2F;key&#x2F;color_paint_ed_key.cer&quot; color-data-go.zip ubuntu@&#39;$&#123;nodeName&#125;&#39;:&#x2F;home&#x2F;ubuntu&#x2F;code&#x2F;color&#x2F;recommend&#x2F;color-data-go&#x2F;main_temp&quot;&quot;&quot;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        stage(&#39;Deploy&#39;) &#123;</span><br><span class="line">            steps &#123;</span><br><span class="line">                script &#123;</span><br><span class="line">                    def nodes &#x3D; nodeMap.get(params.ENV)</span><br><span class="line">                    for (String nodeName : nodes) &#123;</span><br><span class="line">                        sh &quot;&quot;&quot;</span><br><span class="line">                            ssh -i &quot;&#x2F;home&#x2F;ubuntu&#x2F;code&#x2F;key&#x2F;color_paint_ed_key.cer&quot; ubuntu@&#39;$&#123;nodeName&#125;&#39; \</span><br><span class="line">                                &quot;unzip &#x2F;home&#x2F;ubuntu&#x2F;code&#x2F;color&#x2F;recommend&#x2F;color-data-go&#x2F;main_temp&#x2F;color-data-go.zip -d &#x2F;home&#x2F;ubuntu&#x2F;code&#x2F;color&#x2F;recommend&#x2F;color-data-go&#x2F;main_temp; \</span><br><span class="line">                                sudo chmod 775 &#x2F;home&#x2F;ubuntu&#x2F;code&#x2F;color&#x2F;recommend&#x2F;color-data-go&#x2F;main_temp&#x2F;main; \</span><br><span class="line">                                sudo chmod 664 &#x2F;home&#x2F;ubuntu&#x2F;code&#x2F;color&#x2F;recommend&#x2F;color-data-go&#x2F;main_temp&#x2F;config&#x2F;*.yml; \</span><br><span class="line">                                mv &#x2F;home&#x2F;ubuntu&#x2F;code&#x2F;color&#x2F;recommend&#x2F;color-data-go&#x2F;main_temp&#x2F;main &#x2F;home&#x2F;ubuntu&#x2F;code&#x2F;color&#x2F;recommend&#x2F;color-data-go; \</span><br><span class="line">                                mv &#x2F;home&#x2F;ubuntu&#x2F;code&#x2F;color&#x2F;recommend&#x2F;color-data-go&#x2F;main_temp&#x2F;config&#x2F;*.yml &#x2F;home&#x2F;ubuntu&#x2F;code&#x2F;color&#x2F;recommend&#x2F;color-data-go&#x2F;config; \</span><br><span class="line">                                sudo supervisorctl restart game_color_data_api&quot; </span><br><span class="line">                        &quot;&quot;&quot;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    post &#123;</span><br><span class="line">        always &#123;</span><br><span class="line">            echo &quot;env clean&quot;</span><br><span class="line">            sh &#39;&#39;&#39;ls -la | grep &quot;^[^t].*&quot; | awk &#39;&#123;print $9&#125;&#39; | sed -n &#39;3,$ p&#39; | xargs rm -rf&#39;&#39;&#39;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>Post author:</strong>
+    Chen Yanzhi
+  </li>
+  <li class="post-copyright-link">
+    <strong>Post link:</strong>
+    <a href="https://chenyz2000.github.io/CS/%E8%BE%85%E5%8A%A9/%E5%B7%A5%E5%85%B7/Jekins/" title="Jekins">https://chenyz2000.github.io/CS/%E8%BE%85%E5%8A%A9/%E5%B7%A5%E5%85%B7/Jekins/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>Copyright Notice: </strong>
+    All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> unless stating additionally.
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Jekins/" rel="tag"># Jekins</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/CS/%E5%BC%80%E5%8F%91/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E4%B8%8E%E4%BA%91%E5%8E%9F%E7%94%9F/Zookeeper/" rel="next" title="Zookeeper">
+                <i class="fa fa-chevron-left"></i> Zookeeper
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.jpg"
+                alt="Chen Yanzhi" />
+            
+              <p class="site-author-name" itemprop="name">Chen Yanzhi</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+                <a href="/archives">
+                  <span class="site-state-item-count">102</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">15</span>
+                  <span class="site-state-item-name">categories</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">85</span>
+                  <span class="site-state-item-name">tags</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/chenyz2000" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:chenyanzhi_2000@163.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Jekins安装"><span class="nav-text">Jekins安装</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#pipline语法"><span class="nav-text">pipline语法</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Chen Yanzhi</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

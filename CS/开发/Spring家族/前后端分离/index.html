@@ -455,6 +455,7 @@ vue中所有的js代码都要写到script的export default{}中</p>
 <p>对于<strong>Body类请求</strong>，客户端通过body写进数据，服务端通过body接收数据。根据不同的enctype，数据可由@RequestBody或@RequestParam接收，但@RequestParam也是通过body接收。</p>
 </blockquote>
 <h3 id="接收请求"><a href="https://blog.csdn.net/qfikh/article/details/88553603" target="_blank" rel="noopener">接收请求</a></h3>
+<p>Java中绑定字段时键的格式</p>
 <h4 id="get方法接收数据">get方法接收数据</h4>
 <blockquote>
 <p>get方法编码类型为application/x-www-form-url</p>
@@ -502,13 +503,21 @@ vue中所有的js代码都要写到script的export default{}中</p>
 </blockquote>
 <p>​		有一个有趣的现象，如果Content-Type=mutipart/form-data，Body中加入参数和URL后面拼接参数一起做Post请求，都可以被加载到Param中，如果是同名的，只取用form-data中的。<br>
 ​		如果Content-Type=application/x-www-form-urlencoded和URL拼接的一起，如果是String类型，则两个值会被拼接，其他类型取的是URL拼接的参数。</p>
+<h4 id="ModelAttribute">@ModelAttribute()</h4>
+<p>主要作用是给Controller添加一些共用的变量</p>
+<blockquote>
+<p>除了ModelAttribute，还有SessionAttribute</p>
+</blockquote>
+<p><strong>用法一：注释Controller的方法，存值到Model中</strong></p>
+<p>被注释的方法funcA会在该controller每个方法执行前被执行（我认为像是Advise似的），funcA的返回值放入Controller的Model中（我认为类似ThreadLocal），Model是一个类维护的一个map</p>
+<p><strong>用法二：注释方法参数，从Model、Form表单或URL中获取值</strong></p>
+<p>从Model中获取值的示例如下</p>
+<p>从URL上获取值实际上没用，不做此注释也能拿到URL上的数据</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Controller</span></span><br><span class="line"><span class="meta">@RequestMapping</span>(value = <span class="string">"/xxx"</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ModelAttributeParamController</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 向model添加数据，方法有返回值</span></span><br><span class="line">    <span class="meta">@ModelAttribute</span>(value = <span class="string">"attributeName"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">myModel</span><span class="params">(@RequestParam(required = <span class="keyword">false</span>)</span> String abc) </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> abc;</span><br><span class="line">    &#125;</span><br><span class="line">	<span class="comment">// 向model添加数据，方法无返回值</span></span><br><span class="line">    <span class="meta">@ModelAttribute</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">myModel3</span><span class="params">(Model model)</span> </span>&#123;</span><br><span class="line">        model.addAttribute(<span class="string">"name"</span>, <span class="string">"zong"</span>);</span><br><span class="line">        model.addAttribute(<span class="string">"age"</span>, <span class="number">20</span>);</span><br><span class="line">    &#125;</span><br><span class="line">	<span class="comment">// 使用model中的数据</span></span><br><span class="line">    <span class="meta">@RequestMapping</span>(value = <span class="string">"/param"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">param</span><span class="params">(@ModelAttribute(<span class="string">"attributeName"</span>)</span> String str,</span></span><br><span class="line"><span class="function">                       @<span class="title">ModelAttribute</span><span class="params">(<span class="string">"name"</span>)</span> String str2,</span></span><br><span class="line"><span class="function">                       @<span class="title">ModelAttribute</span><span class="params">(<span class="string">"age"</span>)</span> <span class="keyword">int</span> str3) </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"param"</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h2 id="Todo">Todo</h2>
 <ul>
 <li>
 <p>[ ] form里的enctype，请求头的ContentType</p>
-</li>
-<li>
-<p>[ ] @ModelAttribute</p>
 </li>
 <li>
 <p>[ ] python里的request，axios里的请求</p>
@@ -660,7 +669,7 @@ vue中所有的js代码都要写到script的export default{}中</p>
             
               <div class="site-state-item site-state-posts">
                 <a href="/archives">
-                  <span class="site-state-item-count">88</span>
+                  <span class="site-state-item-count">102</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -672,7 +681,7 @@ vue中所有的js代码都要写到script的export default{}中</p>
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-count">15</span>
                   <span class="site-state-item-name">categories</span>
                 </a>
               </div>
@@ -683,7 +692,7 @@ vue中所有的js代码都要写到script的export default{}中</p>
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">79</span>
+                  <span class="site-state-item-count">85</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>
@@ -732,7 +741,7 @@ vue中所有的js代码都要写到script的export default{}中</p>
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Spring-Boot-Vue"><span class="nav-text">Spring Boot+Vue</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Vue开发"><span class="nav-text">Vue开发</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Vue与后端的交互"><span class="nav-text">Vue与后端的交互</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HTTP"><span class="nav-text">HTTP</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#消息格式"><span class="nav-text">消息格式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#请求方法"><span class="nav-text">请求方法</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#区别"><span class="nav-text">区别</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#适用情景"><span class="nav-text">适用情景</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#编码类型"><span class="nav-text">编码类型</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#前后端数据交互"><span class="nav-text">前后端数据交互</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#提交请求"><span class="nav-text">提交请求</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#接收请求"><span class="nav-text">接收请求</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#get方法接收数据"><span class="nav-text">get方法接收数据</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#post方法接收数据"><span class="nav-text">post方法接收数据</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Todo"><span class="nav-text">Todo</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Spring-Boot-Vue"><span class="nav-text">Spring Boot+Vue</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Vue开发"><span class="nav-text">Vue开发</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Vue与后端的交互"><span class="nav-text">Vue与后端的交互</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HTTP"><span class="nav-text">HTTP</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#消息格式"><span class="nav-text">消息格式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#请求方法"><span class="nav-text">请求方法</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#区别"><span class="nav-text">区别</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#适用情景"><span class="nav-text">适用情景</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#编码类型"><span class="nav-text">编码类型</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#前后端数据交互"><span class="nav-text">前后端数据交互</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#提交请求"><span class="nav-text">提交请求</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#接收请求"><span class="nav-text">接收请求</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#get方法接收数据"><span class="nav-text">get方法接收数据</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#post方法接收数据"><span class="nav-text">post方法接收数据</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#ModelAttribute"><span class="nav-text">@ModelAttribute()</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Todo"><span class="nav-text">Todo</span></a></li></ol></div>
             
 
           </div>
