@@ -376,12 +376,16 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">show columns from xxxtable;</span><br></pre></td></tr></table></figure>
 <p>查看视图每一列的定义（也可以用上面的show columns）</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">describe xxxview;</span><br></pre></td></tr></table></figure>
+<p>查看表的创建语句</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">show create table xxxtable;</span><br></pre></td></tr></table></figure>
 <p>replace是insert的升级版，插入，若主键或唯一键存在则覆盖</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">replace table(col1, col2) values(val1, val2);</span><br></pre></td></tr></table></figure>
 <p>ignore表示，插入，若和存在的数据出现主键重复的情况，则本次不插入数据</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">insert ignore table ...</span><br></pre></td></tr></table></figure>
 <p>登录后更改密码</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ALTER USER &#39;root&#39;@&#39;localhost&#39; IDENTIFIED BY &#39;123456&#39; PASSWORD EXPIRE NEVER;</span><br></pre></td></tr></table></figure>
+<p>查看权限</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">show grants for &#39;username&#39;;</span><br><span class="line">show grants for &#39;username&#39;@&#39;localhost&#39;;</span><br></pre></td></tr></table></figure>
 <p>支持root远程访问</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">update user set host &#x3D; &#39;%&#39; where user &#x3D; &#39;root&#39;;</span><br><span class="line">flush privileges;</span><br></pre></td></tr></table></figure>
 <p>mysqldump命令可以导入导出数据</p>
@@ -542,7 +546,7 @@
             
               <div class="site-state-item site-state-posts">
                 <a href="/archives">
-                  <span class="site-state-item-count">102</span>
+                  <span class="site-state-item-count">110</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -565,7 +569,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">85</span>
+                  <span class="site-state-item-count">73</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>
@@ -641,7 +645,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2023</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2024</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>

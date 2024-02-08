@@ -259,6 +259,1328 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://chenyz2000.github.io/CS/%E5%BC%80%E5%8F%91%EF%BC%88%E4%B8%8D%E5%B8%B8%E7%94%A8%EF%BC%89/Vue/Vue%E4%B8%AD%E7%9A%84Ajax%E8%AF%B7%E6%B1%82/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Chen Yanzhi">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="CYZ's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/CS/%E5%BC%80%E5%8F%91%EF%BC%88%E4%B8%8D%E5%B8%B8%E7%94%A8%EF%BC%89/Vue/Vue%E4%B8%AD%E7%9A%84Ajax%E8%AF%B7%E6%B1%82/" itemprop="url">Vue中的Ajax请求</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-08-21T15:41:00+08:00">
+                2020-08-21
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Post modified&#58;</span>
+              
+              <time title="Post modified" itemprop="dateModified" datetime="2020-08-21T15:41:00+08:00">
+                2020-08-21
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Vue/" itemprop="url" rel="index">
+                    <span itemprop="name">Vue</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h2 id="axios（建议使用）">axios（建议使用）</h2>
+<p>网络请求库，类似$.ajax一样都是Ajax技术的具体实现</p>
+<p>axios写在js中，结合Vue一起使用</p>
+<p>CDN导包：<code>&lt;script src=&quot;https://unpkg.com/axios/dist/axios.min.js&quot;&gt;&lt;/script&gt;</code></p>
+<h4 id="axios-get-和post">axios.get()和post()</h4>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">axios.get(url?查询字符串).then(<span class="function"><span class="keyword">function</span>(<span class="params">response</span>)</span>&#123;&#125;).catch(<span class="function"><span class="keyword">function</span>(<span class="params">err</span>)</span>&#123;&#125;)</span><br></pre></td></tr></table></figure>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/CS/%E5%BC%80%E5%8F%91%EF%BC%88%E4%B8%8D%E5%B8%B8%E7%94%A8%EF%BC%89/Vue/Vue%E4%B8%AD%E7%9A%84Ajax%E8%AF%B7%E6%B1%82/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://chenyz2000.github.io/CS/%E5%BC%80%E5%8F%91%EF%BC%88%E4%B8%8D%E5%B8%B8%E7%94%A8%EF%BC%89/Vue/Vue%E5%AE%9E%E4%BE%8B%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Chen Yanzhi">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="CYZ's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/CS/%E5%BC%80%E5%8F%91%EF%BC%88%E4%B8%8D%E5%B8%B8%E7%94%A8%EF%BC%89/Vue/Vue%E5%AE%9E%E4%BE%8B%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/" itemprop="url">Vue实例生命周期</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-08-21T14:30:00+08:00">
+                2020-08-21
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Post modified&#58;</span>
+              
+              <time title="Post modified" itemprop="dateModified" datetime="2020-08-21T14:30:00+08:00">
+                2020-08-21
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Vue/" itemprop="url" rel="index">
+                    <span itemprop="name">Vue</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h2 id="Vue实例生命周期">Vue实例生命周期</h2>
+<p>Vue实例从创建、运行到销毁，伴随着各种各样的事件，这些事件就统称为生命周期Lifecycle</p>
+<p>生命周期钩子=生命周期函数=生命周期事件</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">new</span> Vue(&#123;</span><br><span class="line">    el:<span class="string">"#app"</span>,</span><br><span class="line">    data:&#123;&#125;,</span><br><span class="line">    methods:&#123;&#125;,</span><br><span class="line">    </span><br><span class="line">    create()&#123;&#125;,		<span class="comment">//生命周期函数写在这里</span></span><br><span class="line">    mounted()&#123;&#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/CS/%E5%BC%80%E5%8F%91%EF%BC%88%E4%B8%8D%E5%B8%B8%E7%94%A8%EF%BC%89/Vue/Vue%E5%AE%9E%E4%BE%8B%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://chenyz2000.github.io/CS/%E5%BC%80%E5%8F%91%EF%BC%88%E4%B8%8D%E5%B8%B8%E7%94%A8%EF%BC%89/%E5%89%8D%E7%AB%AF/JS%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Chen Yanzhi">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="CYZ's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/CS/%E5%BC%80%E5%8F%91%EF%BC%88%E4%B8%8D%E5%B8%B8%E7%94%A8%EF%BC%89/%E5%89%8D%E7%AB%AF/JS%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/" itemprop="url">JS面向对象</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-08-21T10:53:00+08:00">
+                2020-08-21
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Post modified&#58;</span>
+              
+              <time title="Post modified" itemprop="dateModified" datetime="2020-08-21T10:53:00+08:00">
+                2020-08-21
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%89%8D%E7%AB%AF/" itemprop="url" rel="index">
+                    <span itemprop="name">前端</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>Java和C++是基于类的面向对象</p>
+<p>JS不同，JS是基于原型的面向对象，没有类class的声明语句，而是依靠构造器和原型创建对象的</p>
+<h2 id="使用字面式声明构造对象">使用字面式声明构造对象</h2>
+<p>JS可以使用字面式声明（literal notation）的方式来构造一个对象，并对其不存在的属性直接赋值，或者用 delete 将属性删除，如</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> person = &#123; </span><br><span class="line">    name: <span class="string">"张三”,</span></span><br><span class="line"><span class="string">    age: 26,</span></span><br><span class="line"><span class="string">    gender: "</span>男”,</span><br><span class="line">    eat: <span class="function"><span class="keyword">function</span>(<span class="params">stuff</span>)</span>&#123;</span><br><span class="line">        alert( <span class="string">"我在吃"</span> + stuff);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line">person.height = <span class="number">176</span>;</span><br><span class="line"><span class="keyword">delete</span> person[<span class="string">"age"</span>];</span><br></pre></td></tr></table></figure>
+<p>这是一种最简单的封装，但复用性弱是其主要缺点，所以ECMA引入了原型来解决对象的继承问题</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/CS/%E5%BC%80%E5%8F%91%EF%BC%88%E4%B8%8D%E5%B8%B8%E7%94%A8%EF%BC%89/%E5%89%8D%E7%AB%AF/JS%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://chenyz2000.github.io/CS/%E5%BC%80%E5%8F%91%EF%BC%88%E4%B8%8D%E5%B8%B8%E7%94%A8%EF%BC%89/Vue/Vue%E4%BF%AE%E9%A5%B0%E7%AC%A6/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Chen Yanzhi">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="CYZ's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/CS/%E5%BC%80%E5%8F%91%EF%BC%88%E4%B8%8D%E5%B8%B8%E7%94%A8%EF%BC%89/Vue/Vue%E4%BF%AE%E9%A5%B0%E7%AC%A6/" itemprop="url">Vue修饰符</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-08-20T15:44:00+08:00">
+                2020-08-20
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Post modified&#58;</span>
+              
+              <time title="Post modified" itemprop="dateModified" datetime="2020-08-20T15:44:00+08:00">
+                2020-08-20
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Vue/" itemprop="url" rel="index">
+                    <span itemprop="name">Vue</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h2 id="分类">分类</h2>
+<ul>
+<li>表单修饰符</li>
+<li>事件修饰符√</li>
+<li>鼠标事件修饰符√</li>
+<li>键盘事件修饰符√</li>
+<li>v-bind修饰符</li>
+</ul>
+<p><a href="https://segmentfault.com/a/1190000016786254" target="_blank" rel="noopener">参考</a></p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/CS/%E5%BC%80%E5%8F%91%EF%BC%88%E4%B8%8D%E5%B8%B8%E7%94%A8%EF%BC%89/Vue/Vue%E4%BF%AE%E9%A5%B0%E7%AC%A6/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://chenyz2000.github.io/CS/%E5%BC%80%E5%8F%91%EF%BC%88%E4%B8%8D%E5%B8%B8%E7%94%A8%EF%BC%89/%E5%89%8D%E7%AB%AF/JS/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Chen Yanzhi">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="CYZ's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/CS/%E5%BC%80%E5%8F%91%EF%BC%88%E4%B8%8D%E5%B8%B8%E7%94%A8%EF%BC%89/%E5%89%8D%E7%AB%AF/JS/" itemprop="url">JS</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-07-12T18:11:00+08:00">
+                2020-07-12
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Post modified&#58;</span>
+              
+              <time title="Post modified" itemprop="dateModified" datetime="2020-08-20T13:40:00+08:00">
+                2020-08-20
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%89%8D%E7%AB%AF/" itemprop="url" rel="index">
+                    <span itemprop="name">前端</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h2 id="JavaScript">JavaScript</h2>
+<p>是一门通用脚本编程语言，由浏览器编译并运行，遵循了ECMAScript标准</p>
+<p>本身和页面动态没有关系，只有和Dom结合，才能使网页动起来</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/CS/%E5%BC%80%E5%8F%91%EF%BC%88%E4%B8%8D%E5%B8%B8%E7%94%A8%EF%BC%89/%E5%89%8D%E7%AB%AF/JS/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://chenyz2000.github.io/CS/%E5%BC%80%E5%8F%91/%E5%85%B6%E4%BB%96/JSON/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Chen Yanzhi">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="CYZ's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/CS/%E5%BC%80%E5%8F%91/%E5%85%B6%E4%BB%96/JSON/" itemprop="url">JSON</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-07-13T00:00:00+08:00">
+                2020-07-13
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Post modified&#58;</span>
+              
+              <time title="Post modified" itemprop="dateModified" datetime="2020-08-20T00:00:00+08:00">
+                2020-08-20
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%85%B6%E4%BB%96/" itemprop="url" rel="index">
+                    <span itemprop="name">其他</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>JSON，JavaScript Object Notation，JS对象表示法</p>
+<p>使用的是JS对象的语法，但是是独立于语言的</p>
+<p>JSON语法规定</p>
+<p>键为字符串，需要打双引号</p>
+<p>值为合法数据，如数字、布尔值（true和false）、字符串（双引号）、数组（中括号）、对象（大括号）、null</p>
+<p>数组中可以包含多个合法数据，对象中可以包含多个键值对，数组和对象可以嵌套</p>
+<p>JSON里面不能写注释</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/CS/%E5%BC%80%E5%8F%91/%E5%85%B6%E4%BB%96/JSON/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://chenyz2000.github.io/CS/%E5%BC%80%E5%8F%91/Spring%E5%AE%B6%E6%97%8F/Security/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Chen Yanzhi">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="CYZ's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/CS/%E5%BC%80%E5%8F%91/Spring%E5%AE%B6%E6%97%8F/Security/" itemprop="url">Security</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-08-05T09:17:00+08:00">
+                2020-08-05
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Post modified&#58;</span>
+              
+              <time title="Post modified" itemprop="dateModified" datetime="2020-08-12T00:00:00+08:00">
+                2020-08-12
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Spring%E5%AE%B6%E6%97%8F/" itemprop="url" rel="index">
+                    <span itemprop="name">Spring家族</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p><a href="https://juejin.im/post/6844903959627300872" target="_blank" rel="noopener">参考</a></p>
+<p>主要有两种选择Spring Security和Apache Shiro</p>
+<p>Spring Security因为是利用了Spring IOC 和AOP的特性而无法脱离Spring独立存在。而Apache Shiro可以独立存在</p>
+<h2 id="概念">概念</h2>
+<p>认证authentication：如通过账户密码知道你是谁</p>
+<p>鉴权authorization：是通过认证后的用户所绑定的角色等凭证来证明你可以做什么</p>
+<p>RBAC，基于角色的访问控制，Role-Based Access Control：权限赋予给角色，角色赋予给用户</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/CS/%E5%BC%80%E5%8F%91/Spring%E5%AE%B6%E6%97%8F/Security/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://chenyz2000.github.io/CS/%E5%BC%80%E5%8F%91/Spring%E5%AE%B6%E6%97%8F/MyBatis-Plus/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Chen Yanzhi">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="CYZ's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/CS/%E5%BC%80%E5%8F%91/Spring%E5%AE%B6%E6%97%8F/MyBatis-Plus/" itemprop="url">MyBatis-Plus</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-08-10T16:06:00+08:00">
+                2020-08-10
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Post modified&#58;</span>
+              
+              <time title="Post modified" itemprop="dateModified" datetime="2020-08-11T09:31:00+08:00">
+                2020-08-11
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Spring%E5%AE%B6%E6%97%8F/" itemprop="url" rel="index">
+                    <span itemprop="name">Spring家族</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h2 id="步骤">步骤</h2>
+<ul>
+<li>
+<p>不用加MyBatis依赖，改成</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.baomidou<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>mybatis-plus-boot-starter<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>3.3.2<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>其中也包括了分页查询的插件</p>
+</li>
+<li>
+<p>在application.properties中添加配置</p>
+</li>
+<li>
+<p>编写对应数据表的实体类</p>
+</li>
+<li>
+<p>内置通用 Mapper、通用 Service，不需要自己再写Mapper接口的方法也不需要写Mapper.xml，只需要<strong>Mapper接口extends BaseMapper&lt;实体类&gt;</strong></p>
+</li>
+<li>
+<p>之后接口对象也是用自动注入</p>
+</li>
+<li>
+<p>mybatis plus只需继承，Dao继承<code>BaseMapper&lt;T&gt;</code>，Service继承<code>IService&lt;T&gt;</code>，Service实现类继承<code>ServiceImpl&lt;DAO,T&gt;</code>并实现Service</p>
+<p>然后在src/main/resource下只需保留一个mybatis放置的xml文件即可，里面什么resultMap都不需要写，一片空白即可。<a href="https://www.cnblogs.com/youcong/p/9010653.html" target="_blank" rel="noopener">https://www.cnblogs.com/youcong/p/9010653.html</a></p>
+</li>
+</ul>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/CS/%E5%BC%80%E5%8F%91/Spring%E5%AE%B6%E6%97%8F/MyBatis-Plus/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://chenyz2000.github.io/CS/%E5%BC%80%E5%8F%91%EF%BC%88%E4%B8%8D%E5%B8%B8%E7%94%A8%EF%BC%89/%E5%89%8D%E7%AB%AF/Ajax/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -571,1375 +1893,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://chenyz2000.github.io/CS/%E5%BC%80%E5%8F%91/%E6%95%B0%E6%8D%AE%E5%BA%93%E3%80%81%E7%BC%93%E5%AD%98%E3%80%81%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/Redis/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Chen Yanzhi">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="CYZ's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/CS/%E5%BC%80%E5%8F%91/%E6%95%B0%E6%8D%AE%E5%BA%93%E3%80%81%E7%BC%93%E5%AD%98%E3%80%81%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/Redis/" itemprop="url">Redis</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-08-07T15:19:00+08:00">
-                2020-08-07
-              </time>
-            
-
-            
-              <span class="post-meta-divider">|</span>
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Post modified&#58;</span>
-              
-              <time title="Post modified" itemprop="dateModified" datetime="2020-08-07T16:22:00+08:00">
-                2020-08-07
-              </time>
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93%E3%80%81%E7%BC%93%E5%AD%98%E3%80%81%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/" itemprop="url" rel="index">
-                    <span itemprop="name">数据库、缓存、消息队列</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h2 id="Redis">Redis</h2>
-<p>非关系型数据库，缓存数据库，有点类似于mongodb不过是基于内存进行存储</p>
-<p>数据存储在内存中而不会存在硬盘的文件中，结构是K-V对，没有数据表的概念，只有一个整体的字典</p>
-<p>持久化存储，即使Redis服务关闭了，数据也在内存中</p>
-<p>底层使用C语言编写，Java可以通过Spring Boot调用Redis</p>
-<h4 id="支持数据类型">支持数据类型</h4>
-<p>redis中存的数据都是K-V对，其中V的类型可以是：</p>
-<p>字符串、列表、集合Set、有序集合ZSet、哈希表Hash</p>
-<p>redis存对象主要还是将对象序列化成JSON后作为字符串进行存储</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/CS/%E5%BC%80%E5%8F%91/%E6%95%B0%E6%8D%AE%E5%BA%93%E3%80%81%E7%BC%93%E5%AD%98%E3%80%81%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/Redis/#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://chenyz2000.github.io/CS/%E5%BC%80%E5%8F%91/Spring%E5%AE%B6%E6%97%8F/%E6%B3%A8%E8%A7%A3%E6%95%B4%E7%90%86/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Chen Yanzhi">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="CYZ's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/CS/%E5%BC%80%E5%8F%91/Spring%E5%AE%B6%E6%97%8F/%E6%B3%A8%E8%A7%A3%E6%95%B4%E7%90%86/" itemprop="url">注解整理</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-08-06T10:39:00+08:00">
-                2020-08-06
-              </time>
-            
-
-            
-              <span class="post-meta-divider">|</span>
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Post modified&#58;</span>
-              
-              <time title="Post modified" itemprop="dateModified" datetime="2020-08-06T10:39:00+08:00">
-                2020-08-06
-              </time>
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Spring%E5%AE%B6%E6%97%8F/" itemprop="url" rel="index">
-                    <span itemprop="name">Spring家族</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p><a href="https://blog.csdn.net/kxj19980524/article/details/85124785" target="_blank" rel="noopener">参考</a></p>
-<h2 id="Spring-Boot注解">Spring Boot注解</h2>
-<p>@Component（以及扩展注解@Controller、@Service、@Repository），对<strong>类</strong>进行标注，表示此类作为一个bean</p>
-<p>@Bean，对<strong>方法</strong>进行标注，方法返回的对象作为一个bean。自定义程度更强，常用于@Configuration类中</p>
-<p>层次：</p>
-<ul>
-<li>@Component：通用注解</li>
-<li>@Controller：控制器，调用Service层（将Service层的bean注入其中），返回数据给前端页面</li>
-<li>@Service：服务层，包含复杂逻辑，调用Dao层（将Repository层的bean注入其中）</li>
-<li>@Repository：Dao层，进行数据库操作</li>
-</ul>
-<p>@Bean对方法进行注解，方法返回的对象交给Spring IOC进行管理</p>
-<p>@Bean只能注解以下类中的方法：被@Component、@Repository、@Controller、@Service、@Configration所注解的类</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Component</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Beans</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> ADemo <span class="title">aDemoTest</span><span class="params">()</span></span>&#123;</span><br><span class="line">        ADemo aDemo=<span class="keyword">new</span> ADemo();</span><br><span class="line">        aDemo.setId(<span class="string">"0719"</span>);</span><br><span class="line">        aDemo.setName(<span class="string">"aName"</span>);</span><br><span class="line">        <span class="keyword">return</span> aDemo;</span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> BDemo <span class="title">bDemoTest</span><span class="params">()</span></span>&#123;</span><br><span class="line">        BDemo bDemo=<span class="keyword">new</span> BDemo();</span><br><span class="line">        bDemo.setId(<span class="string">"0720"</span>);</span><br><span class="line">        bDemo.setName(<span class="string">"bName"</span>);</span><br><span class="line">        <span class="keyword">return</span> bDemo;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>相当于</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"aDemoTest"</span> <span class="attr">class</span>=<span class="string">"demo.Bean.ADemo"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"id"</span> <span class="attr">value</span>=<span class="string">"0719"</span>&gt;</span><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"name"</span> <span class="attr">value</span>=<span class="string">"aName"</span>&gt;</span><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"bDemoTest"</span> <span class="attr">class</span>=<span class="string">"demo.Bean.BDemo"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"id"</span> <span class="attr">value</span>=<span class="string">"0720"</span>&gt;</span><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"name"</span> <span class="attr">value</span>=<span class="string">"bName"</span>&gt;</span><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p>@bean注解的方法如何与@autowired注解的属性对应</p>
-<ul>
-<li>
-<p>@bean注解的方法与@autowired注解的属性名称相同</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Bean</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> ADemo <span class="title">aDemoTest</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> ADemo();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Autowired</span></span><br><span class="line"><span class="keyword">private</span> ADemo aDemoTest;</span><br></pre></td></tr></table></figure>
-</li>
-<li>
-<p>@Bean注解添加参数，表示对应的属性</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Bean</span>(<span class="string">"ademo"</span>)</span><br><span class="line"><span class="function"><span class="keyword">public</span> ADemo <span class="title">aDemoTest</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> ADemo();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Autowired</span></span><br><span class="line"><span class="keyword">private</span> ADemo ademo;</span><br></pre></td></tr></table></figure>
-</li>
-<li>
-<p>属性用@Qualifier指定方法名</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Bean</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> ADemo <span class="title">aDemoTest</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> ADemo();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Autowired</span></span><br><span class="line"><span class="meta">@Qualifier</span>(<span class="string">"aDemoTest"</span>)</span><br><span class="line"><span class="keyword">private</span> ADemo ademo;</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<p>@Autowired最常用于对属性进行注解，不过也可以注解方法，注解方法时会把bean注入给参数</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Bean</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> Student <span class="title">zhangsan</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> Student(<span class="string">"zhangsan"</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Autowired</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">printStudent</span><span class="params">(Student zhangsan)</span></span>&#123;		<span class="comment">// 注入zhangsan这个对象</span></span><br><span class="line">    System.out.println(zhangsan.getName());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>初始化顺序：静态变量或静态语句块 → 实例变量或初始化语句块 → 构造方法 → @Autowired</p>
-<p>@Resource是java所提供的注解，@Autowired 是Spring提供的</p>
-<p>@Value是用来从Properties文件中来获取值的，并且@Value可以解析SpEL(Spring表达式)</p>
-<ul>
-<li>@Value(“xiaoxiong”)：直接将字符串&quot;xiaoxiong&quot;赋值给属性，如果属性类型不是String，或无法进行类型转换，则报错</li>
-<li>@Value(“$ {xiaoxiong}”)：把{}中的字符当做key从Properties文件中找出对应的Value赋值给属性如果没有找到则会把&quot;$ {xiaoxiong}“当做普通字符赋值给属性</li>
-<li>@Value(”#{xiaoxiong}&quot;)：把#{}中的字符串当做Spring表达式进行解析，Spring会把xiaoxiong当做beanName,并从Spring容器中找到对应的Bean，如果找到则进行属性注入，没有找到则报错</li>
-</ul>
-<hr>
-<p>@Component是通用注解，@Controller、@Service、@Repository是它的拓展，都是Spring注解，注解后可以被Spring框架所扫描并注入到Spring容器来进行管理</p>
-<p><code>@Controller</code>表示提供http接口的bean, <code>@Configuration</code>表示配置类Bean，它们被扫描后都会被加载为单例的bean</p>
-<h4 id="控制层">控制层</h4>
-<p>@Controller</p>
-<p>@ResponseBody，注解类或方法，使其转换为指定格式后写入到Response对象的body数据区</p>
-<p>@RestController = @Controller + @ResponseBody，注解在类上</p>
-<p>@RequestMapping有多个衍生注解，@GetMapping，@PostMapping</p>
-<hr>
-<p>@RequestParam</p>
-<p>@RequestBody</p>
-<p>@ModelAttribute</p>
-<p>详见<a href="https://chenyz2000.github.io/Blog/Front%20End/%E5%89%8D%E5%90%8E%E7%AB%AF%E5%88%86%E7%A6%BB/">《前后端分离》</a></p>
-<hr>
-<p>@Autowired和@Resource都是自动装配</p>
-<h4 id="服务层">服务层</h4>
-<p>@Service</p>
-<h4 id="持久层">持久层</h4>
-<p>@Repository注解类作为DAO对象</p>
-<h4 id="配置bean">配置bean</h4>
-<p>@Value(“”)为对象的属性赋值，在每个属性上注解；<code>@ConfigurationProperties(prifix=&quot;...&quot;)</code>，注解在类上，使用配置文件进行属性赋值，相当于简化了xml的配置文件而已</p>
-<p>@PropertySource()读取指定的properties、yml配置文件，可以指定多个，和ConfigurationProperties啥的一起用</p>
-<p><code>@ImportResource(locations={})</code>读取xml配置文件（因为springboot默认不读取xml配置）</p>
-<p>推荐方式：全注解。@Configuration标注配置类，相当于配置文件；@bean标注方法，将方法的返回值添加到IoC容器中，方法名即为默认的id</p>
-<h2 id="Spring注解">Spring注解</h2>
-<p>import org.springframework.beans.factory.annotation.*;</p>
-<p>jar包位于仓库的org\springframework\spring-beans\5.x.x.RELEASE\spring-beans-5.1.5.RELEASE.jar</p>
-<h4 id="autowired和-Qualifier">@autowired和@Qualifier</h4>
-<h4 id="Value">@Value</h4>
-<h4 id="Required">@Required</h4>
-<p>已废弃</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/CS/%E5%BC%80%E5%8F%91/Spring%E5%AE%B6%E6%97%8F/%E6%B3%A8%E8%A7%A3%E6%95%B4%E7%90%86/#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://chenyz2000.github.io/CS/%E5%BC%80%E5%8F%91/Java%E8%BF%9B%E9%98%B6%E7%9F%A5%E8%AF%86/Java%E8%AF%AD%E8%A8%80%E7%89%B9%E6%80%A7/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Chen Yanzhi">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="CYZ's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/CS/%E5%BC%80%E5%8F%91/Java%E8%BF%9B%E9%98%B6%E7%9F%A5%E8%AF%86/Java%E8%AF%AD%E8%A8%80%E7%89%B9%E6%80%A7/" itemprop="url">Java语言特性</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-05-30T14:13:00+08:00">
-                2020-05-30
-              </time>
-            
-
-            
-              <span class="post-meta-divider">|</span>
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Post modified&#58;</span>
-              
-              <time title="Post modified" itemprop="dateModified" datetime="2020-08-05T13:44:00+08:00">
-                2020-08-05
-              </time>
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Java%E8%BF%9B%E9%98%B6%E7%9F%A5%E8%AF%86/" itemprop="url" rel="index">
-                    <span itemprop="name">Java进阶知识</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h2 id="接口中的default">接口中的default</h2>
-<p>Java8+</p>
-<p>default修饰方法只能在接口中使用，方法变为普通方法，可以直接写方法体</p>
-<p>实现类会继承此方法</p>
-<p>若实现类实现的多个接口中有相同的default方法，那实现类无法区分这些方法，需要重写</p>
-<p>若一个类继承的父类和实现的接口中有同样的方法（接口中的为default方法），则此时父类的方法优先</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/CS/%E5%BC%80%E5%8F%91/Java%E8%BF%9B%E9%98%B6%E7%9F%A5%E8%AF%86/Java%E8%AF%AD%E8%A8%80%E7%89%B9%E6%80%A7/#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://chenyz2000.github.io/CS/%E5%BC%80%E5%8F%91/Spring%E5%AE%B6%E6%97%8F/%E5%89%8D%E5%90%8E%E7%AB%AF%E5%88%86%E7%A6%BB/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Chen Yanzhi">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="CYZ's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/CS/%E5%BC%80%E5%8F%91/Spring%E5%AE%B6%E6%97%8F/%E5%89%8D%E5%90%8E%E7%AB%AF%E5%88%86%E7%A6%BB/" itemprop="url">前后端分离</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-07-30T00:00:00+08:00">
-                2020-07-30
-              </time>
-            
-
-            
-              <span class="post-meta-divider">|</span>
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Post modified&#58;</span>
-              
-              <time title="Post modified" itemprop="dateModified" datetime="2020-08-04T17:30:00+08:00">
-                2020-08-04
-              </time>
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Spring%E5%AE%B6%E6%97%8F/" itemprop="url" rel="index">
-                    <span itemprop="name">Spring家族</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>浏览器作为客户端，向服务器请求获得一段字符串（即HTML），之后经过浏览器的规则识别进行渲染</p>
-<h2 id="Spring-Boot-Vue">Spring Boot+Vue</h2>
-<p>传统的Java Web开发中，前端使用JSP开发，后端使用Java语言开发</p>
-<p>JSP不是后端独立完成的，是由前端开发HTML，再由后端转成JSP</p>
-<p>前后端开发的内容互相影响，互不理解</p>
-<p>前后端耦合高，开发效率低</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/CS/%E5%BC%80%E5%8F%91/Spring%E5%AE%B6%E6%97%8F/%E5%89%8D%E5%90%8E%E7%AB%AF%E5%88%86%E7%A6%BB/#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://chenyz2000.github.io/CS/%E8%BE%85%E5%8A%A9/Linux/Linux%E9%9D%9E%E6%8C%82%E6%96%AD%E8%BF%90%E8%A1%8C/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Chen Yanzhi">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="CYZ's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/CS/%E8%BE%85%E5%8A%A9/Linux/Linux%E9%9D%9E%E6%8C%82%E6%96%AD%E8%BF%90%E8%A1%8C/" itemprop="url">Linux基本命令</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-02-25T00:00:00+08:00">
-                2020-02-25
-              </time>
-            
-
-            
-              <span class="post-meta-divider">|</span>
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Post modified&#58;</span>
-              
-              <time title="Post modified" itemprop="dateModified" datetime="2020-07-30T00:00:00+08:00">
-                2020-07-30
-              </time>
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Linux/" itemprop="url" rel="index">
-                    <span itemprop="name">Linux</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h4 id="nohup">nohup</h4>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nohup &lt;command&gt; &amp;</span><br></pre></td></tr></table></figure>
-<p>nohup是非挂断运行（不加&amp;还是前台）</p>
-<p>之后通过<strong>exit</strong>退出ssh连接即可非挂断运行</p>
-<p>如果需要查找命令以及停止</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ps -a |grep xxx</span><br><span class="line">kill -9 &lt;pid&gt;</span><br></pre></td></tr></table></figure>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/CS/%E8%BE%85%E5%8A%A9/Linux/Linux%E9%9D%9E%E6%8C%82%E6%96%AD%E8%BF%90%E8%A1%8C/#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://chenyz2000.github.io/CS/%E8%BE%85%E5%8A%A9/Linux/Linux%E5%9F%BA%E6%9C%AC%E5%91%BD%E4%BB%A4/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Chen Yanzhi">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="CYZ's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/CS/%E8%BE%85%E5%8A%A9/Linux/Linux%E5%9F%BA%E6%9C%AC%E5%91%BD%E4%BB%A4/" itemprop="url">Linux基本命令</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-02-22T00:00:00+08:00">
-                2020-02-22
-              </time>
-            
-
-            
-              <span class="post-meta-divider">|</span>
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Post modified&#58;</span>
-              
-              <time title="Post modified" itemprop="dateModified" datetime="2020-07-29T15:51:00+08:00">
-                2020-07-29
-              </time>
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Linux/" itemprop="url" rel="index">
-                    <span itemprop="name">Linux</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p><a href="https://www.runoob.com/linux/linux-command-manual.html" target="_blank" rel="noopener">命令大全</a></p>
-<h2 id="命令格式">命令格式</h2>
-<p>格式：命令 -选项 参数</p>
-<p>多个选项时，可以写在一起</p>
-<p>-调用简化选项，–调用完整选项</p>
-<hr>
-<p>清屏命令ctrl+L或clear</p>
-<p>终止命令ctrl+C</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/CS/%E8%BE%85%E5%8A%A9/Linux/Linux%E5%9F%BA%E6%9C%AC%E5%91%BD%E4%BB%A4/#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://chenyz2000.github.io/CS/%E5%BC%80%E5%8F%91%EF%BC%88%E4%B8%8D%E5%B8%B8%E7%94%A8%EF%BC%89/%E5%89%8D%E7%AB%AF/jQuery/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Chen Yanzhi">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="CYZ's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/CS/%E5%BC%80%E5%8F%91%EF%BC%88%E4%B8%8D%E5%B8%B8%E7%94%A8%EF%BC%89/%E5%89%8D%E7%AB%AF/jQuery/" itemprop="url">jQuery</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-07-23T09:32:00+08:00">
-                2020-07-23
-              </time>
-            
-
-            
-              <span class="post-meta-divider">|</span>
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Post modified&#58;</span>
-              
-              <time title="Post modified" itemprop="dateModified" datetime="2020-07-25T17:42:00+08:00">
-                2020-07-25
-              </time>
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%89%8D%E7%AB%AF/" itemprop="url" rel="index">
-                    <span itemprop="name">前端</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h2 id="jQuery">jQuery</h2>
-<p>类库，封装了Dom和JS，不用担心兼容性的问题</p>
-<p>简化原生JS的写法，对Dom进行操控</p>
-<p>2.x版本不兼容低版本IE了，使用1.12.x等版本</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/CS/%E5%BC%80%E5%8F%91%EF%BC%88%E4%B8%8D%E5%B8%B8%E7%94%A8%EF%BC%89/%E5%89%8D%E7%AB%AF/jQuery/#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://chenyz2000.github.io/CS/%E5%BC%80%E5%8F%91%EF%BC%88%E4%B8%8D%E5%B8%B8%E7%94%A8%EF%BC%89/%E5%89%8D%E7%AB%AF/DOM/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Chen Yanzhi">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="CYZ's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/CS/%E5%BC%80%E5%8F%91%EF%BC%88%E4%B8%8D%E5%B8%B8%E7%94%A8%EF%BC%89/%E5%89%8D%E7%AB%AF/DOM/" itemprop="url">DOM</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-07-21T10:46:00+08:00">
-                2020-07-21
-              </time>
-            
-
-            
-              <span class="post-meta-divider">|</span>
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Post modified&#58;</span>
-              
-              <time title="Post modified" itemprop="dateModified" datetime="2020-07-22T14:52:00+08:00">
-                2020-07-22
-              </time>
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%89%8D%E7%AB%AF/" itemprop="url" rel="index">
-                    <span itemprop="name">前端</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h2 id="DOM">DOM</h2>
-<p>文档对象模型，Document Object Model，一种用于HTML和XML文档的编程接口，将文档作为文档树</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/CS/%E5%BC%80%E5%8F%91%EF%BC%88%E4%B8%8D%E5%B8%B8%E7%94%A8%EF%BC%89/%E5%89%8D%E7%AB%AF/DOM/#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1991,7 +1944,7 @@
             
               <div class="site-state-item site-state-posts">
                 <a href="/archives">
-                  <span class="site-state-item-count">102</span>
+                  <span class="site-state-item-count">110</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -2014,7 +1967,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">85</span>
+                  <span class="site-state-item-count">73</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>
@@ -2074,7 +2027,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2023</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2024</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>

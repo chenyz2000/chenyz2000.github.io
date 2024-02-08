@@ -439,7 +439,9 @@
 <h4 id="交互式变基">交互式变基</h4>
 <p><code>git rebase -i</code>可以进行交互式变基，可以选择结点、调整顺序、调整信息等，不像原来的rebase只能默认全部变基</p>
 <p>所以可以实现子结点向父结点变基，不会显示A比B新</p>
-<p>使用技巧：<code>git rebase -i</code>可以将本地的多次提交合并为一个，以简化提交历史</p>
+<h4 id="多次提交合并为一个">多次提交合并为一个</h4>
+<p><code>git rebase -i</code>可以将本地的多次提交合并为一个，以简化提交历史。</p>
+<p>rebase时，需要将最早的提交设置为pick（表示需要这个commit），后续的提交都设置为squash（表示将此commit合并到前一个commit）。之后修改commit message（默认是保留所有提交的commit message）。</p>
 <h2 id="merge对比rebase">merge对比rebase</h2>
 <p>merge和rebase是git中整合来自不同分支修改的主要方法</p>
 <p>原有分支如下</p>
@@ -518,8 +520,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/CS/%E8%BE%85%E5%8A%A9/%E5%B7%A5%E5%85%B7/Git%E5%9F%BA%E6%9C%AC%E5%91%BD%E4%BB%A4/" rel="next" title="Git基本命令">
-                <i class="fa fa-chevron-left"></i> Git基本命令
+              <a href="/CS/%E5%BC%80%E5%8F%91/%E5%85%B6%E4%BB%96/JSON/" rel="next" title="JSON">
+                <i class="fa fa-chevron-left"></i> JSON
               </a>
             
           </div>
@@ -528,8 +530,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/CS/%E5%BC%80%E5%8F%91/Spring%E5%AE%B6%E6%97%8F/Spring%E5%92%8CBean%E7%9A%84xml%E9%85%8D%E7%BD%AE/" rel="prev" title="Spring和Bean的xml配置">
-                Spring和Bean的xml配置 <i class="fa fa-chevron-right"></i>
+              <a href="/CS/%E8%BE%85%E5%8A%A9/%E5%B7%A5%E5%85%B7/Git%E8%BF%9C%E7%A8%8B%E5%91%BD%E4%BB%A4/" rel="prev" title="Git远程命令">
+                Git远程命令 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -609,7 +611,7 @@
             
               <div class="site-state-item site-state-posts">
                 <a href="/archives">
-                  <span class="site-state-item-count">102</span>
+                  <span class="site-state-item-count">110</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -632,7 +634,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">85</span>
+                  <span class="site-state-item-count">73</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>
@@ -681,7 +683,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#分支的含义"><span class="nav-text">分支的含义</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#HEAD"><span class="nav-text">HEAD</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#查看分支"><span class="nav-text">查看分支</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#删除分支"><span class="nav-text">删除分支</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#创建分支"><span class="nav-text">创建分支</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#创建新分支"><span class="nav-text">创建新分支</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#创建新分支并切换"><span class="nav-text">创建新分支并切换</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#切换checkout"><span class="nav-text">切换checkout</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#相对引用"><span class="nav-text">相对引用</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#合并merge"><span class="nav-text">合并merge</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#变基rebase"><span class="nav-text">变基rebase</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#rebase原理"><span class="nav-text">rebase原理</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#交互式变基"><span class="nav-text">交互式变基</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#merge对比rebase"><span class="nav-text">merge对比rebase</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#cherry-pick"><span class="nav-text">cherry-pick</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#应用举例：如何对已提交的代码进行修改"><span class="nav-text">应用举例：如何对已提交的代码进行修改</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#冲突解决"><span class="nav-text">冲突解决</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#分支的含义"><span class="nav-text">分支的含义</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#HEAD"><span class="nav-text">HEAD</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#查看分支"><span class="nav-text">查看分支</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#删除分支"><span class="nav-text">删除分支</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#创建分支"><span class="nav-text">创建分支</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#创建新分支"><span class="nav-text">创建新分支</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#创建新分支并切换"><span class="nav-text">创建新分支并切换</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#切换checkout"><span class="nav-text">切换checkout</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#相对引用"><span class="nav-text">相对引用</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#合并merge"><span class="nav-text">合并merge</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#变基rebase"><span class="nav-text">变基rebase</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#rebase原理"><span class="nav-text">rebase原理</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#交互式变基"><span class="nav-text">交互式变基</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#多次提交合并为一个"><span class="nav-text">多次提交合并为一个</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#merge对比rebase"><span class="nav-text">merge对比rebase</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#cherry-pick"><span class="nav-text">cherry-pick</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#应用举例：如何对已提交的代码进行修改"><span class="nav-text">应用举例：如何对已提交的代码进行修改</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#冲突解决"><span class="nav-text">冲突解决</span></a></li></ol></div>
             
 
           </div>
@@ -708,7 +710,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2023</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2024</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>

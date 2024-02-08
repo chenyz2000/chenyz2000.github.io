@@ -1,0 +1,835 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="en">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Go," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="encoding&#x2F;json库 导入import encoding&#x2F;json Go中元素转json字符串 Marshal，伪装 12bytes, _ :&#x3D; json.Marshal(obj)	&#x2F;&#x2F; obj可以是基本数据类型、数组、struct等jsonStr :&#x3D; string(bytes) 注意，想要struct转json字符串，要求stuct中的字段名首字母大写，非首字母大写的字段不会被序列化">
+<meta property="og:type" content="article">
+<meta property="og:title" content="go中实用库">
+<meta property="og:url" content="https://chenyz2000.github.io/CS/%E5%BC%80%E5%8F%91/Go/go%E4%B8%AD%E5%AE%9E%E7%94%A8%E5%BA%93/index.html">
+<meta property="og:site_name" content="CYZ&#39;s Blog">
+<meta property="og:description" content="encoding&#x2F;json库 导入import encoding&#x2F;json Go中元素转json字符串 Marshal，伪装 12bytes, _ :&#x3D; json.Marshal(obj)	&#x2F;&#x2F; obj可以是基本数据类型、数组、struct等jsonStr :&#x3D; string(bytes) 注意，想要struct转json字符串，要求stuct中的字段名首字母大写，非首字母大写的字段不会被序列化">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2023-11-06T03:00:00.000Z">
+<meta property="article:modified_time" content="2023-11-06T03:00:00.000Z">
+<meta property="article:author" content="Chen Yanzhi">
+<meta property="article:tag" content="Go">
+<meta name="twitter:card" content="summary">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"always","offset":12,"b2t":true,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://chenyz2000.github.io/CS/开发/Go/go中实用库/"/>
+
+
+
+
+
+  <title>go中实用库 | CYZ's Blog</title>
+  
+
+
+
+
+
+
+
+
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">CYZ's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            About
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://chenyz2000.github.io/CS/%E5%BC%80%E5%8F%91/Go/go%E4%B8%AD%E5%AE%9E%E7%94%A8%E5%BA%93/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Chen Yanzhi">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="CYZ's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">go中实用库</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2023-11-06T11:00:00+08:00">
+                2023-11-06
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Post modified&#58;</span>
+              
+              <time title="Post modified" itemprop="dateModified" datetime="2023-11-06T11:00:00+08:00">
+                2023-11-06
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Go/" itemprop="url" rel="index">
+                    <span itemprop="name">Go</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="encoding-json库">encoding/json库</h2>
+<p>导入<code>import encoding/json</code></p>
+<h4 id="Go中元素转json字符串">Go中元素转json字符串</h4>
+<p>Marshal，伪装</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">bytes, _ := json.Marshal(obj)	<span class="comment">// obj可以是基本数据类型、数组、struct等</span></span><br><span class="line">jsonStr := <span class="keyword">string</span>(bytes)</span><br></pre></td></tr></table></figure>
+<p>注意，想要struct转json字符串，要求stuct中的字段名<strong>首字母大写</strong>，非首字母大写的字段不会被序列化</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">type</span> Student <span class="keyword">struct</span>&#123;</span><br><span class="line">    id <span class="keyword">string</span>		<span class="comment">// 序列化时会被忽略</span></span><br><span class="line">    Name <span class="keyword">string</span>		<span class="comment">// 正常序列化</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">t := &amp;Student&#123;<span class="string">"no123"</span>, <span class="string">"zhangsan"</span>&#125;</span><br><span class="line">bytes, _ := json.Marshal(*t)</span><br><span class="line">jsonStr := <span class="keyword">string</span>(bytes)</span><br><span class="line"><span class="comment">// 结果是&#123;"Name":"zhangsan"&#125;</span></span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<p>结构体中可以使用<strong>反引号设置字段序列化后的形式</strong>，防止所有键都是首字母大写</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">type</span> Student <span class="keyword">struct</span>&#123;</span><br><span class="line">    <span class="comment">// Tag中的字段名必须带双引号，否则go无法识别</span></span><br><span class="line">    Id <span class="keyword">string</span> <span class="string">`json:"-"`</span>		<span class="comment">// 表示省略该字段</span></span><br><span class="line">    Name <span class="keyword">string</span> <span class="string">`json:"name"`</span></span><br><span class="line">    Address <span class="keyword">string</span> <span class="string">`json:"family-address,omitempty"`</span>	<span class="comment">// omitempty表示为空值或零值时省略该字段</span></span><br><span class="line">    Age <span class="keyword">int</span> <span class="string">`json:"age,string"`</span>	<span class="comment">// 可以设置序列化时变为string、number等类型</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 结果是&#123;"name":"zhangsan","family-address":"abc road"&#125;</span></span><br></pre></td></tr></table></figure>
+<p>想要输出的json字符串带缩进，使用<code>bytes, _ := json.MarshalIndent(obj, &quot;&quot;, &quot;\t&quot;)</code></p>
+<h4 id="json字符串转go对象">json字符串转go对象</h4>
+<p>Unmarshal，解除伪装</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> stu Student</span><br><span class="line">err := json.Unmarshal([]<span class="keyword">byte</span>(jsonStr), &amp;stu)</span><br></pre></td></tr></table></figure>
+<p>读入的时候不区分字段的大小写</p>
+<h4 id="结合文件读写">结合文件读写</h4>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span>(</span><br><span class="line">	<span class="string">"io/ioutil"</span></span><br><span class="line">    <span class="string">"encoding/json"</span></span><br><span class="line">)</span><br><span class="line"><span class="keyword">type</span> Config <span class="keyword">struct</span>&#123;</span><br><span class="line">    xxx</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 读</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    bytes, err := ioutil.ReadFile(<span class="string">"config.json"</span>)</span><br><span class="line">	<span class="comment">// 判err</span></span><br><span class="line">    <span class="keyword">var</span> config Config</span><br><span class="line">    err = json.Unmarshal(bytes, &amp;config)</span><br><span class="line">    <span class="comment">// 判err</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 写</span></span><br><span class="line">bytes, _ := json.MarshalIndent(config, <span class="string">""</span>, <span class="string">"  "</span>)</span><br><span class="line">ioutil.WriteFile(<span class="string">"config.json"</span>, bytes, <span class="number">0666</span>)	<span class="comment">// 自动覆盖</span></span><br></pre></td></tr></table></figure>
+<h2 id="gorm和mysql库">gorm和mysql库</h2>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">db, err := gorm.Open(mysql.New(mysql.Config&#123;</span><br><span class="line">    DSN: <span class="string">"xxx"</span>,</span><br><span class="line">&#125;), &amp;gorm.Config&#123;&#125;)</span><br><span class="line"><span class="comment">// 此处省略判err</span></span><br><span class="line"></span><br><span class="line">sqlDB, err := db.DB()</span><br><span class="line"><span class="comment">// 此处省略判err</span></span><br><span class="line"></span><br><span class="line">sqlDB.SetMaxOpenConns(config.MaxOpenConns)</span><br><span class="line">sqlDB.SetMaxIdleConns(config.MaxIdleConns)</span><br><span class="line">sqlDB.SetConnMaxIdleTime(config.ConnMaxIdleTime)</span><br><span class="line">sqlDB.SetConnMaxLifetime(config.ConnMaxLifetime)</span><br><span class="line"></span><br><span class="line">&#123;</span><br><span class="line">    ctx, cancel := context.WithTimeout(context.TODO(), <span class="number">3</span>*time.Second)</span><br><span class="line">    <span class="keyword">defer</span> cancel()</span><br><span class="line">    err := sqlDB.PingContext(ctx);</span><br><span class="line">    <span class="comment">// 此处省略判err</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>gorm会根据传入struct的名称自动解析表名</p>
+<p>可以给结构体加一个TableName的方法设置它解析时的表名</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">struct</span> Puzzle&#123;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(Puzzle)</span> <span class="title">TableName</span><span class="params">()</span> <span class="title">string</span></span> &#123;</span><br><span class="line">	<span class="keyword">return</span> <span class="string">"Jigsaw"</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id=""></h4>
+<h2 id="获取命令行参数">获取命令行参数</h2>
+<h4 id="通过os-Args获取">通过os.Args获取</h4>
+<p>os.Args就是一个字符串数组</p>
+<p>它的第一个索引值是可执行程序的路径，后面的索引值是传入命令行的参数</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    <span class="keyword">for</span> _, v := <span class="keyword">range</span> os.Args&#123;</span><br><span class="line">        <span class="comment">// 变量_捕获的是下标0,1,2</span></span><br><span class="line">        fmt.Println(v)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 命令行运行</span></span><br><span class="line"><span class="keyword">go</span> run main.<span class="keyword">go</span> a b</span><br><span class="line"><span class="comment">// 输出结果，第一行是exe的路径</span></span><br><span class="line">C:\Users\Mi\Desktop\test.exe</span><br><span class="line">a</span><br><span class="line">b</span><br></pre></td></tr></table></figure>
+<h4 id="标准库中的flag包">标准库中的flag包</h4>
+<p>功能更丰富地处理命令行参数</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 使用方法一，返回指针，之后通过*ptr得到该地址中的值</span></span><br><span class="line">ptr:= flag.String(<span class="string">"选项名"</span>, <span class="string">"默认值"</span>, <span class="string">"备注"</span>)</span><br><span class="line"><span class="comment">// 使用方法二</span></span><br><span class="line"><span class="keyword">var</span> host <span class="keyword">string</span></span><br><span class="line">flag.StringVar(&amp;host, <span class="string">"选项名"</span>, <span class="string">"默认值"</span>, <span class="string">"备注"</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 定义好命令行参数对应的变量后，进行解析</span></span><br><span class="line">flag.Parse()</span><br><span class="line"><span class="comment">// flag.Args()处理不能解析的值</span></span><br><span class="line"><span class="keyword">for</span> _,v := <span class="keyword">range</span> flag.Args()&#123;</span><br><span class="line">    fmt.Println(v)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>可以通过 flag.Args()获取未能解析的命令行参数，从第一个不能解析的字符串开始，即便后面存在可以解析的值，也不会再解析</p>
+<p>解析后，标志后面的参数可用作切片 flag.Args() 或单独作为 flag.Arg(i)。参数从 0 到 flag.NArg()- 1 索引。</p>
+<p>flag库的选项一般用<code>-opt=xxx</code>。非布尔值可以使用<code>-opt xxx</code>，布尔值可以使用<code>-opt</code>表示true</p>
+<p>此外，flag库不区分一个中划线还是两个中划线，即<code>-opt=xxx</code>和<code>--opt=xxx</code>等价</p>
+<h2 id="log库">log库</h2>
+<ul>
+<li><strong>log.Print</strong>：打印日志，和 fmt 包没什么区别，只是加上了上面的日志格式。</li>
+<li><strong>log.Fatal</strong> ：会先将日志内容打印到标准输出，接着调用系统的 <em>os.exit(1)</em> 接口，退出程序并返回状态 1 。但是有一点需要注意，由于是直接调用系统接口退出，defer 函数不会被调用。</li>
+<li><strong>log.Panic</strong>：该函数把日志内容刷到标准错误后调用 panic 函数。</li>
+</ul>
+<p>原生的log库能力不够，建议使用第三方Logrus库或Zap库</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>Post author:</strong>
+    Chen Yanzhi
+  </li>
+  <li class="post-copyright-link">
+    <strong>Post link:</strong>
+    <a href="https://chenyz2000.github.io/CS/%E5%BC%80%E5%8F%91/Go/go%E4%B8%AD%E5%AE%9E%E7%94%A8%E5%BA%93/" title="go中实用库">https://chenyz2000.github.io/CS/%E5%BC%80%E5%8F%91/Go/go%E4%B8%AD%E5%AE%9E%E7%94%A8%E5%BA%93/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>Copyright Notice: </strong>
+    All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> unless stating additionally.
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Go/" rel="tag"># Go</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/CS/%E5%BC%80%E5%8F%91/Go/go%20gin%E5%92%8Chttp/" rel="next" title="go gin和http">
+                <i class="fa fa-chevron-left"></i> go gin和http
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/CS/%E5%BC%80%E5%8F%91/Go/go%E7%BB%93%E6%9E%84%E4%BD%93/" rel="prev" title="go结构体">
+                go结构体 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.jpg"
+                alt="Chen Yanzhi" />
+            
+              <p class="site-author-name" itemprop="name">Chen Yanzhi</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+                <a href="/archives">
+                  <span class="site-state-item-count">110</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">15</span>
+                  <span class="site-state-item-name">categories</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">73</span>
+                  <span class="site-state-item-name">tags</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/chenyz2000" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:chenyanzhi_2000@163.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#encoding-json库"><span class="nav-text">encoding&#x2F;json库</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Go中元素转json字符串"><span class="nav-text">Go中元素转json字符串</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#json字符串转go对象"><span class="nav-text">json字符串转go对象</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#结合文件读写"><span class="nav-text">结合文件读写</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#gorm和mysql库"><span class="nav-text">gorm和mysql库</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#"><span class="nav-text"></span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#获取命令行参数"><span class="nav-text">获取命令行参数</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#通过os-Args获取"><span class="nav-text">通过os.Args获取</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#标准库中的flag包"><span class="nav-text">标准库中的flag包</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#log库"><span class="nav-text">log库</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2024</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Chen Yanzhi</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

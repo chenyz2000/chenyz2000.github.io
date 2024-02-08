@@ -79,18 +79,20 @@
 
 
 
-<meta name="description" content="容器编排技术 Kubernetes是一个开源容器编排引擎和容器集群管理工具，用来对容器化应用进行自动化部署、扩缩和管理 可以提供的功能：  服务发现和负载均衡 存储编排 自动部署和回滚 自动装箱计算  Kubernetes是云原生托管的第一个开源项目，能够运行在Kubernetes之上的应用被称为云原生应用">
+<meta name="description" content="中文文档 容器编排技术 Kubernetes是一个开源容器编排引擎和容器集群管理工具，用来对容器化应用进行自动化部署、扩缩和管理 可以提供的功能：  服务发现和负载均衡 存储编排 自动部署和回滚 自动装箱计算  Kubernetes是云原生托管的第一个开源项目，能够运行在Kubernetes之上的应用被称为云原生应用">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Kubernetes">
 <meta property="og:url" content="https://chenyz2000.github.io/CS/%E5%BC%80%E5%8F%91/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E4%B8%8E%E4%BA%91%E5%8E%9F%E7%94%9F/Kubernetes/index.html">
 <meta property="og:site_name" content="CYZ&#39;s Blog">
-<meta property="og:description" content="容器编排技术 Kubernetes是一个开源容器编排引擎和容器集群管理工具，用来对容器化应用进行自动化部署、扩缩和管理 可以提供的功能：  服务发现和负载均衡 存储编排 自动部署和回滚 自动装箱计算  Kubernetes是云原生托管的第一个开源项目，能够运行在Kubernetes之上的应用被称为云原生应用">
+<meta property="og:description" content="中文文档 容器编排技术 Kubernetes是一个开源容器编排引擎和容器集群管理工具，用来对容器化应用进行自动化部署、扩缩和管理 可以提供的功能：  服务发现和负载均衡 存储编排 自动部署和回滚 自动装箱计算  Kubernetes是云原生托管的第一个开源项目，能够运行在Kubernetes之上的应用被称为云原生应用">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://chenyz2000.github.io/images/image-20240115191705991.png">
 <meta property="article:published_time" content="2023-08-21T16:00:00.000Z">
-<meta property="article:modified_time" content="2023-12-26T16:00:00.000Z">
+<meta property="article:modified_time" content="2024-01-15T16:00:00.000Z">
 <meta property="article:author" content="Chen Yanzhi">
 <meta property="article:tag" content="Kubernetes">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://chenyz2000.github.io/images/image-20240115191705991.png">
 
 
 
@@ -308,8 +310,8 @@
               
                 <span class="post-meta-item-text">Post modified&#58;</span>
               
-              <time title="Post modified" itemprop="dateModified" datetime="2023-12-27T00:00:00+08:00">
-                2023-12-27
+              <time title="Post modified" itemprop="dateModified" datetime="2024-01-16T00:00:00+08:00">
+                2024-01-16
               </time>
             
           </span>
@@ -364,7 +366,8 @@
       
 
       
-        <p><strong>容器编排技术</strong></p>
+        <p><a href="http://docs.kubernetes.org.cn/" target="_blank" rel="noopener">中文文档</a></p>
+<h4 id="容器编排技术">容器编排技术</h4>
 <p>Kubernetes是一个开源容器编排引擎和容器集群管理工具，用来对容器化应用进行自动化部署、扩缩和管理</p>
 <p>可以提供的功能：</p>
 <ul>
@@ -377,19 +380,58 @@
 <a id="more"></a>
 <p>在Kubernetes之前，Spring Cloud是云原生的探路者，两者有很多功能是重合的，包括：服务注册和发现，API网关，负载均衡，配置管理，但是Spring Cloud只能用于Java开发，Kubernetes是语言无关的</p>
 <p>虚拟机和容器的区别：容器非常轻量，只有几十兆大小，它实现了进程级的隔离，不同容器还是要共享主机的内核；每个虚拟机则包含一个独立的操作系统，会占用大量的系统资源。容器非常适合用于微服务架构中。</p>
+<p>k3s是Kubernetes的轻量的发行版</p>
+<p>Kubernete的作用：</p>
+<ul>
+<li>Pod：Kubernetes中的一个部署单元，具有单个Internet协议地址</li>
+<li>水平缩放：Kubernetes中的重要功能，此功能使用HorizontalPodAutoscalar根据观察到的CPU利用率自动增加或减少deployment、replica Controller、replicaset或Statefulset中的pod数</li>
+<li>自动装箱：Kubernetes帮助用户声明其容器的计算机的最大和最小资源</li>
+<li>服务发现和负载平衡：Kubernetes为一组容器分配IP地址和DNS名称, 并在它们之间平衡负载</li>
+<li>自动部署和回滚：Kubernetes使用部署, 将更改和更新分发到应用程序或其配置。如果系统中发生任何问题, 则此技术会立即为你回滚这些更改</li>
+<li>持久存储：Kubernetes提供了一项称为“持久存储”的基本功能来存储数据, 在pod被终止或重新安排之后不会丢失</li>
+<li>自我修复：此功能在Kubernetes的概念中起着重要的作用。在执行过程中失败的那些容器, Kubernetes会自动重新启动它们。并且, 那些不回复用户定义的运行状况检查的容器将阻止它们自动运行</li>
+</ul>
 <h2 id="Kubernetes架构">Kubernetes架构</h2>
-<p>一个Kubernetes集群包含一个master（control plane），以及多个worker</p>
+<img src="/images/image-20240115191705991.png" alt="image-20240115191705991" style="zoom: 50%;" />
+<p>一个Kubernetes集群包含一个master，以及多个node，属于主从模型</p>
+<p>每个Node对应一个服务器（实体或虚拟机），master可以和Node安装在同一台机器（但是建议master单独部署）</p>
+<h3 id="Master（control-plane）">Master（control plane）</h3>
+<p>负责管理node和维护集群状态，负责所有任务的分配，但是不跑任务</p>
+<h4 id="1、API-Server">1、API Server</h4>
+<p>整个系统的对外接口，供客户端和其它组件调用</p>
+<h4 id="2、Scheduler">2、Scheduler</h4>
+<p>负责对集群内部的资源进行调度，Scheduler监视新创建没有分配到Node的Pod，为Pod选择一个Node</p>
+<h4 id="3、Controller-manager">3、Controller manager</h4>
+<p>对控制器Controller进行管理，Controller包括</p>
 <ul>
-<li><strong>master</strong>（control plane）：负责管理worker node和维护集群状态，负责所有任务的分配，但是不跑任务</li>
-<li><strong>worker</strong>：负责执行由control plane分配的请求任务，运行实际的应用和工作负载</li>
+<li>Node Controller节点控制器</li>
+<li>Replication Controller副本控制器：负责维护系统中每个副本中的pod</li>
+<li>Endpoints Controller端点控制器：填充Endpoints对象（即连接Services＆Pods）</li>
+<li>Service Account Controller服务账号控制器和Token Controller：为新的Namespace创建默认帐户访问API Token</li>
 </ul>
-<p>Master节点包括；</p>
+<h4 id="4、etcd">4、etcd</h4>
+<p>K8S自带的一个键值存储数据库，存储配置数据和集群状态信息</p>
+<h3 id="Node（worker，compute-machine）">Node（worker，compute machine）</h3>
+<p>负责执行由master分配的请求任务，运行实际的应用和工作负载</p>
+<h4 id="1、kubelete">1、kubelete</h4>
+<p>每个node都包含一个kubelete，会定期向master汇报自己Node的状态（Node状态、Pod状态、容器健康检查），并接受来自Master的指示采取调整措施</p>
+<h4 id="2、Kube-Proxy">2、Kube-Proxy</h4>
+<p>Kube-Proxy负责Node在K8S的网络通讯、以及对外部网络流量的负载均衡</p>
+<h4 id="3、Container-Runtime">3、Container Runtime</h4>
 <ul>
-<li>API Server是整个系统的对外接口，供客户端和其它组件调用，相当于“营业厅”</li>
-<li>Scheduler负责对集群内部的资源进行调度，相当于“调度室”</li>
-<li>Controller manager负责管理控制器，相当于“大总管”</li>
-<li>etcd</li>
+<li>docker</li>
+<li>kvm2</li>
+<li>virtualbox</li>
+<li>rkt</li>
 </ul>
+<h3 id="Pod">Pod</h3>
+<p>每个node上运行若干个pod，pod由若干个容器组成，可以被称为容器集</p>
+<p><strong>pod是Kubernetes的最小调度单位</strong>，每个pod对应一个进程</p>
+<p>每个pod有一个ip，其中的容器共享同个ip</p>
+<p>在pod中可以设定若干个volume共享存储，其中的容器可以使用这个共享存储</p>
+<hr>
+<p>请求的传递：Ingress → Service → Pod</p>
+<p>Service可以看作一组提供相同服务的Pod的对外访问接口，Service可以跨Node</p>
 
       
     </div>
@@ -529,7 +571,7 @@
             
               <div class="site-state-item site-state-posts">
                 <a href="/archives">
-                  <span class="site-state-item-count">102</span>
+                  <span class="site-state-item-count">110</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -552,7 +594,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">85</span>
+                  <span class="site-state-item-count">73</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>
@@ -601,7 +643,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Kubernetes架构"><span class="nav-text">Kubernetes架构</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#容器编排技术"><span class="nav-text">容器编排技术</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Kubernetes架构"><span class="nav-text">Kubernetes架构</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Master（control-plane）"><span class="nav-text">Master（control plane）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1、API-Server"><span class="nav-text">1、API Server</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2、Scheduler"><span class="nav-text">2、Scheduler</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3、Controller-manager"><span class="nav-text">3、Controller manager</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4、etcd"><span class="nav-text">4、etcd</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Node（worker，compute-machine）"><span class="nav-text">Node（worker，compute machine）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1、kubelete"><span class="nav-text">1、kubelete</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2、Kube-Proxy"><span class="nav-text">2、Kube-Proxy</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3、Container-Runtime"><span class="nav-text">3、Container Runtime</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Pod"><span class="nav-text">Pod</span></a></div>
             
 
           </div>
@@ -628,7 +670,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2023</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2024</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>

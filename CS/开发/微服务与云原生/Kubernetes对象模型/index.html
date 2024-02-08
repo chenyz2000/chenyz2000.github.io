@@ -1,0 +1,902 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="en">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Kubernetes," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="K8s对象模型 K8s对象模型就是将一系列的资源实体抽象成K8s中所能识别的对象 kubectl api-resources可以查询所有资源对象类型 对象 &#x3D; 资源 &#x3D; 资源对象 &#x3D; 资源对象类型 Workload类对象  Pod：若干共享资源的容器集合 Controller：Master中Controller Manager管理的Controller，Controller可以创建和管理多个Pod">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Kubernetes对象模型">
+<meta property="og:url" content="https://chenyz2000.github.io/CS/%E5%BC%80%E5%8F%91/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E4%B8%8E%E4%BA%91%E5%8E%9F%E7%94%9F/Kubernetes%E5%AF%B9%E8%B1%A1%E6%A8%A1%E5%9E%8B/index.html">
+<meta property="og:site_name" content="CYZ&#39;s Blog">
+<meta property="og:description" content="K8s对象模型 K8s对象模型就是将一系列的资源实体抽象成K8s中所能识别的对象 kubectl api-resources可以查询所有资源对象类型 对象 &#x3D; 资源 &#x3D; 资源对象 &#x3D; 资源对象类型 Workload类对象  Pod：若干共享资源的容器集合 Controller：Master中Controller Manager管理的Controller，Controller可以创建和管理多个Pod">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://chenyz2000.github.io/images/v2-7b1633cfca5e301706ffdaa064f38296_1440w.webp">
+<meta property="og:image" content="https://chenyz2000.github.io/images/v2-3b8d0c22c4f2f6c4ed467811e91d3c4b_1440w.webp">
+<meta property="article:published_time" content="2024-01-19T09:00:00.000Z">
+<meta property="article:modified_time" content="2024-01-19T09:00:00.000Z">
+<meta property="article:author" content="Chen Yanzhi">
+<meta property="article:tag" content="Kubernetes">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://chenyz2000.github.io/images/v2-7b1633cfca5e301706ffdaa064f38296_1440w.webp">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"always","offset":12,"b2t":true,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://chenyz2000.github.io/CS/开发/微服务与云原生/Kubernetes对象模型/"/>
+
+
+
+
+
+  <title>Kubernetes对象模型 | CYZ's Blog</title>
+  
+
+
+
+
+
+
+
+
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">CYZ's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            About
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://chenyz2000.github.io/CS/%E5%BC%80%E5%8F%91/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E4%B8%8E%E4%BA%91%E5%8E%9F%E7%94%9F/Kubernetes%E5%AF%B9%E8%B1%A1%E6%A8%A1%E5%9E%8B/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Chen Yanzhi">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="CYZ's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Kubernetes对象模型</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2024-01-19T17:00:00+08:00">
+                2024-01-19
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Post modified&#58;</span>
+              
+              <time title="Post modified" itemprop="dateModified" datetime="2024-01-19T17:00:00+08:00">
+                2024-01-19
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E4%B8%8E%E4%BA%91%E5%8E%9F%E7%94%9F/" itemprop="url" rel="index">
+                    <span itemprop="name">微服务与云原生</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="K8s对象模型">K8s对象模型</h2>
+<p>K8s对象模型就是将一系列的资源实体抽象成K8s中所能识别的对象</p>
+<p><code>kubectl api-resources</code>可以查询所有资源对象类型</p>
+<p>对象 = 资源 = 资源对象 = 资源对象类型</p>
+<h4 id="Workload类对象">Workload类对象</h4>
+<ul>
+<li><strong>Pod</strong>：若干共享资源的容器集合</li>
+<li>Controller：Master中Controller Manager管理的Controller，Controller可以<strong>创建和管理多个Pod</strong>，提供副本管理、滚动升级和集群级别的自愈能力。</li>
+<li><strong>Deployment</strong> / Statefulset / Daemonset / Job：这一类资源对象都是<strong>对Pod进行管理</strong>，提供了声明式定义(declarative)Pod的方法，但同时他们又各自负责处理不同的使用场景
+<ul>
+<li>Deployment主要针对Kubernetes中用于处理无状态服务的资源，典型的应用场景包括创建Pod和ReplicaSet，滚动升级和回滚应用，扩容和缩容等</li>
+<li>StatefulSet是用于支持有状态服务的资源，典型的应用场景是Zookeeper、Kafka，它可以保证部署、扩展收缩的顺序</li>
+<li>DaemonSet的场景是在集群中所有节点上同时提供基础服务和守护进程，可以保证集群中所有的或者部分的节点都能够运行同一份Pod副本，如kube-router、flannel等都是以DaemonSet部署的</li>
+<li>Job负责批处理任务，即仅执行一次的任务，它保证批处理任务的一个或多个Pod成功结束，可应用的场景如采集数据等</li>
+</ul>
+</li>
+</ul>
+<a id="more"></a>
+<h4 id="Deployment">Deployment</h4>
+<p>Deployment为Pods和ReplicaSets提供声明式的更新能力，用户负责描述Deployment中的期望状态，Deployment通过更改实际状态使其变为期望状态。这个过程被称之为调谐（Reconcile）</p>
+<p>Deployment负责创建和更新应用，创建Deployment后，master 会将Deployment创建好的应用实例调度到集群中的各个node</p>
+<p>应用实例创建完成后，Deployment Controller会持续监视这些实例。如果该实例所在的node被关闭或删除，那么 Deployment Controller将会替换它们，实现自我修复能力。</p>
+<h4 id="Cluster类对象">Cluster类对象</h4>
+<ul>
+<li>Node：物理节点</li>
+<li>Namespace：K8s支持通过Namespace在一个物理集群中划分出多个虚拟集群，这些虚拟集群使用单独的命名空间。各个Namespace间是不透明的，也便于用户进行更细粒度的权限控制</li>
+<li>Role / ClusterRole：负责为用户提供集群内的权限管理，可以为Node、Pod、Endpoint等赋予权限
+<ul>
+<li>Role用于授予对某一单一命名空间中资源的访问权限</li>
+<li>ClusterRole用于授予整个Kubernetes集群范围内的权限</li>
+</ul>
+</li>
+</ul>
+<h4 id="Discovery-Loadbalance类对象">Discovery&amp;Loadbalance类对象</h4>
+<ul>
+<li>Ingress：是授权入站连接到达集群服务的规则集合，与多个Service关联</li>
+<li>Service：Service是对若干个Pod组成的逻辑分组的抽象，为一组具有相同功能的容器应用提供一个统一的入口地址</li>
+<li>Endpoint：和Pod对应。Endpoint存储在etcd中，用来记录Service中所有pod的访问地址。Service配置selector后endpoint controller才会自动创建对应的endpoint对象</li>
+</ul>
+<h4 id="Config-Storage类对象">Config&amp;Storage类对象</h4>
+<ul>
+<li>Volume / PersistentVolume：Volume解决了容器中文件的临时性问题，也能让同Pod 中的多个容器共享文件
+<ul>
+<li>Volume不是持久化存储，可能会随着 Pod 的删除而删除，常见的卷包括EmptyDir、HostPath、ConfigMap 和 Secret，这些卷与其所属的Pod具有相同的生命周期</li>
+<li>PersistentVolume是持久卷，提供了持久化存储的方案，将Pod与卷的声明周期分离</li>
+</ul>
+</li>
+</ul>
+<h4 id="Deployment、ReplicaSet、Replica-Controller的关系">Deployment、ReplicaSet、Replica Controller的关系</h4>
+<p><a href="https://zhuanlan.zhihu.com/p/339008746" target="_blank" rel="noopener">参考</a></p>
+<p><strong>这三者主要管控 Pod 程序服务</strong></p>
+<p>ReplicaSet用于标识在给定时间正在运行的Pod副本的特定数量，它取代了Replica Controller</p>
+<p>ReplicaSet 的目的是维护一组在任何时候都处于运行状态的 Pod 副本的稳定集合。 因此，它通常用来保证给定数量的、完全相同的 Pod 的可用性</p>
+<p><img src="/images/v2-7b1633cfca5e301706ffdaa064f38296_1440w.webp" alt="img"></p>
+<p>ReplicationController确保在任何时候都有特定数量的 Pod 副本处于运行状态。ReplicationController 是 ReplicaSet 的前身</p>
+<p>官方推荐用 Deployment 取代 ReplicationController 来部署服务。用户会直接操作 Deployment 部署服务，而当 Deployment 被部署的时候，K8S 会自动生成要求的 ReplicaSet 和 Pod。用户只需要关心 Deployment 而不操心 ReplicaSet。</p>
+<h4 id="Ingress、Service的关系">Ingress、Service的关系</h4>
+<p><strong>这两者负责管控 Pod 网络服务</strong></p>
+<p>K8S 中的Service更像是网关层的概念，是若干个 Pod 的流量入口、流量均衡器。Service 主要负责 K8S 集群内部的网络拓扑</p>
+<p>Ingress 是整个 K8S 集群的接入层，负责集群内外通讯</p>
+<p><img src="/images/v2-3b8d0c22c4f2f6c4ed467811e91d3c4b_1440w.webp" alt="img"></p>
+<h2 id="资源对象的简称">资源对象的简称</h2>
+<p>资源对象类型不区分大小写， 可以指定单数、复数或缩写形式</p>
+<p>pod - po</p>
+<p>node - no</p>
+<p>deployment- deploy</p>
+<p>namespace - ns</p>
+<p>endpoint - ep</p>
+<p>service - svc</p>
+<p>ingresse - ing</p>
+<p>daemonset - ds</p>
+<p>persistentvolume - pv</p>
+<p>replicaset - rs</p>
+<p>replicationcontroller - rc</p>
+<p>configmap - cm</p>
+<h2 id="yaml文件描述对象">yaml文件描述对象</h2>
+<h4 id="yaml的外层结构">yaml的外层结构</h4>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">apiVersion:</span> <span class="string">v1</span></span><br><span class="line"><span class="attr">kind:</span> <span class="string">Deployment</span></span><br><span class="line"><span class="attr">metadata:</span></span><br><span class="line">	<span class="attr">name:</span> <span class="string">nginx-deployment</span></span><br><span class="line"><span class="attr">spec:</span></span><br><span class="line">	<span class="string">xxx</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>
+<p>apiVersion：必须，指定Kubernetes API版本</p>
+</li>
+<li>
+<p>kind：必须，指定创建对象的类型</p>
+</li>
+<li>
+<p>metadata：必须，识别对象唯一性的数据，包含name和可选的label、namespace</p>
+</li>
+<li>
+<p>spec：K8s必须，描述了对象的期望状态，每个对象的spec都不同</p>
+<blockquote>
+<p>K8s管理模块一直管理对象的实际状态status，以与期望的状态相匹配</p>
+</blockquote>
+</li>
+</ul>
+<h4 id="示例">示例</h4>
+<p>tomcat</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">apiVersion:</span> <span class="string">apps/v1</span></span><br><span class="line"><span class="attr">kind:</span> <span class="string">Deployment</span></span><br><span class="line"><span class="attr">metadata:</span></span><br><span class="line">  <span class="attr">name:</span> <span class="string">web</span></span><br><span class="line"><span class="attr">spec:</span></span><br><span class="line">  <span class="attr">selector:</span></span><br><span class="line">    <span class="attr">matchLabels:</span></span><br><span class="line">      <span class="attr">app:</span> <span class="string">web</span></span><br><span class="line">  <span class="attr">replicas:</span> <span class="number">2</span>		<span class="comment"># 副本数量</span></span><br><span class="line">  <span class="attr">template:</span></span><br><span class="line">    <span class="attr">metadata:</span></span><br><span class="line">      <span class="attr">labels:</span></span><br><span class="line">        <span class="attr">app:</span> <span class="string">web</span></span><br><span class="line">    <span class="attr">spec:</span></span><br><span class="line">      <span class="attr">containers:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">web</span></span><br><span class="line">        <span class="attr">image:</span> <span class="string">registry.cn-hangzhou.aliyuncs.com/liuyi01/tomcat:8.0.51-alpine</span></span><br><span class="line">        <span class="attr">ports:</span></span><br><span class="line">        <span class="bullet">-</span> <span class="attr">containerPort:</span> <span class="number">8080</span></span><br></pre></td></tr></table></figure>
+<p>zookeeper</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">apiVersion:</span> <span class="string">v1</span></span><br><span class="line"><span class="attr">kind:</span> <span class="string">PersistentVolume</span></span><br><span class="line"><span class="attr">metadata:</span></span><br><span class="line">  <span class="attr">name:</span> <span class="string">k8s-pv-zk01</span></span><br><span class="line">  <span class="attr">namespace:</span> <span class="string">tools</span></span><br><span class="line">  <span class="attr">labels:</span></span><br><span class="line">    <span class="attr">app:</span> <span class="string">zk</span></span><br><span class="line"><span class="attr">spec:</span></span><br><span class="line">  <span class="attr">capacity:</span></span><br><span class="line">    <span class="attr">storage:</span> <span class="string">5Gi</span></span><br><span class="line">  <span class="attr">accessModes:</span></span><br><span class="line">  <span class="bullet">-</span> <span class="string">ReadWriteOnce</span></span><br><span class="line">  <span class="attr">hostPath:</span></span><br><span class="line">    <span class="attr">path:</span> <span class="string">/data/share/pv/zk01</span></span><br><span class="line">  <span class="attr">persistentVolumeReclaimPolicy:</span> <span class="string">Recycle</span></span><br></pre></td></tr></table></figure>
+<p>自定义Pod1</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">apiVersion:</span> <span class="string">v1</span></span><br><span class="line"><span class="attr">kind:</span> <span class="string">Pod</span></span><br><span class="line"><span class="attr">metadata:</span></span><br><span class="line">  <span class="attr">name:</span> <span class="string">myapp-pod</span></span><br><span class="line">  <span class="attr">labels:</span></span><br><span class="line">    <span class="attr">app:</span> <span class="string">myapp</span></span><br><span class="line"><span class="attr">spec:</span></span><br><span class="line">  <span class="attr">containers:</span></span><br><span class="line">  <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">myapp-container</span></span><br><span class="line">    <span class="attr">image:</span> <span class="string">busybox</span></span><br><span class="line">    <span class="attr">command:</span> <span class="string">['sh',</span> <span class="string">'-c'</span><span class="string">,</span> <span class="string">'echo Hello World &amp;&amp; sleep 3600'</span><span class="string">]</span></span><br></pre></td></tr></table></figure>
+<p>自定义Pod2</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">apiVersion:</span> <span class="string">v1</span></span><br><span class="line"><span class="attr">kind:</span> <span class="string">Pod</span></span><br><span class="line"><span class="attr">metadata:</span></span><br><span class="line">  <span class="attr">name:</span> <span class="string">nginx-mysql-pod</span></span><br><span class="line">  <span class="attr">labels:</span></span><br><span class="line">    <span class="attr">app:</span> <span class="string">nginx-mysql</span></span><br><span class="line"><span class="attr">spec:</span></span><br><span class="line">  <span class="attr">containers:</span>		<span class="comment"># 定义容器</span></span><br><span class="line">  <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">nginx</span></span><br><span class="line">    <span class="attr">image:</span> <span class="string">nginx</span>		<span class="comment"># 镜像</span></span><br><span class="line">  <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">mysql</span>                         </span><br><span class="line">    <span class="attr">image:</span> <span class="string">mysql</span>                        </span><br><span class="line">    <span class="attr">env:</span>		<span class="comment"># 环境变量</span></span><br><span class="line">    <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">MYSQL_ROOT_PASSWORD</span></span><br><span class="line">      <span class="attr">value:</span> <span class="string">mysql</span></span><br></pre></td></tr></table></figure>
+<p>自定义Ingress</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">apiVersion:</span> <span class="string">extensions/v1beta1</span></span><br><span class="line"><span class="attr">kind:</span> <span class="string">Ingress</span></span><br><span class="line"><span class="attr">metadata:</span></span><br><span class="line">  <span class="attr">name:</span> <span class="string">test-ingress</span></span><br><span class="line"><span class="attr">spec:</span></span><br><span class="line">  <span class="attr">rules:</span></span><br><span class="line">  <span class="bullet">-</span> <span class="attr">http:</span></span><br><span class="line">      <span class="attr">paths:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">path:</span> <span class="string">/testpath</span></span><br><span class="line">       <span class="attr">backend:</span></span><br><span class="line">          <span class="attr">serviceName:</span> <span class="string">test</span></span><br><span class="line">          <span class="attr">servicePort:</span> <span class="number">80</span></span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>Post author:</strong>
+    Chen Yanzhi
+  </li>
+  <li class="post-copyright-link">
+    <strong>Post link:</strong>
+    <a href="https://chenyz2000.github.io/CS/%E5%BC%80%E5%8F%91/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E4%B8%8E%E4%BA%91%E5%8E%9F%E7%94%9F/Kubernetes%E5%AF%B9%E8%B1%A1%E6%A8%A1%E5%9E%8B/" title="Kubernetes对象模型">https://chenyz2000.github.io/CS/%E5%BC%80%E5%8F%91/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E4%B8%8E%E4%BA%91%E5%8E%9F%E7%94%9F/Kubernetes%E5%AF%B9%E8%B1%A1%E6%A8%A1%E5%9E%8B/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>Copyright Notice: </strong>
+    All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> unless stating additionally.
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Kubernetes/" rel="tag"># Kubernetes</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/CS/%E8%BE%85%E5%8A%A9/%E5%B7%A5%E5%85%B7/Nginx/" rel="next" title="Nginx">
+                <i class="fa fa-chevron-left"></i> Nginx
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/CS/%E5%BC%80%E5%8F%91/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E4%B8%8E%E4%BA%91%E5%8E%9F%E7%94%9F/kubectl%E5%92%8Cminikube/" rel="prev" title="kubectl和minikube">
+                kubectl和minikube <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.jpg"
+                alt="Chen Yanzhi" />
+            
+              <p class="site-author-name" itemprop="name">Chen Yanzhi</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+                <a href="/archives">
+                  <span class="site-state-item-count">110</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">15</span>
+                  <span class="site-state-item-name">categories</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">73</span>
+                  <span class="site-state-item-name">tags</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/chenyz2000" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:chenyanzhi_2000@163.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#K8s对象模型"><span class="nav-text">K8s对象模型</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Workload类对象"><span class="nav-text">Workload类对象</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Deployment"><span class="nav-text">Deployment</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Cluster类对象"><span class="nav-text">Cluster类对象</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Discovery-Loadbalance类对象"><span class="nav-text">Discovery&amp;Loadbalance类对象</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Config-Storage类对象"><span class="nav-text">Config&amp;Storage类对象</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Deployment、ReplicaSet、Replica-Controller的关系"><span class="nav-text">Deployment、ReplicaSet、Replica Controller的关系</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Ingress、Service的关系"><span class="nav-text">Ingress、Service的关系</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#资源对象的简称"><span class="nav-text">资源对象的简称</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#yaml文件描述对象"><span class="nav-text">yaml文件描述对象</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#yaml的外层结构"><span class="nav-text">yaml的外层结构</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#示例"><span class="nav-text">示例</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2024</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Chen Yanzhi</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

@@ -1,0 +1,909 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="en">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Kubernetes," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="kubectl操作对象 kubectl是命令行客户端，和master通信，从而完成对应用的管理 所有命令见http:&#x2F;&#x2F;docs.kubernetes.org.cn&#x2F;61.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="kubectl和minikube">
+<meta property="og:url" content="https://chenyz2000.github.io/CS/%E5%BC%80%E5%8F%91/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E4%B8%8E%E4%BA%91%E5%8E%9F%E7%94%9F/kubectl%E5%92%8Cminikube/index.html">
+<meta property="og:site_name" content="CYZ&#39;s Blog">
+<meta property="og:description" content="kubectl操作对象 kubectl是命令行客户端，和master通信，从而完成对应用的管理 所有命令见http:&#x2F;&#x2F;docs.kubernetes.org.cn&#x2F;61.html">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://chenyz2000.github.io/images/5btrrnhx11.jpeg">
+<meta property="article:published_time" content="2024-01-22T02:00:00.000Z">
+<meta property="article:modified_time" content="2024-01-23T08:00:00.000Z">
+<meta property="article:author" content="Chen Yanzhi">
+<meta property="article:tag" content="Kubernetes">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://chenyz2000.github.io/images/5btrrnhx11.jpeg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"always","offset":12,"b2t":true,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://chenyz2000.github.io/CS/开发/微服务与云原生/kubectl和minikube/"/>
+
+
+
+
+
+  <title>kubectl和minikube | CYZ's Blog</title>
+  
+
+
+
+
+
+
+
+
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">CYZ's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            About
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://chenyz2000.github.io/CS/%E5%BC%80%E5%8F%91/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E4%B8%8E%E4%BA%91%E5%8E%9F%E7%94%9F/kubectl%E5%92%8Cminikube/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Chen Yanzhi">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="CYZ's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">kubectl和minikube</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2024-01-22T10:00:00+08:00">
+                2024-01-22
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Post modified&#58;</span>
+              
+              <time title="Post modified" itemprop="dateModified" datetime="2024-01-23T16:00:00+08:00">
+                2024-01-23
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E4%B8%8E%E4%BA%91%E5%8E%9F%E7%94%9F/" itemprop="url" rel="index">
+                    <span itemprop="name">微服务与云原生</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="kubectl操作对象">kubectl操作对象</h2>
+<p>kubectl是命令行客户端，和master通信，从而完成对应用的管理</p>
+<p>所有命令见http://docs.kubernetes.org.cn/61.html</p>
+<img src="/images/5btrrnhx11.jpeg" alt="img" style="zoom:80%;" />
+<a id="more"></a>
+<h3 id="基础命令">基础命令</h3>
+<h4 id="get获取信息">get获取信息</h4>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 查看所有的资源信息</span></span><br><span class="line">$ kubectl get all</span><br><span class="line">$ kubectl get -A		<span class="comment"># -A相当于--all-namespaces</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看pod列表</span></span><br><span class="line">$ kubectl get pod</span><br><span class="line"><span class="comment"># 查看pod详细信息，也就是可以查看pod具体运行在哪个节点上（ip地址信息）</span></span><br><span class="line">$ kubectl get pod -o wide</span><br><span class="line"><span class="comment"># 查看所有pod所属的命名空间</span></span><br><span class="line">$ kubectl get pod -A</span><br><span class="line"><span class="comment"># 查看所有pod所属的命名空间并且查看都在哪些节点上运行</span></span><br><span class="line">$ kubectl get pod -A -o wide</span><br><span class="line"></span><br><span class="line"><span class="comment"># 显示pod节点的标签信息</span></span><br><span class="line">$ kubectl get pod --show-labels</span><br><span class="line"><span class="comment"># 根据指定标签匹配到具体的pod</span></span><br><span class="line">$ kubectl get pods -l app=labelxxx</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看node节点列表</span></span><br><span class="line">$ kubectl get node</span><br><span class="line"><span class="comment"># 显示node节点的标签信息</span></span><br><span class="line">$ kubectl get node --show-labels</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看服务的详细信息，显示了服务名称，类型，集群ip，端口，时间等信息</span></span><br><span class="line">$ kubectl get svc</span><br><span class="line">$ kubectl get svc -n kube-system</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看命名空间</span></span><br><span class="line">$ kubectl get ns</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看目前所有的replica set，显示了所有的pod的副本数，以及他们的可用数量以及状态等信息</span></span><br><span class="line">$ kubectl get rs</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看已经部署了的所有应用，可以看到容器，以及容器所用的镜像，标签等信息</span></span><br><span class="line">$ kubectl get deploy -o wide</span><br><span class="line">$ kubectl get deployments -o wide</span><br></pre></td></tr></table></figure>
+<h4 id="create、replace、apply创建更新">create、replace、apply创建更新</h4>
+<p>输入为文件（yaml或json）或stdin</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ kubectl create -f xxx.yaml</span><br><span class="line">$ kubectl replace -f xxx.yaml</span><br><span class="line">$ kubectl apply -f xxx.yaml</span><br></pre></td></tr></table></figure>
+<p>create是根据配置生成资源（若已存在则报错），replace是根据配置更新资源，apply=create+apply</p>
+<h4 id="set配置应用资源">set配置应用资源</h4>
+<p>子命令有env，image，resources，selector，serviceaccount，subject</p>
+<h5 id="resources">resources</h5>
+<p>可以对deployment、replicationcontroller、daemonset、job、replicaset操作</p>
+<p>可以设置的选项为：最小资源请求量request，最大资源量limit</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 为nginx中的所有容器设置Requests和Limits</span></span><br><span class="line">$ kubectl <span class="built_in">set</span> resources deployment nginx --limits=cpu=200m,memory=512Mi --requests=cpu=100m,memory=256Mi</span><br></pre></td></tr></table></figure>
+<h5 id="image">image</h5>
+<p>用于更新现有资源的容器镜像</p>
+<p>可以对pod 、replicationcontroller、deployment、daemonset、job、replicaset使用</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 将deployment中的nginx容器镜像设置为“nginx：1.9.1”</span></span><br><span class="line">$ kubectl <span class="built_in">set</span> image deployment/nginx nginx=nginx:1.9.1</span><br></pre></td></tr></table></figure>
+<h5 id="selector">selector</h5>
+<blockquote>
+<p>和label一样，都是用作标注</p>
+</blockquote>
+<p>只能对service使用</p>
+<p>selector必须以字母或数字开头，最多包含63个字符，可使用：字母、数字、中划线、下划线、点&quot;.&quot;</p>
+<h4 id="delete删除">delete删除</h4>
+<p>根据yaml文件删除对应的资源，yaml文件并不会被删除</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ kubectl delete -f xxx.yaml</span><br></pre></td></tr></table></figure>
+<p>根据资源名称删除资源</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 删除名为res1和res2的pod和service）</span></span><br><span class="line">$ kubectl delete pod,service res1 res2</span><br></pre></td></tr></table></figure>
+<h4 id="edit打开默认编辑器编辑资源信息">edit打开默认编辑器编辑资源信息</h4>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ kubectl edit deployment nginx</span><br></pre></td></tr></table></figure>
+<h4 id="run运行容器实例">run运行容器实例</h4>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ kubectl run nginx --image=nginx:1.10 --port=80 --replicas=3</span><br></pre></td></tr></table></figure>
+<h4 id="expose将资源暴露为新的Service">expose将资源暴露为新的Service</h4>
+<p>可以对deployment、pod、service、replica set、replication controller使用</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 将服务8080端口的请求转发到容器的80端口</span></span><br><span class="line">$ kubectl expose pod mypod --port=8080 --target-port=80</span><br></pre></td></tr></table></figure>
+<h3 id="部署命令">部署命令</h3>
+<h4 id="rollout资源管理">rollout资源管理</h4>
+<p>可以对deployment、daemonset操作</p>
+<p>子命令</p>
+<ul>
+<li>history查看历史版本</li>
+<li>pause暂停资源</li>
+<li>resume恢复已暂停的资源</li>
+<li>status查看资源状态</li>
+<li>undo回滚版本</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ kubectl rollout status daemonset/foo</span><br></pre></td></tr></table></figure>
+<h4 id="rolling-update">rolling-update</h4>
+<p>执行指定ReplicationController的滚动更新</p>
+<p>该命令创建了一个新的RC， 然后对pod进行依次更新的方式，最终实现全部Pod的滚动更新</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 使用web-v2.json中的新RC数据更新web-v1中的pod</span></span><br><span class="line">$ kubectl rolling-update web-v1 -f web-v2.json</span><br></pre></td></tr></table></figure>
+<h4 id="scale缩容扩容">scale缩容扩容</h4>
+<p>对Deployment、ReplicaSet、Replication Controller或 Job 进行操作，修改其中的Pod数量</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ kubectl scale --replicas=3 deploy/nginx </span><br><span class="line">$ kubectl scale --replicas=3 -f foo.yaml</span><br></pre></td></tr></table></figure>
+<p>可以用<code>--resource-version=&lt;version&gt;</code>或<code>--current-replicas=&lt;count&gt;</code>设置前提条件，当满足该条件时进行伸缩</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 如果当前副本数为2，则将其扩展至3</span></span><br><span class="line">$ kubectl scale --current-replicas=2 --replicas=3 deployment/mysql</span><br></pre></td></tr></table></figure>
+<h4 id="autoscale自动伸缩">autoscale自动伸缩</h4>
+<p>根据流量的多少来自动进行伸缩</p>
+<p>可以对Deployment、ReplicaSet或ReplicationController使用</p>
+<p>用–max和–min设置上限下限，用–cpu-percent设置CPU维持的使用率</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ kubectl autoscale deployment nginx --min=2 --max=5 --cpu-percent=80</span><br></pre></td></tr></table></figure>
+<h3 id="集群管理命令">集群管理命令</h3>
+<ul>
+<li>certificate：用于证书资源管理，授权等</li>
+<li>cluster-info：显示集群信息</li>
+<li>top：用于查看资源的cpu，内存磁盘等资源的使用率</li>
+<li>cordon：用于标记某个节点不可调度</li>
+<li>uncordon：用于标签节点可以调度</li>
+<li>drain：用于在维护期间排除节点</li>
+<li>taint：用于给某个Node设置污点</li>
+</ul>
+<h3 id="故障诊断和测试命令（对pod中的容器进行操作）">故障诊断和测试命令（对pod中的容器进行操作）</h3>
+<h4 id="describe显示对象的详细状态">describe显示对象的详细状态</h4>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ kubectl describe po my-nginx</span><br></pre></td></tr></table></figure>
+<h4 id="logs打印pod中一个容器的日志">logs打印pod中一个容器的日志</h4>
+<p>选项：</p>
+<ul>
+<li>-c：指定容器名</li>
+<li>-f：持续输出日志（实时日志）</li>
+<li>-p：输出pod中曾经运行过，但目前已终止的容器的日志</li>
+<li>–since=0：设置时间范围，如5s、2m或3h之内的日志，默认为0表示返回所有日志</li>
+<li>–tail=-1：要显示的最新的日志条数。默认为-1显示所有的日志</li>
+<li>–timestamps：在日志中包含时间戳</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 输出mypod的容器web-1的日志，条件为最近一小时内产生的、最近的20条日志</span></span><br><span class="line">$ kubectl logs --tail=20 --since=1h mypod -c web-1</span><br></pre></td></tr></table></figure>
+<h4 id="exec进入容器执行命令">exec进入容器执行命令</h4>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 在mypod的容器web-1中，执行bash命令</span></span><br><span class="line">$ kubectl <span class="built_in">exec</span> -it mypod -c web-1 bash</span><br></pre></td></tr></table></figure>
+<h4 id="attach连接到一个正在运行的容器">attach连接到一个正在运行的容器</h4>
+<h4 id="port-foward">port-foward</h4>
+<h4 id="proxy">proxy</h4>
+<h4 id="cp">cp</h4>
+<h4 id="auth">auth</h4>
+<hr>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 删除资源对象，type为pod、service等</span></span><br><span class="line">kubectl delete -f &lt;filename&gt;</span><br><span class="line">kubectl delete &lt;<span class="built_in">type</span>&gt; &lt;podname&gt;</span><br><span class="line">kubectl delete &lt;<span class="built_in">type</span>&gt; -l &lt;labelname&gt;=&lt;labelvalue&gt;</span><br><span class="line"><span class="comment"># 修改pod数量</span></span><br><span class="line">kubectl scale --replicas=3 xxx</span><br><span class="line"></span><br><span class="line">kubectl create deployment nginx --image nginx	<span class="comment"># 创建</span></span><br></pre></td></tr></table></figure>
+<p>查询集群中所有可用的对象</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">kubectl</span> <span class="string">api-resources</span></span><br></pre></td></tr></table></figure>
+<h2 id="Minikube">Minikube</h2>
+<p><a href="https://minikube.sigs.k8s.io/docs/start/" target="_blank" rel="noopener">minikube文档</a></p>
+<p>Minikube是由Kubernetes社区维护的单机版的Kubernetes系统</p>
+<p>适合Kubernetes入门，或作为测试环境使用</p>
+<h4 id="安装">安装</h4>
+<p><a href="https://github.com/kubernetes/minikube/releases" target="_blank" rel="noopener">github上的release页面</a></p>
+<p>根据minikube文档中的安装方式下载安装</p>
+<p>之后运行，这一步minikube需要依赖driver（如docker）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">minikube start</span><br></pre></td></tr></table></figure>
+<p>如果出现:x:说明启动有误，需要解决</p>
+<p>之后就可以用minikube中的<code>minikube kubectl -- </code>操作了，例如</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">minikube kubectl -- get po -A</span><br></pre></td></tr></table></figure>
+<p>可以看到master的四个部分（apiserver等）已经运行起来了</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>Post author:</strong>
+    Chen Yanzhi
+  </li>
+  <li class="post-copyright-link">
+    <strong>Post link:</strong>
+    <a href="https://chenyz2000.github.io/CS/%E5%BC%80%E5%8F%91/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E4%B8%8E%E4%BA%91%E5%8E%9F%E7%94%9F/kubectl%E5%92%8Cminikube/" title="kubectl和minikube">https://chenyz2000.github.io/CS/%E5%BC%80%E5%8F%91/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E4%B8%8E%E4%BA%91%E5%8E%9F%E7%94%9F/kubectl%E5%92%8Cminikube/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>Copyright Notice: </strong>
+    All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> unless stating additionally.
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Kubernetes/" rel="tag"># Kubernetes</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/CS/%E5%BC%80%E5%8F%91/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E4%B8%8E%E4%BA%91%E5%8E%9F%E7%94%9F/Kubernetes%E5%AF%B9%E8%B1%A1%E6%A8%A1%E5%9E%8B/" rel="next" title="Kubernetes对象模型">
+                <i class="fa fa-chevron-left"></i> Kubernetes对象模型
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/CS/%E5%BC%80%E5%8F%91/%E6%95%B0%E6%8D%AE%E5%BA%93%E3%80%81%E7%BC%93%E5%AD%98%E3%80%81%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/%E7%BC%93%E5%AD%98%E9%97%AE%E9%A2%98/" rel="prev" title="缓存问题">
+                缓存问题 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.jpg"
+                alt="Chen Yanzhi" />
+            
+              <p class="site-author-name" itemprop="name">Chen Yanzhi</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+                <a href="/archives">
+                  <span class="site-state-item-count">110</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">15</span>
+                  <span class="site-state-item-name">categories</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">73</span>
+                  <span class="site-state-item-name">tags</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/chenyz2000" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:chenyanzhi_2000@163.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#kubectl操作对象"><span class="nav-text">kubectl操作对象</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#基础命令"><span class="nav-text">基础命令</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#get获取信息"><span class="nav-text">get获取信息</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#create、replace、apply创建更新"><span class="nav-text">create、replace、apply创建更新</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#set配置应用资源"><span class="nav-text">set配置应用资源</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#resources"><span class="nav-text">resources</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#image"><span class="nav-text">image</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#selector"><span class="nav-text">selector</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#delete删除"><span class="nav-text">delete删除</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#edit打开默认编辑器编辑资源信息"><span class="nav-text">edit打开默认编辑器编辑资源信息</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#run运行容器实例"><span class="nav-text">run运行容器实例</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#expose将资源暴露为新的Service"><span class="nav-text">expose将资源暴露为新的Service</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#部署命令"><span class="nav-text">部署命令</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#rollout资源管理"><span class="nav-text">rollout资源管理</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#rolling-update"><span class="nav-text">rolling-update</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#scale缩容扩容"><span class="nav-text">scale缩容扩容</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#autoscale自动伸缩"><span class="nav-text">autoscale自动伸缩</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#集群管理命令"><span class="nav-text">集群管理命令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#故障诊断和测试命令（对pod中的容器进行操作）"><span class="nav-text">故障诊断和测试命令（对pod中的容器进行操作）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#describe显示对象的详细状态"><span class="nav-text">describe显示对象的详细状态</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#logs打印pod中一个容器的日志"><span class="nav-text">logs打印pod中一个容器的日志</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#exec进入容器执行命令"><span class="nav-text">exec进入容器执行命令</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#attach连接到一个正在运行的容器"><span class="nav-text">attach连接到一个正在运行的容器</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#port-foward"><span class="nav-text">port-foward</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#proxy"><span class="nav-text">proxy</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#cp"><span class="nav-text">cp</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#auth"><span class="nav-text">auth</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Minikube"><span class="nav-text">Minikube</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#安装"><span class="nav-text">安装</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2024</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Chen Yanzhi</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
